@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Fundamentals: Session 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+        .slide-content {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+    <div id="app" class="w-full h-full p-4 md:p-8">
+        <!-- Main Content Container -->
+        <div id="page-container" class="flex flex-col justify-between min-h-screen max-w-6xl mx-auto">
+            <!-- Header -->
+            <div id="header-container" class="flex justify-between items-center mb-12">
+                <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Python Fundamentals</h1>
+                <div class="flex items-center space-x-4">
+                    <span id="slide-counter" class="text-lg text-gray-400 font-semibold"></span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full h-3 bg-gray-800/50 rounded-full mb-12 overflow-hidden border border-white/10 backdrop-blur-sm">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500"></div>
+            </div>
+
+            <!-- Slide Content -->
+            <div id="content-display" class="flex-1"></div>
+
+            <!-- Footer -->
+            <div id="footer-container" class="mt-16 flex justify-between items-center">
+                <button onclick="prevSlide()" id="prev-button" class="flex items-center space-x-3 px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-all duration-300 transform hover:scale-105 border border-white/10 backdrop-blur-sm hover:border-white/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+                    <span class="font-semibold text-lg">Previous</span>
+                </button>
+                <div id="dot-navigation" class="flex space-x-3"></div>
+                <button onclick="nextSlide()" id="next-button" class="flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl border border-blue-400/30">
+                    <span class="font-semibold text-lg">Next</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-gray-500 text-sm">Use left/right arrow keys or click the dots to navigate</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slides = [
+            { id: 1, title: "Your Journey into Programming", subtitle: "What is programming, and why start with Python?", content: [], visual: "journey" },
+            { id: 2, title: "What is Programming?", subtitle: "The Digital Language", content: ["Programming is giving instructions to a computer.", "It's the force behind every app, website, and digital tool you use.", "It's a way to automate tasks and solve complex problems."], visual: "whatisprogramming" },
+            { id: 3, title: "Why Start with Python?", subtitle: "Simple, Powerful, and Versatile", content: ["Python has a clean, readable syntax that is easy for beginners.", "It's a very versatile language used in web development, data science, and AI.", "The huge community means tons of free resources and help online."], visual: "python" },
+            { id: 4, title: "Getting Started", subtitle: "From Installation to Your First Code", content: ["Download and install Python from `python.org`.", "Use a code editor like VS Code.", "Run your first `print('Hello, World!')` command."], visual: "gettingstarted" },
+            { id: 5, title: "Essential Tool: Git & GitHub", subtitle: "Your Code's Memory", content: ["Git is a version control system that tracks your code's history.", "GitHub is a website for storing your Git projects online.", "It's the central hub for collaboration and is often called a 'developer's resume'."], visual: "gitgithub" },
+            { id: 6, title: "Contributing to Open-Source", subtitle: "How to Build Your Portfolio", content: ["Open-source projects are a great way to gain real-world experience.", "You don't just have to write code; you can fix bugs or improve documentation.", "Use Git and GitHub to fork a project, make changes, and create a Pull Request."], visual: "opensource" },
+            { id: 7, title: "The Developer Mindset", subtitle: "Key Habits for Success", content: ["Embrace problem-solving over memorization.", "Learn how to learn new things and be comfortable with uncertainty.", "Progress is more important than perfection."], visual: "mindset" },
+            { id: 8, title: "Programmer Wellness", subtitle: "Taking Care of Your Body and Mind", content: ["Pay attention to your posture and take regular breaks.", "Protect your eyes with the 20-20-20 rule.", "Avoid burnout by setting boundaries and having a life outside of coding."], visual: "wellness" },
+            { id: 9, title: "End of Session 1: Next Steps", subtitle: "Let's Get Our Hands Dirty!", content: ["Now you have the knowledge to begin your Python journey.", "Next, we'll dive into hands-on code examples for these topics."], visual: "conclusion" },
+        ];
+
+        let currentSlide = 0;
+
+        const visualComponents = {
+            journey: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900"><div class="relative z-10 text-center"><h1 class="text-8xl md:text-9xl mb-8 animate-[float_3s_ease-in-out_infinite]">🐍</h1><p class="text-xl text-gray-300">A guide to learning, using tools, and contributing.</p></div></div>`,
+            whatisprogramming: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900"><div class="relative z-10 text-center"><h1 class="text-7xl">💻</h1><p class="mt-4 text-xl font-bold">The Digital Language</p></div></div>`,
+            python: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-blue-900 via-yellow-800 to-green-800"><div class="relative z-10 text-center"><h1 class="text-9xl">🐍</h1><p class="mt-4 text-xl font-bold">Simple, Powerful, and Versatile</p></div></div>`,
+            gettingstarted: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-slate-900 via-gray-900 to-black"><div class="relative z-10 text-center"><h1 class="text-8xl">🚀</h1><p class="mt-4 text-xl font-bold">Download, Install, Code!</p></div></div>`,
+            gitgithub: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900"><div class="relative z-10 text-center"><h1 class="text-8xl">🐙</h1><p class="mt-4 text-xl font-bold">Your Code's Memory</p></div></div>`,
+            opensource: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-red-900 via-orange-900 to-yellow-900"><div class="relative z-10 text-center"><h1 class="text-8xl">🌍</h1><p class="mt-4 text-xl font-bold">Collaborate and Build</p></div></div>`,
+            mindset: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-cyan-900 via-teal-900 to-emerald-900"><div class="relative z-10 text-center"><h1 class="text-8xl">🧠</h1><p class="mt-4 text-xl font-bold">Problem-Solving is Key</p></div></div>`,
+            wellness: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-pink-900 via-red-900 to-orange-900"><div class="relative z-10 text-center"><h1 class="text-8xl">🧘</h1><p class="mt-4 text-xl font-bold">Take Care of Yourself</p></div></div>`,
+            conclusion: () => `<div class="w-full h-96 md:h-[60vh] rounded-3xl flex items-center justify-center text-white relative overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br from-green-900 via-teal-900 to-cyan-900"><div class="text-center relative z-10"><div class="text-8xl mb-8 animate-[float_3s_ease-in-out_infinite]">🚀</div><p class="text-xl font-bold">Thank you for your attention!</p></div></div>`
+        };
+
+        function renderPage() {
+            const slide = slides[currentSlide];
+            const contentDisplay = document.getElementById('content-display');
+
+            contentDisplay.innerHTML = `
+                <div class="slide-content">
+                    <div class="mb-12">${visualComponents[slide.visual]()}</div>
+                    <div class="text-center mb-12">
+                        <h2 class="text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent leading-tight">${slide.title}</h2>
+                        ${slide.subtitle ? `<p class="text-2xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto">${slide.subtitle}</p>` : ''}
+                    </div>
+                    ${slide.content.length > 0 ? `<div class="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 mb-12 border border-white/10 shadow-2xl"><div class="space-y-6">${slide.content.map(point => `<div class="flex items-start space-x-4 group hover:bg-white/5 rounded-2xl p-4 transition-all duration-300"><div class="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform duration-300"></div><p class="text-gray-200 leading-relaxed text-lg font-medium">${point}</p></div>`).join('')}</div></div>` : ''}
+                </div>
+            `;
+            
+            updateNavigation();
+            updateProgressBar();
+            updateSlideCounter();
+        }
+
+        function updateNavigation() {
+            const dotNavigation = document.getElementById('dot-navigation');
+            dotNavigation.innerHTML = '';
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('h-4', 'rounded-full', 'transition-all', 'duration-500', 'cursor-pointer', 'hover:scale-125');
+                dot.classList.add(i === currentSlide ? 'w-12' : 'w-4');
+                dot.classList.add(i === currentSlide ? 'bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg' : i < currentSlide ? 'bg-green-500' : 'bg-gray-600');
+                dot.onclick = () => { currentSlide = i; renderPage(); };
+                dotNavigation.appendChild(dot);
+            }
+            document.getElementById('prev-button').disabled = currentSlide === 0;
+            document.getElementById('next-button').disabled = currentSlide === slides.length - 1;
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+        }
+
+        function updateSlideCounter() {
+            document.getElementById('slide-counter').innerText = `${currentSlide + 1} / ${slides.length}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                renderPage();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                renderPage();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPage();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'Enter') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>
+

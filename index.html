@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Workshop Index</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+    <div id="root" class="w-full"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+        const App = () => {
+            const sessions = [
+                { id: 1, title: "Session 1: Fundamentals", file: "session1.html" },
+                { id: 2, title: "Session 2: Functions & OOP", file: "session2.html" },
+                { id: 3, title: "Code Examples", file: "code-examples.html" }
+            ];
+
+            return (
+                <div className="flex flex-col items-center justify-center min-h-screen text-center p-8">
+                    <h1 className="text-5xl font-bold mb-6 text-white">Python Workshop</h1>
+                    <p className="text-xl text-gray-400 mb-12 max-w-2xl">
+                        Welcome to the Python Fundamentals workshop. Please select a session below to begin.
+                    </p>
+                    <div className="space-y-4">
+                        {sessions.map(session => (
+                            <a 
+                                key={session.id} 
+                                href={session.file} 
+                                className="block w-full px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-gray-600 shadow-lg"
+                            >
+                                {session.title}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
+

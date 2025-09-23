@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git for Project Management</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes pulseBackground {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(225deg, #111827, #1f2937, #374151, #111827);
+            background-size: 300% 300%;
+            animation: pulseBackground 25s ease-in-out infinite;
+            color: #d1d5db;
+        }
+        #root {
+            width: 100%;
+            height: 100%;
+        }
+        .presentation-container {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+            transform-origin: center center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section-card {
+            width: 80vw;
+            max-width: 900px;
+            background-color: rgba(44, 62, 80, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            padding: 2.5rem;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            color: #ecf0f1;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.25rem; }
+        p { font-size: 1.25rem; line-height: 1.6; color: #bdc3c7; }
+        pre {
+            background-color: #34495e;
+            padding: 1.5rem; /* Slightly larger padding for code block */
+            border-radius: 0.75rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+            overflow-x: auto;
+            border-left: 4px solid #3498db;
+        }
+        .nav-buttons {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+        .nav-button {
+            padding: 0.75rem 2.5rem;
+            background-color: #3498db;
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        .nav-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        .nav-button:disabled {
+            background-color: #4b5563;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Content for each section of the presentation
+        const sections = [
+            {
+                title: "What is Git?",
+                content: "Git is a version control system that tracks changes to files over time. Think of it as a time machine for your code, allowing you to save different versions of your project and easily go back to a previous state.",
+                image: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg",
+                transform: { x: 0, y: 0, scale: 1 },
+                description: "This is a local tool on your computer. It’s what you use to create new versions of your project (commits) and manage branches."
+            },
+            {
+                title: "How do we work with Git?",
+                content: "You interact with Git using commands in your terminal or command prompt. The basic workflow involves adding changes to a staging area and then committing them to save a new version of the project.",
+                code: `git add .
+git commit -m "Added a new feature"`,
+                transform: { x: -1200, y: 0, scale: 0.8 }
+            },
+            {
+                title: "What is GitHub?",
+                content: "While Git is a local tool, GitHub is a web-based hosting service for Git repositories. It's the social network for developers! It allows teams to collaborate, share code, and manage projects in a central location.",
+                image: "https://www.vectorlogo.zone/logos/github/github-icon.svg",
+                transform: { x: 1200, y: 0, scale: 0.8 }
+            },
+            {
+                title: "Our Open Source Project: Python Adventure Game",
+                content: "Today, we'll be working with an open-source Python adventure game. The goal is to collaborate on building a new story line for this game. It's a great way to learn Git in a practical, fun way.",
+                link: "https://github.com/mhe931/python-adventure-game.git",
+                contributeLink: "https://github.com/mhe931/python-adventure-game/blob/main/CONTRIBUTING.md",
+                transform: { x: 0, y: -800, scale: 0.8 }
+            },
+            {
+                title: "How to Fork the Project",
+                content: "Forking is a crucial step. It means you are making a personal copy of the project on your own GitHub account. This allows you to make changes without affecting the original project.",
+                description: "Steps: 1. Go to the project's GitHub page. 2. Click the 'Fork' button on the top-right.",
+                transform: { x: -1200, y: -800, scale: 0.8 }
+            },
+            {
+                title: "How to Have it on Your System",
+                content: "Once you have your own fork, you need to get a local copy on your computer. This is called cloning. This command will copy your forked repository to your machine.",
+                code: "git clone https://github.com/YOUR_USERNAME/python-adventure-game.git",
+                transform: { x: 1200, y: -800, scale: 0.8 }
+            },
+            {
+                title: "How to Add a New Story",
+                content: "After cloning, you can start adding your story! You'll create a new file, write your Python code, and then use Git to save your changes and push them back to your GitHub repository.",
+                code: `// Example Workflow
+git checkout -b new-story-branch
+// Make your code changes
+git add .
+git commit -m "Added new story"
+git push origin new-story-branch`,
+                transform: { x: 0, y: 800, scale: 0.8 }
+            },
+            {
+                title: "What is a Pull Request?",
+                content: "A Pull Request (PR) is how you propose your changes to be merged into the original project. The project maintainer can review your code and decide to accept it.",
+                image: "https://placehold.co/400x200/2ecc71/ffffff?text=Pull+Request+Concept",
+                transform: { x: -1200, y: 800, scale: 0.8 }
+            },
+            {
+                title: "Why Git for Project Management?",
+                content: "Git is more than just saving versions. It's a powerful project management tool. It enables seamless collaboration, keeps a clear history of all changes, allows for parallel work on different features (branches), and provides an easy way to merge everyone's work together.",
+                transform: { x: 1200, y: 800, scale: 0.8 }
+            },
+            {
+                title: "Let's Get Started!",
+                content: "Now that you understand the basics, let's get our hands dirty. Follow the steps we've covered and contribute to the project! This is how real-world software development works.",
+                transform: { x: 0, y: 0, scale: 1.2 }
+            },
+            {
+                title: "Summary of Steps",
+                content: "Here is a quick summary of the workflow we've discussed:",
+                list: [
+                    "**Fork** the project on GitHub.",
+                    "**Clone** your fork to your local machine.",
+                    "Create a new **branch** for your story.",
+                    "**Add** and **commit** your changes.",
+                    "**Push** your branch to your remote repository.",
+                    "Open a **Pull Request** to the original project."
+                ],
+                transform: { x: 0, y: 1600, scale: 0.8 }
+            }
+        ];
+
+        const App = () => {
+            const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+
+            // Handle keyboard navigation
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight' || event.key === ' ') {
+                        handleNext();
+                    } else if (event.key === 'ArrowLeft') {
+                        handlePrevious();
+                    }
+                };
+                
+                window.addEventListener('keydown', handleKeyDown);
+                return () => {
+                    window.removeEventListener('keydown', handleKeyDown);
+                };
+            }, [currentSectionIndex]);
+
+            const handleNext = () => {
+                if (currentSectionIndex < sections.length - 1) {
+                    setCurrentSectionIndex(currentSectionIndex + 1);
+                }
+            };
+
+            const handlePrevious = () => {
+                if (currentSectionIndex > 0) {
+                    setCurrentSectionIndex(currentSectionIndex - 1);
+                }
+            };
+
+            const currentTransform = sections[currentSectionIndex].transform;
+            const transformStyle = `translate3d(${-currentTransform.x}px, ${-currentTransform.y}px, 0) scale(${currentTransform.scale})`;
+
+            return (
+                <div className="flex flex-col items-center justify-center h-full w-full">
+                    <div className="presentation-container" style={{ transform: transformStyle }}>
+                        {sections.map((section, index) => (
+                            <div 
+                                key={index} 
+                                className="section-card transition-all duration-700 ease-in-out"
+                                style={{
+                                    position: 'absolute',
+                                    left: '50%',
+                                    top: '50%',
+                                    transform: `translate3d(calc(-50% + ${section.transform.x}px), calc(-50% + ${section.transform.y}px), 0) scale(${section.transform.scale / 1})`,
+                                    opacity: currentSectionIndex === index ? 1 : 0.2,
+                                    zIndex: currentSectionIndex === index ? 1 : 0
+                                }}
+                            >
+                                <h2 className="text-center">{section.title}</h2>
+                                {section.image && <img src={section.image} alt={section.title} className="w-full rounded-xl object-cover my-4" />}
+                                {section.content && <p>{section.content}</p>}
+                                {section.description && <p className="mt-2 text-sm text-gray-400">{section.description}</p>}
+                                {section.code && (
+                                    <pre>
+                                        <code>
+                                            {section.code}
+                                        </code>
+                                    </pre>
+                                )}
+                                {section.link && (
+                                    <p className="mt-4">Project Link: 
+                                        <a href={section.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors ml-2 underline">
+                                            Python Adventure Game
+                                        </a>
+                                    </p>
+                                )}
+                                {section.contributeLink && (
+                                    <p>Contribution Guide: 
+                                        <a href={section.contributeLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors ml-2 underline">
+                                            CONTRIBUTING.md
+                                        </a>
+                                    </p>
+                                )}
+                                {section.list && (
+                                    <ul className="list-disc pl-6 text-xl text-gray-300 space-y-2">
+                                        {section.list.map((item, i) => <li key={i}>{item}</li>)}
+                                    </ul>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="nav-buttons">
+                        <button 
+                            onClick={handlePrevious} 
+                            disabled={currentSectionIndex === 0} 
+                            className="nav-button"
+                        >
+                            Previous
+                        </button>
+                        <button 
+                            onClick={handleNext} 
+                            disabled={currentSectionIndex === sections.length - 1} 
+                            className="nav-button"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

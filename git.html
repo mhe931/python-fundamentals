@@ -124,9 +124,6 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Content for each section of the presentation
-        // Note: I've changed the transform values to be in viewport units (vw, vh)
-        // This ensures the presentation is responsive and doesn't go off-screen on mobile
         const sections = [
             {
                 title: "What is Git?",
@@ -212,7 +209,6 @@ git push origin new-story-branch`,
         const App = () => {
             const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
-            // Handle keyboard navigation
             useEffect(() => {
                 const handleKeyDown = (event) => {
                     if (event.key === 'ArrowRight' || event.key === ' ') {
@@ -244,7 +240,7 @@ git push origin new-story-branch`,
             const transformStyle = `translate3d(${-currentTransform.x}vw, ${-currentTransform.y}vh, 0) scale(${currentTransform.scale})`;
 
             return (
-                <div className="flex flex-col items-center justify-center h-full w-full">
+                <div className="flex flex-col items-center justify-center h-full w-full overflow-hidden">
                     <div className="presentation-container" style={{ transform: transformStyle }}>
                         {sections.map((section, index) => (
                             <div 
@@ -254,9 +250,13 @@ git push origin new-story-branch`,
                                     position: 'absolute',
                                     left: '50%',
                                     top: '50%',
-                                    transform: `translate3d(calc(-50% + ${section.transform.x}vw), calc(-50% + ${section.transform.y}vh), 0) scale(${section.transform.scale / 1})`,
+                                    transform: `translate3d(calc(-50% + ${section.transform.x}vw), calc(-50% + ${section.transform.y}vh), 0) scale(${section.transform.scale})`,
                                     opacity: currentSectionIndex === index ? 1 : 0.2,
-                                    zIndex: currentSectionIndex === index ? 1 : 0
+                                    zIndex: currentSectionIndex === index ? 1 : 0,
+                                    minHeight: '20vh',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
                                 }}
                             >
                                 <h2 className="text-center">{section.title}</h2>
@@ -267,8 +267,8 @@ git push origin new-story-branch`,
                                         className={`rounded-xl my-4 mx-auto ${index === 0 ? 'w-32 h-32 object-contain' : 'w-full object-cover'}`}
                                     />
                                 )}
-                                {section.content && <p>{section.content}</p>}
-                                {section.description && <p className="mt-2 text-sm text-gray-400">{section.description}</p>}
+                                {section.content && <p className="text-center">{section.content}</p>}
+                                {section.description && <p className="mt-2 text-sm text-gray-400 text-center">{section.description}</p>}
                                 {section.code && (
                                     <pre>
                                         <code>
@@ -277,21 +277,21 @@ git push origin new-story-branch`,
                                     </pre>
                                 )}
                                 {section.link && (
-                                    <p className="mt-4">Project Link: 
+                                    <p className="mt-4 text-center">Project Link: 
                                         <a href={section.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors ml-2 underline">
                                             Python Adventure Game
                                         </a>
                                     </p>
                                 )}
                                 {section.contributeLink && (
-                                    <p>Contribution Guide: 
+                                    <p className="text-center">Contribution Guide: 
                                         <a href={section.contributeLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors ml-2 underline">
                                             CONTRIBUTING.md
                                         </a>
                                     </p>
                                 )}
                                 {section.list && (
-                                    <ul className="list-disc pl-6 text-xl text-gray-300 space-y-2">
+                                    <ul className="list-disc text-xl text-gray-300 space-y-2 mx-auto" style={{maxWidth: '80%'}}>
                                         {section.list.map((item, i) => <li key={i}>{item}</li>)}
                                     </ul>
                                 )}

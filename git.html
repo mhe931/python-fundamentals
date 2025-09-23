@@ -248,7 +248,13 @@ git push origin new-story-branch`,
                                 }}
                             >
                                 <h2 className="text-center">{section.title}</h2>
-                                {section.image && <img src={section.image} alt={section.title} className="w-full rounded-xl object-cover my-4" />}
+                                {section.image && (
+                                    <img 
+                                        src={section.image} 
+                                        alt={section.title} 
+                                        className={`rounded-xl my-4 mx-auto ${index === 0 ? 'w-32 h-32 object-contain' : 'w-full object-cover'}`}
+                                    />
+                                )}
                                 {section.content && <p>{section.content}</p>}
                                 {section.description && <p className="mt-2 text-sm text-gray-400">{section.description}</p>}
                                 {section.code && (

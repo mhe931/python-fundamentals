@@ -353,7 +353,7 @@ df.info()        // Shows non-null counts and data types`,
                                     // The transform now centers the card (using its own dimensions) 
                                     // and then applies the navigation offset and scale.
                                     //transform: `translate(-50%, -50%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
-                                    transform: `translate(+50%, +50%) translate3d(0vw, 0vh, 0) scale(${section.transform.scale})`,
+                                    transform: `translate(+50%, +50%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
                                     
                                     opacity: currentSectionIndex === index ? 1 : 0.2,
                                     zIndex: currentSectionIndex === index ? 10 : 9, 

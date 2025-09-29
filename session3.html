@@ -331,6 +331,7 @@ df.info()        // Shows non-null counts and data types`,
             const currentTransform = sections[currentSectionIndex].transform;
             // Use vw and vh units for transformation for mobile responsiveness
             const transformStyle = `translate3d(${-currentTransform.x}vw, ${-currentTransform.y}vh, 0) scale(${currentTransform.scale})`;
+            
 
             return (
                 <div className="flex flex-col items-center justify-center h-full w-full overflow-hidden">
@@ -351,7 +352,9 @@ df.info()        // Shows non-null counts and data types`,
                                     top: '50%',
                                     // The transform now centers the card (using its own dimensions) 
                                     // and then applies the navigation offset and scale.
-                                    transform: `translate(-50%, -50%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
+                                    //transform: `translate(-50%, -50%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
+                                    transform: `translate(0%, 0%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
+                                    
                                     opacity: currentSectionIndex === index ? 1 : 0.2,
                                     zIndex: currentSectionIndex === index ? 10 : 9, 
                                     boxSizing: 'border-box'

@@ -172,7 +172,7 @@ import numpy as np
 data_array = np.array([1, 2, 3])
 result_array = data_array * 2 
 // [2, 4, 6] in a fraction of the time!`,
-                transform: { x: -240, y: 0, scale: 0.8 },
+                transform: { x: -250, y: 0, scale: 0.9 }, // Increased scale and adjusted X
                 description: "This single concept is the key to high-performance scientific computing in Python."
             },
             {
@@ -190,7 +190,7 @@ result_array = data_array * 2
 // 0    | Alice | 30 | London
 // 1    | Bob   | 25 | Paris
 // 2    | Chris | 40 | Berlin`,
-                transform: { x: 240, y: 0, scale: 0.8 },
+                transform: { x: 250, y: 0, scale: 0.9 }, // Increased scale and adjusted X
                 description: "DataFrames are the standard format for almost all data science operations."
             },
             {
@@ -207,7 +207,7 @@ df = pd.read_csv('student_data.csv')
 
 // Display the first 5 rows to check the data
 print(df.head())`,
-                transform: { x: 0, y: 200, scale: 0.8 }
+                transform: { x: 0, y: 200, scale: 0.9 } // Increased scale
             },
             {
                 title: "Pro Tip: Data Sanity Checks",
@@ -215,14 +215,14 @@ print(df.head())`,
                 code: `// Essential Sanity Checks
 print(df.shape)  // (rows, columns)
 df.info()        // Shows non-null counts and data types`,
-                transform: { x: 120, y: 200, scale: 0.8 },
+                transform: { x: 130, y: 200, scale: 0.9 }, // Increased scale and adjusted X
                 description: "This practice prevents silent errors later in your analysis."
             },
             {
                 title: "Physical Activity: Reset Your Body",
                 content: "Working with data requires focus. Let's take 2 minutes for a quick physical reset! Simple stretches for the neck and shoulders, and a few deep, slow breaths. This boosts circulation and focus.",
                 image: "https://placehold.co/400x200/4ade80/ffffff?text=Stretch+and+Breathe",
-                transform: { x: -120, y: 200, scale: 0.8 },
+                transform: { x: -130, y: 200, scale: 0.9 }, // Increased scale and adjusted X
                 description: "Take a break. Your code will still be there!"
             },
             {
@@ -331,7 +331,6 @@ df.info()        // Shows non-null counts and data types`,
             const currentTransform = sections[currentSectionIndex].transform;
             // Use vw and vh units for transformation for mobile responsiveness
             const transformStyle = `translate3d(${-currentTransform.x}vw, ${-currentTransform.y}vh, 0) scale(${currentTransform.scale})`;
-            
 
             return (
                 <div className="flex flex-col items-center justify-center h-full w-full overflow-hidden">
@@ -346,15 +345,12 @@ df.info()        // Shows non-null counts and data types`,
                                 className="section-card transition-all duration-700 ease-in-out"
                                 style={{
                                     position: 'absolute',
-                                    // FIX: Traditional centering using left: 50%, top: 50% and translate(-50%, -50%). 
-                                    // This is the most reliable centering method for absolute elements.
+                                    // FIX: Anchoring the card's top-left corner at the center of the screen
                                     left: '50%',
                                     top: '50%',
-                                    // The transform now centers the card (using its own dimensions) 
-                                    // and then applies the navigation offset and scale.
-                                    //transform: `translate(-50%, -50%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
-                                    transform: `translate(+50%, +50%) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
-                                    
+                                    // FIX: All transforms are now 3D. translate3d(-50%, -50%, 0) centers the card using its own dimensions. 
+                                    // The subsequent translate3d applies the navigation offset and scale.
+                                    transform: `translate3d(-50%, -50%, 0) translate3d(${section.transform.x}vw, ${section.transform.y}vh, 0) scale(${section.transform.scale})`,
                                     opacity: currentSectionIndex === index ? 1 : 0.2,
                                     zIndex: currentSectionIndex === index ? 10 : 9, 
                                     boxSizing: 'border-box'

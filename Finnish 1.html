@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finnish 1: Study Guide - Vaasan Yliopisto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #1e293b;
+            padding: 1rem;
+        }
+        .accordion-button {
+            background-color: #0d9488; /* Teal */
+            color: white;
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-button:hover {
+            background-color: #0f766e;
+        }
+        .accordion-content {
+            padding: 1rem;
+            background-color: #ffffff;
+            border-left: 4px solid #0d9488;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-in-out, padding 0.3s ease-in-out;
+            margin-bottom: 0.5rem;
+        }
+        .accordion-content.active {
+            max-height: 4000px; /* Increased max-height substantially */
+            padding: 1rem;
+        }
+        /* Table Styles for Mobile Responsiveness */
+        .table-container {
+            overflow-x: auto; /* Allows horizontal scrolling on small screens */
+            width: 100%;
+        }
+        .grammar-table {
+            min-width: 600px; /* Ensures tables don't compress too much */
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .grammar-table th, .grammar-table td {
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .grammar-table th {
+            background-color: #e5e7eb;
+            font-weight: 600;
+        }
+        /* End Table Styles */
+
+        .vowel-harmony-box {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        .vowel-harmony-box > div {
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .back-vowels { background-color: #fee2e2; color: #b91c1c; }
+        .front-vowels { background-color: #dbeafe; color: #1e40af; }
+        .neutral-vowels { background-color: #fef9c3; color: #ca8a04; }
+        .answer-box {
+            background-color: #f0fdf4; /* Light Green */
+            border: 1px solid #34d399; /* Green border */
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            color: #047857; /* Darker Green text */
+            font-weight: 600;
+        }
+        .exam-instructions {
+            background-color: #fef2f2; /* Light Red/Pink for warning */
+            border: 2px solid #ef4444; /* Red border */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .exam-instructions h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #b91c1c;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="text-center py-6 bg-white shadow-lg rounded-xl mb-6 border-b-4 border-teal-500">
+        <h1 class="text-4xl font-extrabold text-teal-700">SUOMI 1: Harjoitusopas</h1>
+        <p class="text-xl text-gray-600 mt-2">Finnish 1: Essential Study Guide (Vaasan Yliopisto)</p>
+    </header>
+
+    <div id="app" class="max-w-4xl mx-auto">
+        
+        <!-- Section 1: Basics, OLLA, and Negative Verb -->
+        <button class="accordion-button" onclick="toggleAccordion('section1')">
+            1. Perusteet, OLLA ja Kieltoverbi (Basics, TO BE and Negative Verb)
+            <span id="icon1" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section1" class="accordion-content active">
+            <h3 class="text-xl font-semibold mb-2 text-teal-700">Pääfraasit ja Numerot (Key Phrases & Numbers)</h3>
+            <ul class="list-disc list-inside space-y-1 mb-4 ml-4 text-sm">
+                <li>**Tervetuloa!** - Welcome!</li>
+                <li>**Hauska tavata!** - Nice to meet you!</li>
+                <li>**Mitä kuuluu?** - How are you? &rarr; **Kiitos, hyvää!** - Fine, thank you!</li>
+                <li>Numerot 0-10: **nolla, yksi, kaksi, kolme, neljä, viisi, kuusi, seitsemän, kahdeksan, yhdeksän, kymmenen.**</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Olla-verbi (The Verb To Be)</h3>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Pronoun</th><th>Positive (Olla)</th><th>Negative (Ei olla)</th><th>Colloquial (Puhekieli)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>minä (I)</td><td>olen</td><td>en ole</td><td>mä oon</td></tr>
+                        <tr><td>sinä (you, sg)</td><td>olet</td><td>et ole</td><td>sä oot</td></tr>
+                        <tr><td>hän (he/she)</td><td>on</td><td>ei ole</td><td>se on</td></tr>
+                        <tr><td>me (we)</td><td>olemme</td><td>emme ole</td><td>me ollaan</td></tr>
+                        <tr><td>te (you, pl)</td><td>olette</td><td>ette ole</td><td>te ootte</td></tr>
+                        <tr><td>he (they)</td><td>ovat</td><td>eivät ole</td><td>ne on</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Kieltoverbi (The Negative Verb)</h3>
+            <p class="text-sm mb-2">The negative word is a verb (**ei**) that is conjugated, while the main verb loses its ending and reverts to its **stem form**.</p>
+            <p class="text-sm italic pl-2">Example: Minä **puhun** (I speak). &rarr; Minä **en puhu** (I don't speak).</p>
+        </div>
+
+        <!-- Section 2: Vowel Harmony & Local Cases -->
+        <button class="accordion-button" onclick="toggleAccordion('section2')">
+            2. Vokaaliharmonia ja Paikallissijat (Vowel Harmony & Local Cases)
+            <span id="icon2" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section2" class="accordion-content">
+            <h3 class="text-xl font-semibold mb-2 text-teal-700">Vokaaliharmonia (Vowel Harmony)</h3>
+            <p class="text-sm mb-4">A Finnish word can only contain **back** or **front** vowels. Endings must match the vowels in the stem.</p>
+            <div class="vowel-harmony-box">
+                <div class="back-vowels">**A, O, U** (Back) &rarr; Endings like -**ssa, -sta, -lla** (e.g., **Vaasassa**)</div>
+                <div class="front-vowels">**Ä, Ö, Y** (Front) &rarr; Endings like -**ssä, -stä, -llä** (e.g., **Helsingissä**)</div>
+                <div class="neutral-vowels">**E, I** (Neutral) &rarr; Co-exist with both back and front vowels.</div>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Paikallissijat (Local Cases)</h3>
+            <p class="text-sm mb-2">These suffixes answer **Missä?** (Where in/on), **Mistä?** (Where from), and **Mihin?** (Where to).</p>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Question</th><th>Case</th><th>Suffix (In/On)</th><th>Example: IN place (Closed)</th><th>Example: ON place (Open)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Missä? (Where is it?)</td><td>Inessive/Adessive</td><td>**-ssa / -llä**</td><td>**Vaasassa** (In Vaasa)</td><td>**Asemalla** (At the station)</td></tr>
+                        <tr><td>Mistä? (Where from?)</td><td>Elative/Ablative</td><td>**-sta / -lta**</td><td>**Helsingistä** (From Helsinki)</td><td>**Yliopistolta** (From the university)</td></tr>
+                        <tr><td>Mihin? (Where to?)</td><td>Illative/Allative</td><td>**-Vn / -lle**</td><td>**Kahvilaan** (To the cafe)</td><td>**Asemalle** (To the station)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs mt-2 italic">Note: Venäjä uses the ON-place suffixes (**Venäjällä**, **Venäjältä**, **Venäjälle**) as an exception.</p>
+        </div>
+
+        <!-- Section 3: Verb Types 1, 2, 3 -->
+        <button class="accordion-button" onclick="toggleAccordion('section3')">
+            3. Verbi Tyypit 1, 2 ja 3 (Conjugation)
+            <span id="icon3" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section3" class="accordion-content">
+            <h3 class="text-xl font-semibold mb-2 text-teal-700">Tyyppi 1 (Vowel + a/ä) &rarr; **hän** has Double Vowel</h3>
+            <p class="text-sm mb-2">Stem: Drop final -a/-ä (e.g., **asu-**). The 3rd person singular (**hän**) has a **double vowel** (asu-**u**).</p>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Pronoun</th><th>Tyyppi 1: asua (live)</th><th>Tyyppi 1: puhua (speak)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>minä</td><td>asu**n**</td><td>puhu**n**</td></tr>
+                        <tr><td>sinä</td><td>asu**t**</td><td>puhu**t**</td></tr>
+                        <tr><td>**hän**</td><td>asu**u**</td><td>puhu**u**</td></tr>
+                        <tr><td>me</td><td>asu**mme**</td><td>puhu**mme**</td></tr>
+                        <tr><td>te</td><td>asu**tte**</td><td>puhu**tte**</td></tr>
+                        <tr><td>he</td><td>asu**vat**</td><td>puhu**vat**</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Tyyppi 2 (-da/-dä) &rarr; **hän** has No Ending</h3>
+            <p class="text-sm mb-2">Stem: Drop final -da/-dä (e.g., **syö-**). The 3rd person singular (**hän**) has **no ending** (just the stem).</p>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Pronoun</th><th>Tyyppi 2: syödä (eat)</th><th>Tyyppi 2: juoda (drink)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>minä</td><td>syö**n**</td><td>juo**n**</td></tr>
+                        <tr><td>sinä</td><td>syö**t**</td><td>juo**t**</td></tr>
+                        <tr><td>**hän**</td><td>**syö**</td><td>**juo**</td></tr>
+                        <tr><td>me</td><td>syö**mme**</td><td>juo**mme**</td></tr>
+                        <tr><td>te</td><td>syö**tte**</td><td>juo**tte**</td></tr>
+                        <tr><td>he</td><td>syö**vät**</td><td>juo**vat**</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Tyyppi 3 (-la/-nä/-sta...) &rarr; Stem + e</h3>
+            <p class="text-sm mb-2">Stem: Drop the last two letters, add the **-e-** sign, and then the ending. The 3rd person singular (**hän**) has a **long e** (men-**ee**).</p>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Pronoun</th><th>Tyyppi 3: mennä (go)</th><th>Tyyppi 3: tulla (come)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>minä</td><td>men**en**</td><td>tul**en**</td></tr>
+                        <tr><td>sinä</td><td>men**et**</td><td>tul**et**</td></tr>
+                        <tr><td>**hän**</td><td>men**ee**</td><td>tul**ee**</td></tr>
+                        <tr><td>me</td><td>men**emme**</td><td>tul**emme**</td></tr>
+                        <tr><td>te</td><td>men**ette**</td><td>tul**ette**</td></tr>
+                        <tr><td>he</td><td>men**evät**</td><td>tul**evat**</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: K, P, T Consonant Gradation -->
+        <button class="accordion-button" onclick="toggleAccordion('section4')">
+            4. K, P, T Asteenmuutos (Consonant Gradation)
+            <span id="icon4" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section4" class="accordion-content">
+            <p class="text-sm mb-2 font-semibold">Consonants **k, p, t** change or drop when followed by a weak grade ending (minä, sinä, me, te forms). This is mandatory for many Type 1 verbs.</p>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Strong &rarr; Weak</th><th>Infinitive (Strong)</th><th>Minä Form (Weak)</th><th>Change Type & Explanation</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>**kk** &rarr; **k**</td><td>nukku-a (to sleep)</td><td>minä nukun</td><td>Two consonants become one.</td></tr>
+                        <tr><td>**pp** &rarr; **p**</td><td>oppi-a (to learn)</td><td>minä opin</td><td>Two consonants become one.</td></tr>
+                        <tr><td>**tt** &rarr; **t**</td><td>kirjoitta-a (to write)</td><td>minä kirjoitan</td><td>Two consonants become one.</td></tr>
+                        <tr><td>**k** &rarr; (drop)</td><td>luke-a (to read)</td><td>minä luen</td><td>Single 'k' disappears between vowels.</td></tr>
+                        <tr><td>**t** &rarr; **d**</td><td>tietä-ä (to know)</td><td>minä tiedän</td><td>Single 't' becomes 'd'.</td></tr>
+                        <tr><td>**mp** &rarr; **mm**</td><td>ampu-a (to shoot)</td><td>minä ammun</td><td>Assimilation: p &rarr; m (matches preceding m).</td></tr>
+                        <tr><td>**nt** &rarr; **nn**</td><td>anta-a (to give)</td><td>minä annan</td><td>Assimilation: t &rarr; n (matches preceding n).</td></tr>
+                        <tr><td>**sk** &rarr; **sk**</td><td>laskea (to count)</td><td>minä lasken</td><td>**NO CHANGE!** This cluster is stable.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 5: Sanasto and Self-Introduction -->
+        <button class="accordion-button" onclick="toggleAccordion('section5')">
+            5. Sanasto ja Esittely (Vocabulary and Introduction)
+            <span id="icon5" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section5" class="accordion-content">
+            <h3 class="text-xl font-semibold mb-2 text-teal-700">Maa, Kansallisuus, Kieli (Country, Nationality, Language)</h3>
+            <div class="table-container">
+                <table class="grammar-table text-sm">
+                    <thead>
+                        <tr><th>Maa (Country)</th><th>Kansallisuus (-lainen)</th><th>Kieli (Partitive)</th><th>Missä asut?</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Suomi</td><td>suomalainen</td><td>suomea</td><td>Suomessa</td></tr>
+                        <tr><td>Ruotsi</td><td>ruotsalainen</td><td>ruotsia</td><td>Ruotsissa</td></tr>
+                        <tr><td>Italia</td><td>italialainen</td><td>italiaa</td><td>Italiassa</td></tr>
+                        <tr><td>Englanti</td><td>englantilainen</td><td>englantia</td><td>Englannissa</td></tr>
+                        <tr><td>**Helsinki**</td><td>**helsinkiläinen**</td><td>—</td><td>**Helsingissä**</td></tr>
+                        <tr><td>**Vaasa**</td><td>**vaasalainen**</td><td>—</td><td>**Vaasassa**</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Kysymyssanat (Question Words)</h3>
+            <ul class="list-disc list-inside space-y-1 mb-4 ml-4 text-sm">
+                <li>**Mikä** (what - subject), **Mitä** (what - object)</li>
+                <li>**Kuka** (who - subject), **Ketä** (who - object)</li>
+                <li>**Missä** (where), **Mistä** (where from), **Mihin** (where to)</li>
+                <li>**Kuinka vanha** (How old), **Minkä maalainen** (What nationality)</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">Perhe- ja Ruokasanasto (Family & Food Vocabulary)</h3>
+            <p class="text-sm font-semibold mt-2">Perhe (Family):</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                <div>äiti (mother)</div>
+                <div>isä (father)</div>
+                <div>veli (brother)</div>
+                <div>sisko (sister)</div>
+                <div>vanhemmat (parents)</div>
+                <div>lapsi (child)</div>
+                <div>poikaystävä (boyfriend)</div>
+                <div>opiskelija (student)</div>
+            </div>
+            <p class="text-sm font-semibold mt-4">Ruoka (Food):</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                <div>kahvi (coffee)</div>
+                <div>tee (tea)</div>
+                <div>maito (milk)</div>
+                <div>leipä (bread)</div>
+                <div>juusto (cheese)</div>
+                <div>kala (fish)</div>
+                <div>liha (meat)</div>
+                <div>korvapuusti (cinnamon roll)</div>
+            </div>
+        </div>
+
+        <!-- Section 6: Full Practice Q&A and Exercises -->
+        <button class="accordion-button" onclick="toggleAccordion('section6')">
+            6. Harjoitus: Kysy ja Vastaa (Full Q&A Practice & Answers)
+            <span id="icon6" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section6" class="accordion-content">
+            <h3 class="text-xl font-semibold mb-2 text-teal-700">A. Vastaa kysymyksiin (Answer the questions)</h3>
+            <ul class="list-disc list-inside space-y-3 mb-4 ml-4 text-sm">
+                <li>**Kuinka vanha sinä olet?**
+                    <p class="text-teal-600 ml-4">Minä olen **25-vuotias**. / Minä olen **25 vuotta vanha**.</p></li>
+                <li>**Puhutko sinä suomea?**
+                    <p class="text-teal-600 ml-4">**Kyllä, puhun.** / **En puhu**, mutta opiskelen!</p></li>
+                <li>**Minun isä on toimittaja. Entä sinun äiti?**
+                    <p class="text-teal-600 ml-4">Minun äiti on **opettaja**. / Minun äiti on kotoisin **Kiinasta** (from China).</p></li>
+                <li>**Asutteko te Vaasassa?**
+                    <p class="text-teal-600 ml-4">Kyllä, **asumme**. / Ei, **emme asu**. Me asumme **Helsingissä**.</p></li>
+            </ul>
+            
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">B. Käännä kysymykseksi (-ko/-kö) - Turn into a question</h3>
+            <ul class="list-disc list-inside space-y-3 mb-2 ml-4 text-sm">
+                <li><span class="font-semibold">Statement:</span> Sinä juot kahvia aamulla. &rarr; <span class="font-bold text-red-600">**Juotko** sinä kahvia aamulla?</span></li>
+                <li><span class="font-semibold">Statement:</span> Hän syö leipää. &rarr; <span class="font-bold text-red-600">**Syöko** hän leipää?</span></li>
+                <li><span class="font-semibold">Statement:</span> He tulevat Vaasaan opiskelemaan. &rarr; <span class="font-bold text-red-600">**Tulevatko** he Vaasaan opiskelemaan?</span></li>
+                <li><span class="font-semibold">Statement:</span> Te menette kesällä Helsinkiin. &rarr; <span class="font-bold text-red-600">**Menettekö** te kesällä Helsinkiin?</span></li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-4">C. Verb Type 1 Conjugation (Fill-in-the-Blanks)</h3>
+            <p class="text-sm font-semibold mb-2">Conjugate the verbs (ASUA, PUHUA, MAKSAA, MATKUSTAA) for Sinä, Hän, Me, Te, He.</p>
+            <div class="answer-box">
+                <p><strong>ASUA:</strong> Sinä **asut**, Hän **asuu**, Me **asumme**, Te **asutte**, He **asuvat**.</p>
+                <p><strong>PUHUA:</strong> Sinä **puhut**, Hän **puhuu**, Me **puhumme**, Te **puhutte**, He **puhuvat**.</p>
+                <p><strong>MAKSAA (to pay):</strong> Sinä **maksat**, Hän **maksaa**, Me **maksamme**, Te **maksatte**, He **maksavat**.</p>
+                <p><strong>MATKUSTAA (to travel):</strong> Sinä **matkustat**, Hän **matkustaa**, Me **matkustamme**, Te **matkustatte**, He **matkustavat**.</p>
+            </div>
+        </div>
+
+        <!-- Section 7: Exam Instructions -->
+        <button class="accordion-button" onclick="toggleAccordion('section7')">
+            7. Tentin Ohjeet (Exam Instructions)
+            <span id="icon7" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="section7" class="accordion-content">
+            <h3 class="text-xl font-semibold mb-2 text-teal-700">Varsinainen Kirjallinen Tentti (Main Written Exam)</h3>
+            <div class="exam-instructions">
+                <h4>Tärkeää (Important):</h4>
+                <ul class="list-disc list-inside space-y-1 mb-3 text-sm text-gray-800">
+                    <li>**Linkki:** https://learn.uwasa.fi/course/view.php?id=1697</li>
+                    <li>**Kurssiavain (Course Key):** **examF1**</li>
+                    <li>**Tentti auki:** **13.–19.10.** (You must take it within this period.)</li>
+                    <li>**Sinun tentti (Your Exam):** Etsi "Exam, Finnish 1, R4, Mäki-Ista"</li>
+                    <li>**Salasana (Password):** **Vuokko**</li>
+                    <li>**Aika:** **45 minuuttia** aloitettuasi.</li>
+                </ul>
+                <p class="text-sm font-semibold text-gray-800">Muista vastata kaikkiin kysymyksiin ja paina "Submit all and finish" lopuksi.</p>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-2 text-teal-700 mt-6">Uusintatentin Ohjeet (Retake Exam Instructions)</h3>
+            <div class="exam-instructions">
+                <h4>Tärkeää (Important):</h4>
+                <ul class="list-disc list-inside space-y-1 mb-3 text-sm text-gray-800">
+                    <li>**Linkki:** https://learn.uwasa.fi/course/view.php?id=1697</li>
+                    <li>**Kurssiavain (Course Key):** **examF1**</li>
+                    <li>**Tentti auki:** **27.10.–28.10.**</li>
+                    <li>**Sinun tentti (Your Exam):** Etsi "Retake exam, Finnish 1, R4, Mäki-Ista"</li>
+                    <li>**Salasana (Password):** **Voikukka**</li>
+                    <li>**Aika:** **45 minuuttia**.</li>
+                    <li>**Huom:** Korkeampi arvosana on voimassa (The higher grade will be considered valid).</li>
+                </ul>
+                <p class="text-sm font-semibold text-gray-800">Varmista, että sinulla on 45 minuuttia häiriötöntä aikaa.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon' + id.slice(-1));
+            const isActive = content.classList.contains('active');
+
+            // Close all sections except the one being toggled
+            document.querySelectorAll('.accordion-content.active').forEach(item => {
+                if (item.id !== id) {
+                    item.classList.remove('active');
+                    item.style.maxHeight = 0;
+                    document.getElementById('icon' + item.id.slice(-1)).style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (isActive) {
+                content.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+                content.style.maxHeight = 0;
+                content.style.padding = '0 1rem'; 
+            } else {
+                content.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+                content.style.maxHeight = content.scrollHeight + 30 + "px"; // Add buffer for content 
+                content.style.padding = '1rem';
+            }
+        }
+
+        // Initialize script logic
+        window.onload = function() {
+            // Set up all sections to be closeable/expandable 
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.style.maxHeight = 0;
+                content.style.padding = '0 1rem'; 
+            });
+
+            // Open the first section on load and adjust icon
+            const firstContent = document.getElementById('section1');
+            const firstIcon = document.getElementById('icon1');
+            if (firstContent && firstIcon) {
+                firstContent.classList.add('active');
+                firstIcon.style.transform = 'rotate(180deg)';
+                // Set max height dynamically (needs delay since content is loaded synchronously)
+                setTimeout(() => {
+                    firstContent.style.maxHeight = firstContent.scrollHeight + 30 + "px";
+                    firstContent.style.padding = '1rem';
+                }, 100);
+            }
+        };
+    </script>
+
+</body>
+</html>

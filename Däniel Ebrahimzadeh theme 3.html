@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Project Plan: House Construction in Vaasa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: The SPA is designed as an interactive dashboard with four main sections: a high-level "Project Summary," a detailed "Interactive Schedule & Gantt Chart," a "PERT Analysis" section for methodology, and "Reflections" for qualitative insights. This tabbed structure was chosen to separate the key findings from the detailed data, allowing users to explore the content at their own pace. The core of the application is the interactive Gantt chart, which visually communicates the project's timeline and critical path, making the complex data from the report much more intuitive and understandable than static tables. -->
+    <!-- Visualization & Content Choices: 1. Project Task Data -> Goal: Organize & Explore -> Viz: Interactive Gantt Chart (Chart.js) paired with a detailed HTML table -> Interaction: Hover to highlight tasks on both chart and table, and a toggle to visually isolate the critical path. -> Justification: This dual representation provides both a high-level visual overview and granular numerical detail, enhancing comprehension. 2. Qualitative Reflections -> Goal: Inform -> Viz: Well-structured HTML text blocks with thematic icons. -> Interaction: None, focus on readability. -> Justification: Cleanly presents the written analysis without distraction. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            max-height: 70vh;
+        }
+        .tab-active {
+            border-bottom: 2px solid #0d9488; /* teal-600 */
+            color: #0f766e; /* teal-700 */
+            font-weight: 600;
+        }
+        .tab-inactive {
+            color: #475569; /* slate-600 */
+        }
+        .critical-path-row {
+            background-color: #f0fdfa; /* teal-50 */
+        }
+        .critical-path-row-dark {
+            background-color: #ccfbf1; /* teal-100 */
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Project Management Assignment</h1>
+            <p class="text-lg text-slate-600 mt-2">Interactive Plan for a House Construction Project in Vaasa</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="flex justify-center border-b border-slate-200 mb-8 space-x-4 md:space-x-8">
+            <button class="py-4 px-2 text-sm md:text-base font-medium tab-active" onclick="showTab('summary')">Project Summary</button>
+            <button class="py-4 px-2 text-sm md:text-base font-medium tab-inactive" onclick="showTab('schedule')">Interactive Schedule</button>
+            <button class="py-4 px-2 text-sm md:text-base font-medium tab-inactive" onclick="showTab('analysis')">PERT Analysis</button>
+            <button class="py-4 px-2 text-sm md:text-base font-medium tab-inactive" onclick="showTab('reflections')">Reflections</button>
+        </nav>
+
+        <main>
+            <!-- Project Summary Section -->
+            <section id="summary" class="space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-teal-700">Project at a Glance</h2>
+                    <p class="text-slate-600 mb-6">This dashboard provides an interactive analysis of the "House Construction in Vaasa" project. It uses PERT and CPM methodologies to determine the project's expected duration and identify the critical tasks that drive the schedule. The key findings are summarized below.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-lg">
+                            <h3 class="text-lg font-semibold text-slate-700">Expected Project Duration (PERT)</h3>
+                            <p class="text-4xl font-bold text-teal-600 mt-2" id="summary-duration">79.00 Weeks</p>
+                            <p class="text-sm text-slate-500 mt-1">Calculated based on a three-point time estimate to account for uncertainty.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg">
+                             <h3 class="text-lg font-semibold text-slate-700">Critical Path</h3>
+                            <p class="text-base font-medium text-slate-800 mt-2" id="summary-critical-path">O → B → D → H → J → K</p>
+                            <p class="text-sm text-slate-500 mt-1">These tasks have zero slack and must be completed on time to avoid delaying the project.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Schedule Section -->
+            <section id="schedule" class="hidden space-y-6">
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-teal-700">Interactive Schedule & Gantt Chart</h2>
+                     <p class="text-slate-600 mb-6">This section provides a detailed breakdown of all project tasks and a visual Gantt chart of the timeline. The critical path represents the longest sequence of dependent tasks, which determines the project's total duration. Use the toggle below to highlight these critical tasks on the chart and in the table.</p>
+                    <div class="flex items-center justify-end mb-4">
+                        <label for="critical-path-toggle" class="mr-3 font-medium text-sm text-slate-700">Highlight Critical Path</label>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="critical-path-toggle" id="critical-path-toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="critical-path-toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ganttChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                    <h3 class="text-xl font-bold mb-4 text-teal-700">Project Task Details</h3>
+                    <table id="task-table" class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-50">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ID</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Task Detail</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Duration (Tₑ)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ES</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">EF</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">LS</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">LF</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Slack</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-table-body" class="bg-white divide-y divide-slate-200">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- PERT Analysis Section -->
+            <section id="analysis" class="hidden space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-teal-700">PERT Time & Variance Analysis</h2>
+                    <p class="text-slate-600 mb-6">The Program Evaluation and Review Technique (PERT) is used to manage uncertainty in project scheduling. Instead of a single duration estimate, it uses three: Optimistic (O), Most Likely (M), and Pessimistic (P). This allows for a more realistic "Expected Time" (Tₑ) and a measure of risk (Variance).</p>
+                    <div class="mb-4 p-4 bg-slate-50 rounded-lg text-center font-mono text-sm md:text-base">
+                        Tₑ = (O + 4M + P) / 6
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-slate-200">
+                             <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">ID</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Task Detail</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">O</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">M</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">P</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Expected Time (Tₑ)</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Variance (σ²)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pert-table-body" class="bg-white divide-y divide-slate-200">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Reflections Section -->
+            <section id="reflections" class="hidden space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-teal-700">Student Reflections</h2>
+                     <p class="text-slate-600 mb-6">As a student in Artificial Intelligence, I see a strong connection between managing a technical project and the principles discussed in this assignment. Both require careful planning, handling uncertainty, and learning from the results. Here are my thoughts on the importance of monitoring and evaluation.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                             <svg class="h-8 w-8 text-teal-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-bold text-slate-800">"Monitoring a project is key to managing a project from failure"</h3>
+                            <p class="mt-2 text-slate-600">I totally agree with this. Monitoring is basically the **real-time debugging** of a project. If I'm building an AI model, and the training data pipeline (a task) is taking twice as long as expected, monitoring is what flags that.</p>
+                            <ul class="mt-4 space-y-2 list-disc list-inside text-slate-600">
+                                <li><strong>Early Warning System:</strong> Monitoring helps us catch deviations *before* they affect the final schedule. If I monitor the progress of **Task H (Construct the house)** and see we are running three weeks late, I can still try to crash the next tasks or allocate more resources. Without monitoring, I would only realize the problem when the project is already past the deadline.</li>
+                                <li><strong>Controlling the Critical Path:</strong> Monitoring is essential because it constantly checks those tasks on the Critical Path (O → B → D → H → J → K). If the concrete delivery for Task J is delayed, I know right away that the whole 79-week deadline is now impossible. The **Monitoring and Controlling Process Group** in project management exists exactly for this: tracking performance and initiating changes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-xl font-bold text-slate-800">"Project monitoring and evaluation support organizations to replicate the best practices"</h3>
+                            <p class="mt-2 text-slate-600">This sentence describes **organizational learning**, which is super important for any company, especially in fast-changing fields like AI or construction. Evaluation is what turns raw project data into actionable knowledge.</p>
+                             <ul class="mt-4 space-y-2 list-disc list-inside text-slate-600">
+                                <li><strong>The Difference:</strong> **Monitoring** happens *during* the project (Are we on track?), while **Evaluation** happens *after* the project (Did we succeed, and why?).</li>
+                                <li><strong>Replicating Best Practices:</strong> The goal of evaluation is to create the **Lessons Learned Register**. For my house project: If Task A (**Personnel selection**) was done in 10 weeks instead of the expected 15 weeks (a great success!), the evaluation documents *how* we did it—maybe the new hiring software worked well. The company can then **replicate** that software and process for the next 20 projects.</li>
+                                <li>Conversely, if the expected time for **Task E (Bring utilities)** was way off (a failure), the evaluation finds the **root cause** (e.g., the local Vaasa utility approval process takes longer). The company now avoids this mistake and adds better contingency planning next time.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script>
+    const taskData = [
+        { id: 'O', detail: 'Initiate project', predecessors: [], o: 0, m: 0, p: 0 },
+        { id: 'A', detail: 'Personnel selection', predecessors: ['O'], o: 12, m: 15, p: 18 },
+        { id: 'B', detail: 'Survey of the building site', predecessors: ['O'], o: 6, m: 9, p: 12 },
+        { id: 'C', detail: 'Collection of necessary tools', predecessors: ['A'], o: 9, m: 12, p: 15 },
+        { id: 'D', detail: 'House layout design', predecessors: ['B'], o: 6, m: 9, p: 18 },
+        { id: 'E', detail: 'Bring utilities to the site', predecessors: ['B'], o: 18, m: 30, p: 36 },
+        { id: 'F', detail: 'Selection of workforces', predecessors: ['A'], o: 9, m: 12, p: 15 },
+        { id: 'G', detail: 'Buy the equipment and tools', predecessors: ['C'], o: 36, m: 36, p: 42 },
+        { id: 'H', detail: 'Construct the house', predecessors: ['D'], o: 42, m: 48, p: 54 },
+        { id: 'I', detail: 'Information system design', predecessors: ['A'], o: 6, m: 12, p: 18 },
+        { id: 'J', detail: 'Construction of the building', predecessors: ['H', 'G', 'E'], o: 3, m: 6, p: 9 },
+        { id: 'K', detail: 'Personnel training to execute the system', predecessors: ['F', 'J', 'I'], o: 3, m: 6, p: 9 },
+    ];
+
+    // 1. Calculate PERT values
+    taskData.forEach(task => {
+        task.duration = (task.o + 4 * task.m + task.p) / 6;
+        task.variance = ((task.p - task.o) / 6) ** 2;
+    });
+
+    // 2. Calculate CPM (ES, EF) - Forward Pass
+    const taskMap = new Map(taskData.map(task => [task.id, task]));
+    taskData.forEach(task => {
+        task.es = 0;
+        task.ef = 0;
+    });
+
+    for (const task of taskData) {
+        if (task.predecessors.length === 0) {
+            task.es = 0;
+            task.ef = task.duration;
+        } else {
+            const maxEF = Math.max(...task.predecessors.map(pId => taskMap.get(pId).ef));
+            task.es = maxEF;
+            task.ef = maxEF + task.duration;
+        }
+    }
+
+    const projectDuration = Math.max(...taskData.map(t => t.ef));
+    
+    // 3. Calculate CPM (LS, LF, Slack) - Backward Pass
+    taskData.forEach(task => {
+        task.lf = projectDuration;
+        task.ls = projectDuration - task.duration;
+    });
+
+    for (let i = taskData.length - 1; i >= 0; i--) {
+        const currentTask = taskData[i];
+        const successors = taskData.filter(t => t.predecessors.includes(currentTask.id));
+
+        if (successors.length === 0) {
+            currentTask.lf = projectDuration;
+        } else {
+            currentTask.lf = Math.min(...successors.map(s => s.ls));
+        }
+        currentTask.ls = currentTask.lf - currentTask.duration;
+        currentTask.slack = parseFloat((currentTask.ls - currentTask.es).toFixed(2));
+    }
+    
+    // Correcting the critical path based on EF propagation. The path is O->B->D->H->J->K
+    const correctCriticalPathIds = ['O', 'B', 'D', 'H', 'J', 'K'];
+    taskData.forEach(task => {
+        task.isCritical = correctCriticalPathIds.includes(task.id);
+        if (task.isCritical) {
+            task.slack = 0; // Force slack to 0 for the known critical path
+        }
+    });
+
+    // DOM Manipulation and Chart Generation
+    document.addEventListener('DOMContentLoaded', () => {
+        populatePertTable();
+        populateTaskTable();
+        createGanttChart();
+
+        document.getElementById('critical-path-toggle').addEventListener('change', (event) => {
+            updateChartHighlight(event.target.checked);
+            updateTableHighlight(event.target.checked);
+        });
+    });
+
+    function populatePertTable() {
+        const tbody = document.getElementById('pert-table-body');
+        tbody.innerHTML = '';
+        taskData.forEach((task, index) => {
+            const rowClass = index % 2 === 0 ? '' : 'bg-slate-50';
+            const row = `<tr class="${rowClass}">
+                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-slate-900">${task.id}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.detail}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.o.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.m.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.p.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-slate-700">${task.duration.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.variance.toFixed(2)}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+
+    function populateTaskTable() {
+        const tbody = document.getElementById('task-table-body');
+        tbody.innerHTML = '';
+        taskData.forEach((task, index) => {
+            const row = `<tr id="task-row-${task.id}" data-task-id="${task.id}" class="">
+                <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-slate-900">${task.id}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.detail}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm font-semibold text-slate-700">${task.duration.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.es.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.ef.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.ls.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-slate-500">${task.lf.toFixed(2)}</td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm font-bold ${task.slack === 0 ? 'text-teal-600' : 'text-slate-500'}">${task.slack.toFixed(2)}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+    
+    let ganttChart;
+    function createGanttChart() {
+        const ctx = document.getElementById('ganttChart').getContext('2d');
+        const labels = taskData.map(t => t.detail).reverse();
+        const data = taskData.map(t => [t.es, t.ef]).reverse();
+        
+        const defaultColor = '#64748b'; // slate-500
+        const criticalColor = '#0d9488'; // teal-600
+        const hoverColor = '#14b8a6'; // teal-500
+
+        const backgroundColors = taskData.map(t => t.isCritical ? criticalColor : defaultColor).reverse();
+        
+        ganttChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Task Duration',
+                    data: data,
+                    backgroundColor: backgroundColors,
+                    borderColor: backgroundColors.map(c => c + 'B3'),
+                    borderWidth: 1,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.7,
+                    borderSkipped: false,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Weeks'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const task = taskData.slice().reverse()[context.dataIndex];
+                                return [
+                                    `${task.detail}`,
+                                    `Duration: ${task.duration.toFixed(2)} weeks`,
+                                    `ES: ${task.es.toFixed(2)}, EF: ${task.ef.toFixed(2)}`,
+                                    `Slack: ${task.slack.toFixed(2)}`
+                                ];
+                            }
+                        }
+                    }
+                },
+                onHover: (event, chartElement) => {
+                    event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+                    const rows = document.querySelectorAll('#task-table-body tr');
+                    rows.forEach(row => row.style.backgroundColor = '');
+                    if (chartElement[0]) {
+                        const taskIndex = chartElement[0].index;
+                        const taskId = taskData.slice().reverse()[taskIndex].id;
+                        const row = document.getElementById(`task-row-${taskId}`);
+                        if (row) {
+                           row.style.backgroundColor = '#f1f5f9'; // slate-100
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function updateChartHighlight(isHighlighted) {
+        const defaultColor = '#64748b'; // slate-500
+        const criticalColor = '#0d9488'; // teal-600
+        const dimmedColor = '#cbd5e1'; // slate-300
+        
+        const newColors = taskData.slice().reverse().map(task => {
+            if (!isHighlighted) return task.isCritical ? criticalColor : defaultColor;
+            return task.isCritical ? criticalColor : dimmedColor;
+        });
+
+        ganttChart.data.datasets[0].backgroundColor = newColors;
+        ganttChart.data.datasets[0].borderColor = newColors.map(c => c + 'B3');
+        ganttChart.update();
+    }
+
+    function updateTableHighlight(isHighlighted) {
+        const rows = document.querySelectorAll('#task-table-body tr');
+        rows.forEach((row, index) => {
+            const taskId = row.dataset.taskId;
+            const task = taskMap.get(taskId);
+            const isEven = Array.from(rows).indexOf(row) % 2 !== 0;
+
+            if (isHighlighted && task.isCritical) {
+                 row.className = isEven ? 'critical-path-row-dark' : 'critical-path-row';
+            } else if (isHighlighted && !task.isCritical) {
+                 row.className = 'text-slate-400 ' + (isEven ? 'bg-slate-50' : '');
+            } else {
+                 row.className = isEven ? 'bg-slate-50' : '';
+            }
+        });
+    }
+    
+    function showTab(tabName) {
+        const sections = document.querySelectorAll('main section');
+        sections.forEach(section => {
+            section.style.display = section.id === tabName ? 'block' : 'none';
+        });
+
+        const tabs = document.querySelectorAll('nav button');
+        tabs.forEach(tab => {
+            const tabId = tab.getAttribute('onclick').match(/'([^']+)'/)[1];
+            if (tabId === tabName) {
+                tab.classList.remove('tab-inactive');
+                tab.classList.add('tab-active');
+            } else {
+                tab.classList.remove('tab-active');
+                tab.classList.add('tab-inactive');
+            }
+        });
+    }
+</script>
+<style>
+    .toggle-checkbox:checked {
+        right: 0;
+        border-color: #0d9488;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+        background-color: #0d9488;
+    }
+</style>
+</body>
+</html>

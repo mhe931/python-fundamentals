@@ -1,0 +1,534 @@
+import React, { useState } from 'react';
+import { Menu, Zap, Users, Shield, DollarSign, Gift, CheckCircle, UserPlus, Send, MessageSquare, Globe } from 'lucide-react';
+
+// --- 1. LOCALIZATION DATA ---
+const translations = {
+    en: {
+        title: "YaysayBot User Guide",
+        subtitle: "Interactive help for all key functions, roles, and points.",
+        menu: "Menu",
+        sections: [
+            { id: 'overview', icon: Zap, title: "Overview & Roles" },
+            { id: 'keys', icon: Menu, title: "Bot Keys & Commands" },
+            { id: 'flows', icon: Send, title: "Main Workflows" },
+            { id: 'referral', icon: Gift, title: "Referral System" },
+            { id: 'privacy', icon: Shield, title: "Privacy & Data" },
+        ],
+        
+        // Overview & Roles
+        o_title: "1. Overview & User Roles",
+        o_intro: "YaysayBot is a powerful polling platform with a gamified points system. Your keyboard and access rights depend on your role.",
+        role_admin: "Admin (👑)",
+        role_manager: "Manager (✨)",
+        role_user: "User (👤)",
+        role_unregistered: "Unregistered (🚀)",
+        desc_admin: "Full control. Can promote users, and approve all point requests. Has all Manager and User functions.",
+        desc_manager: "Poll moderator. Can approve or reject new user polls. Has all User functions.",
+        desc_user: "Standard participant. Can create polls, answer polls, and manage personal points/referrals.",
+        desc_unregistered: "Can only access registration, help, and contact admin features.",
+        
+        // Keys & Commands
+        k_title: "2. Bot Keys & Functions",
+        k_intro: "The bot uses persistent keyboard buttons (keys) instead of traditional commands (except /start).",
+        k_user_keys: "User Keys (All Roles)",
+        k_poll_key: "📊 New Poll",
+        k_poll_desc: "Starts the Poll Creation Flow. Cost: 10 Points. Polls are sent for Manager approval.",
+        k_balance_key: "💰 Balance",
+        k_balance_desc: "Shows your current point total from the points ledger.",
+        k_referral_key: "🫂 My Referral",
+        k_referral_desc: "Generates your unique referral link to invite friends. Earns +20 Points for every successful new user.",
+        k_request_key: "💎 Request Points",
+        k_request_desc: "Starts a conversation to request points from the Admin (e.g., explaining why you need them).",
+        k_help_key: "👩‍🏫 Help / 📞 Contact Admin",
+        k_help_desc: "Provides role-specific help and a direct line to contact the administrator.",
+        k_manager_keys: "Manager & Admin Exclusive Keys",
+        k_approve_poll_key: "✅ Approve Poll",
+        k_approve_poll_desc: "Allows Managers/Admins to review and approve/reject pending polls before broadcasting.",
+        k_promote_user_key: "👑 Promote User",
+        k_promote_user_desc: "Admin-only function to instantly change a user's role to Manager.",
+        k_approve_points_key: "💎 Approve Points",
+        k_approve_points_desc: "Admin-only function to review point requests and credit the user with 10, 50, or 100 points.",
+
+        // Main Workflows
+        f_title: "3. Main Workflows (The Flows)",
+        f_reg_title: "A. Registration Flow",
+        f_reg_steps: [
+            "Start with /start or 'Start Registration'.",
+            "Select language (English/Persian).",
+            "Complete profile steps (Sex, Age Group) using inline buttons.",
+            "Enter City (Uses fuzzy matching for accuracy).",
+            "Completed: User receives **50 Starting Points**.",
+        ],
+        f_poll_title: "B. Poll Creation Flow",
+        f_poll_steps: [
+            "User clicks 'New Poll'. System checks if Balance ≥ 10 points.",
+            "User submits content (Text and/or Photos).",
+            "If multiple photos: Bot offers to **merge** them into one image (using Pillow).",
+            "Cost: **-10 Points** (Refunded if rejected).",
+            "Poll sent to Manager/Admin for approval (Inline buttons).",
+            "If Approved: Poll is **Smart Broadcasted** to all users.",
+        ],
+        f_earn_title: "C. Point Earning Flow",
+        f_earn_steps: [
+            "User receives an approved poll broadcast.",
+            "User clicks one of the 5 Likert-scale buttons (e.g., 💯 👍 🤷‍♂️ 👎 ❌).",
+            "Reward: **+2 Points** is instantly credited.",
+            "Poll keyboard disappears to prevent re-voting.",
+            "Poll creator receives a real-time demographic report of answers.",
+        ],
+
+        // Referral System
+        r_title: "4. Why Use My Referral?",
+        r_intro: "The Referral system is the best way to grow the platform and your personal point balance.",
+        r_benefit_1: "Big Point Bonus: Earn **+20 Points** for every new user who completes registration using your link.",
+        r_benefit_2: "Unique Link: Easily generate and share your personal URL (e.g., https://t.me/YaysayBot?start=ref_12345).",
+        r_benefit_3: "Community Growth: More users mean more diverse data, better polls, and more earning opportunities for everyone!",
+        
+        // Privacy & Data
+        p_title: "5. Privacy Policy & Data Security",
+        p_intro: "Your privacy is a priority. The bot is designed with security and minimal data storage in mind.",
+        p_data_1: "Minimal Data Storage: We only store necessary information: user_id, chat_id, username, role, language, points, sex, age_group, and city. No excessive personal data is collected.",
+        p_data_2: "Audit Trail: Every single point transaction (earning, spending, approval) is logged. This provides a clear audit trail and ensures data integrity.",
+        p_data_3: "Role-Based Access: Only Managers and Admins can view poll results and user registration data. Access is strictly controlled via permissions.",
+        p_data_4: "Secure File Handling: We only store Telegram File IDs for images, not the image content locally, enhancing security.",
+    },
+    fa: {
+        title: "راهنمای کاربری ربات yaysay",
+        subtitle: "راهنمای تعاملی برای تمام توابع، نقش‌ها و امتیازات اصلی.",
+        menu: "فهرست",
+        sections: [
+            { id: 'overview', icon: Zap, title: "مرور کلی و نقش‌ها" },
+            { id: 'keys', icon: Menu, title: "کلیدها و دستورات ربات" },
+            { id: 'flows', icon: Send, title: "گردش‌های کاری اصلی" },
+            { id: 'referral', icon: Gift, title: "سیستم معرفی دوستان" },
+            { id: 'privacy', icon: Shield, title: "حریم خصوصی و داده‌ها" },
+        ],
+        
+        // Overview & Roles
+        o_title: "۱. مرور کلی و نقش‌های کاربری",
+        o_intro: "ربات yaysay یک پلتفرم قوی برای نظرسنجی با یک سیستم امتیازدهی گیمیفیکیشن است. کیبورد و دسترسی‌های شما به نقش شما بستگی دارد.",
+        role_admin: "ادمین (👑)",
+        role_manager: "مدیر (✨)",
+        role_user: "کاربر (👤)",
+        role_unregistered: "ثبت‌نام نشده (🚀)",
+        desc_admin: "کنترل کامل. می‌تواند کاربران را ترفیع دهد و تمام درخواست‌های امتیاز را تأیید کند. دارای تمام توابع مدیر و کاربر است.",
+        desc_manager: "ناظر نظرسنجی. می‌تواند نظرسنجی‌های جدید را تأیید یا رد کند. دارای تمام توابع کاربر است.",
+        desc_user: "شرکت‌کننده استاندارد. می‌تواند نظرسنجی ایجاد کند، به آن‌ها پاسخ دهد و امتیازات/معرفی‌های خود را مدیریت کند.",
+        desc_unregistered: "فقط به امکانات ثبت‌نام، راهنما و تماس با ادمین دسترسی دارد.",
+
+        // Keys & Commands
+        k_title: "۲. کلیدها و توابع ربات",
+        k_intro: "ربات به جای دستورات سنتی (به جز /start) از دکمه‌های کیبورد دائمی (کلیدها) استفاده می‌کند.",
+        k_user_keys: "کلیدهای کاربر (همه نقش‌ها)",
+        k_poll_key: "📊 نظرسنجی جدید",
+        k_poll_desc: "گردش کاری ایجاد نظرسنجی را آغاز می‌کند. هزینه: ۱۰ امتیاز. نظرسنجی‌ها برای تأیید به مدیر ارسال می‌شوند.",
+        k_balance_key: "💰 موجودی",
+        k_balance_desc: "مجموع امتیازات فعلی شما را از دفتر کل امتیازات نشان می‌دهد.",
+        k_referral_key: "🫂 دعوت دوستان",
+        k_referral_desc: "لینک ارجاع منحصر به فرد شما را برای دعوت دوستان ایجاد می‌کند. به ازای هر کاربر جدید موفق، ۲۰+ امتیاز کسب می‌کنید.",
+        k_request_key: "💎 درخواست امتیاز",
+        k_request_desc: "مکالمه‌ای را برای درخواست امتیاز از ادمین آغاز می‌کند (به عنوان مثال، توضیح دلیل نیاز به امتیاز).",
+        k_help_key: "👩‍🏫 راهنما / 📞 تماس با ادمین",
+        k_help_desc: "راهنمای مخصوص نقش و یک خط مستقیم برای تماس با مدیر را فراهم می‌کند.",
+        k_manager_keys: "کلیدهای انحصاری مدیر و ادمین",
+        k_approve_poll_key: "✅ تایید نظرسنجی",
+        k_approve_poll_desc: "به مدیران/ادمین‌ها اجازه می‌دهد تا نظرسنجی‌های در انتظار را قبل از انتشار، بررسی و تأیید یا رد کنند.",
+        k_promote_user_key: "👑 ترفیع کاربر",
+        k_promote_user_desc: "عملکرد انحصاری ادمین برای تغییر فوری نقش کاربر به مدیر.",
+        k_approve_points_key: "💎 تایید امتیاز",
+        k_approve_points_desc: "عملکرد انحصاری ادمین برای بررسی درخواست‌های امتیاز و اعتباردهی ۱۰، ۵۰ یا ۱۰۰ امتیاز به کاربر.",
+        
+        // Main Workflows
+        f_title: "۳. گردش‌های کاری اصلی",
+        f_reg_title: "الف. گردش کار ثبت‌نام",
+        f_reg_steps: [
+            "با /start یا 'شروع ثبت‌نام' آغاز کنید.",
+            "زبان را انتخاب کنید (انگلیسی/فارسی).",
+            "مراحل پروفایل (جنسیت، گروه سنی) را با استفاده از دکمه‌های درون خطی تکمیل کنید.",
+            "شهر را وارد کنید (از تطبیق فازی برای دقت استفاده می‌کند).",
+            "تکمیل شد: کاربر **۵۰ امتیاز شروع** دریافت می‌کند.",
+        ],
+        f_poll_title: "ب. گردش کار ایجاد نظرسنجی",
+        f_poll_steps: [
+            "کاربر روی 'نظرسنجی جدید' کلیک می‌کند. سیستم بررسی می‌کند که آیا موجودی ≥ ۱۰ امتیاز است.",
+            "کاربر محتوا (متن و/یا عکس) را ارسال می‌کند.",
+            "اگر چندین عکس وجود دارد: ربات پیشنهاد می‌دهد که آن‌ها را در یک تصویر **ادغام** کند (با استفاده از Pillow).",
+            "هزینه: **۱۰- امتیاز** (در صورت رد شدن بازپرداخت می‌شود).",
+            "نظرسنجی برای تأیید به مدیر/ادمین ارسال می‌شود (دکمه‌های درون خطی).",
+            "در صورت تأیید: نظرسنجی به صورت **انتشار هوشمند** برای همه کاربران ارسال می‌شود.",
+        ],
+        f_earn_title: "ج. گردش کار کسب امتیاز",
+        f_earn_steps: [
+            "کاربر یک نظرسنجی تأیید شده را دریافت می‌کند.",
+            "کاربر روی یکی از ۵ دکمه مقیاس لیکرت (مانند 💯 👍 🤷‍♂️ 👎 ❌) کلیک می‌کند.",
+            "پاداش: **۲+ امتیاز** فوراً اعتباردهی می‌شود.",
+            "کیبورد نظرسنجی برای جلوگیری از رأی‌گیری مجدد ناپدید می‌شود.",
+            "ایجادکننده نظرسنجی یک گزارش جمعیتی به‌روزرسانی شده از پاسخ‌ها را در زمان واقعی دریافت می‌کند.",
+        ],
+
+        // Referral System
+        r_title: "۴. چرا از معرفی دوستان استفاده کنیم؟",
+        r_intro: "سیستم معرفی بهترین راه برای رشد پلتفرم و موجودی امتیاز شخصی شماست.",
+        r_benefit_1: "پاداش امتیاز بزرگ: به ازای هر کاربر جدیدی که با استفاده از لینک شما ثبت‌نام را تکمیل کند، **۲۰+ امتیاز** کسب کنید.",
+        r_benefit_2: "لینک منحصر به فرد: به راحتی URL شخصی خود را ایجاد و به اشتراک بگذارید (مانند https://t.me/YaysayBot?start=ref_12345).",
+        r_benefit_3: "رشد جامعه: کاربران بیشتر به معنای داده‌های متنوع‌تر، نظرسنجی‌های بهتر و فرصت‌های کسب بیشتر برای همه است!",
+        
+        // Privacy & Data
+        p_title: "۵. سیاست حفظ حریم خصوصی و امنیت داده‌ها",
+        p_intro: "حریم خصوصی شما یک اولویت است. ربات با در نظر گرفتن امنیت و حداقل ذخیره‌سازی داده طراحی شده است.",
+        p_data_1: "حداقل ذخیره‌سازی داده: ما فقط اطلاعات ضروری را ذخیره می‌کنیم: user_id، chat_id، username، role، language، points، sex، age_group و city. هیچ داده شخصی بیش از حدی جمع‌آوری نمی‌شود.",
+        p_data_2: "ردیابی حسابرسی: هر تراکنش امتیاز (کسب، هزینه، تأیید) ثبت می‌شود. این یک مسیر حسابرسی واضح فراهم می‌کند و یکپارچگی داده را تضمین می‌کند.",
+        p_data_3: "دسترسی مبتنی بر نقش: فقط مدیران و ادمین‌ها می‌توانند نتایج نظرسنجی و داده‌های ثبت‌نام کاربر را مشاهده کنند. دسترسی از طریق مجوزها به شدت کنترل می‌شود.",
+        p_data_4: "مدیریت فایل ایمن: ما فقط Telegram File ID را برای تصاویر ذخیره می‌کنیم، نه محتوای تصویر را به صورت محلی، که امنیت را افزایش می‌دهد.",
+    },
+    fi: {
+        title: "YaysayBot Käyttöopas",
+        subtitle: "Interaktiivinen apu kaikille avaintoiminnoille, rooleille ja pisteille.",
+        menu: "Valikko",
+        sections: [
+            { id: 'overview', icon: Zap, title: "Yleiskatsaus & Roolit" },
+            { id: 'keys', icon: Menu, title: "Botin Avaimet & Komennot" },
+            { id: 'flows', icon: Send, title: "Päätyönkulut" },
+            { id: 'referral', icon: Gift, title: "Viittausjärjestelmä" },
+            { id: 'privacy', icon: Shield, title: "Tietosuoja & Tiedot" },
+        ],
+        
+        // Overview & Roles
+        o_title: "1. Yleiskatsaus & Käyttäjäroolit",
+        o_intro: "YaysayBot on tehokas kyselyalusta, jossa on pelillistetty pistejärjestelmä. Näppäimistösi ja käyttöoikeutesi riippuvat roolistasi.",
+        role_admin: "Ylläpitäjä (👑)",
+        role_manager: "Johtaja (✨)",
+        role_user: "Käyttäjä (👤)",
+        role_unregistered: "Rekisteröimätön (🚀)",
+        desc_admin: "Täysi hallinta. Voi ylentää käyttäjiä ja hyväksyä kaikki pistepyynnöt. Sisältää kaikki Johtajan ja Käyttäjän toiminnot.",
+        desc_manager: "Kyselymoderaattori. Voi hyväksyä tai hylätä uudet käyttäjien kyselyt. Sisältää kaikki Käyttäjän toiminnot.",
+        desc_user: "Vakio osallistuja. Voi luoda kyselyitä, vastata kyselyihin ja hallita omia pisteitään/viittauksiaan.",
+        desc_unregistered: "Pääsee vain rekisteröintiin, apuun ja ylläpitoon yhteydenottoon liittyviin ominaisuuksiin.",
+
+        // Keys & Commands
+        k_title: "2. Botin Avaimet & Toiminnot",
+        k_intro: "Botti käyttää pysyviä näppäimistön painikkeita (avaimia) perinteisten komentojen (paitsi /start) sijaan.",
+        k_user_keys: "Käyttäjän Avaimet (Kaikki Roolit)",
+        k_poll_key: "📊 Uusi Kysely",
+        k_poll_desc: "Käynnistää Kyselyn Luonti -työnkulun. Kustannus: 10 Pistettä. Kyselyt lähetetään Johtajan hyväksyttäväksi.",
+        k_balance_key: "💰 Saldo",
+        k_balance_desc: "Näyttää nykyisen pistesaldosi pistepäiväkirjasta.",
+        k_referral_key: "🫂 Oman Viittaus",
+        k_referral_desc: "Luo ainutlaatuisen viittauslinkkisi ystävien kutsumiseksi. Ansaitset +20 Pistettä jokaisesta onnistuneesta uudesta käyttäjästä.",
+        k_request_key: "💎 Pyydä Pisteitä",
+        k_request_desc: "Aloittaa keskustelun pisteiden pyytämiseksi Ylläpitäjältä (esim. selittäen miksi niitä tarvitset).",
+        k_help_key: "👩‍🏫 Apua / 📞 Ota Yhteyttä Ylläpitoon",
+        k_help_desc: "Tarjoaa roolikohtaista apua ja suoran linjan ylläpitäjän kanssa yhteydenottoa varten.",
+        k_manager_keys: "Johtajan & Ylläpitäjän Eksklusiiviset Avaimet",
+        k_approve_poll_key: "✅ Hyväksy Kysely",
+        k_approve_poll_desc: "Antaa Johtajille/Ylläpitäjille mahdollisuuden tarkistaa ja hyväksyä/hylätä odottavat kyselyt ennen lähettämistä.",
+        k_promote_user_key: "👑 Ylennä Käyttäjä",
+        k_promote_user_desc: "Vain Ylläpitäjälle tarkoitettu toiminto, jolla käyttäjän rooli muutetaan välittömästi Johtajaksi.",
+        k_approve_points_key: "💎 Hyväksy Pisteet",
+        k_approve_points_desc: "Vain Ylläpitäjälle tarkoitettu toiminto, jolla tarkistetaan pistepyynnöt ja hyvitetään käyttäjälle 10, 50 tai 100 pistettä.",
+
+        // Main Workflows
+        f_title: "3. Päätyönkulut",
+        f_reg_title: "A. Rekisteröintityönkulku",
+        f_reg_steps: [
+            "Aloita komennolla /start tai 'Aloita Rekisteröinti'.",
+            "Valitse kieli (englanti/persia/suomi).",
+            "Täytä profiilivaiheet (Sukupuoli, Ikäryhmä) käyttämällä inline-painikkeita.",
+            "Anna kaupunki (Käyttää sumeaa hakua tarkkuuden parantamiseksi).",
+            "Valmis: Käyttäjä saa **50 Aloituspistettä**.",
+        ],
+        f_poll_title: "B. Kyselyn Luonti -työnkulku",
+        f_poll_steps: [
+            "Käyttäjä napsauttaa 'Uusi Kysely'. Järjestelmä tarkistaa, että saldo on ≥ 10 pistettä.",
+            "Käyttäjä lähettää sisällön (Teksti ja/tai Kuvat).",
+            "Jos useita kuvia: Botti ehdottaa niiden **yhdistämistä** yhdeksi kuvaksi (Pillow-kirjaston avulla).",
+            "Kustannus: **-10 Pistettä** (Palautetaan, jos hylätään).",
+            "Kysely lähetetään Johtajalle/Ylläpitäjälle hyväksyttäväksi (inline-painikkeet).",
+            "Jos Hyväksytty: Kysely **Älykkäästi Lähetetään** kaikille käyttäjille.",
+        ],
+        f_earn_title: "C. Pisteiden Ansaintatyönkulku",
+        f_earn_steps: [
+            "Käyttäjä vastaanottaa hyväksytyn kyselylähetyksen.",
+            "Käyttäjä napsauttaa yhtä 5-portaisen Likert-asteikon painikkeista (esim. 💯 👍 🤷‍♂️ 👎 ❌).",
+            "Palkkio: **+2 Pistettä** hyvitetään välittömästi.",
+            "Kyselynpainike poistetaan estämään uudelleen äänestäminen.",
+            "Kyselyn luoja saa reaaliaikaisen demografisen raportin vastauksista.",
+        ],
+
+        // Referral System
+        r_title: "4. Miksi käyttää viittauksia?",
+        r_intro: "Viittausjärjestelmä on paras tapa kasvattaa alustaa ja henkilökohtaista pistesaldoasi.",
+        r_benefit_1: "Iso Pistebonus: Ansaitse **+20 Pistettä** jokaisesta uudesta käyttäjästä, joka suorittaa rekisteröinnin linkkisi kautta.",
+        r_benefit_2: "Ainutlaatuinen Linkki: Luo ja jaa henkilökohtainen URL-osoitteesi helposti (esim. https://t.me/YaysayBot?start=ref_12345).",
+        r_benefit_3: "Yhteisön Kasvu: Lisää käyttäjiä tarkoittaa monipuolisempaa dataa, parempia kyselyitä ja enemmän ansaintamahdollisuuksia kaikille!",
+        
+        // Privacy & Data
+        p_title: "5. Tietosuojakäytäntö & Tietoturva",
+        p_intro: "Tietosuojasi on etusijalla. Botti on suunniteltu turvallisuutta ja minimaalista tietojen tallennusta silmällä pitäen.",
+        p_data_1: "Minimaalinen Tietojen Tallennus: Tallennamme vain välttämättömät tiedot: user_id, chat_id, username, role, language, points, sex, age_group ja city. Liiallista henkilötietoa ei kerätä.",
+        p_data_2: "Tarkastuspolku: Jokainen pistetapahtuma (ansainta, kulutus, hyväksyntä) kirjataan. Tämä tarjoaa selkeän tarkastuspolun ja varmistaa tietojen eheyden.",
+        p_data_3: "Roolipohjainen Pääsy: Vain Johtajat ja Ylläpitäjät voivat tarkastella kyselytuloksia ja käyttäjien rekisteröintitietoja. Pääsyä valvotaan tiukasti käyttöoikeuksien avulla.",
+        p_data_4: "Turvallinen Tiedostonkäsittely: Tallennamme kuvista vain Telegram File ID:t, emmekä itse kuvien sisältöä paikallisesti, mikä parantaa turvallisuutta.",
+    }
+};
+
+const App = () => {
+    const [lang, setLang] = useState('en');
+    const [activeTab, setActiveTab] = useState('overview');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    const t = translations[lang];
+    const isRTL = lang === 'fa';
+
+    // Utility for conditional direction classes
+    const dir = isRTL ? 'rtl' : 'ltr';
+    const align = isRTL ? 'text-right' : 'text-left';
+    const flexDir = isRTL ? 'flex-row-reverse' : 'flex-row';
+
+    const LangSelector = () => (
+        <div className={`flex ${isRTL ? 'justify-end' : 'justify-start'} space-x-2 ${isRTL ? 'space-x-reverse' : ''} text-sm mb-4`}>
+            <button 
+                onClick={() => setLang('en')} 
+                className={`p-1 rounded-full ${lang === 'en' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-800'}`}
+                title="English"
+            >
+                🇺🇸 EN
+            </button>
+            <button 
+                onClick={() => setLang('fa')} 
+                className={`p-1 rounded-full ${lang === 'fa' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-800'}`}
+                title="فارسی"
+            >
+                🇮🇷 FA
+            </button>
+            <button 
+                onClick={() => setLang('fi')} 
+                className={`p-1 rounded-full ${lang === 'fi' ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-800'}`}
+                title="Suomi"
+            >
+                🇫🇮 FI
+            </button>
+        </div>
+    );
+
+    const Sidebar = () => (
+        // Sidebar is fixed to the LEFT and slides in/out regardless of RTL for standard mobile UX flow
+        <nav className={`fixed inset-y-0 ${isRTL ? 'right-0' : 'left-0'} transform ${isMenuOpen ? 'translate-x-0' : `${isRTL ? 'translate-x-full' : '-translate-x-full'}`} lg:relative lg:translate-x-0 transition-transform duration-200 ease-in-out w-64 bg-gray-900 text-white p-4 shadow-lg z-20 flex flex-col`} dir={dir}>
+            <div className={`flex ${isRTL ? 'flex-row-reverse' : 'flex-row'} justify-between items-center mb-6`}>
+                <h3 className="text-2xl font-bold text-indigo-400">YaysayBot Guide</h3>
+                <button 
+                    className="lg:hidden p-2 rounded-full hover:bg-gray-700"
+                    onClick={() => setIsMenuOpen(false)}
+                >
+                    <Menu className="w-6 h-6" />
+                </button>
+            </div>
+            <LangSelector />
+            <div className="mt-6 flex-grow overflow-y-auto">
+                {t.sections.map(section => (
+                    <button
+                        key={section.id}
+                        className={`w-full ${align} flex items-center p-3 my-2 rounded-lg transition-colors duration-150 ${activeTab === section.id ? 'bg-indigo-600 text-white font-semibold shadow-md' : 'text-gray-300 hover:bg-gray-700'} ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}
+                        onClick={() => {
+                            setActiveTab(section.id);
+                            setIsMenuOpen(false); // Close menu on mobile after selection
+                        }}
+                    >
+                        <section.icon className={`w-5 h-5 ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                        {section.title}
+                    </button>
+                ))}
+            </div>
+            <p className={`text-xs text-gray-500 mt-4 pt-4 border-t border-gray-700 ${align}`}>v3.0 - Built on Python & React</p>
+        </nav>
+    );
+
+    const Content = () => {
+        const renderSection = () => {
+            switch (activeTab) {
+                case 'overview':
+                    return (
+                        <>
+                            <h2 className="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">{t.o_title}</h2>
+                            <p className="text-lg text-gray-600 mb-8">{t.o_intro}</p>
+
+                            <div className="space-y-6">
+                                {[
+                                    { role: t.role_admin, desc: t.desc_admin, color: 'bg-red-500', icon: '👑' },
+                                    { role: t.role_manager, desc: t.desc_manager, color: 'bg-yellow-500', icon: '✨' },
+                                    { role: t.role_user, desc: t.desc_user, color: 'bg-green-500', icon: '👤' },
+                                    { role: t.role_unregistered, desc: t.desc_unregistered, color: 'bg-gray-500', icon: '🚀' },
+                                ].map((item, index) => (
+                                    <div key={index} className="p-4 rounded-lg bg-white shadow-md border-l-4" style={{ borderColor: item.color }}>
+                                        <h3 className={`text-xl font-bold flex items-center mb-2 ${flexDir} ${align}`}>
+                                            <span className={`text-2xl ${isRTL ? 'ml-2' : 'mr-2'}`}>{item.icon}</span> {item.role}
+                                        </h3>
+                                        <p className={`text-gray-600 ${align}`}>{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    );
+                case 'keys':
+                    return (
+                        <>
+                            <h2 className="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">{t.k_title}</h2>
+                            <p className="text-lg text-gray-600 mb-8">{t.k_intro}</p>
+
+                            <SectionCard title={t.k_user_keys} icon={Users} color="text-green-600" isRTL={isRTL}>
+                                <KeyItem keyText={t.k_poll_key} desc={t.k_poll_desc} isRTL={isRTL} />
+                                <KeyItem keyText={t.k_balance_key} desc={t.k_balance_desc} isRTL={isRTL} />
+                                <KeyItem keyText={t.k_referral_key} desc={t.k_referral_desc} isRTL={isRTL} />
+                                <KeyItem keyText={t.k_request_key} desc={t.k_request_desc} isRTL={isRTL} />
+                                <KeyItem keyText={t.k_help_key} desc={t.k_help_desc} isRTL={isRTL} />
+                            </SectionCard>
+
+                            <SectionCard title={t.k_manager_keys} icon={CheckCircle} color="text-red-600" className="mt-8" isRTL={isRTL}>
+                                <KeyItem keyText={t.k_approve_poll_key} desc={t.k_approve_poll_desc} badge="Manager/Admin" isRTL={isRTL} />
+                                <KeyItem keyText={t.k_promote_user_key} desc={t.k_promote_user_desc} badge="Admin Only" isRTL={isRTL} />
+                                <KeyItem keyText={t.k_approve_points_key} desc={t.k_approve_points_desc} badge="Admin Only" isRTL={isRTL} />
+                            </SectionCard>
+                        </>
+                    );
+                case 'flows':
+                    return (
+                        <>
+                            <h2 className="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">{t.f_title}</h2>
+                            
+                            <SectionCard title={t.f_reg_title} icon={UserPlus} color="text-blue-600" isRTL={isRTL}>
+                                <FlowSteps steps={t.f_reg_steps} isRTL={isRTL} />
+                            </SectionCard>
+                            
+                            <SectionCard title={t.f_poll_title} icon={MessageSquare} color="text-red-600" className="mt-8" isRTL={isRTL}>
+                                <FlowSteps steps={t.f_poll_steps} isRTL={isRTL} />
+                                <p className={`mt-4 text-sm font-semibold text-gray-500 ${align}`}>
+                                    {lang === 'fi' ? 'Huom: Hylkäys palauttaa -10 pistettä.' : lang === 'fa' ? 'توجه: رد شدن ۱۰- امتیاز را بازپرداخت می‌کند.' : 'Note: Rejection refunds the -10 points.'}
+                                </p>
+                            </SectionCard>
+
+                            <SectionCard title={t.f_earn_title} icon={DollarSign} color="text-green-600" className="mt-8" isRTL={isRTL}>
+                                <FlowSteps steps={t.f_earn_steps} isRTL={isRTL} />
+                            </SectionCard>
+                        </>
+                    );
+                case 'referral':
+                    return (
+                        <>
+                            <h2 className="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">{t.r_title}</h2>
+                            <p className="text-lg text-gray-600 mb-8">{t.r_intro}</p>
+                            
+                            <div className="space-y-6">
+                                <BenefitItem title={t.r_benefit_1} value="+20 PTS" icon={Zap} isRTL={isRTL} />
+                                <BenefitItem title={t.r_benefit_2} value="Unique Link" icon={Globe} isRTL={isRTL} />
+                                <BenefitItem title={t.r_benefit_3} value="Community" icon={Users} isRTL={isRTL} />
+                            </div>
+                        </>
+                    );
+                case 'privacy':
+                    return (
+                        <>
+                            <h2 className="text-3xl font-bold text-indigo-700 mb-6 border-b pb-2">{t.p_title}</h2>
+                            <p className="text-lg text-gray-600 mb-8">{t.p_intro}</p>
+                            
+                            <div className="space-y-6">
+                                <PrivacyItem title={t.p_data_1} icon={Shield} isRTL={isRTL} />
+                                <PrivacyItem title={t.p_data_2} icon={CheckCircle} isRTL={isRTL} />
+                                <PrivacyItem title={t.p_data_3} icon={Users} isRTL={isRTL} />
+                                <PrivacyItem title={t.p_data_4} icon={MessageSquare} isRTL={isRTL} />
+                            </div>
+                        </>
+                    );
+                default:
+                    return null;
+            }
+        };
+
+        return (
+            <main className={`flex-1 p-6 lg:p-10 bg-gray-50 overflow-y-auto ${align}`} dir={dir}>
+                <div className="flex justify-between items-center mb-8 lg:hidden">
+                    <h1 className="text-2xl font-bold text-gray-900">{t.title}</h1>
+                    <button 
+                        className="p-2 rounded-lg bg-indigo-600 text-white"
+                        onClick={() => setIsMenuOpen(true)}
+                    >
+                        <Menu className="w-6 h-6" />
+                    </button>
+                </div>
+
+                <div className="hidden lg:block">
+                    <h1 className="text-4xl font-extrabold text-gray-900">{t.title}</h1>
+                    <p className="text-xl text-gray-500 mb-8">{t.subtitle}</p>
+                </div>
+                
+                <div className="p-4 sm:p-8 bg-white rounded-xl shadow-2xl">
+                    {renderSection()}
+                </div>
+            </main>
+        );
+    };
+
+    // --- Helper Components ---
+
+    const KeyItem = ({ keyText, desc, badge, isRTL }) => (
+        <div className={`p-4 mb-3 border border-gray-200 rounded-lg bg-gray-50 hover:bg-indigo-50 transition-colors duration-150 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <div className={`flex justify-between items-center ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
+                <span className="text-xl font-bold text-indigo-600">{keyText}</span>
+                {badge && (
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-red-100 text-red-600">
+                        {badge}
+                    </span>
+                )}
+            </div>
+            <p className="text-gray-700 mt-1 text-sm">{desc}</p>
+        </div>
+    );
+
+    const SectionCard = ({ title, icon: Icon, color, children, className, isRTL }) => (
+        <div className={`rounded-xl border-2 p-5 ${className}`}>
+            <h3 className={`text-2xl font-bold flex items-center mb-4 ${isRTL ? 'flex-row-reverse text-right' : 'flex-row text-left'}`}>
+                <Icon className={`w-6 h-6 ${isRTL ? 'ml-3' : 'mr-3'} ${color}`} />
+                {title}
+            </h3>
+            {children}
+        </div>
+    );
+    
+    const FlowSteps = ({ steps, isRTL }) => (
+        <ol className={`relative border-gray-200 space-y-4 ${isRTL ? 'border-r pr-4 mr-4' : 'border-l pl-4 ml-4'}`}>                  
+            {steps.map((step, index) => (
+                <li key={index} className={isRTL ? 'mb-4 pr-6' : 'mb-4 pl-6'}>            
+                    <span className={`absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full ${isRTL ? '-right-3' : '-left-3'} ring-8 ring-white`}>
+                        <span className="text-sm font-bold text-indigo-700">{index + 1}</span>
+                    </span>
+                    <p className={`text-base font-normal text-gray-700 ${isRTL ? 'text-right' : 'text-left'}`}>{step}</p>
+                </li>
+            ))}
+        </ol>
+    );
+
+    const BenefitItem = ({ title, value, icon: Icon, isRTL }) => (
+        <div className={`flex items-center p-4 bg-green-50 rounded-lg shadow-sm border border-green-200 ${isRTL ? 'flex-row-reverse text-right' : 'flex-row text-left'}`}>
+            <Icon className={`w-8 h-8 text-green-600 ${isRTL ? 'ml-4' : 'mr-4'} flex-shrink-0`} />
+            <div>
+                <p className="text-lg font-semibold text-gray-800">{title}</p>
+                <p className="text-sm text-green-700 font-bold">{value}</p>
+            </div>
+        </div>
+    );
+
+    const PrivacyItem = ({ title, icon: Icon, isRTL }) => (
+        <div className={`flex p-4 bg-blue-50 rounded-lg shadow-sm border border-blue-200 ${isRTL ? 'flex-row-reverse text-right' : 'flex-row text-left'}`}>
+            <Icon className={`w-8 h-8 text-blue-600 ${isRTL ? 'ml-4' : 'mr-4'} flex-shrink-0`} />
+            <p className="text-gray-700">{title}</p>
+        </div>
+    );
+
+    return (
+        <div className="flex min-h-screen">
+            <Sidebar />
+            <Content />
+        </div>
+    );
+};
+
+export default App;

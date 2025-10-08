@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YaysayBot Architecture Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for professional flow visualization */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            color: #1e293b;
+        }
+        .flow-card {
+            min-height: 120px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .flow-card:hover {
+            transform: translateY(-4px);
+        }
+        .arrow {
+            /* Responsive arrows */
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+        /* Color mapping for roles */
+        .unregistered { background-color: #e2e8f0; border-left: 5px solid #64748b; } /* Slate */
+        .user { background-color: #eff6ff; border-left: 5px solid #3b82f6; } /* Blue */
+        .manager { background-color: #ecfdf5; border-left: 5px solid #10b981; } /* Emerald */
+        .admin { background-color: #f5f3ff; border-left: 5px solid #8b5cf6; } /* Violet */
+
+        /* Utility to force vertical connection lines on mobile */
+        @media (max-width: 767px) {
+            .flow-step {
+                flex-direction: column;
+            }
+            .arrow-v-lg {
+                height: 20px; /* Vertical arrow height */
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .arrow-v-lg::after {
+                content: '↓';
+                font-size: 24px;
+            }
+        }
+
+        /* Utility to force horizontal connection lines on desktop */
+        @media (min-width: 768px) {
+            .flow-step {
+                flex-direction: row;
+            }
+            .arrow-h-lg {
+                width: 40px; /* Horizontal arrow width */
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .arrow-h-lg::after {
+                content: '→';
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-center mb-2 text-indigo-700">YaysayBot Role-Based Flow</h1>
+        <p class="text-center text-lg text-gray-600 mb-12">Visualizing Conversation States and Access Rights</p>
+
+        <!-- Start Node: Unregistered -->
+        <div class="flow-step flex items-center justify-center mb-6 md:mb-10">
+            <div class="flow-card unregistered p-4 rounded-xl w-full md:w-96 text-center">
+                <h3 class="font-bold text-xl text-slate-700">UNREGISTERED USER</h3>
+                <p class="text-sm mt-1">Access: 🚀 Start Registration, ❓ Help, 📞 Contact Admin</p>
+            </div>
+        </div>
+
+        <!-- Arrow to Registration -->
+        <div class="arrow-v-lg mx-auto md:hidden"></div>
+        <div class="arrow-h-lg hidden md:flex mx-auto"></div>
+
+        <!-- Registration Flow -->
+        <div class="flow-step flex items-center justify-center mb-6 md:mb-10">
+            <div class="flow-card unregistered p-4 rounded-xl w-full md:w-96 text-center">
+                <h3 class="font-bold text-xl text-slate-700">REGISTRATION FLOW</h3>
+                <p class="text-sm mt-1 text-slate-600">Steps: Lang Selection → Sex → Age → City</p>
+            </div>
+        </div>
+
+        <!-- Main Flow Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+
+            <!-- COLUMN 1: User Role -->
+            <div class="col-span-1 flex flex-col items-center">
+                <div class="flow-card user p-6 rounded-xl w-full text-center">
+                    <h3 class="font-bold text-xl text-blue-800 mb-2">USER ROLE</h3>
+                    <p class="text-sm font-semibold mb-3">Core Features & Rights:</p>
+                    <ul class="text-left space-y-2 text-blue-700">
+                        <li class="p-1 bg-blue-100 rounded-lg"><span class="font-mono text-sm">📊 NEW_POLL</span> (Starts poll creation flow)</li>
+                        <li class="p-1 bg-blue-100 rounded-lg"><span class="font-mono text-sm">💰 BALANCE</span> (Check points)</li>
+                        <li class="p-1 bg-blue-100 rounded-lg"><span class="font-mono text-sm">🎁 REFERRAL</span> (Generate link)</li>
+                        <li class="p-1 bg-blue-100 rounded-lg text-red-600 font-semibold"><span class="font-mono text-sm">→ REQUEST POINTS</span> (Needs Admin approval)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: Manager Role -->
+            <div class="col-span-1 flex flex-col items-center">
+                <div class="flow-card manager p-6 rounded-xl w-full text-center">
+                    <h3 class="font-bold text-xl text-emerald-700 mb-2">MANAGER ROLE</h3>
+                    <p class="text-sm font-semibold mb-3">User Rights <span class="text-lg">PLUS:</span></p>
+                    <ul class="text-left space-y-2 text-emerald-700">
+                        <li class="p-1 bg-emerald-100 rounded-lg"><span class="font-mono text-sm">✅ WAITING_POLLS</span> (View Polls for Approval)</li>
+                        <li class="p-1 bg-emerald-100 rounded-lg font-semibold">Ability to **Approve / Reject** Polls</li>
+                    </ul>
+                </div>
+                <!-- Line connecting Manager to Admin -->
+                <div class="arrow-v-lg mx-auto my-4 text-emerald-600"></div>
+                <div class="text-xs font-medium text-emerald-600">Promotion Path</div>
+            </div>
+
+            <!-- COLUMN 3: Admin Role -->
+            <div class="col-span-1 flex flex-col items-center">
+                <div class="flow-card admin p-6 rounded-xl w-full text-center">
+                    <h3 class="font-bold text-xl text-violet-800 mb-2">ADMIN ROLE</h3>
+                    <p class="text-sm font-semibold mb-3">Manager Rights <span class="text-lg">PLUS:</span></p>
+                    <ul class="text-left space-y-2 text-violet-700">
+                        <li class="p-1 bg-violet-100 rounded-lg"><span class="font-mono text-sm">👑 PROMOTE_USER</span> (Elevate User/Manager role)</li>
+                        <li class="p-1 bg-violet-100 rounded-lg"><span class="font-mono text-sm">💎 APPROVE_POINTS</span> (Review Point Requests)</li>
+                        <li class="p-1 bg-violet-100 rounded-lg font-semibold">Full Bot Log and Config Access</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Common Footer Features -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold text-center mb-6 text-gray-700">Universal Access (All Roles)</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="p-3 bg-white border border-gray-300 rounded-lg shadow-md text-gray-700 font-medium">❓ Help</div>
+                <div class="p-3 bg-white border border-gray-300 rounded-lg shadow-md text-gray-700 font-medium">📞 Contact Admin</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

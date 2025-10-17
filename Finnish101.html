@@ -1,125 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finnish 1 Presentation</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css" />
-  <style>
-    /* Custom styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.5;
-    }
-    /* Highlight Finnish words */
-    .finnish-word {
-      background-color: #e0f7fa;
-      padding: 0 4px;
-      border-radius: 3px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    h2 {
-      margin-bottom: 0.3em;
-    }
-    ul.examples {
-      list-style: disc inside;
-      margin: 0.5em 0 1em 0;
-      padding-left: 1em;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .finnish-word {
-        font-size: 1.1em;
-      }
-      ul.examples {
-        max-height: 150px;
-      }
-    }
-    /* Scrollable container for sub-levels */
-    .scrollable {
-      max-height: 200px;
-      overflow-y: auto;
-      padding-left: 1em;
-      border-left: 2px solid #b2dfdb;
-      margin-bottom: 1em;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Finnish 1: Essential Review (Vaasan Yliopisto)</title>
+    
+    <!-- Reveal.js Core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    
+    <!-- Theme CSS (Customizing the look) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/simple.min.css" id="theme">
+    
+    <!-- Tailwind CSS (for quick styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .reveal { font-family: 'Inter', sans-serif; }
+        .reveal h1, .reveal h2, .reveal h3 { 
+            text-transform: none; 
+            color: #047857; /* Deep Teal */
+            font-weight: 700;
+        }
+        .reveal .controls button { color: #047857 !important; }
+        /* Allow vertical scrolling if content is tall */
+        .reveal section { padding: 30px 0; overflow-y: auto; }
+        .teal-box { background: rgba(4, 120, 87, 0.1); border-radius: 10px; padding: 15px; margin-top: 15px; }
+        .teal-box h4 { color: #047857; }
+        /* Table styles */
+        .reveal table {
+            margin: 15px auto;
+            width: 90%;
+            font-size: 0.85em;
+            border-collapse: collapse;
+            border: 1px solid #047857;
+        }
+        .reveal th { background-color: #047857; color: white; padding: 8px; border: 1px solid #047857; }
+        .reveal td { padding: 8px; border: 1px solid #047857; }
+        
+        .r-hstack, .r-stack { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+        .fragment.highlight-yellow { color: #ffc107; font-weight: bold; }
+        
+        /* Scrollable tables for small screens */
+        .scrollable-table-container {
+            overflow-x: auto;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+        .scrollable-table-container table {
+            min-width: 600px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="reveal">
-    <div class="slides">
+    <div class="reveal">
+        <div class="slides">
 
-      <!-- Slide: Greetings and polite phrases -->
-      <section>
-        <h2>Greetings and Polite Phrases</h2>
-        <p>Common greetings and polite expressions in Finnish.</p>
-        <div class="scrollable">
-          <ul class="examples">
-            <li><span class="finnish-word">[translate: Hei]</span> – Hello</li>
-            <li><span class="finnish-word">[translate: Hyvää huomenta]</span> – Good morning</li>
-            <li><span class="finnish-word">[translate: Kiitos]</span> – Thank you</li>
-            <li><span class="finnish-word">[translate: Ole hyvä]</span> – You're welcome</li>
-            <li><span class="finnish-word">[translate: Näkemiin]</span> – Goodbye</li>
-          </ul>
-        </div>
-      </section>
+            <!-- Title Slide -->
+            <section data-background-color="#f0fdf4">
+                <h1 class="text-6xl font-extrabold text-teal-800">SUOMI 1: Tentin Kertaus</h1>
+                <h3 class="text-3xl text-gray-600 mt-4">Finnish 1 Exam Review (A1.1)</h3>
+                <p class="mt-8 text-xl text-teal-700">Vaasan yliopisto (University of Vaasa)</p>
+                <p class="text-sm mt-4 text-gray-500">Käytä nuolinäppäimiä (Use arrow keys)</p>
+            </section>
+            
+            <!-- 1. Greetings, Olla, Negative Verb (Vertical Section) -->
+            <section>
+                <section>
+                    <h2>1. Perusteet ja Kielioppi</h2>
+                    <h3 class="text-gray-500">(Basics & The Negative Verb)</h3>
+                    <div class="teal-box">
+                        <p class="text-xl text-teal-800 font-semibold">Tämä on pakollinen osa! Muistatko <span>[translate: olla]</span> -verbin?</p>
+                        <ul class="list-disc list-inside mt-4 text-left mx-auto max-w-lg">
+                            <li class="fragment">Minä <span>[translate: olen]</span> <strong>Däniel</strong>. (I am Däniel.)</li>
+                            <li class="fragment"><span>[translate: Hän on]</span> opiskelija. (He/She is a student.)</li>
+                            <li class="fragment"><span>[translate: Onko]</span> sinulla sisko? (Do you have a sister?)</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>Kieltoverbi (The Negative Verb)</h3>
+                    <p>The negative word (<span>[translate: ei]</span>) is conjugated. The main verb loses its ending.</p>
+                    <div class="scrollable-table-container">
+                        <table class="text-left mx-auto max-w-3xl mt-4 border-collapse">
+                            <thead>
+                                <tr><th style="width: 15%;">Subject</th><th style="width: 20%;">Negative Verb</th><th style="width: 20%;">Verb Stem</th><th style="width: 45%;">Example (live)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>minä</td><td><strong>en</strong></td><td><span>[translate: asu]</span></td><td>Minä en asu <span>[translate: Vaasassa]</span>.</td></tr>
+                                <tr><td>sinä</td><td><strong>et</strong></td><td><span>[translate: syö]</span></td><td>Sinä et syö <span>[translate: lihaa]</span>.</td></tr>
+                                <tr><td>hän/se</td><td><strong>ei</strong></td><td><span>[translate: ole]</span></td><td>Hän ei ole <span>[translate: kotona]</span>.</td></tr>
+                                <tr><td>me</td><td><strong>emme</strong></td><td><span>[translate: mene]</span></td><td>Me emme mene <span>[translate: nyt]</span>.</td></tr>
+                                <tr><td>he/ne</td><td><strong>eivät</strong></td><td><span>[translate: puhu]</span></td><td>He eivät puhu <span>[translate: suomea]</span>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section>
+                    <h3>Kysymykset (<span>[translate: -ko/-kö]</span>)</h3>
+                    <p class="text-lg">Add the suffix to the verb and move it to the start.</p>
+                    <div class="teal-box">
+                        <h4>Affirmative &rarr; Question</h4>
+                        <p class="text-xl fragment fade-in-then-out"><span>[translate: Sinä asut Suomessa.]</span> &rarr; <span>[translate: Asutko]</span> sinä Suomessa?</p>
+                        <p class="text-xl fragment fade-in-then-out" data-fragment-index="2"><span>[translate: Vaasa on kesäkaupunki.]</span> &rarr; <span>[translate: Onko]</span> Vaasa kesäkaupunki?</p>
+                        <p class="text-xl fragment fade-in" data-fragment-index="3"><span>[translate: Hän puhuu ruotsia.]</span> &rarr; <span>[translate: Puhuuko]</span> hän ruotsia?</p>
+                    </div>
+                </section>
+            </section>
 
-      <!-- Slide: Days, Months, Seasons, Times of Day -->
-      <section>
-        <h2>Days, Months, Seasons, Times of Day</h2>
-        <p>Basic vocabulary related to time.</p>
-        <div class="scrollable">
-          <h3>Days of the Week</h3>
-          <ul class="examples">
-            <li><span class="finnish-word">[translate: Maanantai]</span> – Monday</li>
-            <li><span class="finnish-word">[translate: Tiistai]</span> – Tuesday</li>
-            <li><span class="finnish-word">[translate: Keskiviikko]</span> – Wednesday</li>
-          </ul>
-          <h3>Months</h3>
-          <ul class="examples">
-            <li><span class="finnish-word">[translate:Tammikuu]</span> – January</li>
-            <li><span class="finnish-word">[translate: Helmikuu]</span> – February</li>
-            <li><span class="finnish-word">[translate: Maaliskuu]</span> – March</li>
-          </ul>
-          <h3>Seasons</h3>
-          <ul class="examples">
-            <li><span class="finnish-word">[translate: Kevät]</span> – Spring</li>
-            <li><span class="finnish-word">[translate: Kesä]</span> – Summer</li>
-            <li><span class="finnish-word">[translate: Syksy]</span> – Autumn</li>
-            <li><span class="finnish-word">[translate: Talvi]</span> – Winter</li>
-          </ul>
-          <h3>Times of Day</h3>
-          <ul class="examples">
-            <li><span class="finnish-word">[translate: Aamu]</span> – Morning</li>
-            <li><span class="finnish-word">[translate: Päivä]</span> – Day</li>
-            <li><span class="finnish-word">[translate: Ilta]</span> – Evening</li>
-            <li><span class="finnish-word">[translate: Yö]</span> – Night</li>
-          </ul>
-        </div>
-      </section>
 
-    </div>
-  </div>
+            <!-- 2. Vowel Harmony & Local Cases (Vertical Section) -->
+            <section>
+                <section>
+                    <h2>2. <span>[translate: Vokaaliharmonia]</span> ja <span>[translate: Paikallissijat]</span></h2>
+                    <h3 class="text-gray-500">(Vowel Harmony & Local Cases)</h3>
+                    <div class="teal-box">
+                        <h4 class="fragment">Vokaaliharmonia (Vowel Harmony)</h4>
+                        <ul class="list-disc list-inside text-left mx-auto max-w-md mt-4">
+                            <li class="fragment">**Takavokaalit (Back):** A, O, U &rarr; Endings like **-ssa, -sta**. (esim. <span>[translate: Vaasassa]</span>)</li>
+                            <li class="fragment">**Etuvokaalit (Front):** Ä, Ö, Y &rarr; Endings like **-ssä, -stä**. (esim. <span>[translate: Helsingissä]</span>)</li>
+                            <li class="fragment">**Neutraalivokaalit:** E, I (Can co-exist with both).</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>Paikallissijat (Local Cases)</h3>
+                    <p class="text-lg">Käsittele **IN-paikat** (<span>[translate: sisällä]</span>) ja **ON-paikat** (<span>[translate: pinnalla]</span>/<span>[translate: lähellä]</span>).</p>
+                    <table class="mt-4">
+                        <thead>
+                            <tr><th><span>[translate: Missä?]</span> (Where)</th><th>IN-Paikka (Closed)</th><th>ON-Paikka (Open)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>**In/On**</td><td><span>[translate: -ssa / -ssä]</span></td><td><span>[translate: -lla / -llä]</span></td></tr>
+                            <tr><td>**From**</td><td><span>[translate: -sta / -stä]</span></td><td><span>[translate: -lta / -ltä]</span></td></tr>
+                            <tr><td>**To**</td><td>-Vn (Illative)</td><td>-lle (Allative)</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-4 fragment fade-in">Esimerkki: I am from Iran. &rarr; Minä olen kotoisin <span>[translate: Iranista]</span> (IN-place, Elative).</p>
+                </section>
+            </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
-  <script>
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      center: true,
-      slideNumber: true,
-      touch: true,
-      keyboard: true,
-      overview: true,
-      // Responsive font scaling:
-      width: "100%",
-      height: "100%",
-      margin: 0.1,
-    });
-  </script>
+
+            <!-- 3. Verb Conjugation (Types 1, 2, 3) (Vertical Section) -->
+            <section>
+                <section>
+                    <h2>3. Verbit Tyypit 1, 2 ja 3</h2>
+                    <h3 class="text-gray-500">(Verb Conjugation)</h3>
+                    <p class="text-lg fragment fade-in">Keskity **Hän**-muotoon – se on tärkein ero!</p>
+                </section>
+                <section>
+                    <h3>Tyyppi 1: <span>[translate: Puhua]</span> (To Speak)</h3>
+                    <p>Ends in Vowel + a/ä. <strong>Hän</strong> gets a <strong>Double Vowel</strong>.</p>
+                    <div class="scrollable-table-container">
+                        <table class="mt-4">
+                            <thead>
+                                <tr><th>Subject</th><th><span>[translate: Puhua]</span> (puh-)</th><th><span>[translate: Asua]</span> (asu-)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>minä</td><td>puhun</td><td>asun</td></tr>
+                                <tr><td>sinä</td><td>puhut</td><td>asut</td></tr>
+                                <tr class="fragment highlight-yellow"><td><strong>hän</strong></td><td><strong>puhuu</strong></td><td><strong>asuu</strong></td></tr>
+                                <tr><td>me</td><td>puhumme</td><td>asumme</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section>
+                    <h3>Tyyppi 2: <span>[translate: Syödä]</span> (To Eat)</h3>
+                    <p>Ends in -da/-dä. <strong>Hän</strong> takes <strong>NO Ending</strong> (just the stem).</p>
+                    <div class="scrollable-table-container">
+                        <table class="mt-4">
+                            <thead>
+                                <tr><th>Subject</th><th><span>[translate: Syödä]</span> (syö-)</th><th><span>[translate: Juoda]</span> (juo-)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>minä</td><td>syön</td><td>juon</td></tr>
+                                <tr><td>sinä</td><td>syöt</td><td>juot</td></tr>
+                                <tr class="fragment highlight-yellow"><td><strong>hän</strong></td><td><strong>syö</strong></td><td><strong>juo</strong></td></tr>
+                                <tr><td>me</td><td>syömme</td><td>juomme</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section>
+                    <h3>Tyyppi 3: <span>[translate: Mennä]</span> (To Go)</h3>
+                    <p>Ends in -la/-nä/-sta... Takes the <strong>-e-</strong> sign. <strong>Hän</strong> gets a <strong>Long E</strong>.</p>
+                    <div class="scrollable-table-container">
+                        <table class="mt-4">
+                            <thead>
+                                <tr><th>Subject</th><th><span>[translate: Mennä]</span> (men-e-)</th><th><span>[translate: Tulla]</span> (tul-e-)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>minä</td><td>menen</td><td>tulen</td></tr>
+                                <tr><td>sinä</td><td>menet</td><td>tulet</td></tr>
+                                <tr class="fragment highlight-yellow"><td><strong>hän</strong></td><td><strong>menee</strong></td><td><strong>tulee</strong></td></tr>
+                                <tr><td>me</td><td>menemme</td><td>tulemme</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        // Initialize Reveal.js
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide',
+            dependencies: [
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js', async: true }
+            ]
+        });
+    </script>
 </body>
 </html>

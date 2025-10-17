@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>File Handling</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>File Handling</h1>
+                    <ul>
+                        <li><a href="#/file-handling">File Handling</a></li>
+                        <li><a href="#/read-files">Read Files</a></li>
+                        <li><a href="#/write-create-files">Write/Create Files</a></li>
+                        <li><a href="#/delete-files">Delete Files</a></li>
+                    </ul>
+                </section>
+
+                <section id="file-handling">
+                    <h2>File Handling</h2>
+                    <section>
+                        <h3>The open() Function</h3>
+                        <p>The <span class="orange">open()</span> function takes two parameters; <span class="orange">filename</span> and <span class="orange">mode</span>.</p>
+                        <p>There are four different methods (modes) for opening a file:</p>
+                        <ul>
+                            <li><span class="orange">"r"</span> - Read - Default value. Opens a file for reading, error if the file does not exist</li>
+                            <li><span class="orange">"a"</span> - Append - Opens a file for appending, creates the file if it does not exist</li>
+                            <li><span class="orange">"w"</span> - Write - Opens a file for writing, creates the file if it does not exist</li>
+                            <li><span class="orange">"x"</span> - Create - Creates the specified file, returns an error if the file exists</li>
+                        </ul>
+                        <p>In addition you can specify if the file should be handled as binary or text mode</p>
+                        <ul>
+                            <li><span class="orange">"t"</span> - Text - Default value. Text mode</li>
+                            <li><span class="orange">"b"</span> - Binary - Binary mode (e.g. images)</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section id="read-files">
+                    <h2>Read Files</h2>
+                    <section>
+                        <h3>Read Files</h3>
+                        <p>The <span class="orange">open()</span> function returns a file object, which has a <span class="orange">read()</span> method for reading the content of the file:</p>
+                        <pre><code class="python" data-line-numbers>
+f = open("demofile.txt", "r")
+print(f.read())
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Read Parts of a File</h3>
+                        <p>By default the <span class="orange">read()</span> method returns the whole text, but you can also specify how many characters you want to return:</p>
+                        <pre><code class="python" data-line-numbers>
+f = open("demofile.txt", "r")
+print(f.read(5))
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Read Lines</h3>
+                        <p>You can return one line by using the <span class="orange">readline()</span> method:</p>
+                        <pre><code class="python" data-line-numbers>
+f = open("demofile.txt", "r")
+print(f.readline())
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Loop Through the File</h3>
+                        <p>By looping through the lines of the file, you can read the whole file, line by line:</p>
+                        <pre><code class="python" data-line-numbers>
+f = open("demofile.txt", "r")
+for x in f:
+  print(x)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="write-create-files">
+                    <h2>Write/Create Files</h2>
+                    <section>
+                        <h3>Write to an Existing File</h3>
+                        <p>To write to an existing file, you must add a parameter to the <span class="orange">open()</span> function:</p>
+                        <ul>
+                            <li><span class="orange">"a"</span> - Append - will append to the end of the file</li>
+                            <li><span class="orange">"w"</span> - Write - will overwrite any existing content</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+f = open("demofile2.txt", "a")
+f.write("Now the file has more content!")
+f.close()
+
+#open and read the file after the appending:
+f = open("demofile2.txt", "r")
+print(f.read())
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Create a New File</h3>
+                        <p>To create a new file in Python, use the <span class="orange">open()</span> method, with one of the following parameters:</p>
+                        <ul>
+                            <li><span class="orange">"x"</span> - Create - will create a file, returns an error if the file exist</li>
+                            <li><span class="orange">"a"</span> - Append - will create a file if the specified file does not exist</li>
+                            <li><span class="orange">"w"</span> - Write - will create a file if the specified file does not exist</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+f = open("myfile.txt", "x")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="delete-files">
+                    <h2>Delete Files</h2>
+                    <section>
+                        <h3>Delete a File</h3>
+                        <p>To delete a file, you must import the <span class="orange">os</span> module, and run its <span class="orange">os.remove()</span> function:</p>
+                        <pre><code class="python" data-line-numbers>
+import os
+os.remove("demofile.txt")
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Check if File exist</h3>
+                        <p>To avoid getting an error, you might want to check if the file exists before you try to delete it:</p>
+                        <pre><code class="python" data-line-numbers>
+import os
+if os.path.exists("demofile.txt"):
+  os.remove("demofile.txt")
+else:
+  print("The file does not exist")
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Delete Folder</h3>
+                        <p>To delete an entire folder, use the <span class="orange">os.rmdir()</span> method:</p>
+                        <pre><code class="python" data-line-numbers>
+import os
+os.rmdir("myfolder")
+                        </code></pre>
+                        <p><span class="red">Note:</span> You can only remove <span class="orange">empty</span> folders.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="../index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

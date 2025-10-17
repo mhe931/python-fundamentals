@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Matplotlib Tutorial</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Matplotlib Tutorial</h1>
+                    <ul>
+                        <li><a href="#/matplotlib-intro">Matplotlib Intro</a></li>
+                        <li><a href="#/matplotlib-get-started">Matplotlib Get Started</a></li>
+                        <li><a href="#/matplotlib-pyplot">Matplotlib Pyplot</a></li>
+                        <li><a href="#/matplotlib-plotting">Matplotlib Plotting</a></li>
+                        <li><a href="#/matplotlib-markers">Matplotlib Markers</a></li>
+                        <li><a href="#/matplotlib-line">Matplotlib Line</a></li>
+                        <li><a href="#/matplotlib-labels">Matplotlib Labels</a></li>
+                        <li><a href="#/matplotlib-grid">Matplotlib Grid</a></li>
+                        <li><a href="#/matplotlib-subplot">Matplotlib Subplot</a></li>
+                        <li><a href="#/matplotlib-scatter">Matplotlib Scatter</a></li>
+                        <li><a href="#/matplotlib-bars">Matplotlib Bars</a></li>
+                        <li><a href="#/matplotlib-histograms">Matplotlib Histograms</a></li>
+                        <li><a href="#/matplotlib-pie-charts">Matplotlib Pie Charts</a></li>
+                    </ul>
+                </section>
+
+                <section id="matplotlib-intro">
+                    <h2>Matplotlib Intro</h2>
+                    <section>
+                        <h3>What is Matplotlib?</h3>
+                        <p>Matplotlib is a low level graph plotting library in python that serves as a visualization utility.</p>
+                        <p>Matplotlib was created by <span class="orange">John D. Hunter</span>.</p>
+                        <p>Matplotlib is open source and we can use it freely.</p>
+                        <p>Matplotlib is mostly written in python, a few segments are written in C, Objective-C and Javascript for Platform compatibility.</p>
+                    </section>
+                </section>
+
+                <section id="matplotlib-get-started">
+                    <h2>Matplotlib Get Started</h2>
+                    <section>
+                        <h3>Installation</h3>
+                        <p>If you have Python and PIP already installed on a system, then installation of Matplotlib is very easy.</p>
+                        <p>Install it using this command:</p>
+                        <pre><code class="bash" data-line-numbers>pip install matplotlib</code></pre>
+                    </section>
+                    <section>
+                        <h3>Import Matplotlib</h3>
+                        <p>Once Matplotlib is installed, import it in your applications by adding the <span class="orange">import</span> module:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-pyplot">
+                    <h2>Matplotlib Pyplot</h2>
+                    <section>
+                        <h3>Pyplot</h3>
+                        <p>Most of the Matplotlib utilities lies under the <span class="orange">pyplot</span> submodule, and are usually imported under the <span class="orange">plt</span> alias:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+                        </code></pre>
+                        <p>Now the Pyplot package can be referred to as <span class="orange">plt</span>.</p>
+                    </section>
+                </section>
+
+                <section id="matplotlib-plotting">
+                    <h2>Matplotlib Plotting</h2>
+                    <section>
+                        <h3>Plotting x and y points</h3>
+                        <p>The <span class="orange">plot()</span> function is used to draw points (markers) in a diagram.</p>
+                        <p>By default, the <span class="orange">plot()</span> function draws a line from point to point.</p>
+                        <p>The function takes parameters for specifying points in the diagram.</p>
+                        <p>Parameter 1 is an array containing the points on the x-axis.</p>
+                        <p>Parameter 2 is an array containing the points on the y-axis.</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+xpoints = np.array([0, 6])
+ypoints = np.array([0, 250])
+
+plt.plot(xpoints, ypoints)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-markers">
+                    <h2>Matplotlib Markers</h2>
+                    <section>
+                        <h3>Markers</h3>
+                        <p>You can use the keyword argument <span class="orange">marker</span> to emphasize each point with a specified marker:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, marker = 'o')
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-line">
+                    <h2>Matplotlib Line</h2>
+                    <section>
+                        <h3>Linestyle</h3>
+                        <p>You can use the keyword argument <span class="orange">linestyle</span>, or shorter <span class="orange">ls</span>, to change the style of the plotted line:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, linestyle = 'dotted')
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-labels">
+                    <h2>Matplotlib Labels</h2>
+                    <section>
+                        <h3>Create Labels for a Plot</h3>
+                        <p>With Pyplot, you can use the <span class="orange">xlabel()</span> and <span class="orange">ylabel()</span> functions to set a label for the x- and y-axis.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.plot(x, y)
+
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-grid">
+                    <h2>Matplotlib Grid</h2>
+                    <section>
+                        <h3>Add Grid Lines to a Plot</h3>
+                        <p>With Pyplot, you can use the <span class="orange">grid()</span> function to add grid lines to a plot.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.plot(x, y)
+
+plt.grid()
+
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-subplot">
+                    <h2>Matplotlib Subplot</h2>
+                    <section>
+                        <h3>Display Multiple Plots</h3>
+                        <p>With the <span class="orange">subplot()</span> function you can draw multiple plots in one figure:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+#plot 1:
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(1, 2, 1)
+plt.plot(x,y)
+
+#plot 2:
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1, 2, 2)
+plt.plot(x,y)
+
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-scatter">
+                    <h2>Matplotlib Scatter</h2>
+                    <section>
+                        <h3>Creating Scatter Plots</h3>
+                        <p>With Pyplot, you can use the <span class="orange">scatter()</span> function to draw a scatter plot.</p>
+                        <p>The <span class="orange">scatter()</span> function plots one dot for each observation. It needs two arrays of the same length, one for the values of the x-axis, and one for values on the y-axis:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+
+plt.scatter(x, y)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-bars">
+                    <h2>Matplotlib Bars</h2>
+                    <section>
+                        <h3>Creating Bars</h3>
+                        <p>With Pyplot, you can use the <span class="orange">bar()</span> function to draw bar graphs:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.bar(x,y)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-histograms">
+                    <h2>Matplotlib Histograms</h2>
+                    <section>
+                        <h3>Create Histogram</h3>
+                        <p>In Matplotlib, we use the <span class="orange">hist()</span> function to create histograms.</p>
+                        <p>The <span class="orange">hist()</span> function will use an array of numbers to create a histogram, e.g.:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.normal(170, 10, 250)
+
+plt.hist(x)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="matplotlib-pie-charts">
+                    <h2>Matplotlib Pie Charts</h2>
+                    <section>
+                        <h3>Creating Pie Charts</h3>
+                        <p>With Pyplot, you can use the <span class="orange">pie()</span> function to draw pie charts:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+y = np.array([35, 25, 25, 15])
+
+plt.pie(y)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="../index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

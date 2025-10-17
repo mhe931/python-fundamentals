@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Module Reference</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Module Reference</h1>
+                    <ul>
+                        <li><a href="#/built-in-modules">Built-in Modules</a></li>
+                        <li><a href="#/random-module">Random Module</a></li>
+                        <li><a href="#/requests-module">Requests Module</a></li>
+                        <li><a href="#/statistics-module">Statistics Module</a></li>
+                        <li><a href="#/math-module">Math Module</a></li>
+                        <li><a href="#/cmath-module">cMath Module</a></li>
+                    </ul>
+                </section>
+
+                <section id="built-in-modules">
+                    <h2>Built-in Modules</h2>
+                    <section>
+                        <h3>Built-in Modules</h3>
+                        <p>Python has a set of <span class="green">built-in modules</span> that you can use whenever you like.</p>
+                        <p>You can get a list of all built-in modules by running the following in a Python interpreter:</p>
+                        <pre><code class="python" data-line-numbers>
+help('modules')
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="random-module">
+                    <h2>Random Module</h2>
+                    <section>
+                        <h3>Generate Random Numbers</h3>
+                        <p>Python does not have a <span class="orange">random()</span> function to make a random number, but Python has a built-in module called <span class="orange">random</span> that can be used to make random numbers:</p>
+                        <pre><code class="python" data-line-numbers>
+import random
+
+print(random.randrange(1, 10))
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Random Methods</h3>
+                        <p>The <span class="orange">random</span> module has a set of methods:</p>
+                        <ul>
+                            <li><span class="orange">seed()</span> - Initializes the random number generator</li>
+                            <li><span class="orange">getstate()</span> - Returns the current internal state of the random number generator</li>
+                            <li><span class="orange">setstate()</span> - Restores the internal state of the random number generator</li>
+                            <li><span class="orange">randrange()</span> - Returns a random number between the given range</li>
+                            <li><span class="orange">randint()</span> - Returns a random number between the given range (inclusive)</li>
+                            <li><span class="orange">choice()</span> - Returns a random element from the specified sequence</li>
+                            <li><span class="orange">choices()</span> - Returns a list with a random selection from the specified sequence</li>
+                            <li><span class="orange">shuffle()</span> - Takes a sequence and returns the sequence in a random order</li>
+                            <li><span class="orange">sample()</span> - Returns a given sample of a sequence</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section id="requests-module">
+                    <h2>Requests Module</h2>
+                    <section>
+                        <h3>Make an HTTP Request</h3>
+                        <p>The <span class="orange">requests</span> module allows you to send HTTP requests using Python.</p>
+                        <p>The requests module is not built-in to Python. You have to install it first:</p>
+                        <pre><code class="bash" data-line-numbers>pip install requests</code></pre>
+                        <p>Once you have installed the requests module, you can import it and start making requests:</p>
+                        <pre><code class="python" data-line-numbers>
+import requests
+
+x = requests.get('https://w3schools.com/python/demopage.htm')
+
+print(x.status_code)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="statistics-module">
+                    <h2>Statistics Module</h2>
+                    <section>
+                        <h3>Statistical Functions</h3>
+                        <p>The <span class="orange">statistics</span> module provides functions for calculating mathematical statistics of numeric (Real-valued) data.</p>
+                        <pre><code class="python" data-line-numbers>
+import statistics
+
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(statistics.mean(x))
+print(statistics.median(x))
+print(statistics.mode(x))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="math-module">
+                    <h2>Math Module</h2>
+                    <section>
+                        <h3>Mathematical Functions</h3>
+                        <p>The <span class="orange">math</span> module provides access to the mathematical functions defined by the C standard.</p>
+                        <pre><code class="python" data-line-numbers>
+import math
+
+print(math.sqrt(64))
+print(math.ceil(1.4))
+print(math.floor(1.4))
+print(math.pi)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="cmath-module">
+                    <h2>cMath Module</h2>
+                    <section>
+                        <h3>Complex Mathematical Functions</h3>
+                        <p>The <span class="orange">cmath</span> module provides access to mathematical functions for complex numbers.</p>
+                        <pre><code class="python" data-line-numbers>
+import cmath
+
+print(cmath.sqrt(-1))
+print(cmath.log(10, 2))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="../index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

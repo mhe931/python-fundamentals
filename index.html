@@ -1,62 +1,413 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Python Fundamentals by Däniel Ebrahimzadeh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Workshop Index</title>
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --secondary: #007bff;
+            --secondary-hover: #0056b3;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
         body {
-            background-color: #1a202c;
-            color: #e2e8f0;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.5s ease;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 2em;
+            text-align: center;
+            line-height: 1.6;
+        }
+        header {
+            margin-bottom: 2em;
+        }
+        h1 {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            text-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+        }
+        p {
+            color: var(--text-secondary);
+            font-weight: 300;
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .category-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1em;
+        }
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 0.6em 1em;
+            cursor: pointer;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        .category-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        .category-header .arrow {
+            transition: var(--transition);
+            font-size: 0.9em;
+        }
+        .category-header.active .arrow {
+            transform: rotate(90deg);
+        }
+        .category-content {
+            display: none;
+            background-color: var(--surface);
+            padding: 0.8em 1em;
+            border-radius: 0 0 var(--radius) var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            grid-column: 1 / -1;
+        }
+        .category-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5em;
+        }
+        .category-content li {
+            break-inside: avoid;
+        }
+        .category-content a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 0.9em;
+            display: block;
+            padding: 0.3em 0;
+            transition: var(--transition);
+            font-family: 'Fira Code', monospace;
+            border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+        }
+        .category-content a:hover {
+            color: var(--secondary-hover);
+            text-decoration: underline;
+            transform: translateX(3px);
+        }
+        @media (max-width: 768px) {
+            .category-container {
+                grid-template-columns: 1fr;
+            }
+            .category-content ul {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen">
-    <div id="root" class="w-full"></div>
+<body>
+    <header>
+        <h1>Python Fundamentals</h1>
+        <p>by Däniel Ebrahimzadeh<br>A Comprehensive Guide to Mastering Python</p>
+    </header>
+    <div class="category-container">
+        <div class="category-header" onclick="toggleCategory('python-tutorial-content')">
+            <h2>Python Tutorial</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('file-handling-content')">
+            <h2>File Handling</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-modules-content')">
+            <h2>Python Modules</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('matplotlib-tutorial-content')">
+            <h2>Python Matplotlib</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('machine-learning-content')">
+            <h2>Machine Learning</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-dsa-content')">
+            <h2>Python DSA</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-mysql-content')">
+            <h2>Python MySQL</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-mongodb-content')">
+            <h2>Python MongoDB</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-reference-content')">
+            <h2>Python Reference</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('module-reference-content')">
+            <h2>Module Reference</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-how-to-content')">
+            <h2>Python How To</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
+        <div class="category-header" onclick="toggleCategory('python-examples-content')">
+            <h2>Python Examples</h2>
+            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+        </div>
 
-    <script type="text/babel">
-        const { useState } = React;
-        const App = () => {
-            const sessions = [
-                { id: 1, title: "Session 1: Programming Journey", file: "session1.html" },
-                { id: 2, title: "Session 2: Data Types & Variables", file: "session2.html" },
-                { id: 3, title: "Session 3: Introduction to Data", file: "session3.html" },
-                { id: 4, title: "Code Examples", file: "code.html" },
-                { id: 5, title: "git for project management", file: "git.html" },
-                { id: 6, title: "Däniel Ebrahimzadeh theme 3", file: "DänielEbrahimzadehTheme3.html" },
-                { id: 7, title: "Däniel Ebrahimzadeh theme 5", file: "DänielEbrahimzadehTheme5.html" },
-                { id: 8, title: "Finnish 1", file: "Finnish1.html" }
-                
-            ];
+        <div class="category-content" id="python-tutorial-content">
+            <ul>
+                <li><a href="python_tutorial/python_tutorial.html#/python-intro">Python Intro</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-get-started">Python Get Started</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-syntax">Python Syntax</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-output">Python Output</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-comments">Python Comments</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-variables">Python Variables</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-data-types">Python Data Types</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-numbers">Python Numbers</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-casting">Python Casting</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-strings">Python Strings</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-booleans">Python Booleans</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-operators">Python Operators</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-lists">Python Lists</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-tuples">Python Tuples</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-sets">Python Sets</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-dictionaries">Python Dictionaries</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-if-else">Python If...Else</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-match">Python Match</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-while-loops">Python While Loops</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-for-loops">Python For Loops</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-functions">Python Functions</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-range">Python Range</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-arrays">Python Arrays</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-oop">Python OOP</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-classes-objects">Python Classes/Objects</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-inheritance">Python Inheritance</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-iterators">Python Iterators</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-polymorphism">Python Polymorphism</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-modules-core">Python Modules (Core)</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-dates">Python Dates</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-math">Python Math</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-json">Python JSON</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-regex">Python RegEx</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-pip">Python PIP</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-try-except">Python Try...Except</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-string-formatting">Python String Formatting</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-none">Python None</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-user-input">Python User Input</a></li>
+                <li><a href="python_tutorial/python_tutorial.html#/python-virtualenv">Python VirtualEnv</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="file-handling-content">
+            <ul>
+                <li><a href="file_handling/file_handling.html#/file-handling">Python File Handling</a></li>
+                <li><a href="file_handling/file_handling.html#/read-files">Python Read Files</a></li>
+                <li><a href="file_handling/file_handling.html#/write-create-files">Python Write/Create Files</a></li>
+                <li><a href="file_handling/file_handling.html#/delete-files">Python Delete Files</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-modules-content">
+            <ul>
+                <li><a href="python_modules/python_modules.html#/numpy-tutorial">NumPy Tutorial</a></li>
+                <li><a href="python_modules/python_modules.html#/pandas-tutorial">Pandas Tutorial</a></li>
+                <li><a href="python_modules/python_modules.html#/scipy-tutorial">SciPy Tutorial</a></li>
+                <li><a href="python_modules/python_modules.html#/django-tutorial">Django Tutorial</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="matplotlib-tutorial-content">
+            <ul>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-intro">Matplotlib Intro</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-get-started">Matplotlib Get Started</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-pyplot">Matplotlib Pyplot</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-plotting">Matplotlib Plotting</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-markers">Matplotlib Markers</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-line">Matplotlib Line</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-labels">Matplotlib Labels</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-grid">Matplotlib Grid</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-subplot">Matplotlib Subplot</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-scatter">Matplotlib Scatter</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-bars">Matplotlib Bars</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-histograms">Matplotlib Histograms</a></li>
+                <li><a href="matplotlib_tutorial/matplotlib_tutorial.html#/matplotlib-pie-charts">Matplotlib Pie Charts</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="machine-learning-content">
+            <ul>
+                <li><a href="machine_learning/machine_learning.html#/ml-getting-started">Getting Started</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-mean-median-mode">Mean Median Mode</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-standard-deviation">Standard Deviation</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-percentile">Percentile</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-data-distribution">Data Distribution</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-normal-data-distribution">Normal Data Distribution</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-scatter-plot">Scatter Plot</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-linear-regression">Linear Regression</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-polynomial-regression">Polynomial Regression</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-multiple-regression">Multiple Regression</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-scale">Scale</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-train-test">Train/Test</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-decision-tree">Decision Tree</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-confusion-matrix">Confusion Matrix</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-hierarchical-clustering">Hierarchical Clustering</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-logistic-regression">Logistic Regression</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-grid-search">Grid Search</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-categorical-data">Categorical Data</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-k-means">K-means</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-bootstrap-aggregation">Bootstrap Aggregation</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-cross-validation">Cross Validation</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-auc-roc-curve">AUC - ROC Curve</a></li>
+                <li><a href="machine_learning/machine_learning.html#/ml-k-nearest-neighbors">K-nearest neighbors</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-dsa-content">
+            <ul>
+                <li><a href="python_dsa/python_dsa.html#/dsa-lists-arrays">Lists and Arrays</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-stacks">Stacks</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-queues">Queues</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-linked-lists">Linked Lists</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-hash-tables">Hash Tables</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-trees">Trees</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-binary-trees">Binary Trees</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-binary-search-trees">Binary Search Trees</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-avl-trees">AVL Trees</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-graphs">Graphs</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-linear-search">Linear Search</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-binary-search">Binary Search</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-bubble-sort">Bubble Sort</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-selection-sort">Selection Sort</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-insertion-sort">Insertion Sort</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-quick-sort">Quick Sort</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-counting-sort">Counting Sort</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-radix-sort">Radix Sort</a></li>
+                <li><a href="python_dsa/python_dsa.html#/dsa-merge-sort">Merge Sort</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-mysql-content">
+            <ul>
+                <li><a href="python_mysql/python_mysql.html#/mysql-get-started">MySQL Get Started</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-create-database">MySQL Create Database</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-create-table">MySQL Create Table</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-insert">MySQL Insert</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-select">MySQL Select</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-where">MySQL Where</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-order-by">MySQL Order By</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-delete">MySQL Delete</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-drop-table">MySQL Drop Table</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-update">MySQL Update</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-limit">MySQL Limit</a></li>
+                <li><a href="python_mysql/python_mysql.html#/mysql-join">MySQL Join</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-mongodb-content">
+            <ul>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-get-started">MongoDB Get Started</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-create-db">MongoDB Create DB</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-collection">MongoDB Collection</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-insert">MongoDB Insert</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-find">MongoDB Find</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-query">MongoDB Query</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-sort">MongoDB Sort</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-delete">MongoDB Delete</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-drop-collection">MongoDB Drop Collection</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-update">MongoDB Update</a></li>
+                <li><a href="python_mongodb/python_mongodb.html#/mongodb-limit">MongoDB Limit</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-reference-content">
+            <ul>
+                <li><a href="python_reference/python_reference.html#/python-overview">Python Overview</a></li>
+                <li><a href="python_reference/python_reference.html#/python-built-in-functions">Python Built-in Functions</a></li>
+                <li><a href="python_reference/python_reference.html#/python-string-methods">Python String Methods</a></li>
+                <li><a href="python_reference/python_reference.html#/python-list-methods">Python List Methods</a></li>
+                <li><a href="python_reference/python_reference.html#/python-dictionary-methods">Python Dictionary Methods</a></li>
+                <li><a href="python_reference/python_reference.html#/python-tuple-methods">Python Tuple Methods</a></li>
+                <li><a href="python_reference/python_reference.html#/python-set-methods">Python Set Methods</a></li>
+                <li><a href="python_reference/python_reference.html#/python-file-methods">Python File Methods</a></li>
+                <li><a href="python_reference/python_reference.html#/python-keywords">Python Keywords</a></li>
+                <li><a href="python_reference/python_reference.html#/python-exceptions">Python Exceptions</a></li>
+                <li><a href="python_reference/python_reference.html#/python-glossary">Python Glossary</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="module-reference-content">
+            <ul>
+                <li><a href="module_reference/module_reference.html#/built-in-modules">Built-in Modules</a></li>
+                <li><a href="module_reference/module_reference.html#/random-module">Random Module</a></li>
+                <li><a href="module_reference/module_reference.html#/requests-module">Requests Module</a></li>
+                <li><a href="module_reference/module_reference.html#/statistics-module">Statistics Module</a></li>
+                <li><a href="module_reference/module_reference.html#/math-module">Math Module</a></li>
+                <li><a href="module_reference/module_reference.html#/cmath-module">cMath Module</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-how-to-content">
+            <ul>
+                <li><a href="python_how_to/python_how_to.html#/remove-list-duplicates">Remove List Duplicates</a></li>
+                <li><a href="python_how_to/python_how_to.html#/reverse-a-string">Reverse a String</a></li>
+                <li><a href="python_how_to/python_how_to.html#/add-two-numbers">Add Two Numbers</a></li>
+            </ul>
+        </div>
+        <div class="category-content" id="python-examples-content">
+            <ul>
+                <li><a href="python_examples/python_examples.html#/python-examples">Python Examples</a></li>
+                <li><a href="python_examples/python_examples.html#/python-compiler">Python Compiler</a></li>
+                <li><a href="python_examples/python_examples.html#/python-exercises">Python Exercises</a></li>
+                <li><a href="python_examples/python_examples.html#/python-quiz">Python Quiz</a></li>
+                <li><a href="python_examples/python_examples.html#/python-server">Python Server</a></li>
+                <li><a href="python_examples/python_examples.html#/python-syllabus">Python Syllabus</a></li>
+                <li><a href="python_examples/python_examples.html#/python-study-plan">Python Study Plan</a></li>
+                <li><a href="python_examples/python_examples.html#/python-interview-q-a">Python Interview Q&A</a></li>
+                <li><a href="python_examples/python_examples.html#/python-bootcamp">Python Bootcamp</a></li>
+                <li><a href="python_examples/python_examples.html#/python-certificate">Python Certificate</a></li>
+                <li><a href="python_examples/python_examples.html#/python-training">Python Training</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let currentlyOpen = null;
 
-            return (
-                <div className="flex flex-col items-center justify-center min-h-screen text-center p-8">
-                    <h1 className="text-5xl font-bold mb-6 text-white">Python Workshop</h1>
-                    <p className="text-xl text-gray-400 mb-12 max-w-2xl">
-                        Welcome to the Python Fundamentals workshop. Please select a session below to begin.
-                    </p>
-                    <div className="space-y-4">
-                        {sessions.map(session => (
-                            <a 
-                                key={session.id} 
-                                href={session.file} 
-                                className="block w-full px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-gray-600 shadow-lg"
-                            >
-                                {session.title}
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            );
-        };
-        ReactDOM.render(<App />, document.getElementById('root'));
+        function toggleCategory(contentId) {
+            const content = document.getElementById(contentId);
+            const header = document.querySelector(`.category-header[onclick="toggleCategory('${contentId}')"]`);
+
+            if (currentlyOpen && currentlyOpen !== contentId) {
+                const openContent = document.getElementById(currentlyOpen);
+                const openHeader = document.querySelector(`.category-header[onclick="toggleCategory('${currentlyOpen}')"]`);
+                openContent.style.display = "none";
+                openHeader.classList.remove('active');
+            }
+
+            if (content.style.display === "grid") {
+                content.style.display = "none";
+                header.classList.remove('active');
+                currentlyOpen = null;
+            } else {
+                content.style.display = "grid";
+                header.classList.add('active');
+                currentlyOpen = contentId;
+            }
+        }
     </script>
 </body>
 </html>
-

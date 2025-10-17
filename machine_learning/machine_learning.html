@@ -1,0 +1,776 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Machine Learning</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Machine Learning</h1>
+                    <ul>
+                        <li><a href="#/ml-getting-started">Getting Started</a></li>
+                        <li><a href="#/ml-mean-median-mode">Mean Median Mode</a></li>
+                        <li><a href="#/ml-standard-deviation">Standard Deviation</a></li>
+                        <li><a href="#/ml-percentile">Percentile</a></li>
+                        <li><a href="#/ml-data-distribution">Data Distribution</a></li>
+                        <li><a href="#/ml-normal-data-distribution">Normal Data Distribution</a></li>
+                        <li><a href="#/ml-scatter-plot">Scatter Plot</a></li>
+                        <li><a href="#/ml-linear-regression">Linear Regression</a></li>
+                        <li><a href="#/ml-polynomial-regression">Polynomial Regression</a></li>
+                        <li><a href="#/ml-multiple-regression">Multiple Regression</a></li>
+                        <li><a href="#/ml-scale">Scale</a></li>
+                        <li><a href="#/ml-train-test">Train/Test</a></li>
+                        <li><a href="#/ml-decision-tree">Decision Tree</a></li>
+                        <li><a href="#/ml-confusion-matrix">Confusion Matrix</a></li>
+                        <li><a href="#/ml-hierarchical-clustering">Hierarchical Clustering</a></li>
+                        <li><a href="#/ml-logistic-regression">Logistic Regression</a></li>
+                        <li><a href="#/ml-grid-search">Grid Search</a></li>
+                        <li><a href="#/ml-categorical-data">Categorical Data</a></li>
+                        <li><a href="#/ml-k-means">K-means</a></li>
+                        <li><a href="#/ml-bootstrap-aggregation">Bootstrap Aggregation</a></li>
+                        <li><a href="#/ml-cross-validation">Cross Validation</a></li>
+                        <li><a href="#/ml-auc-roc-curve">AUC - ROC Curve</a></li>
+                        <li><a href="#/ml-k-nearest-neighbors">K-nearest neighbors</a></li>
+                    </ul>
+                </section>
+
+                <section id="ml-getting-started">
+                    <h2>Getting Started</h2>
+                    <section>
+                        <h3>What is Machine Learning?</h3>
+                        <p><span class="green">Machine Learning</span> is making the computer learn from studying data and statistics.</p>
+                        <p>Machine Learning is a step into the direction of artificial intelligence (AI).</p>
+                        <p>Machine Learning is a program that analyzes data and learns to predict the outcome.</p>
+                    </section>
+                    <section>
+                        <h3>Where is it used?</h3>
+                        <ul>
+                            <li><span class="green">Self-driving cars</span></li>
+                            <li><span class="green">Recommendation systems</span> (e.g., Netflix, Amazon)</li>
+                            <li><span class="green">Speech recognition</span> (e.g., Siri, Google Assistant)</li>
+                            <li><span class="green">Image recognition</span></li>
+                            <li><span class="green">Medical diagnosis</span></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section id="ml-mean-median-mode">
+                    <h2>Mean Median Mode</h2>
+                    <section>
+                        <h3>Mean</h3>
+                        <p>The <span class="orange">mean</span> is the average value. To calculate the mean, find the sum of all values, and divide the sum by the number of values.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+x = numpy.mean(speed)
+
+print(x)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Median</h3>
+                        <p>The <span class="orange">median</span> is the middle value in a list of numbers that has been sorted.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+x = numpy.median(speed)
+
+print(x)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Mode</h3>
+                        <p>The <span class="orange">mode</span> is the value that appears most frequently in a data set.</p>
+                        <pre><code class="python" data-line-numbers>
+from scipy import stats
+
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+x = stats.mode(speed)
+
+print(x)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-standard-deviation">
+                    <h2>Standard Deviation</h2>
+                    <section>
+                        <h3>What is Standard Deviation?</h3>
+                        <p><span class="orange">Standard deviation</span> is a number that describes how spread out the values are.</p>
+                        <p>A low standard deviation means that most of the numbers are close to the mean (average) value.</p>
+                        <p>A high standard deviation means that the values are spread out over a wider range.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+
+speed = [86,87,88,86,87,85,86]
+
+x = numpy.std(speed)
+
+print(x)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-percentile">
+                    <h2>Percentile</h2>
+                    <section>
+                        <h3>What is Percentile?</h3>
+                        <p>In statistics, the <span class="orange">n'th percentile</span> of a set of data is the value at which n percent of the data is less than or equal to this value.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+
+speed = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+x = numpy.percentile(speed, 75)
+
+print(x)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-data-distribution">
+                    <h2>Data Distribution</h2>
+                    <section>
+                        <h3>What is Data Distribution?</h3>
+                        <p>Earlier in this tutorial we have learned how to create a completely random array, of a given size, and between two given values.</p>
+                        <p>In Machine Learning, when you are working with data sets, you will often get data sets with a very uneven distribution.</p>
+                        <p>To visualize the data set you can use a histogram.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+import matplotlib.pyplot as plt
+
+x = numpy.random.uniform(0.0, 5.0, 250)
+
+plt.hist(x, 5)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-normal-data-distribution">
+                    <h2>Normal Data Distribution</h2>
+                    <section>
+                        <h3>Normal Data Distribution</h3>
+                        <p>In Machine Learning, the data sets are often very large, and for that reason they are often summarized as a distribution.</p>
+                        <p>The <span class="orange">Normal Distribution</span> is also known as the <span class="green">Gaussian Distribution</span>. It is a probability distribution that is symmetric about the mean, showing that data near the mean are more frequent in occurrence than data far from the mean.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+import matplotlib.pyplot as plt
+
+x = numpy.random.normal(5.0, 1.0, 100000)
+
+plt.hist(x, 100)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-scatter-plot">
+                    <h2>Scatter Plot</h2>
+                    <section>
+                        <h3>Creating Scatter Plots</h3>
+                        <p>A <span class="green">scatter plot</span> is a diagram where each value in the data set is represented by a dot.</p>
+                        <p>The Matplotlib module has a method for drawing scatter plots, it needs two arrays of the same length, one for the values of the x-axis, and one for values on the y-axis:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+
+plt.scatter(x, y)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-linear-regression">
+                    <h2>Linear Regression</h2>
+                    <section>
+                        <h3>What is Linear Regression?</h3>
+                        <p><span class="green">Linear regression</span> uses the relationship between the data-points to draw a straight line through all of them.</p>
+                        <p>This line can be used to predict future values.</p>
+                        <p>In Machine Learning, predicting the future is very important.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>Python has modules that will do the work for you.</p>
+                        <p>Start by drawing a scatter plot:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+from scipy import stats
+
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+plt.scatter(x, y)
+plt.show()
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Draw the Line</h3>
+                        <p>Import <span class="orange">scipy.stats</span> and draw the line of linear regression:</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+from scipy import stats
+
+x = [5,7,8,7,2,17,2,9,4,11,12,9,6]
+y = [99,86,87,88,111,86,103,87,94,78,77,85,86]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+
+def myfunc(x):
+  return slope * x + intercept
+
+mymodel = list(map(myfunc, x))
+
+plt.scatter(x, y)
+plt.plot(x, mymodel)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-polynomial-regression">
+                    <h2>Polynomial Regression</h2>
+                    <section>
+                        <h3>What is Polynomial Regression?</h3>
+                        <p>If your data points clearly will not fit a linear regression (a straight line through all data points), it might be ideal for <span class="green">polynomial regression</span>.</p>
+                        <p>Polynomial regression, like linear regression, uses the relationship between the variables x and y to find the best way to draw a line through the data points.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use a method called <span class="orange">polyfit()</span> from the NumPy library to create a polynomial regression.</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = [1,2,3,5,6,7,8,9,10,12,13,14,15,16,18,19,21,22]
+y = [100,90,80,60,60,55,60,65,70,70,75,76,78,79,90,99,99,100]
+
+mymodel = np.poly1d(np.polyfit(x, y, 3))
+
+myline = np.linspace(1, 22, 100)
+
+plt.scatter(x, y)
+plt.plot(myline, mymodel(myline))
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-multiple-regression">
+                    <h2>Multiple Regression</h2>
+                    <section>
+                        <h3>What is Multiple Regression?</h3>
+                        <p><span class="green">Multiple regression</span> is like linear regression, but with more than one independent value, meaning that we try to predict a value based on two or more variables.</p>
+                        <p>We can use the Python module called <span class="orange">statsmodels</span> to do this.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use the Pandas library to read a CSV file and the statsmodels library to perform multiple regression.</p>
+                        <pre><code class="python" data-line-numbers>
+import pandas as pd
+from sklearn import linear_model
+
+df = pd.read_csv("cars.csv")
+
+X = df[['Weight', 'Volume']]
+y = df['CO2']
+
+regr = linear_model.LinearRegression()
+regr.fit(X, y)
+
+#predict the CO2 emission of a car where the weight is 2300kg, and the volume is 1300cm3:
+predictedCO2 = regr.predict([[2300, 1300]])
+
+print(predictedCO2)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-scale">
+                    <h2>Scale</h2>
+                    <section>
+                        <h3>What is Scaling?</h3>
+                        <p>When your data has different values, and even different measurement units, it can be difficult to compare them. The solution to this problem is scaling.</p>
+                        <p>There are different methods for scaling data, but in this tutorial we will use a method called <span class="orange">standardization</span>.</p>
+                        <p>The standardization method uses this formula:</p>
+                        <p class="orange">z = (x - u) / s</p>
+                        <p>Where z is the new value, x is the original value, u is the mean, and s is the standard deviation.</p>
+                    </section>
+                    <section>
+                        <h3>Scale Data</h3>
+                        <p>The <span class="orange">sklearn</span> module has a method called <span class="orange">StandardScaler()</span> which returns a <span class="green">Scaler object</span> with methods for transforming data sets.</p>
+                        <pre><code class="python" data-line-numbers>
+import pandas
+from sklearn import preprocessing
+
+data = {'Duration': [60, 60, 60, 45, 45, 60, 60, 60, 30, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60],
+        'Pulse': [110, 117, 103, 109, 117, 102, 110, 104, 109, 117, 102, 110, 104, 109, 117, 102, 110, 104, 109, 117, 102, 110, 104, 109, 117, 102, 110, 104, 109, 117],
+        'Maxpulse': [130, 145, 135, 175, 148, 127, 136, 134, 137, 148, 127, 136, 134, 137, 148, 127, 136, 134, 137, 148, 127, 136, 134, 137, 148, 127, 136, 134, 137, 148],
+        'Calories': [409, 479, 340, 282, 406, 300, 374, 334, 282, 406, 300, 374, 334, 282, 406, 300, 374, 334, 282, 406, 300, 374, 334, 282, 406, 300, 374, 334, 282, 406]}
+
+df = pandas.DataFrame(data)
+
+scaler = preprocessing.StandardScaler()
+
+X = df[['Duration', 'Pulse', 'Maxpulse', 'Calories']]
+scaledX = scaler.fit_transform(X)
+
+print(scaledX)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-train-test">
+                    <h2>Train/Test</h2>
+                    <section>
+                        <h3>Evaluate Your Model</h3>
+                        <p>In Machine Learning we create models to predict the outcome of certain events, like if a customer will buy a certain product, or if a football team will win or lose a match.</p>
+                        <p>To measure if the model is good enough, we can use a method called <span class="orange">Train/Test</span>.</p>
+                    </section>
+                    <section>
+                        <h3>What is Train/Test?</h3>
+                        <p><span class="green">Train/Test</span> is a method to measure the accuracy of your model.</p>
+                        <p>It is called Train/Test because you split the data set into two sets: a <span class="orange">training set</span> and a <span class="orange">testing set</span>.</p>
+                        <ul>
+                            <li><span class="green">Training set</span>: Used to train the model.</li>
+                            <li><span class="green">Testing set</span>: Used to test the model.</li>
+                        </ul>
+                        <p>The model sees and learns from the training set, and makes predictions based on the testing set.</p>
+                    </section>
+                    <section>
+                        <h3>Split Data</h3>
+                        <p>You can use the <span class="orange">train_test_split()</span> function from the <span class="orange">sklearn.model_selection</span> module to split your data:</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+
+x = numpy.random.normal(loc=5, scale=2, size=100)
+y = numpy.random.normal(loc=10, scale=3, size=100)
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+print(x_train.size)
+print(x_test.size)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-decision-tree">
+                    <h2>Decision Tree</h2>
+                    <section>
+                        <h3>What is a Decision Tree?</h3>
+                        <p>A <span class="green">Decision Tree</span> is a flow chart like tree structure, where each internal node represents a "test" on an attribute, each branch represents the outcome of the test, and each leaf node represents a class label (decision taken after computing all attributes).</p>
+                    </section>
+                    <section>
+                        <h3>Create a Decision Tree</h3>
+                        <p>We will use the <span class="orange">DecisionTreeClassifier</span> from the <span class="orange">sklearn.tree</span> module to create a decision tree.</p>
+                        <pre><code class="python" data-line-numbers>
+import pandas
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+
+df = pandas.read_csv("shows.csv")
+
+d = {'UK': 0, 'USA': 1, 'N': 2}
+df['Nationality'] = df['Nationality'].map(d)
+d = {'YES': 1, 'NO': 0}
+df['Go'] = df['Go'].map(d)
+
+features = ['Age', 'Experience', 'Rank', 'Nationality']
+
+X = df[features]
+y = df['Go']
+
+
+dtreg = DecisionTreeClassifier()
+dtreg.fit(X, y)
+
+tree.plot_tree(dtreg, feature_names=features, filled=True)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-confusion-matrix">
+                    <h2>Confusion Matrix</h2>
+                    <section>
+                        <h3>What is a Confusion Matrix?</h3>
+                        <p>A <span class="green">confusion matrix</span> is a table that is often used to describe the performance of a classification model (or "classifier") on a set of test data for which the true values are known.</p>
+                    </section>
+                    <section>
+                        <h3>Create a Confusion Matrix</h3>
+                        <p>We will use the <span class="orange">confusion_matrix</span> function from the <span class="orange">sklearn.metrics</span> module to create a confusion matrix.</p>
+                        <pre><code class="python" data-line-numbers>
+from sklearn import metrics
+
+actual = [1, 0, 0, 1, 0, 0, 1, 0, 0, 1]
+predicted = [1, 0, 0, 1, 0, 0, 1, 1, 1, 1]
+
+confusion_matrix = metrics.confusion_matrix(actual, predicted)
+
+cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix, display_labels = [False, True])
+
+cm_display.plot()
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-hierarchical-clustering">
+                    <h2>Hierarchical Clustering</h2>
+                    <section>
+                        <h3>What is Hierarchical Clustering?</h3>
+                        <p><span class="green">Hierarchical clustering</span> is an algorithm that groups similar objects into groups called clusters.</p>
+                        <p>The algorithm starts by treating each object as a separate cluster, then repeatedly executes the following steps:</p>
+                        <ol>
+                            <li>Identify the two clusters that are closest together.</li>
+                            <li>Merge the two most similar clusters.</li>
+                        </ol>
+                        <p>This process continues until all the clusters are merged into one single cluster.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use the <span class="orange">scipy.cluster.hierarchy</span> module to perform hierarchical clustering.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+x = [4, 5, 10, 4, 3, 11, 14 , 6, 10, 12]
+y = [21, 19, 24, 17, 16, 25, 24, 22, 21, 21]
+
+data = list(zip(x, y))
+
+linkage_data = linkage(data, method='ward')
+dendrogram(linkage_data)
+
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-logistic-regression">
+                    <h2>Logistic Regression</h2>
+                    <section>
+                        <h3>What is Logistic Regression?</h3>
+                        <p><span class="green">Logistic regression</span> is a statistical model that in its basic form uses a logistic function to model a binary dependent variable, although many more complex extensions exist.</p>
+                        <p>In regression analysis, logistic regression (or logit regression) is estimating the parameters of a logistic model (a form of binary regression).</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use the <span class="orange">LogisticRegression</span> class from the <span class="orange">sklearn.linear_model</span> module to perform logistic regression.</p>
+                        <pre><code class="python" data-line-numbers>
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+
+# X represents the size of a tumor in cm.
+X = np.array([3.78, 2.44, 2.09, 0.14, 1.72, 1.65, 4.92, 4.37, 4.96, 4.52, 3.69, 5.88]).reshape(-1,1)
+
+# y represents whether or not the tumor is cancerous (0 for no, 1 for yes).
+y = np.array([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1])
+
+logr = LogisticRegression()
+logr.fit(X,y)
+
+#predict if a tumor with size 3.46cm is cancerous:
+predicted = logr.predict(np.array([3.46]).reshape(-1,1))
+
+print(predicted)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-grid-search">
+                    <h2>Grid Search</h2>
+                    <section>
+                        <h3>What is Grid Search?</h3>
+                        <p><span class="green">Grid Search</span> is a technique for finding the optimal parameter values for a given model.</p>
+                        <p>It is an exhaustive search through a specified subset of the hyperparameter space of a learning algorithm.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use <span class="orange">GridSearchCV</span> from <span class="orange">sklearn.model_selection</span> to find the best parameters for a Support Vector Machine (SVM) model.</p>
+                        <pre><code class="python" data-line-numbers>
+from sklearn import svm, datasets
+from sklearn.model_selection import GridSearchCV
+
+# Load the iris dataset
+iris = datasets.load_iris()
+
+# Define the parameter grid
+param_grid = {'C': [0.1, 1, 10, 100], 'gamma': [1, 0.1, 0.01, 0.001], 'kernel': ['rbf', 'linear']}
+
+# Create a GridSearchCV object
+grid = GridSearchCV(svm.SVC(), param_grid, refit=True, verbose=2)
+
+# Fit the model
+grid.fit(iris.data, iris.target)
+
+# Print the best parameters
+print(grid.best_params_)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-categorical-data">
+                    <h2>Categorical Data</h2>
+                    <section>
+                        <h3>What is Categorical Data?</h3>
+                        <p><span class="green">Categorical data</span> are variables that contain label values rather than numeric values.</p>
+                        <p>The number of possible values is often limited to a fixed set.</p>
+                        <p>Examples: <span class="orange">"red", "green", "blue"</span> or <span class="orange">"male", "female"</span>.</p>
+                    </section>
+                    <section>
+                        <h3>Mapping Categorical Data</h3>
+                        <p>Many machine learning algorithms cannot work with categorical data directly. We need to convert it into numerical representation.</p>
+                        <p>One common way is to map the categories to numerical values:</p>
+                        <pre><code class="python" data-line-numbers>
+import pandas
+
+df = pandas.DataFrame({'Gender': ['Male', 'Female', 'Male', 'Female'],
+                       'Color': ['Red', 'Blue', 'Green', 'Red']})
+
+# Map 'Gender' to numerical values
+df['Gender'] = df['Gender'].map({'Male': 0, 'Female': 1})
+
+# Map 'Color' to numerical values
+df['Color'] = df['Color'].map({'Red': 0, 'Blue': 1, 'Green': 2})
+
+print(df)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-k-means">
+                    <h2>K-means</h2>
+                    <section>
+                        <h3>What is K-means?</h3>
+                        <p><span class="green">K-means</span> is an unsupervised learning algorithm that is used for clustering problems.</p>
+                        <p>It partitions your data into <span class="orange">K</span> distinct clusters, where K is a number you define.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use the <span class="orange">KMeans</span> class from the <span class="orange">sklearn.cluster</span> module to perform K-means clustering.</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import numpy as np
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+
+data = list(zip(x, y))
+
+kmeans = KMeans(n_clusters=3, random_state=0, n_init=10)
+kmeans.fit(data)
+
+plt.scatter(x, y, c=kmeans.labels_)
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-bootstrap-aggregation">
+                    <h2>Bootstrap Aggregation (Bagging)</h2>
+                    <section>
+                        <h3>What is Bootstrap Aggregation?</h3>
+                        <p><span class="green">Bootstrap Aggregation</span>, often shortened to <span class="orange">Bagging</span>, is an ensemble learning technique that aims to improve the stability and accuracy of machine learning algorithms.</p>
+                        <p>It reduces variance and helps to avoid overfitting.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>Bagging involves training multiple models (typically of the same type) on different subsets of the training data, where each subset is sampled with replacement (bootstrapping).</p>
+                        <p>The predictions from these individual models are then combined (aggregated) to produce a final prediction.</p>
+                        <pre><code class="python" data-line-numbers>
+from sklearn.ensemble import BaggingClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+
+# Generate some synthetic data
+X, y = make_classification(n_samples=100, n_features=4, random_state=0)
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+# Create a Bagging Classifier with a Decision Tree as the base estimator
+bagging = BaggingClassifier(DecisionTreeClassifier(), n_estimators=10, random_state=0)
+
+# Train the model
+bagging.fit(X_train, y_train)
+
+# Evaluate the model
+score = bagging.score(X_test, y_test)
+print(f"Accuracy: {score:.2f}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-cross-validation">
+                    <h2>Cross Validation</h2>
+                    <section>
+                        <h3>What is Cross Validation?</h3>
+                        <p><span class="green">Cross-validation</span> is a technique for evaluating machine learning models by training several models on subsets of the input data and testing them on a complementary subset of the data.</p>
+                        <p>It is primarily used in applied machine learning to estimate the skill of a machine learning model on unseen data.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use <span class="orange">KFold</span> and <span class="orange">cross_val_score</span> from <span class="orange">sklearn.model_selection</span> to perform cross-validation.</p>
+                        <pre><code class="python" data-line-numbers>
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.linear_model import LogisticRegression
+from sklearn.datasets import load_iris
+
+# Load the iris dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Create a Logistic Regression model
+model = LogisticRegression(solver='liblinear', multi_class='ovr')
+
+# Define the cross-validation split strategy
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+
+# Perform cross-validation
+scores = cross_val_score(model, X, y, cv=kf)
+
+print(f"Cross-validation scores: {scores}")
+print(f"Mean accuracy: {scores.mean():.2f}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-auc-roc-curve">
+                    <h2>AUC - ROC Curve</h2>
+                    <section>
+                        <h3>What is AUC - ROC Curve?</h3>
+                        <p>The <span class="orange">Receiver Operating Characteristic (ROC) curve</span> is a graph showing the performance of a classification model at all classification thresholds.</p>
+                        <p>The <span class="orange">Area Under the Curve (AUC)</span> measures the entire two-dimensional area underneath the entire ROC curve from (0,0) to (1,1).</p>
+                        <p>AUC provides an aggregate measure of performance across all possible classification thresholds.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>We will use <span class="orange">roc_curve</span> and <span class="orange">auc</span> from <span class="orange">sklearn.metrics</span> to plot the ROC curve and calculate AUC.</p>
+                        <pre><code class="python" data-line-numbers>
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, auc
+from sklearn.datasets import make_classification
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+
+# Generate some synthetic data
+X, y = make_classification(n_samples=1000, n_features=2, n_informative=2, n_redundant=0, random_state=42)
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Train a Logistic Regression model
+model = LogisticRegression(solver='liblinear')
+model.fit(X_train, y_train)
+
+# Get predicted probabilities for the positive class
+y_pred_proba = model.predict_proba(X_test)[:, 1]
+
+# Calculate ROC curve and AUC
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_proba)
+roc_auc = auc(fpr, tpr)
+
+# Plot ROC curve
+plt.figure()
+plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic')
+plt.legend(loc="lower right")
+plt.show()
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="ml-k-nearest-neighbors">
+                    <h2>K-nearest neighbors (KNN)</h2>
+                    <section>
+                        <h3>What is K-nearest neighbors?</h3>
+                        <p><span class="green">K-nearest neighbors (KNN)</span> is a simple, easy-to-implement supervised machine learning algorithm that can be used for both classification and regression problems.</p>
+                        <p>It is a non-parametric, lazy learning algorithm.</p>
+                    </section>
+                    <section>
+                        <h3>How Does it Work?</h3>
+                        <p>The KNN algorithm works by finding the <span class="orange">K</span> closest data points to a new data point (the "neighbors") and then classifying the new data point based on the majority class among its neighbors (for classification) or the average of its neighbors' values (for regression).</p>
+                        <pre><code class="python" data-line-numbers>
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+# Load the iris dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create a KNN classifier with K=3
+knn = KNeighborsClassifier(n_neighbors=3)
+
+# Train the model
+knn.fit(X_train, y_train)
+
+# Make a prediction
+y_pred = knn.predict(X_test)
+
+# Evaluate the model
+score = knn.score(X_test, y_test)
+print(f"Accuracy: {score:.2f}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="../index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

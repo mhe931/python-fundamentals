@@ -5,75 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finnish A1.1: Foundations and Essentials</title>
-    <!-- Reveal.js for interactive slides -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/black.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Define consistent color scheme for educational clarity (based on user's preference) */
         :root {
-            --r-main-color: #2C3E50; /* Primary Dark Blue */
-            --r-secondary-color: #3498db; /* Secondary Blue */
-            --r-link-color: #1ABC9C; /* Link/Highlight Green */
+            --r-main-color: #2C3E50;
+            /* Primary Dark Blue */
+            --r-secondary-color: #3498db;
+            /* Secondary Blue */
+            --r-link-color: #1ABC9C;
+            /* Link/Highlight Green */
+            /* Add white background to slides for readability with dark text */
+            --r-background-color: #fff;
         }
 
+        /* 2. REVEAL.JS BASE OVERRIDES FOR SCROLLING/FITTING */
         .reveal {
+            /* Allow vertical scrolling of the entire presentation container if needed */
             overflow-y: auto !important;
         }
+
+        .reveal .slides {
+            /* Ensure slides take full width */
+            width: 100%;
+            height: 100%;
+        }
+
         .reveal section {
+            /* Enable scrolling within individual slides for long content (like tables) */
             overflow-y: auto !important;
             overflow-x: hidden !important;
             padding: 0.5em;
         }
+
+        /* 3. RESPONSIVE TABLE CONTAINER & STYLING */
         .scrollable-table {
+            /* The overflow-x: auto is the key for tables that are too wide */
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Better scrolling on iOS */
             max-width: 100%;
             margin: 0 auto;
+            display: block; /* Ensure it behaves like a block container */
         }
+
+        .reveal table {
+            /* Allow tables to shrink, but keep them readable */
+            width: 100%;
+            max-width: none; /* Remove max-width on the table itself to allow container to manage it */
+            font-size: 0.9em; /* Slightly smaller font for compact view */
+            /* Use table-layout: fixed to prevent column width issues, but only if columns have defined widths */
+            /* table-layout: fixed; */
+            min-width: 300px; /* Prevent table content from collapsing too much */
+        }
+
         .highlight-finnish {
-            color: #FF5722; /* Warm Orange for Finnish terms */
+            color: #FF5722;
+            /* Warm Orange for Finnish terms */
             font-weight: 700;
         }
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+
+        /* 4. RESPONSIVE FONT SIZING FOR SMALL SCREENS */
+        .reveal h1 {
             text-align: center;
             color: var(--r-main-color);
+            font-size: 2.2em; /* Ensure H1 is smaller on small screens */
         }
+
         .reveal h2 {
-            color: var(--r-link-color); /* Fresh Green for main sections */
+            color: var(--r-link-color);
+            /* Fresh Green for main sections */
             font-weight: 600;
+            font-size: 1.8em; /* Ensure H2 is smaller on small screens */
         }
+
         .reveal h3 {
-            color: var(--r-secondary-color); /* Clear Blue for sub-sections */
-            font-size: 1.5em;
+            color: var(--r-secondary-color);
+            /* Clear Blue for sub-sections */
+            font-size: 1.3em; /* Adjusted down from 1.5em for mobile */
             margin-bottom: 1em;
         }
-        .reveal p, .reveal li, .reveal table {
-            font-size: 1.1em;
+
+        .reveal p,
+        .reveal li,
+        .reveal table {
+            font-size: 1.0em; /* Adjusted slightly down from 1.1em for mobile */
             color: #444;
             text-align: left;
         }
-        .reveal table {
-            width: 100%;
-            max-width: 700px;
-        }
+
+        /* General styling remains, just ensuring the key elements are flexible */
+
         .reveal thead th {
             background-color: #ECF0F1;
             color: var(--r-main-color);
         }
+
         /* Style for fun facts and examples */
         .fun-fact {
-            background-color: #FEEBCF; /* Light orange/peach */
+            background-color: #FEEBCF;
+            /* Light orange/peach */
             padding: 1.5rem;
             border-radius: 0.5rem;
             border-left: 5px solid #FF5722;
         }
+
         .fun-fact p {
-            font-size: 1.1em;
+            font-size: 1.0em; /* Consistency with other text */
             font-style: italic;
         }
+
         .locative-table td {
             text-align: center;
         }
+
         .vowel-box {
             display: inline-block;
             padding: 0.5rem;
@@ -81,1129 +127,1890 @@
             border-radius: 0.3rem;
             font-weight: bold;
             color: white;
+            font-size: 0.9em; /* Ensure the boxes look good */
         }
-        .back-vowel { background-color: #FF5722; }
-        .front-vowel { background-color: #1ABC9C; }
-        .neutral-vowel { background-color: #3498db; }
+
+        .back-vowel {
+            background-color: #FF5722;
+        }
+
+        .front-vowel {
+            background-color: #1ABC9C;
+        }
+
+        .neutral-vowel {
+            background-color: #3498db;
+        }
     </style>
 </head>
 
 <body>
-    <div class="reveal">
-        <div class="slides">
+<div class="reveal">
+    <div class="slides">
 
-            <!-- Slide 0: Title Slide -->
+        <section>
+            <h1>Suomen Kieli A1.1: Perusteet</h1>
+            <h3>Finnish Language: Foundations and Essentials</h3>
+            <p class="mt-8">Däniel Ebrahimzadeh: Syksy 2025</p>
+        </section>
+
+
+        <section>
             <section>
-                <h1>Suomen Kieli A1.1: Perusteet</h1>
-                <h3>Finnish Language: Foundations and Essentials</h3>
-                <p class="mt-8">Däniel Ebrahimzadeh: Syksy 2025</p>
+                <h2>Aakkoset ja Numerot</h2>
+                <h3>The Alphabet and Numbers</h3>
             </section>
 
-
-
-            <!-- Slide 1: Alphabet & Numbers (Now Section 2) -->
             <section>
-                <section>
-                    <h2>Aakkoset ja Numerot</h2>
-                    <h3>The Alphabet and Numbers</h3>
-                </section>
-
-                <section>
-                    <h3>Finnish Alphabet (Full)</h3>
-                    <h4>Suomen Aakkosto</h4>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Letter</th>
-                                    <th class="border border-gray-300 p-2">Pronunciation (Approx.)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">A</td><td class="border border-gray-300 p-2">/ɑ/, like **a** in 'father'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">B</td><td class="border border-gray-300 p-2">/beː/, like **b** in 'boy'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">C</td><td class="border border-gray-300 p-2">/seː/, foreign letter</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">D</td><td class="border border-gray-300 p-2">/deː/, like **d** in 'dog' (often softer)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">E</td><td class="border border-gray-300 p-2">/e/, like **e** in 'bed'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">F</td><td class="border border-gray-300 p-2">/ef/, like **f** in 'fan' (foreign)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">G</td><td class="border border-gray-300 p-2">/geː/, like **g** in 'go' (foreign)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">H</td><td class="border border-gray-300 p-2">/hoː/, like **h** in 'house' (can be stronger)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">I</td><td class="border border-gray-300 p-2">/i/, like **ee** in 'see'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">J</td><td class="border border-gray-300 p-2">/jiː/, like **y** in 'yes'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">K</td><td class="border border-gray-300 p-2">/koː/, like **k** in 'key'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">L</td><td class="border border-gray-300 p-2">/æl/, like **l** in 'love'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">M</td><td class="border border-gray-300 p-2">/æm/, like **m** in 'man'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">N</td><td class="border border-gray-300 p-2">/æn/, like **n** in 'no'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">O</td><td class="border border-gray-300 p-2">/o/, like **o** in 'ore' (long O)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">P</td><td class="border border-gray-300 p-2">/peː/, like **p** in 'pen'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Q</td><td class="border border-gray-300 p-2">/kuː/, foreign letter</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">R</td><td class="border border-gray-300 p-2">/ær/, a **rolled** R (trilled)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">S</td><td class="border border-gray-300 p-2">/æs/, like **s** in 'snake' (always hard)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">T</td><td class="border border-gray-300 p-2">/teː/, like **t** in 'top'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">U</td><td class="border border-gray-300 p-2">/u/, like **oo** in 'boot'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">V</td><td class="border border-gray-300 p-2">/veː/, like **v** in 'van'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">W</td><td class="border border-gray-300 p-2">/veː/, same as V (foreign)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">X</td><td class="border border-gray-300 p-2">/æks/, foreign letter</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Y</td><td class="border border-gray-300 p-2">/y/, like French **u** or German **ü**</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Z</td><td class="border border-gray-300 p-2">/tseːtɑ/, foreign letter</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Å</td><td class="border border-gray-300 p-2">/oː/, Swedish letter (foreign)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Ä</td><td class="border border-gray-300 p-2">/æ/, like **a** in 'cat' (open and front)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Ö</td><td class="border border-gray-300 p-2">/ø/, like **i** in 'bird' (round mouth)</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>The Finnish Alphabet (Suomen Aakkosto) - Focus</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Kirjain (Letter)</th>
-                                    <th class="border border-gray-300 p-2">English Equivalent / Sound</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">A</td><td class="border border-gray-300 p-2">Like **a** in 'father'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">E</td><td class="border border-gray-300 p-2">Like **e** in 'bed'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">I</td><td class="border border-gray-300 p-2">Like **ee** in 'see'</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Y</td><td class="border border-gray-300 p-2">Like French **u** or German **ü**</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Ä</td><td class="border border-gray-300 p-2">Like **a** in 'cat' (open and front)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">Ö</td><td class="border border-gray-300 p-2">Like **i** in 'bird' (or German **ö**)</td></tr>
-                                <tr><td class="border border-gray-300 p-2 highlight-finnish">R</td><td class="border border-gray-300 p-2">A **rolled** R (like Italian or Spanish)</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: The Finnish Alphabet</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Did you know...?</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>Finnish only uses <span class="highlight-finnish">B, C, F, G, Q, W, X, Z, Å</span> for foreign loanwords and names. The nine core Finnish consonants are <span class="highlight-finnish">D, H, J, K, L, M, N, P, R, S, T, V</span>.</li>
-                            <li>The unique characters <span class="highlight-finnish">Å, Ä, Ö</span> were inherited from Swedish, but <span class="highlight-finnish">Ä</span> and <span class="highlight-finnish">Ö</span> are fundamental Finnish sounds!</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Pronunciation Tips (Ääntämisvinkit)</h3>
-                    <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
-                        <p class="font-semibold text-xl text-blue-700 mb-2">💡 Tip: Finnish is Phonetic</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li><span class="highlight-finnish">Yksi ääni per kirjain.</span> (One sound per letter.) There are no silent letters!</li>
-                            <li><span class="highlight-finnish">Kaksoiskirjaimet ovat pitkiä.</span> (Double letters are long.) Double vowels (e.g., <span class="highlight-finnish">maa</span> 'land') or double consonants (e.g., <span class="highlight-finnish">kukka</span> 'flower') are held for a longer duration.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Numbers (Numerot) 0–10</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Number</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">0</td><td class="border border-gray-300 p-2 highlight-finnish">nolla</td></tr>
-                                <tr><td class="border border-gray-300 p-2">1</td><td class="border border-gray-300 p-2 highlight-finnish">yksi</td></tr>
-                                <tr><td class="border border-gray-300 p-2">2</td><td class="border border-gray-300 p-2 highlight-finnish">kaksi</td></tr>
-                                <tr><td class="border border-gray-300 p-2">3</td><td class="border border-gray-300 p-2 highlight-finnish">kolme</td></tr>
-                                <tr><td class="border border-gray-300 p-2">4</td><td class="border border-gray-300 p-2 highlight-finnish">neljä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">5</td><td class="border border-gray-300 p-2 highlight-finnish">viisi</td></tr>
-                                <tr><td class="border border-gray-300 p-2">6</td><td class="border border-gray-300 p-2 highlight-finnish">kuusi</td></tr>
-                                <tr><td class="border border-gray-300 p-2">7</td><td class="border border-gray-300 p-2 highlight-finnish">seitsemän</td></tr>
-                                <tr><td class="border border-gray-300 p-2">8</td><td class="border border-gray-300 p-2 highlight-finnish">kahdeksan</td></tr>
-                                <tr><td class="border border-gray-300 p-2">9</td><td class="border border-gray-300 p-2 highlight-finnish">yhdeksän</td></tr>
-                                <tr><td class="border border-gray-300 p-2">10</td><td class="border border-gray-300 p-2 highlight-finnish">kymmenen</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Number Meanings (Numeroiden Merkitykset)</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Finnish numbers tell a story!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li><span class="highlight-finnish">Kahdeksan</span> (8) and <span class="highlight-finnish">yhdeksän</span> (9) are believed to be derived from subtraction.</li>
-                            <li><span class="highlight-finnish">Kahdeksan</span> means 'two less than ten' (kaksi + deksan, related to 'ten').</li>
-                            <li><span class="highlight-finnish">Yhdeksän</span> means 'one less than ten' (yksi + deksan). </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Numbers (Numerot) 11–20</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Number</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">11</td><td class="border border-gray-300 p-2 highlight-finnish">yksitoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">12</td><td class="border border-gray-300 p-2 highlight-finnish">kaksitoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">13</td><td class="border border-gray-300 p-2 highlight-finnish">kolmetoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">14</td><td class="border border-gray-300 p-2 highlight-finnish">neljätoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">15</td><td class="border border-gray-300 p-2 highlight-finnish">viisitoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">16</td><td class="border border-gray-300 p-2 highlight-finnish">kuusitoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">17</td><td class="border border-gray-300 p-2 highlight-finnish">seitsemäntoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">18</td><td class="border border-gray-300 p-2 highlight-finnish">kahdeksantoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">19</td><td class="border border-gray-300 p-2 highlight-finnish">yhdeksäntoista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">20</td><td class="border border-gray-300 p-2 highlight-finnish">kaksikymmentä</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Numbers (Numerot) 20–100</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Number</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">20</td><td class="border border-gray-300 p-2 highlight-finnish">kaksikymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">30</td><td class="border border-gray-300 p-2 highlight-finnish">kolmekymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">40</td><td class="border border-gray-300 p-2 highlight-finnish">neljäkymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">50</td><td class="border border-gray-300 p-2 highlight-finnish">viisikymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">60</td><td class="border border-gray-300 p-2 highlight-finnish">kuusikymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">70</td><td class="border border-gray-300 p-2 highlight-finnish">seitsemänkymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">80</td><td class="border border-gray-300 p-2 highlight-finnish">kahdeksankymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">90</td><td class="border border-gray-300 p-2 highlight-finnish">yhdeksänkymmentä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">100</td><td class="border border-gray-300 p-2 highlight-finnish">sata</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Numbers (Numerot) 100–1000</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Number</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">100</td><td class="border border-gray-300 p-2 highlight-finnish">sata</td></tr>
-                                <tr><td class="border border-gray-300 p-2">200</td><td class="border border-gray-300 p-2 highlight-finnish">kaksisataa</td></tr>
-                                <tr><td class="border border-gray-300 p-2">500</td><td class="border border-gray-300 p-2 highlight-finnish">viisisataa</td></tr>
-                                <tr><td class="border border-gray-300 p-2">900</td><td class="border border-gray-300 p-2 highlight-finnish">yhdeksänsataa</td></tr>
-                                <tr><td class="border border-gray-300 p-2">1000</td><td class="border border-gray-300 p-2 highlight-finnish">tuhat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Grammar Rule: Partitive with Numbers</h3>
-                    <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
-                        <p class="font-semibold text-xl text-red-700 mb-2">⚠️ Important: The Partitive Case (Partitiivi)</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li><span class="highlight-finnish">Partitiivi on kuningas.</span> (The Partitive is king.) For numbers 2 and up, the object is in the Partitive case (<span class="highlight-finnish">-a/-ä, -ta/-tä</span>), **not** the plural nominative.</li>
-                            <li>**Example:** <span class="highlight-finnish">kolme taloa</span> (three houses), NOT <span class="highlight-finnish">kolme talot</span>.</li>
-                            <li><span class="highlight-finnish">Ablatiivi kellonajoissa.</span> (Ablative for time.) To indicate **at what time**, use the Ablative case (<span class="highlight-finnish">-lta/-ltä</span>) on the number. E.g., <span class="highlight-finnish">Bussi lähtee kahdeksalta</span> (The bus leaves at eight o'clock).</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- MOVED TO END: Alphabet & Numbers Examples -->
-                <section>
-                    <h3>Example Sentences: Numbers (Numerot)</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Let's try counting things! Remember to use the **Partitive** case when the number is 2 or more.</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li><span class="highlight-finnish">Yksi auto.</span> (One car.)</li>
-                            <li><span class="highlight-finnish">Kaksi autoa.</span> (Two cars. Note the Partitive ending on 'auto'!)</li>
-                            <li><span class="highlight-finnish">Kymmenen euroa.</span> (Ten euros.)</li>
-                            <li><span class="highlight-finnish">Onko sinulla nolla euroa?</span> (Do you have zero euros?)</li>
-                        </ul>
-                    </div>
-                </section>
+                <h3>Finnish Alphabet (Full)</h3>
+                <h4>Suomen Aakkosto</h4>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Letter</th>
+                            <th class="border border-gray-300 p-2">Pronunciation (Approx.)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">A</td>
+                            <td class="border border-gray-300 p-2">/ɑ/, like **a** in 'father'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">B</td>
+                            <td class="border border-gray-300 p-2">/beː/, like **b** in 'boy'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">C</td>
+                            <td class="border border-gray-300 p-2">/seː/, foreign letter</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">D</td>
+                            <td class="border border-gray-300 p-2">/deː/, like **d** in 'dog' (often softer)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">E</td>
+                            <td class="border border-gray-300 p-2">/e/, like **e** in 'bed'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">F</td>
+                            <td class="border border-gray-300 p-2">/ef/, like **f** in 'fan' (foreign)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">G</td>
+                            <td class="border border-gray-300 p-2">/geː/, like **g** in 'go' (foreign)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">H</td>
+                            <td class="border border-gray-300 p-2">/hoː/, like **h** in 'house' (can be stronger)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">I</td>
+                            <td class="border border-gray-300 p-2">/i/, like **ee** in 'see'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">J</td>
+                            <td class="border border-gray-300 p-2">/jiː/, like **y** in 'yes'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">K</td>
+                            <td class="border border-gray-300 p-2">/koː/, like **k** in 'key'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">L</td>
+                            <td class="border border-gray-300 p-2">/æl/, like **l** in 'love'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">M</td>
+                            <td class="border border-gray-300 p-2">/æm/, like **m** in 'man'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">N</td>
+                            <td class="border border-gray-300 p-2">/æn/, like **n** in 'no'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">O</td>
+                            <td class="border border-gray-300 p-2">/o/, like **o** in 'ore' (long O)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">P</td>
+                            <td class="border border-gray-300 p-2">/peː/, like **p** in 'pen'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Q</td>
+                            <td class="border border-gray-300 p-2">/kuː/, foreign letter</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">R</td>
+                            <td class="border border-gray-300 p-2">/ær/, a **rolled** R (trilled)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">S</td>
+                            <td class="border border-gray-300 p-2">/æs/, like **s** in 'snake' (always hard)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">T</td>
+                            <td class="border border-gray-300 p-2">/teː/, like **t** in 'top'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">U</td>
+                            <td class="border border-gray-300 p-2">/u/, like **oo** in 'boot'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">V</td>
+                            <td class="border border-gray-300 p-2">/veː/, like **v** in 'van'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">W</td>
+                            <td class="border border-gray-300 p-2">/veː/, same as V (foreign)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">X</td>
+                            <td class="border border-gray-300 p-2">/æks/, foreign letter</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Y</td>
+                            <td class="border border-gray-300 p-2">/y/, like French **u** or German **ü**</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Z</td>
+                            <td class="border border-gray-300 p-2">/tseːtɑ/, foreign letter</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Å</td>
+                            <td class="border border-gray-300 p-2">/oː/, Swedish letter (foreign)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ä</td>
+                            <td class="border border-gray-300 p-2">/æ/, like **a** in 'cat' (open and front)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ö</td>
+                            <td class="border border-gray-300 p-2">/ø/, like **i** in 'bird' (round mouth)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
-            <!-- Slide 2: Time & Calendar (Now Section 3) -->
             <section>
-                <section>
-                    <h2>Aika ja Kalenteri</h2>
-                    <h3>Time and Calendar</h3>
-                </section>
+                <h3>The Finnish Alphabet (Suomen Aakkosto) - Focus</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Kirjain (Letter)</th>
+                            <th class="border border-gray-300 p-2">English Equivalent / Sound</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">A</td>
+                            <td class="border border-gray-300 p-2">Like **a** in 'father'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">E</td>
+                            <td class="border border-gray-300 p-2">Like **e** in 'bed'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">I</td>
+                            <td class="border border-gray-300 p-2">Like **ee** in 'see'</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Y</td>
+                            <td class="border border-gray-300 p-2">Like French **u** or German **ü**</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ä</td>
+                            <td class="border border-gray-300 p-2">Like **a** in 'cat' (open and front)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ö</td>
+                            <td class="border border-gray-300 p-2">Like **i** in 'bird' (or German **ö**)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">R</td>
+                            <td class="border border-gray-300 p-2">A **rolled** R (like Italian or Spanish)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-                <section>
-                    <h3>Telling Time (Kellonajat)</h3>
-                    <ul class="list-disc ml-6">
-                        <li><span class="highlight-finnish">Kello on kolme.</span> (It is three o'clock.)</li>
-                        <li><span class="highlight-finnish">Kello on puoli kolme.</span> (It is half past two / 2:30.)</li>
-                        <li><span class="highlight-finnish">Kello on vartin yli kolme.</span> (It is a quarter past three / 3:15.)</li>
-                        <li><span class="highlight-finnish">Kello on kaksikymmentä yli kolme.</span> (It is twenty past three / 3:20.)</li>
-                        <li><span class="highlight-finnish">Kello on kymmenen vaille neljä.</span> (It is ten 'missing' four / 3:50.)</li>
-                        <li><span class="highlight-finnish">Kello on vartin vaille neljä.</span> (It is a quarter to four / 3:45.)</li>
-                        <li><span class="highlight-finnish">Kello on kaksikymmentä vaille neljä.</span> (It is twenty minutes to four / 3:40.)</li>
+            <section>
+                <h3>Fun Fact: The Finnish Alphabet</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Did you know...?</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>Finnish only uses <span class="highlight-finnish">B, C, F, G, Q, W, X, Z, Å</span> for
+                            foreign loanwords and names. The nine core Finnish consonants are <span
+                                    class="highlight-finnish">D, H, J, K, L, M, N, P, R, S, T, V</span>.
+                        </li>
+                        <li>The unique characters <span class="highlight-finnish">Å, Ä, Ö</span> were inherited from
+                            Swedish, but <span class="highlight-finnish">Ä</span> and <span
+                                    class="highlight-finnish">Ö</span> are fundamental Finnish sounds!
+                        </li>
                     </ul>
-                </section>
-
-                <section>
-                    <h3>The 'Puoli' Trick (Puoli-Temppu)</h3>
-                    <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
-                        <p class="font-semibold text-xl text-yellow-700 mb-2">💡 Tip: Puoli = Half to the Next Hour</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li><span class="highlight-finnish">Puoli</span> always means "halfway to the next hour."</li>
-                            <li>**Example:** <span class="highlight-finnish">Puoli kahdeksan</span> is 7:30, **not** 8:30.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Days of the Week (Viikonpäivät)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">English Day</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">Monday</td><td class="border border-gray-300 p-2 highlight-finnish">maanantai</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Tuesday</td><td class="border border-gray-300 p-2 highlight-finnish">tiistai</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Wednesday</td><td class="border border-gray-300 p-2 highlight-finnish">keskiviikko</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Thursday</td><td class="border border-gray-300 p-2 highlight-finnish">torstai</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Friday</td><td class="border border-gray-300 p-2 highlight-finnish">perjantai</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Saturday</td><td class="border border-gray-300 p-2 highlight-finnish">lauantai</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Sunday</td><td class="border border-gray-300 p-2 highlight-finnish">sunnuntai</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Day Names (Viikonpäivien Nimet)</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Did you know...?</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li><span class="highlight-finnish">Keskiviikko</span> literally means **"Mid-week"** (<span class="highlight-finnish">keski-</span> = middle, <span class="highlight-finnish">viikko</span> = week).</li>
-                            <li><span class="highlight-finnish">Tiistai</span> (Tuesday) is derived from the Norse god **Týr**, and <span class="highlight-finnish">Torstai</span> (Thursday) comes from the mighty god **Thor**.</li>
-                            <li><span class="highlight-finnish">Perjantai</span> (Friday) is related to the Norse goddess Freya, while <span class="highlight-finnish">Lauantai</span> (Saturday) comes from the Old Norse word for 'washing day'.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Months (Kuukaudet)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">English Month</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">January</td><td class="border border-gray-300 p-2 highlight-finnish">tammikuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">February</td><td class="border border-gray-300 p-2 highlight-finnish">helmikuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">March</td><td class="border border-gray-300 p-2 highlight-finnish">maaliskuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">April</td><td class="border border-gray-300 p-2 highlight-finnish">huhtikuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">May</td><td class="border border-gray-300 p-2 highlight-finnish">toukokuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">June</td><td class="border border-gray-300 p-2 highlight-finnish">kesäkuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">July</td><td class="border border-gray-300 p-2 highlight-finnish">heinäkuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">August</td><td class="border border-gray-300 p-2 highlight-finnish">elokuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">September</td><td class="border border-gray-300 p-2 highlight-finnish">syyskuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">October</td><td class="border border-gray-300 p-2 highlight-finnish">lokakuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">November</td><td class="border border-gray-300 p-2 highlight-finnish">marraskuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">December</td><td class="border border-gray-300 p-2 highlight-finnish">joulukuu</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Month Names (Kuukausien Nimet)</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Finnish names are descriptive!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>The suffix <span class="highlight-finnish">kuu</span> means both **'month'** and **'moon'**. </li>
-                            <li><span class="highlight-finnish">Tammikuu</span> (January): The month of the 'heart' or 'core' (tammi) of winter.</li>
-                            <li><span class="highlight-finnish">Helmikuu</span> (February): 'Pearl Month', for snow covering plants/buds, or ice forming on trees.</li>
-                            <li><span class="highlight-finnish">Maaliskuu</span> (March): 'Barren Land Month', when the snow melts and the land (maa) is visible but still grey.</li>
-                            <li><span class="highlight-finnish">Huhtikuu</span> (April): Possibly 'Slash-and-burn Month' (huhta), referring to ancient farming.</li>
-                            <li><span class="highlight-finnish">Toukokuu</span> (May): 'Sowing Month' (touko), for the beginning of agriculture.</li>
-                            <li><span class="highlight-finnish">Kesäkuu</span> (June) & <span class="highlight-finnish">Heinäkuu</span> (July): 'Summer Month' (kesä) and 'Hay Month' (heinä).</li>
-                            <li><span class="highlight-finnish">Syyskuu</span> (September): 'Autumn Month' (syys).</li>
-                            <li><span class="highlight-finnish">Joulukuu</span> (December): 'Christmas Month' (joulu).</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Seasons (Vuodenajat)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">English Season</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">Spring</td><td class="border border-gray-300 p-2 highlight-finnish">kevät</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Summer</td><td class="border border-gray-300 p-2 highlight-finnish">kesä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Autumn/Fall</td><td class="border border-gray-300 p-2 highlight-finnish">syksy</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Winter</td><td class="border border-gray-300 p-2 highlight-finnish">talvi</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Season Names (Vuodenaikojen Nimet)</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Seasonal words are powerful!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>The word <span class="highlight-finnish">syksy</span> (Autumn) is related to the word **"suck"** or **"draw"**, perhaps referring to the time the earth draws back its vitality or moisture.</li>
-                            <li><span class="highlight-finnish">Talvi</span> (Winter) is an ancient word related to darkness and cold. </li>
-                            <li>Finland often experiences a **fifth season** called **ruska** (autumn colors), when the beautiful foliage turns red and gold before the snow hits!</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Grammar: Cases for Dates (Sijamuodot ja Kalenteri)</h3>
-                    <div class="p-4 bg-green-100 rounded-lg border-l-4 border-green-500">
-                        <p class="font-semibold text-xl text-green-700 mb-2">🎯 Using Cases to Indicate Time</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li>**Days:** Use the **Essive** case (<span class="highlight-finnish">-na/-nä</span>). E.g., <span class="highlight-finnish">maanantaina</span> (on Monday).</li>
-                            <li>**Months/Seasons:** Use the **Inessive** case (<span class="highlight-finnish">-ssa/-ssä</span>). E.g., <span class="highlight-finnish">heinäkuussa</span> (in July).</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- MOVED TO END: Time & Calendar Examples -->
-                <section>
-                    <h3>Example Sentences: Time (Aika)</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Let's practice telling time and asking about dates.</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li>**Q:** <span class="highlight-finnish">Mikä päivä tänään on?</span> (What day is today?) **A:** <span class="highlight-finnish">Tänään on maanantai.</span> (Today is Monday.)</li>
-                            <li>**Q:** <span class="highlight-finnish">Milloin sinä tulet?</span> (When are you coming?) **A:** <span class="highlight-finnish">Tulen toukokuussa.</span> (I am coming in May.)</li>
-                            <li>**Q:** <span class="highlight-finnish">Milloin loma alkaa?</span> (When does the holiday start?) **A:** <span class="highlight-finnish">Loma alkaa kesällä.</span> (The holiday starts in summer.)</li>
-                        </ul>
-                    </div>
-                </section>
+                </div>
             </section>
 
-            <!-- Slide 3: Pronouns & Vocabulary (Now Section 4) -->
             <section>
-                <section>
-                    <h2>Perusteet ja Pronominit</h2>
-                    <h3>Basics & Pronouns</h3>
-                </section>
-
-                <section>
-                    <h3>Personal Pronouns (Persoonapronominit)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">English</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Nominative)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">I</td><td class="border border-gray-300 p-2 highlight-finnish">minä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">You (sg.)</td><td class="border border-gray-300 p-2 highlight-finnish">sinä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">He/She</td><td class="border border-gray-300 p-2 highlight-finnish">hän</td></tr>
-                                <tr><td class="border border-gray-300 p-2">We</td><td class="border border-gray-300 p-2 highlight-finnish">me</td></tr>
-                                <tr><td class="border border-gray-300 p-2">You (pl.)</td><td class="border border-gray-300 p-2 highlight-finnish">te</td></tr>
-                                <tr><td class="border border-gray-300 p-2">They</td><td class="border border-gray-300 p-2 highlight-finnish">he</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Possessive Pronouns (Omistuspronominit - Genitive Form)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">English (My, Your, etc.)</th>
-                                    <th class="border border-gray-300 p-2">In Finnish (Genitive)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">My</td><td class="border border-gray-300 p-2 highlight-finnish">minun</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Your (sg.)</td><td class="border border-gray-300 p-2 highlight-finnish">sinun</td></tr>
-                                <tr><td class="border border-gray-300 p-2">His/Her</td><td class="border border-gray-300 p-2 highlight-finnish">hänen</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Our</td><td class="border border-gray-300 p-2 highlight-finnish">meidän</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Your (pl.)</td><td class="border border-gray-300 p-2 highlight-finnish">teidän</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Their</td><td class="border border-gray-300 p-2 highlight-finnish">heidän</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Essential Greetings (Tervehdykset)</h3>
-                    <ul class="list-disc ml-6">
-                        <li><span class="highlight-finnish">Hei! / Moi!</span> (Hello! / Hi!)</li>
-                        <li><span class="highlight-finnish">Hauska tavata!</span> (Nice to meet you!)</li>
-                        <li><span class="highlight-finnish">Kiitos.</span> (Thank you.)</li>
-                        <li><span class="highlight-finnish">Anteeksi.</span> (Excuse me / Sorry.)</li>
-                        <li><span class="highlight-finnish">Näkemiin!</span> (Goodbye!)</li>
+                <h3>Pronunciation Tips (Ääntämisvinkit)</h3>
+                <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
+                    <p class="font-semibold text-xl text-blue-700 mb-2">💡 Tip: Finnish is Phonetic</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li><span class="highlight-finnish">Yksi ääni per kirjain.</span> (One sound per letter.) There
+                            are no silent letters!
+                        </li>
+                        <li><span class="highlight-finnish">Kaksoiskirjaimet ovat pitkiä.</span> (Double letters are
+                            long.) Double vowels (e.g., <span class="highlight-finnish">maa</span> 'land') or double
+                            consonants (e.g., <span class="highlight-finnish">kukka</span> 'flower') are held for a
+                            longer duration.
+                        </li>
                     </ul>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Greetings and Politeness</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Did you know...?</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>The formal 'you' (<span class="highlight-finnish">Te</span>) is almost never used in modern Finnish society, even in professional settings. Stick to <span class="highlight-finnish">sinä</span>!</li>
-                            <li>The shortest Finnish greeting is <span class="highlight-finnish">Hei</span>, often doubled for enthusiasm: <span class="highlight-finnish">Hei hei!</span></li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Pronoun Usage Notes (Pronominien Käyttö)</h3>
-                    <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li><span class="highlight-finnish">Minä ja Sinä ovat valinnaisia.</span> (I and You are optional.) You usually drop <span class="highlight-finnish">minä</span> and <span class="highlight-finnish">sinä</span> because the verb ending already shows the subject. E.g., <span class="highlight-finnish">Opiskelen suomea</span> (I study Finnish).</li>
-                            <li><span class="highlight-finnish">Hän vs. Se.</span> Always use <span class="highlight-finnish">hän</span> (person) for people and <span class="highlight-finnish">se</span> (it) for things in written Finnish. In spoken Finnish, <span class="highlight-finnish">se</span> may refer to anything.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- MOVED TO END: Pronoun Examples -->
-                <section>
-                    <h3>Example Sentences: Pronouns (Pronominit)</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Let's try introducing ourselves and others.</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li><span class="highlight-finnish">Minun nimi on Kaisa.</span> (My name is Kaisa.)</li>
-                            <li><span class="highlight-finnish">Oletko sinä insinööri?</span> (Are you an engineer?)</li>
-                            <li><span class="highlight-finnish">Hänen koira on iso.</span> (His/Her dog is big.)</li>
-                            <li><span class="highlight-finnish">Me olemme Suomesta.</span> (We are from Finland.)</li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
-            <!-- Section 4: Vokaaliharmonia (Vowel Harmony) - NEW SECTION -->
-            <section>
-                <section>
-                    <h2>Vokaaliharmonia</h2>
-                    <h3>Vowel Harmony: The Golden Rule</h3>
-                </section>
-
-                <section>
-                    <h3>The Rule (Sääntö)</h3>
-                    <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
-                        <p class="font-semibold text-xl text-yellow-700 mb-4">💡 Grammar Tip: Keep the Vowels Balanced</p>
-                        <p class="text-gray-800 mb-4">A Finnish word can only contain **Back** or **Front** vowels. Endings must match the type of vowel in the stem.</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li>**Back Vowels (Taka):** <span class="vowel-box back-vowel">A</span>, <span class="vowel-box back-vowel">O</span>, <span class="vowel-box back-vowel">U</span></li>
-                            <li>**Front Vowels (Etu):** <span class="vowel-box front-vowel">Ä</span>, <span class="vowel-box front-vowel">Ö</span>, <span class="vowel-box front-vowel">Y</span></li>
-                            <li>**Neutral Vowels (Neutraali):** <span class="vowel-box neutral-vowel">E</span>, <span class="vowel-box neutral-vowel">I</span> (These can mix with both groups)</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Vowel Harmony Examples</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead><tr><th class="p-2 border">Stem Vowels</th><th class="p-2 border">Word (English)</th><th class="p-2 border">Case Ending (Inessive)</th></tr></thead>
-                            <tbody>
-                                <tr>
-                                    <td class="p-2 border back-vowel text-white font-bold">A, O, U</td>
-                                    <td class="p-2 border highlight-finnish">Vaas**a**</td>
-                                    <td class="p-2 border highlight-finnish">Vaasa**ssa** (Back ending -ssa)</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 border front-vowel text-white font-bold">Ä, Ö, Y</td>
-                                    <td class="p-2 border highlight-finnish">Helsinki (Neutral + Front)</td>
-                                    <td class="p-2 border highlight-finnish">Helsingi**ssä** (Front ending -ssä)</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 border back-vowel text-white font-bold">A, E, I</td>
-                                    <td class="p-2 border highlight-finnish">K**a**upp**a** (Back + Neutral)</td>
-                                    <td class="p-2 border highlight-finnish">Kaupa**ssa** (Back ending -ssa)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Vowel Harmony</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">It's all about flow!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>Vowel Harmony makes Finnish sound soft and rhythmic. Your tongue stays in the same general area (front or back of the mouth) when pronouncing a word.</li>
-                            <li>The only exception is compound words (like a long address), where the harmony might switch between the parts.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Example Sentences: Vowel Harmony</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Matching vowels like a pro!</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li><span class="highlight-finnish">Olen k**o**t**o**n**a**.</span> (I am at home.) - **Back** vowels (o, a).</li>
-                            <li><span class="highlight-finnish">M**e** asu**mme** H**e**lsi**ngi**ss**ä**.</span> (We live in Helsinki.) - **Front/Neutral** vowels (e, i, ä).</li>
-                            <li><span class="highlight-finnish">H**än** **o**n l**a**ps**i**.</span> (He/She is a child.) - Mixed (hän is one unit, lapsi is another).</li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
-            <!-- Slide 5: Verbs (Now Section 5) -->
-            <section>
-                <section>
-                    <h2>Verbit (Tyypit 1–3)</h2>
-                    <h3>Verb Conjugation (Present Tense)</h3>
-                </section>
-
-                <section>
-                    <h3>Irregular Verb: Olla (To Be)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Pronoun</th>
-                                    <th class="border border-gray-300 p-2">Conjugation (Olla)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">Minä (I)</td><td class="border border-gray-300 p-2 highlight-finnish">olen</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Sinä (You)</td><td class="border border-gray-300 p-2 highlight-finnish">olet</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Hän (He/She)</td><td class="border border-gray-300 p-2 highlight-finnish">on</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Me (We)</td><td class="border border-gray-300 p-2 highlight-finnish">olemme</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Te (You pl.)</td><td class="border border-gray-300 p-2 highlight-finnish">olette</td></tr>
-                                <tr><td class="border border-gray-300 p-2">He (They)</td><td class="border border-gray-300 p-2 highlight-finnish">ovat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: The Olla Verb</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Did you notice how unique Olla is?</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li><span class="highlight-finnish">Olla</span> is one of the most irregular and important verbs in Finnish, just like "to be" in English!</li>
-                            <li>The <span class="highlight-finnish">hän/se</span> form, **on**, looks nothing like the infinitive **olla**. Memorize this one first—it's essential for describing everything!</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Negative Verb (Kielteinen Verbi)</h3>
-                    <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
-                        <p class="font-semibold text-xl text-red-700 mb-2">⚠️ Structure: Negative Verb + Main Verb Stem</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li>Finnish uses a separate negative verb that conjugates, while the main verb stays in a simple form (the stem).</li>
-                            <li>**Example (Minä - I):** <span class="highlight-finnish">Minä **en** ole</span> (I am not) or <span class="highlight-finnish">Minä **en asu**</span> (I don't live).</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Verb Type 1: Asua (To Live)</h3>
-                    <p class="mb-4">Rule: Infinitive ends in two vowels plus <span class="highlight-finnish">a/ä</span> (e.g., asu**a**, puhu**a**).</p>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Pronoun</th>
-                                    <th class="border border-gray-300 p-2">Conjugation (Asua)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">Minä</td><td class="border border-gray-300 p-2 highlight-finnish">asun</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Sinä</td><td class="border border-gray-300 p-2 highlight-finnish">asut</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Hän/Se</td><td class="border border-gray-300 p-2 highlight-finnish">asuu</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Me</td><td class="border border-gray-300 p-2 highlight-finnish">asumme</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Te</td><td class="border border-gray-300 p-2 highlight-finnish">asutte</td></tr>
-                                <tr><td class="border border-gray-300 p-2">He</td><td class="border border-gray-300 p-2 highlight-finnish">asuvat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Verb Type 2: Syödä (To Eat)</h3>
-                    <p class="mb-4">Rule: Infinitive ends in <span class="highlight-finnish">-da/-dä</span> (e.g., syö**dä**, juo**da**).</p>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Pronoun</th>
-                                    <th class="border border-gray-300 p-2">Conjugation (Syödä)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">Minä</td><td class="border border-gray-300 p-2 highlight-finnish">syön</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Sinä</td><td class="border border-gray-300 p-2 highlight-finnish">syöt</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Hän/Se</td><td class="border border-gray-300 p-2 highlight-finnish">syö</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Me</td><td class="border border-gray-300 p-2 highlight-finnish">syömme</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Te</td><td class="border border-gray-300 p-2 highlight-finnish">syötte</td></tr>
-                                <tr><td class="border border-gray-300 p-2">He</td><td class="border border-gray-300 p-2 highlight-finnish">syövät</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Verb Type 3: Haluta (To Want) - NEW!</h3>
-                    <p class="mb-4">Rule: Infinitive ends in consonant + <span class="highlight-finnish">a/ä, e, i, o, u</span> (e.g., h**a**lu**t**a, tu**ll**a).</p>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Pronoun</th>
-                                    <th class="border border-gray-300 p-2">Conjugation (Haluta)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">Minä</td><td class="border border-gray-300 p-2 highlight-finnish">haluan</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Sinä</td><td class="border border-gray-300 p-2 highlight-finnish">haluat</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Hän/Se</td><td class="border border-gray-300 p-2 highlight-finnish">haluaa</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Me</td><td class="border border-gray-300 p-2 highlight-finnish">haluamme</td></tr>
-                                <tr><td class="border border-gray-300 p-2">Te</td><td class="border border-gray-300 p-2 highlight-finnish">haluatte</td></tr>
-                                <tr><td class="border border-gray-300 p-2">He</td><td class="border border-gray-300 p-2 highlight-finnish">haluavat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="mt-4 text-center">**Tip:** Drop the last two letters (<span class="highlight-finnish">ta/tä</span>) and add <span class="highlight-finnish">-a/ä</span> before the personal ending!</p>
-                </section>
-
-                <section>
-                    <h3>Tip: Verb Conjugation (Vinkki: Verbien Taivutus)</h3>
-                    <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
-                        <p class="font-semibold text-xl text-blue-700 mb-2">💡 Four Steps to Victory:</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li>1. Identify the verb type.</li>
-                            <li>2. Find the verb stem according to the type's rule.</li>
-                            <li>3. Add the personal ending (<span class="highlight-finnish">-n, -t, -V, -mme, -tte, -vat</span>).</li>
-                            <li>4. Check for Consonant Gradation (KPT - used by Types 1, 3, and 4).</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Example: Type 1 Puhua (To Speak)</h3>
-                    <div class="scrollable-table">
-                        <h4 class="text-lg font-bold text-left text-gray-700 mb-2">Puhua (Type 1: To Speak)</h4>
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
-                            <thead><tr><th class="p-2 border">Positive</th><th class="p-2 border">Negative</th></tr></thead>
-                            <tbody>
-                                <tr><td class="p-2 border highlight-finnish">Puhun</td><td class="p-2 border highlight-finnish">En puhu</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Puhut</td><td class="p-2 border highlight-finnish">Et puhu</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Puhuu</td><td class="p-2 border highlight-finnish">Ei puhu</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Puhumme</td><td class="p-2 border highlight-finnish">Emme puhu</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Puhutte</td><td class="p-2 border highlight-finnish">Ette puhu</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Puhuvat</td><td class="p-2 border highlight-finnish">Eivät puhu</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Example: Type 2 Juoda (To Drink)</h3>
-                    <div class="scrollable-table">
-                        <h4 class="text-lg font-bold text-left text-gray-700 mb-2">Juoda (Type 2: To Drink)</h4>
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
-                            <thead><tr><th class="p-2 border">Positive</th><th class="p-2 border">Negative</th></tr></thead>
-                            <tbody>
-                                <tr><td class="p-2 border highlight-finnish">Juon</td><td class="p-2 border highlight-finnish">En juo</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Juot</td><td class="p-2 border highlight-finnish">Et juo</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Juo</td><td class="p-2 border highlight-finnish">Ei juo</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Juomme</td><td class="p-2 border highlight-finnish">Emme juo</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Juotte</td><td class="p-2 border highlight-finnish">Ette juo</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Juovat</td><td class="p-2 border highlight-finnish">Eivät juo</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Example: Type 3 Haluta (To Want)</h3>
-                    <div class="scrollable-table">
-                        <h4 class="text-lg font-bold text-left text-gray-700 mb-2">Haluta (Type 3: To Want)</h4>
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
-                            <thead><tr><th class="p-2 border">Positive</th><th class="p-2 border">Negative</th></tr></thead>
-                            <tbody>
-                                <tr><td class="p-2 border highlight-finnish">Haluan</td><td class="p-2 border highlight-finnish">En halua</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Haluat</td><td class="p-2 border highlight-finnish">Et halua</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Haluaa</td><td class="p-2 border highlight-finnish">Ei halua</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Haluamme</td><td class="p-2 border highlight-finnish">Emme halua</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Haluatte</td><td class="p-2 border highlight-finnish">Ette halua</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Haluavat</td><td class="p-2 border highlight-finnish">Eivät halua</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-
-                <!-- MOVED TO END: Verb Examples -->
-                <section>
-                    <h3>Example Sentences: Verbs (Verbit)</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Let's talk about what we do!</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li><span class="highlight-finnish">Asun Vaasassa.</span> (I live in Vaasa.) - No <span class="highlight-finnish">minä</span> needed!</li>
-                            <li><span class="highlight-finnish">Hän opiskelee tietotekniikkaa.</span> (He/She studies computing science.)</li>
-                            <li><span class="highlight-finnish">Me emme syö lihaa.</span> (We do not eat meat.)</li>
-                            <li><span class="highlight-finnish">Oletko onnellinen?</span> (Are you happy?)</li>
-                        </ul>
-                    </div>
-                </section>
+                </div>
             </section>
 
-            <!-- Slide 6: Cases and KPT (Now Section 6) -->
             <section>
-                <section>
-                    <h2>Sijamuodot ja KPT</h2>
-                    <h3>Cases and Consonant Gradation (A1.1 Overview)</h3>
-                </section>
-
-                <section>
-                    <h3>Consonant Gradation (KPT Astevaihtelu)</h3>
-                    <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
-                        <p class="font-semibold text-xl text-red-700 mb-2">⚠️ The Golden Rule: Strong Stem (Base) vs. Weak Stem (Modified)</p>
-                        <p class="text-gray-800">KPT is a regular pattern where consonants **k, p, t** change or disappear when an ending is added to a word, making the syllable longer.</p>
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg my-4 w-full text-center">
-                            <thead>
-                                <tr><th class="p-2 border">Strong Stem (Base)</th><th class="p-2 border">Weak Stem (Modified)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="p-2 border highlight-finnish">**kk** (ku**kk**a)</td><td class="p-2 border highlight-finnish">**k** (kukan)</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">**pp** (ka**pp**a)</td><td class="p-2 border highlight-finnish">**p** (kapan)</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">**t** (ty**tt**ö)</td><td class="p-2 border highlight-finnish">**t** (tytön)</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">**k** (au**k**oa)</td><td class="p-2 border highlight-finnish">**(drop)** (auon)</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: KPT and Grammar</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">KPT is more than just pronunciation!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>KPT helps Finns instantly tell if a word is the simple base form (strong stem) or if it has an ending attached (weak stem).</li>
-                            <li>The rule exists because early Finnish speakers tried to avoid having three short syllables in a row—it's a linguistic efficiency tool!</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Internal Local Cases (Sisäpaikallissijat)</h3>
-                    <p class="mb-4">These refer to **inside** something (In, From, To).</p>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Direction</th>
-                                    <th class="border border-gray-300 p-2">Case & Ending</th>
-                                    <th class="border border-gray-300 p-2">Example (Koti - Home)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">WHERE? (In)</td><td class="border border-gray-300 p-2 font-bold">Inessive (-ssa/-ssä)</td><td class="border border-gray-300 p-2 highlight-finnish">kodissa</td></tr>
-                                <tr><td class="border border-gray-300 p-2">FROM WHERE?</td><td class="border border-gray-300 p-2 font-bold">Elative (-sta/-stä)</td><td class="border border-gray-300 p-2 highlight-finnish">kodista</td></tr>
-                                <tr><td class="border border-gray-300 p-2">TO WHERE?</td><td class="border border-gray-300 p-2 font-bold">Illative (-Vn / -seen)</td><td class="border border-gray-300 p-2 highlight-finnish">kotiin</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="mt-4 text-center">Think of this as being **inside** a building or a country. </p>
-                </section>
-
-                <section>
-                    <h3>External Local Cases (Ulkopaikallissijat)</h3>
-                    <p class="mb-4">These refer to **on/at/near** something (On, From, To).</p>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table">
-                            <thead>
-                                <tr>
-                                    <th class="border border-gray-300 p-2">Direction</th>
-                                    <th class="border border-gray-300 p-2">Case & Ending</th>
-                                    <th class="border border-gray-300 p-2">Example (Pöytä - Table)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border border-gray-300 p-2">WHERE? (On/At)</td><td class="border border-gray-300 p-2 font-bold">Adessive (-lla/-llä)</td><td class="border border-gray-300 p-2 highlight-finnish">pöydällä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">FROM WHERE?</td><td class="border border-gray-300 p-2 font-bold">Ablative (-lta/-ltä)</td><td class="border border-gray-300 p-2 highlight-finnish">pöydältä</td></tr>
-                                <tr><td class="border border-gray-300 p-2">TO WHERE?</td><td class="border border-gray-300 p-2 font-bold">Allative (-lle)</td><td class="border border-gray-300 p-2 highlight-finnish">pöydälle</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="mt-4 text-center">Think of this as being **on the surface** of something or **near** a place.</p>
-                </section>
-
-                <section>
-                    <h3>Local Cases Summary (Paikallissijat Yhteenveto)</h3>
-                    <p class="mb-4 text-center text-lg font-bold">In vs. On (Sisä vs. Ulko)</p>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full max-w-sm">
-                            <thead>
-                                <tr>
-                                    <th class="border p-2">State/Location</th>
-                                    <th class="border p-2">Internal (In)</th>
-                                    <th class="border p-2">External (On/At)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="border p-2">**Where?**</td><td class="border p-2 highlight-finnish">-ssa/-ssä</td><td class="border p-2 highlight-finnish">-lla/-llä</td></tr>
-                                <tr><td class="border p-2">**From?**</td><td class="border p-2 highlight-finnish">-sta/-stä</td><td class="border p-2 highlight-finnish">-lta/-ltä</td></tr>
-                                <tr><td class="border p-2">**To?**</td><td class="border p-2 highlight-finnish">-Vn / -seen</td><td class="border p-2 highlight-finnish">-lle</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>The Partitive Case (Partitiivi) in Focus</h3>
-                    <div class="p-4 bg-green-100 rounded-lg border-l-4 border-green-500">
-                        <p class="font-semibold text-xl text-green-700 mb-2">🎯 Key Concept: Part vs. Whole</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li><span class="highlight-finnish">Partitiivi: Kokonaisuus vs. Osa.</span> The Partitive is used to indicate an **unspecified amount** or an **unfinished action**.</li>
-                            <li>**Example:** <span class="highlight-finnish">Söin omenaa</span> (I was eating the apple - not finished) vs. <span class="highlight-finnish">Söin omenan</span> (I ate the apple - finished/whole object).</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Partitive and Quantification</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">The case of 'I love you'!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>Finnish people don't use the Partitive when they say **"Minä rakastan sinua"** (I love you). Wait, yes they do! **"Sinua"** is the Partitive form of **"sinä"**.</li>
-                            <li>This is because, in Finnish, emotion is considered a state or feeling, meaning you can't quantify your love—it is unlimited or ongoing, triggering the Partitive case! </li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>The Big Rule for All Cases (Sijamuodot vs. Prepositio)</h3>
-                    <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
-                        <p class="font-semibold text-xl text-red-700 mb-2">⚠️ No Prepositions Needed!</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li><span class="highlight-finnish">Vain yksi pääte.</span> Finnish uses these case endings **instead of** English prepositions (in, on, from, to).</li>
-                            <li>You should **never** combine a case ending with a separate preposition. The ending does the job!</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- MOVED TO END: Case Examples -->
-                <section>
-                    <h3>Example Sentences: Cases (Sijamuodot)</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Let's talk about where we are!</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li><span class="highlight-finnish">Olen kaupassa.</span> (I am in the store. - Inessive)</li>
-                            <li><span class="highlight-finnish">Menetkö kotiin?</span> (Are you going home? - Illative)</li>
-                            <li><span class="highlight-finnish">Tulen yliopistolta.</span> (I am coming from the university. - Ablative)</li>
-                            <li><span class="highlight-finnish">Kissa on pöydällä.</span> (The cat is on the table. - Adessive) </li>
-                        </ul>
-                    </div>
-                </section>
+                <h3>Numbers (Numerot) 0–10</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Number</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">0</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">nolla</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">1</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">yksi</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">2</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kaksi</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">3</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kolme</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">4</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">neljä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">5</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">viisi</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">6</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kuusi</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">7</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">seitsemän</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">8</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kahdeksan</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">9</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">yhdeksän</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">10</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kymmenen</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
-            <!-- Slide 7: Vocabulary (Now Section 7) -->
             <section>
-                <section>
-                    <h2>Sanasto (Vocabulary)</h2>
-                    <h3>Essential Words for A1.1</h3>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Word Structure (Sanan Rakenne)</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Agglutination is fun!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>Finnish is an **agglutinative language**, meaning you stick suffixes onto words to change their meaning.</li>
-                            <li>Example: <span class="highlight-finnish">Talo</span> (house) → <span class="highlight-finnish">Talo**ssa**</span> (in the house) → <span class="highlight-finnish">Talo**ssani**</span> (in my house)!</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Family (Perhe)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead><tr><th class="p-2 border">English</th><th class="p-2 border">Finnish</th></tr></thead>
-                            <tbody>
-                                <tr><td class="p-2 border">Mother</td><td class="p-2 border highlight-finnish">äiti</td></tr>
-                                <tr><td class="p-2 border">Father</td><td class="p-2 border highlight-finnish">isä</td></tr>
-                                <tr><td class="p-2 border">Child</td><td class="p-2 border highlight-finnish">lapsi</td></tr>
-                                <tr><td class="p-2 border">Sister</td><td class="p-2 border highlight-finnish">sisko</td></tr>
-                                <tr><td class="p-2 border">Brother</td><td class="p-2 border highlight-finnish">veli</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Food and Drink (Ruoka ja Juomat)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead><tr><th class="p-2 border">English</th><th class="p-2 border">Finnish</th></tr></thead>
-                            <tbody>
-                                <tr><td class="p-2 border">Coffee</td><td class="p-2 border highlight-finnish">kahvi</td></tr>
-                                <tr><td class="p-2 border">Water</td><td class="p-2 border highlight-finnish">vesi</td></tr>
-                                <tr><td class="p-2 border">Bread</td><td class="p-2 border highlight-finnish">leipä</td></tr>
-                                <tr><td class="p-2 border">Fish</td><td class="p-2 border highlight-finnish">kala</td></tr>
-                                <tr><td class="p-2 border">Meat</td><td class="p-2 border highlight-finnish">liha</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: Coffee and Culture</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Coffee is King!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>Finns are often listed as the world's heaviest coffee drinkers. Don't be surprised if your host offers you a refill immediately!</li>
-                            <li>A Finnish word for a coffee break is <span class="highlight-finnish">kahvitauko</span>.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Example Sentences: Vocabulary (Sanasto)</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Using your new words!</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li><span class="highlight-finnish">Minun isä juo kahvia.</span> (My father drinks coffee.)</li>
-                            <li><span class="highlight-finnish">Veli on kotona.</span> (Brother is at home.)</li>
-                            <li><span class="highlight-finnish">Syömme leipää ja kalaa.</span> (We eat bread and fish.)</li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
-
-            <!-- Slide 8: Questions and Answers (Now Section 8) -->
-            <section>
-                <section>
-                    <h2>Kysymykset ja Vastaukset</h2>
-                    <h3>Questions and Answers (Dialogue Basics)</h3>
-                </section>
-
-                <section>
-                    <h3>'Yes/No' Questions (Kyllä/Ei Kysymykset)</h3>
-                    <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
-                        <p class="font-semibold text-xl text-yellow-700 mb-2">💡 Grammar Tip: The Question Particle</p>
-                        <ul class="list-disc ml-6 text-gray-800">
-                            <li>To form a simple yes/no question, you add the question particle <span class="highlight-finnish">-ko/-kö</span> to the **main verb**.</li>
-                            <li>**Statement:** <span class="highlight-finnish">Sinä olet opiskelija.</span> (You are a student.)</li>
-                            <li>**Question:** <span class="highlight-finnish">Olet**ko** sinä opiskelija?</span> (Are you a student?)</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Wh- Questions (Kysymyssanat)</h3>
-                    <div class="scrollable-table">
-                        <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
-                            <thead><tr><th class="p-2 border">Finnish</th><th class="p-2 border">English Meaning</th></tr></thead>
-                            <tbody>
-                                <tr><td class="p-2 border highlight-finnish">Kuka?</td><td class="p-2 border">Who?</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Mitä?</td><td class="p-2 border">What? (in the Partitive case)</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Missä?</td><td class="p-2 border">Where? (Inessive: -ssa/-ssä)</td></tr>
-                                <tr><td class="p-2 border highlight-finnish">Milloin?</td><td class="p-2 border">When?</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Fun Fact: The Finnish Pause</h3>
-                    <div class="fun-fact">
-                        <p class="font-semibold text-xl text-gray-900 mb-2">Silent is normal!</p>
-                        <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
-                            <li>Finns are famous for respecting silence. When asking a question, don't rush to fill the pause!</li>
-                            <li>Allowing a person space to formulate a concise answer is considered polite and respectful in Finnish culture.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Example Sentences: Questions and Dialogue</h3>
-                    <div class="fun-fact">
-                        <p class="text-gray-900 font-normal italic">Practicing Conversation!</p>
-                        <ul class="list-disc ml-6 mt-4 not-italic">
-                            <li>**Q:** <span class="highlight-finnish">Missä sinä asut?</span> (Where do you live?) **A:** <span class="highlight-finnish">Minä asun Vaasassa.</span> (I live in Vaasa.)</li>
-                            <li>**Q:** <span class="highlight-finnish">Juotko sinä kahvia?</span> (Do you drink coffee?) **A:** <span class="highlight-finnish">Kyllä, juon.</span> (Yes, I drink.)</li>
-                            <li>**Q:** <span class="highlight-finnish">Mitä te teette?</span> (What are you (pl.) doing?) **A:** <span class="highlight-finnish">Me opiskelemme.</span> (We are studying.)</li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
-
-            <!-- Final Slide 9: Conclusion (Old Slide 6) -->
-            <section>
-                <section>
-                    <h2>Onnea opiskeluun!</h2>
-                    <h3>Good Luck with Your Studies!</h3>
-                    <p class="mt-8 text-lg">You've covered all the core grammar of A1.1. Keep practicing your verbs and local cases!</p>
-                </section>
-
-                <section>
-                    <h3>Resurssit (Resources)</h3>
-                    <p class="mb-4">Here are some excellent resources to continue your journey:</p>
-                    <ul class="list-disc ml-6">
-                        <li><a href="https://uusi.uusikielemme.fi/" target="_blank" class="text-blue-500 hover:text-green-500 font-semibold">Uusi kielemme</a> (Detailed Grammar Explanations)</li>
-                        <li><a href="https://www.finnishpod101.com/" target="_blank" class="text-blue-500 hover:text-green-500 font-semibold">FinnishPod101</a> (Audio/Vocabulary)</li>
-                        <li><a href="https://www.duolingo.com/course/fi/en/Learn-Finnish" target="_blank" class="text-blue-500 hover:text-green-500 font-semibold">Duolingo Finnish</a> (Daily Practice)</li>
+                <h3>Fun Fact: Number Meanings (Numeroiden Merkitykset)</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Finnish numbers tell a story!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li><span class="highlight-finnish">Kahdeksan</span> (8) and <span class="highlight-finnish">yhdeksän</span>
+                            (9) are believed to be derived from subtraction.
+                        </li>
+                        <li><span class="highlight-finnish">Kahdeksan</span> means 'two less than ten' (kaksi + deksan,
+                            related to 'ten').
+                        </li>
+                        <li><span class="highlight-finnish">Yhdeksän</span> means 'one less than ten' (yksi + deksan).
+                        </li>
                     </ul>
-                </section>
+                </div>
             </section>
 
-        </div>
+            <section>
+                <h3>Numbers (Numerot) 11–20</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Number</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">11</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">yksitoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">12</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kaksitoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">13</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kolmetoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">14</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">neljätoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">15</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">viisitoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">16</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kuusitoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">17</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">seitsemäntoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">18</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kahdeksantoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">19</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">yhdeksäntoista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">20</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kaksikymmentä</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Numbers (Numerot) 20–100</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Number</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">20</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kaksikymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">30</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kolmekymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">40</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">neljäkymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">50</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">viisikymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">60</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kuusikymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">70</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">seitsemänkymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">80</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kahdeksankymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">90</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">yhdeksänkymmentä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">100</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">sata</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Numbers (Numerot) 100–1000</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Number</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">100</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">sata</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">200</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kaksisataa</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">500</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">viisisataa</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">900</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">yhdeksänsataa</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">1000</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">tuhat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Grammar Rule: Partitive with Numbers</h3>
+                <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
+                    <p class="font-semibold text-xl text-red-700 mb-2">⚠️ Important: The Partitive Case (Partitiivi)</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li><span class="highlight-finnish">Partitiivi on kuningas.</span> (The Partitive is king.) For
+                            numbers 2 and up, the object is in the Partitive case (<span class="highlight-finnish">-a/-ä, -ta/-tä</span>),
+                            **not** the plural nominative.
+                        </li>
+                        <li>**Example:** <span class="highlight-finnish">kolme taloa</span> (three houses), NOT <span
+                                class="highlight-finnish">kolme talot</span>.
+                        </li>
+                        <li><span class="highlight-finnish">Ablatiivi kellonajoissa.</span> (Ablative for time.) To
+                            indicate **at what time**, use the Ablative case (<span
+                                    class="highlight-finnish">-lta/-ltä</span>) on the number. E.g., <span
+                                    class="highlight-finnish">Bussi lähtee kahdeksalta</span> (The bus leaves at eight
+                            o'clock).
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Numbers (Numerot)</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Let's try counting things! Remember to use the
+                        **Partitive** case when the number is 2 or more.</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li><span class="highlight-finnish">Yksi auto.</span> (One car.)</li>
+                        <li><span class="highlight-finnish">Kaksi autoa.</span> (Two cars. Note the Partitive ending on
+                            'auto'!)
+                        </li>
+                        <li><span class="highlight-finnish">Kymmenen euroa.</span> (Ten euros.)</li>
+                        <li><span class="highlight-finnish">Onko sinulla nolla euroa?</span> (Do you have zero euros?)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Aika ja Kalenteri</h2>
+                <h3>Time and Calendar</h3>
+            </section>
+
+            <section>
+                <h3>Telling Time (Kellonajat)</h3>
+                <ul class="list-disc ml-6">
+                    <li><span class="highlight-finnish">Kello on kolme.</span> (It is three o'clock.)</li>
+                    <li><span class="highlight-finnish">Kello on puoli kolme.</span> (It is half past two / 2:30.)</li>
+                    <li><span class="highlight-finnish">Kello on vartin yli kolme.</span> (It is a quarter past three /
+                        3:15.)
+                    </li>
+                    <li><span class="highlight-finnish">Kello on kaksikymmentä yli kolme.</span> (It is twenty past
+                        three / 3:20.)
+                    </li>
+                    <li><span class="highlight-finnish">Kello on kymmenen vaille neljä.</span> (It is ten 'missing' four
+                        / 3:50.)
+                    </li>
+                    <li><span class="highlight-finnish">Kello on vartin vaille neljä.</span> (It is a quarter to four /
+                        3:45.)
+                    </li>
+                    <li><span class="highlight-finnish">Kello on kaksikymmentä vaille neljä.</span> (It is twenty
+                        minutes to four / 3:40.)
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>The 'Puoli' Trick (Puoli-Temppu)</h3>
+                <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                    <p class="font-semibold text-xl text-yellow-700 mb-2">💡 Tip: Puoli = Half to the Next Hour</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li><span class="highlight-finnish">Puoli</span> always means "halfway to the next hour."</li>
+                        <li>**Example:** <span class="highlight-finnish">Puoli kahdeksan</span> is 7:30, **not** 8:30.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Days of the Week (Viikonpäivät)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">English Day</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Monday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">maanantai</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Tuesday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">tiistai</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Wednesday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">keskiviikko</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Thursday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">torstai</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Friday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">perjantai</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Saturday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">lauantai</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Sunday</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">sunnuntai</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Day Names (Viikonpäivien Nimet)</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Did you know...?</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li><span class="highlight-finnish">Keskiviikko</span> literally means **"Mid-week"** (<span
+                                class="highlight-finnish">keski-</span> = middle, <span
+                                class="highlight-finnish">viikko</span> = week).
+                        </li>
+                        <li><span class="highlight-finnish">Tiistai</span> (Tuesday) is derived from the Norse god
+                            **Týr**, and <span class="highlight-finnish">Torstai</span> (Thursday) comes from the mighty
+                            god **Thor**.
+                        </li>
+                        <li><span class="highlight-finnish">Perjantai</span> (Friday) is related to the Norse goddess
+                            Freya, while <span class="highlight-finnish">Lauantai</span> (Saturday) comes from the Old
+                            Norse word for 'washing day'.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Months (Kuukaudet)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">English Month</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">January</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">tammikuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">February</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">helmikuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">March</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">maaliskuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">April</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">huhtikuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">May</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">toukokuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">June</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kesäkuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">July</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">heinäkuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">August</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">elokuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">September</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syyskuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">October</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">lokakuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">November</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">marraskuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">December</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">joulukuu</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Month Names (Kuukausien Nimet)</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Finnish names are descriptive!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>The suffix <span class="highlight-finnish">kuu</span> means both **'month'** and **'moon'**.
+                        </li>
+                        <li><span class="highlight-finnish">Tammikuu</span> (January): The month of the 'heart' or
+                            'core' (tammi) of winter.
+                        </li>
+                        <li><span class="highlight-finnish">Helmikuu</span> (February): 'Pearl Month', for snow covering
+                            plants/buds, or ice forming on trees.
+                        </li>
+                        <li><span class="highlight-finnish">Maaliskuu</span> (March): 'Barren Land Month', when the snow
+                            melts and the land (maa) is visible but still grey.
+                        </li>
+                        <li><span class="highlight-finnish">Huhtikuu</span> (April): Possibly 'Slash-and-burn Month'
+                            (huhta), referring to ancient farming.
+                        </li>
+                        <li><span class="highlight-finnish">Toukokuu</span> (May): 'Sowing Month' (touko), for the
+                            beginning of agriculture.
+                        </li>
+                        <li><span class="highlight-finnish">Kesäkuu</span> (June) & <span class="highlight-finnish">Heinäkuu</span>
+                            (July): 'Summer Month' (kesä) and 'Hay Month' (heinä).
+                        </li>
+                        <li><span class="highlight-finnish">Syyskuu</span> (September): 'Autumn Month' (syys).</li>
+                        <li><span class="highlight-finnish">Joulukuu</span> (December): 'Christmas Month' (joulu).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Seasons (Vuodenajat)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">English Season</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Suomeksi)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Spring</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kevät</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Summer</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kesä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Autumn/Fall</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syksy</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Winter</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">talvi</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Season Names (Vuodenaikojen Nimet)</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Seasonal words are powerful!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>The word <span class="highlight-finnish">syksy</span> (Autumn) is related to the word
+                            **"suck"** or **"draw"**, perhaps referring to the time the earth draws back its vitality or
+                            moisture.
+                        </li>
+                        <li><span class="highlight-finnish">Talvi</span> (Winter) is an ancient word related to darkness
+                            and cold.
+                        </li>
+                        <li>Finland often experiences a **fifth season** called **ruska** (autumn colors), when the
+                            beautiful foliage turns red and gold before the snow hits!
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Grammar: Cases for Dates (Sijamuodot ja Kalenteri)</h3>
+                <div class="p-4 bg-green-100 rounded-lg border-l-4 border-green-500">
+                    <p class="font-semibold text-xl text-green-700 mb-2">🎯 Using Cases to Indicate Time</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li>**Days:** Use the **Essive** case (<span class="highlight-finnish">-na/-nä</span>). E.g.,
+                            <span class="highlight-finnish">maanantaina</span> (on Monday).
+                        </li>
+                        <li>**Months/Seasons:** Use the **Inessive** case (<span
+                                class="highlight-finnish">-ssa/-ssä</span>). E.g., <span class="highlight-finnish">heinäkuussa</span>
+                            (in July).
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Time (Aika)</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Let's practice telling time and asking about dates.</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li>**Q:** <span class="highlight-finnish">Mikä päivä tänään on?</span> (What day is today?)
+                            **A:** <span class="highlight-finnish">Tänään on maanantai.</span> (Today is Monday.)
+                        </li>
+                        <li>**Q:** <span class="highlight-finnish">Milloin sinä tulet?</span> (When are you coming?)
+                            **A:** <span class="highlight-finnish">Tulen toukokuussa.</span> (I am coming in May.)
+                        </li>
+                        <li>**Q:** <span class="highlight-finnish">Milloin loma alkaa?</span> (When does the holiday
+                            start?) **A:** <span class="highlight-finnish">Loma alkaa kesällä.</span> (The holiday
+                            starts in summer.)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Perusteet ja Pronominit</h2>
+                <h3>Basics & Pronouns</h3>
+            </section>
+
+            <section>
+                <h3>Personal Pronouns (Persoonapronominit)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">English</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Nominative)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">I</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">minä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">You (sg.)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">sinä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">He/She</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">hän</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">We</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">me</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">You (pl.)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">te</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">They</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">he</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Possessive Pronouns (Omistuspronominit - Genitive Form)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">English (My, Your, etc.)</th>
+                            <th class="border border-gray-300 p-2">In Finnish (Genitive)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">My</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">minun</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Your (sg.)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">sinun</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">His/Her</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">hänen</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Our</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">meidän</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Your (pl.)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">teidän</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Their</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">heidän</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Essential Greetings (Tervehdykset)</h3>
+                <ul class="list-disc ml-6">
+                    <li><span class="highlight-finnish">Hei! / Moi!</span> (Hello! / Hi!)</li>
+                    <li><span class="highlight-finnish">Hauska tavata!</span> (Nice to meet you!)</li>
+                    <li><span class="highlight-finnish">Kiitos.</span> (Thank you.)</li>
+                    <li><span class="highlight-finnish">Anteeksi.</span> (Excuse me / Sorry.)</li>
+                    <li><span class="highlight-finnish">Näkemiin!</span> (Goodbye!)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Greetings and Politeness</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Did you know...?</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>The formal 'you' (<span class="highlight-finnish">Te</span>) is almost never used in modern
+                            Finnish society, even in professional settings. Stick to <span class="highlight-finnish">sinä</span>!
+                        </li>
+                        <li>The shortest Finnish greeting is <span class="highlight-finnish">Hei</span>, often doubled
+                            for enthusiasm: <span class="highlight-finnish">Hei hei!</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Pronoun Usage Notes (Pronominien Käyttö)</h3>
+                <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li><span class="highlight-finnish">Minä ja Sinä ovat valinnaisia.</span> (I and You are
+                            optional.) You usually drop <span class="highlight-finnish">minä</span> and <span
+                                    class="highlight-finnish">sinä</span> because the verb ending already shows the
+                            subject. E.g., <span class="highlight-finnish">Opiskelen suomea</span> (I study Finnish).
+                        </li>
+                        <li><span class="highlight-finnish">Hän vs. Se.</span> Always use <span
+                                class="highlight-finnish">hän</span> (person) for people and <span
+                                class="highlight-finnish">se</span> (it) for things in written Finnish. In spoken
+                            Finnish, <span class="highlight-finnish">se</span> may refer to anything.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Pronouns (Pronominit)</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Let's try introducing ourselves and others.</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li><span class="highlight-finnish">Minun nimi on Kaisa.</span> (My name is Kaisa.)</li>
+                        <li><span class="highlight-finnish">Oletko sinä insinööri?</span> (Are you an engineer?)</li>
+                        <li><span class="highlight-finnish">Hänen koira on iso.</span> (His/Her dog is big.)</li>
+                        <li><span class="highlight-finnish">Me olemme Suomesta.</span> (We are from Finland.)</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Vokaaliharmonia</h2>
+                <h3>Vowel Harmony: The Golden Rule</h3>
+            </section>
+
+            <section>
+                <h3>The Rule (Sääntö)</h3>
+                <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                    <p class="font-semibold text-xl text-yellow-700 mb-4">💡 Grammar Tip: Keep the Vowels Balanced</p>
+                    <p class="text-gray-800 mb-4">A Finnish word can only contain **Back** or **Front** vowels. Endings
+                        must match the type of vowel in the stem.</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li>**Back Vowels (Taka):** <span class="vowel-box back-vowel">A</span>, <span
+                                class="vowel-box back-vowel">O</span>, <span class="vowel-box back-vowel">U</span></li>
+                        <li>**Front Vowels (Etu):** <span class="vowel-box front-vowel">Ä</span>, <span
+                                class="vowel-box front-vowel">Ö</span>, <span class="vowel-box front-vowel">Y</span>
+                        </li>
+                        <li>**Neutral Vowels (Neutraali):** <span class="vowel-box neutral-vowel">E</span>, <span
+                                class="vowel-box neutral-vowel">I</span> (These can mix with both groups)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Vowel Harmony Examples</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">Stem Vowels</th>
+                            <th class="p-2 border">Word (English)</th>
+                            <th class="p-2 border">Case Ending (Inessive)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border back-vowel text-white font-bold">A, O, U</td>
+                            <td class="p-2 border highlight-finnish">Vaas**a**</td>
+                            <td class="p-2 border highlight-finnish">Vaasa**ssa** (Back ending -ssa)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border front-vowel text-white font-bold">Ä, Ö, Y</td>
+                            <td class="p-2 border highlight-finnish">Helsinki (Neutral + Front)</td>
+                            <td class="p-2 border highlight-finnish">Helsingi**ssä** (Front ending -ssä)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border back-vowel text-white font-bold">A, E, I</td>
+                            <td class="p-2 border highlight-finnish">K**a**upp**a** (Back + Neutral)</td>
+                            <td class="p-2 border highlight-finnish">Kaupa**ssa** (Back ending -ssa)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Vowel Harmony</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">It's all about flow!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>Vowel Harmony makes Finnish sound soft and rhythmic. Your tongue stays in the same general
+                            area (front or back of the mouth) when pronouncing a word.
+                        </li>
+                        <li>The only exception is compound words (like a long address), where the harmony might switch
+                            between the parts.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Vowel Harmony</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Matching vowels like a pro!</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li><span class="highlight-finnish">Olen k**o**t**o**n**a**.</span> (I am at home.) - **Back**
+                            vowels (o, a).
+                        </li>
+                        <li><span class="highlight-finnish">M**e** asu**mme** H**e**lsi**ngi**ss**ä**.</span> (We live
+                            in Helsinki.) - **Front/Neutral** vowels (e, i, ä).
+                        </li>
+                        <li><span class="highlight-finnish">H**än** **o**n l**a**ps**i**.</span> (He/She is a child.) -
+                            Mixed (hän is one unit, lapsi is another).
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Verbit (Tyypit 1–3)</h2>
+                <h3>Verb Conjugation (Present Tense)</h3>
+            </section>
+
+            <section>
+                <h3>Irregular Verb: Olla (To Be)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Pronoun</th>
+                            <th class="border border-gray-300 p-2">Conjugation (Olla)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Minä (I)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">olen</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Sinä (You)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">olet</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Hän (He/She)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">on</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Me (We)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">olemme</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Te (You pl.)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">olette</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">He (They)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">ovat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: The Olla Verb</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Did you notice how unique Olla is?</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li><span class="highlight-finnish">Olla</span> is one of the most irregular and important verbs
+                            in Finnish, just like "to be" in English!
+                        </li>
+                        <li>The <span class="highlight-finnish">hän/se</span> form, **on**, looks nothing like the
+                            infinitive **olla**. Memorize this one first—it's essential for describing everything!
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Negative Verb (Kielteinen Verbi)</h3>
+                <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
+                    <p class="font-semibold text-xl text-red-700 mb-2">⚠️ Structure: Negative Verb + Main Verb Stem</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li>Finnish uses a separate negative verb that conjugates, while the main verb stays in a simple
+                            form (the stem).
+                        </li>
+                        <li>**Example (Minä - I):** <span class="highlight-finnish">Minä **en** ole</span> (I am not) or
+                            <span class="highlight-finnish">Minä **en asu**</span> (I don't live).
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Verb Type 1: Asua (To Live)</h3>
+                <p class="mb-4">Rule: Infinitive ends in two vowels plus <span class="highlight-finnish">a/ä</span>
+                    (e.g., asu**a**, puhu**a**).</p>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Pronoun</th>
+                            <th class="border border-gray-300 p-2">Conjugation (Asua)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Minä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">asun</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Sinä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">asut</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Hän/Se</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">asuu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Me</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">asumme</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Te</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">asutte</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">He</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">asuvat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Verb Type 2: Syödä (To Eat)</h3>
+                <p class="mb-4">Rule: Infinitive ends in <span class="highlight-finnish">-da/-dä</span> (e.g.,
+                    syö**dä**, juo**da**).</p>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Pronoun</th>
+                            <th class="border border-gray-300 p-2">Conjugation (Syödä)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Minä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syön</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Sinä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syöt</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Hän/Se</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syö</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Me</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syömme</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Te</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syötte</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">He</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">syövät</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Verb Type 3: Haluta (To Want) - NEW!</h3>
+                <p class="mb-4">Rule: Infinitive ends in consonant + <span
+                        class="highlight-finnish">a/ä, e, i, o, u</span> (e.g., h**a**lu**t**a, tu**ll**a).</p>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Pronoun</th>
+                            <th class="border border-gray-300 p-2">Conjugation (Haluta)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Minä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluan</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Sinä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluat</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Hän/Se</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluaa</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Me</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluamme</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Te</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluatte</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">He</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluavat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-center">**Tip:** Drop the last two letters (<span
+                        class="highlight-finnish">ta/tä</span>) and add <span class="highlight-finnish">-a/ä</span>
+                    before the personal ending!</p>
+            </section>
+
+            <section>
+                <h3>Tip: Verb Conjugation (Vinkki: Verbien Taivutus)</h3>
+                <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
+                    <p class="font-semibold text-xl text-blue-700 mb-2">💡 Four Steps to Victory:</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li>1. Identify the verb type.</li>
+                        <li>2. Find the verb stem according to the type's rule.</li>
+                        <li>3. Add the personal ending (<span
+                                class="highlight-finnish">-n, -t, -V, -mme, -tte, -vat</span>).
+                        </li>
+                        <li>4. Check for Consonant Gradation (KPT - used by Types 1, 3, and 4).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example: Type 1 Puhua (To Speak)</h3>
+                <div class="scrollable-table">
+                    <h4 class="text-lg font-bold text-left text-gray-700 mb-2">Puhua (Type 1: To Speak)</h4>
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">Positive</th>
+                            <th class="p-2 border">Negative</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Puhun</td>
+                            <td class="p-2 border highlight-finnish">En puhu</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Puhut</td>
+                            <td class="p-2 border highlight-finnish">Et puhu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Puhuu</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ei puhu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Puhumme</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Emme puhu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Puhutte</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ette puhu</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Puhuvat</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Eivät puhu</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example: Type 2 Juoda (To Drink)</h3>
+                <div class="scrollable-table">
+                    <h4 class="text-lg font-bold text-left text-gray-700 mb-2">Juoda (Type 2: To Drink)</h4>
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">Positive</th>
+                            <th class="p-2 border">Negative</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Juon</td>
+                            <td class="p-2 border highlight-finnish">En juo</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Juot</td>
+                            <td class="p-2 border highlight-finnish">Et juo</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Juo</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ei juo</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Juomme</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Emme juo</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Juotte</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Ette juo</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Juovat</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">Eivät juo</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example: Type 3 Haluta (To Want)</h3>
+                <div class="scrollable-table">
+                    <h4 class="text-lg font-bold text-left text-gray-700 mb-2">Haluta (Type 3: To Want)</h4>
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">Pronoun</th>
+                            <th class="p-2 border">Conjugation (Haluta)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Minä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluan</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Sinä</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluat</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Hän/Se</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluaa</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Me</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluamme</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">Te</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluatte</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">He</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">haluavat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-center">**Tip:** Drop the last two letters (<span
+                        class="highlight-finnish">ta/tä</span>) and add <span class="highlight-finnish">-a/ä</span>
+                    before the personal ending!</p>
+            </section>
+
+
+            <section>
+                <h3>Example Sentences: Verbs (Verbit)</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Let's talk about what we do!</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li><span class="highlight-finnish">Asun Vaasassa.</span> (I live in Vaasa.) - No <span
+                                class="highlight-finnish">minä</span> needed!
+                        </li>
+                        <li><span class="highlight-finnish">Hän opiskelee tietotekniikkaa.</span> (He/She studies
+                            computing science.)
+                        </li>
+                        <li><span class="highlight-finnish">Me emme syö lihaa.</span> (We do not eat meat.)</li>
+                        <li><span class="highlight-finnish">Oletko onnellinen?</span> (Are you happy?)</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Sijamuodot ja KPT</h2>
+                <h3>Cases and Consonant Gradation (A1.1 Overview)</h3>
+            </section>
+
+            <section>
+                <h3>Consonant Gradation (KPT Astevaihtelu)</h3>
+                <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
+                    <p class="font-semibold text-xl text-red-700 mb-2">⚠️ The Golden Rule: Strong Stem (Base) vs. Weak
+                        Stem (Modified)</p>
+                    <p class="text-gray-800">KPT is a regular pattern where consonants **k, p, t** change or disappear
+                        when an ending is added to a word, making the syllable longer.</p>
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg my-4 w-full text-center">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">Strong Stem (Base)</th>
+                            <th class="p-2 border">Weak Stem (Modified)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">**kk** (ku**kk**a)</td>
+                            <td class="p-2 border highlight-finnish">**k** (kukan)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">**pp** (ka**pp**a)</td>
+                            <td class="p-2 border highlight-finnish">**p** (kapan)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">**t** (ty**tt**ö)</td>
+                            <td class="p-2 border highlight-finnish">**t** (tytön)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">**k** (au**k**oa)</td>
+                            <td class="p-2 border highlight-finnish">**(drop)** (auon)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: KPT and Grammar</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">KPT is more than just pronunciation!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>KPT helps Finns instantly tell if a word is the simple base form (strong stem) or if it has
+                            an ending attached (weak stem).
+                        </li>
+                        <li>The rule exists because early Finnish speakers tried to avoid having three short syllables
+                            in a row—it's a linguistic efficiency tool!
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Internal Local Cases (Sisäpaikallissijat)</h3>
+                <p class="mb-4">These refer to **inside** something (In, From, To).</p>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Direction</th>
+                            <th class="border border-gray-300 p-2">Case & Ending</th>
+                            <th class="border border-gray-300 p-2">Example (Koti - Home)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">WHERE? (In)</td>
+                            <td class="border border-gray-300 p-2 font-bold">Inessive (-ssa/-ssä)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kodissa</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">FROM WHERE?</td>
+                            <td class="border border-gray-300 p-2 font-bold">Elative (-sta/-stä)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kodista</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">TO WHERE?</td>
+                            <td class="border border-gray-300 p-2 font-bold">Illative (-Vn / -seen)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">kotiin</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-center">Think of this as being **inside** a building or a country. </p>
+            </section>
+
+            <section>
+                <h3>External Local Cases (Ulkopaikallissijat)</h3>
+                <p class="mb-4">These refer to **on/at/near** something (On, From, To).</p>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table">
+                        <thead>
+                        <tr>
+                            <th class="border border-gray-300 p-2">Direction</th>
+                            <th class="border border-gray-300 p-2">Case & Ending</th>
+                            <th class="border border-gray-300 p-2">Example (Pöytä - Table)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border border-gray-300 p-2">WHERE? (On/At)</td>
+                            <td class="border border-gray-300 p-2 font-bold">Adessive (-lla/-llä)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">pöydällä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">FROM WHERE?</td>
+                            <td class="border border-gray-300 p-2 font-bold">Ablative (-lta/-ltä)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">pöydältä</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 p-2">TO WHERE?</td>
+                            <td class="border border-gray-300 p-2 font-bold">Allative (-lle)</td>
+                            <td class="border border-gray-300 p-2 highlight-finnish">pöydälle</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-center">Think of this as being **on the surface** of something or **near** a
+                    place.</p>
+            </section>
+
+            <section>
+                <h3>Local Cases Summary (Paikallissijat Yhteenveto)</h3>
+                <p class="mb-4 text-center text-lg font-bold">In vs. On (Sisä vs. Ulko)</p>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full max-w-sm">
+                        <thead>
+                        <tr>
+                            <th class="border p-2">State/Location</th>
+                            <th class="border p-2">Internal (In)</th>
+                            <th class="border p-2">External (On/At)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="border p-2">**Where?**</td>
+                            <td class="border p-2 highlight-finnish">-ssa/-ssä</td>
+                            <td class="border p-2 highlight-finnish">-lla/-llä</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">**From?**</td>
+                            <td class="border p-2 highlight-finnish">-sta/-stä</td>
+                            <td class="border p-2 highlight-finnish">-lta/-ltä</td>
+                        </tr>
+                        <tr>
+                            <td class="border p-2">**To?**</td>
+                            <td class="border p-2 highlight-finnish">-Vn / -seen</td>
+                            <td class="border p-2 highlight-finnish">-lle</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>The Partitive Case (Partitiivi) in Focus</h3>
+                <div class="p-4 bg-green-100 rounded-lg border-l-4 border-green-500">
+                    <p class="font-semibold text-xl text-green-700 mb-2">🎯 Key Concept: Part vs. Whole</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li><span class="highlight-finnish">Partitiivi: Kokonaisuus vs. Osa.</span> The Partitive is
+                            used to indicate an **unspecified amount** or an **unfinished action**.
+                        </li>
+                        <li>**Example:** <span class="highlight-finnish">Söin omenaa</span> (I was eating the apple -
+                            not finished) vs. <span class="highlight-finnish">Söin omenan</span> (I ate the apple -
+                            finished/whole object).
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Partitive and Quantification</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">The case of 'I love you'!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>Finnish people don't use the Partitive when they say **"Minä rakastan sinua"** (I love you).
+                            Wait, yes they do! **"Sinua"** is the Partitive form of **"sinä"**.
+                        </li>
+                        <li>This is because, in Finnish, emotion is considered a state or feeling, meaning you can't
+                            quantify your love—it is unlimited or ongoing, triggering the Partitive case!
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>The Big Rule for All Cases (Sijamuodot vs. Prepositio)</h3>
+                <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
+                    <p class="font-semibold text-xl text-red-700 mb-2">⚠️ No Prepositions Needed!</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li><span class="highlight-finnish">Vain yksi pääte.</span> Finnish uses these case endings
+                            **instead of** English prepositions (in, on, from, to).
+                        </li>
+                        <li>You should **never** combine a case ending with a separate preposition. The ending does the
+                            job!
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Cases (Sijamuodot)</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Let's talk about where we are!</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li><span class="highlight-finnish">Olen kaupassa.</span> (I am in the store. - Inessive)</li>
+                        <li><span class="highlight-finnish">Menetkö kotiin?</span> (Are you going home? - Illative)</li>
+                        <li><span class="highlight-finnish">Tulen yliopistolta.</span> (I am coming from the university.
+                            - Ablative)
+                        </li>
+                        <li><span class="highlight-finnish">Kissa on pöydällä.</span> (The cat is on the table. -
+                            Adessive)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Sanasto (Vocabulary)</h2>
+                <h3>Essential Words for A1.1</h3>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Word Structure (Sanan Rakenne)</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Agglutination is fun!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>Finnish is an **agglutinative language**, meaning you stick suffixes onto words to change
+                            their meaning.
+                        </li>
+                        <li>Example: <span class="highlight-finnish">Talo</span> (house) → <span
+                                class="highlight-finnish">Talo**ssa**</span> (in the house) → <span
+                                class="highlight-finnish">Talo**ssani**</span> (in my house)!
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Family (Perhe)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">English</th>
+                            <th class="p-2 border">Finnish</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border">Mother</td>
+                            <td class="p-2 border highlight-finnish">äiti</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Father</td>
+                            <td class="p-2 border highlight-finnish">isä</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Child</td>
+                            <td class="p-2 border highlight-finnish">lapsi</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Sister</td>
+                            <td class="p-2 border highlight-finnish">sisko</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Brother</td>
+                            <td class="p-2 border highlight-finnish">veli</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Food and Drink (Ruoka ja Juomat)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">English</th>
+                            <th class="p-2 border">Finnish</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border">Coffee</td>
+                            <td class="p-2 border highlight-finnish">kahvi</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Water</td>
+                            <td class="p-2 border highlight-finnish">vesi</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Bread</td>
+                            <td class="p-2 border highlight-finnish">leipä</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Fish</td>
+                            <td class="p-2 border highlight-finnish">kala</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Meat</td>
+                            <td class="p-2 border highlight-finnish">liha</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: Coffee and Culture</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Coffee is King!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>Finns are often listed as the world's heaviest coffee drinkers. Don't be surprised if your
+                            host offers you a refill immediately!
+                        </li>
+                        <li>A Finnish word for a coffee break is <span class="highlight-finnish">kahvitauko</span>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Vocabulary (Sanasto)</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Using your new words!</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li><span class="highlight-finnish">Minun isä juo kahvia.</span> (My father drinks coffee.)</li>
+                        <li><span class="highlight-finnish">Veli on kotona.</span> (Brother is at home.)</li>
+                        <li><span class="highlight-finnish">Syömme leipää ja kalaa.</span> (We eat bread and fish.)</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Kysymykset ja Vastaukset</h2>
+                <h3>Questions and Answers (Dialogue Basics)</h3>
+            </section>
+
+            <section>
+                <h3>'Yes/No' Questions (Kyllä/Ei Kysymykset)</h3>
+                <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                    <p class="font-semibold text-xl text-yellow-700 mb-2">💡 Grammar Tip: The Question Particle</p>
+                    <ul class="list-disc ml-6 text-gray-800">
+                        <li>To form a simple yes/no question, you add the question particle <span
+                                class="highlight-finnish">-ko/-kö</span> to the **main verb**.
+                        </li>
+                        <li>**Statement:** <span class="highlight-finnish">Sinä olet opiskelija.</span> (You are a
+                            student.)
+                        </li>
+                        <li>**Question:** <span class="highlight-finnish">Olet**ko** sinä opiskelija?</span> (Are you a
+                            student?)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Wh- Questions (Kysymyssanat)</h3>
+                <div class="scrollable-table">
+                    <table class="mx-auto border-collapse border border-gray-300 rounded-lg">
+                        <thead>
+                        <tr>
+                            <th class="p-2 border">Finnish</th>
+                            <th class="p-2 border">English Meaning</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Kuka?</td>
+                            <td class="p-2 border">Who?</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Mitä?</td>
+                            <td class="p-2 border">What? (in the Partitive case)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Missä?</td>
+                            <td class="p-2 border">Where? (Inessive: -ssa/-ssä)</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border highlight-finnish">Milloin?</td>
+                            <td class="p-2 border">When?</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h3>Fun Fact: The Finnish Pause</h3>
+                <div class="fun-fact">
+                    <p class="font-semibold text-xl text-gray-900 mb-2">Silent is normal!</p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-800 font-normal italic">
+                        <li>Finns are famous for respecting silence. When asking a question, don't rush to fill the
+                            pause!
+                        </li>
+                        <li>Allowing a person space to formulate a concise answer is considered polite and respectful in
+                            Finnish culture.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h3>Example Sentences: Questions and Dialogue</h3>
+                <div class="fun-fact">
+                    <p class="text-gray-900 font-normal italic">Practicing Conversation!</p>
+                    <ul class="list-disc ml-6 mt-4 not-italic">
+                        <li>**Q:** <span class="highlight-finnish">Missä sinä asut?</span> (Where do you live?) **A:**
+                            <span class="highlight-finnish">Minä asun Vaasassa.</span> (I live in Vaasa.)
+                        </li>
+                        <li>**Q:** <span class="highlight-finnish">Juotko sinä kahvia?</span> (Do you drink coffee?)
+                            **A:** <span class="highlight-finnish">Kyllä, juon.</span> (Yes, I drink.)
+                        </li>
+                        <li>**Q:** <span class="highlight-finnish">Mitä te teette?</span> (What are you (pl.) doing?)
+                            **A:** <span class="highlight-finnish">Me opiskelemme.</span> (We are studying.)
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Onnea opiskeluun!</h2>
+                <h3>Good Luck with Your Studies!</h3>
+                <p class="mt-8 text-lg">You've covered all the core grammar of A1.1. Keep practicing your verbs and
+                    local cases!</p>
+            </section>
+
+            <section>
+                <h3>Resurssit (Resources)</h3>
+                <p class="mb-4">Here are some excellent resources to continue your journey:</p>
+                <ul class="list-disc ml-6">
+                    <li><a href="https://uusi.uusikielemme.fi/" target="_blank"
+                           class="text-blue-500 hover:text-green-500 font-semibold">Uusi kielemme</a> (Detailed Grammar
+                        Explanations)
+                    </li>
+                    <li><a href="https://www.finnishpod101.com/" target="_blank"
+                           class="text-blue-500 hover:text-green-500 font-semibold">FinnishPod101</a> (Audio/Vocabulary)
+                    </li>
+                    <li><a href="https://www.duolingo.com/course/fi/en/Learn-Finnish" target="_blank"
+                           class="text-blue-500 hover:text-green-500 font-semibold">Duolingo Finnish</a> (Daily
+                        Practice)
+                    </li>
+                </ul>
+            </section>
+        </section>
+
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
-    <script>
-        // Initialize the presentation framework
-        Reveal.initialize({
-            // FIX: Explicitly disable hash/history features to prevent the SecurityError
-            // encountered in sandboxed environments (like the code canvas).
-            hash: false,
-            history: false,
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+<script>
+    // Initialize the presentation framework
+    Reveal.initialize({
+        // FIX: Explicitly disable hash/history features to prevent the SecurityError
+        // encountered in sandboxed environments (like the code canvas).
+        hash: false,
+        history: false,
 
-            slideNumber: true,
-            transition: 'slide',
-            controls: true,
-            progress: true,
-            center: true,
-            touch: true,
-            keyboard: true,
-            overview: true,
-            width: '100%',
-            height: '100%',
-            margin: 0.04,
-            minScale: 0.2,
-            maxScale: 2.0,
-        });
-    </script>
+        // 5. RESPONSIVE SETTINGS FOR REVEAL.JS
+        slideNumber: true,
+        transition: 'slide',
+        controls: true,
+        progress: true,
+        center: true,
+        touch: true,
+        keyboard: true,
+        overview: true,
+        // Set width and height to 100% to fill the screen
+        width: '100%',
+        height: '100%',
+        // Important: Lower the minScale to allow the slides to shrink more on a mobile phone.
+        margin: 0.04,
+        minScale: 0.15, // Adjusted from 0.2
+        maxScale: 2.0,
+
+        // Ensure the code stabilizes for complex event-driven flows
+        // You're doing great so far—keep the structure simple and add error handling for rate limits.
+    });
+</script>
 </body>
 
 </html>

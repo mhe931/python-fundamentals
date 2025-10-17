@@ -1,394 +1,384 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Suomi 1: A1.1 Essential Review</title>
-    
-    <!-- Reveal.js Core CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/blood.min.css" id="theme">
-    
-    <!-- Tailwind CSS (for custom styling) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom Calm Teal Palette & Fonts */
-        .reveal { font-family: 'Inter', sans-serif; background-color: #f8fcfb; }
-        .reveal h1, .reveal h2, .reveal h3 { 
-            text-transform: none; 
-            color: #00796b; /* Dark Teal - Primary Color */
-            font-weight: 800;
-        }
-        .reveal .controls button { color: #00796b !important; }
-        .reveal section { padding: 40px 0; overflow-y: auto; max-height: 100vh; }
-        .teal-box { background: rgba(0, 121, 107, 0.1); border-left: 5px solid #00796b; border-radius: 5px; padding: 15px; margin-top: 15px; }
-        
-        /* Highlight Style for Finnish Words [Sana] */
-        .reveal span.finnish-word { 
-            color: #e65100; /* Deep Orange/Amber */
-            font-weight: 700;
-        }
-        
-        /* GENERAL FONT SIZE ADJUSTMENTS for better fit */
-        .reveal p, .reveal ul, .reveal ol { font-size: 0.9em; text-align: left; }
-        .reveal h4 { font-size: 1.1em; }
-        
-        /* Table and Responsiveness (Mandatory) */
-        .reveal table {
-            margin: 15px auto;
-            width: 95%;
-            font-size: 0.8em; /* Slightly smaller base font for tables */
-            border-collapse: collapse;
-            text-align: center; /* Center table content */
-        }
-        .reveal th { background-color: #00796b; color: white; padding: 6px; }
-        .reveal td { padding: 6px; border-bottom: 1px solid #ddd; }
-        
-        /* Force Horizontal Scroll on wide tables for mobile */
-        @media (max-width: 768px) {
-            .reveal table { font-size: 0.6em; }
-            .scrollable-table-container {
-                overflow-x: auto;
-                width: 100%;
-                padding-bottom: 10px;
-            }
-            .scrollable-table-container table {
-                 /* Sufficient width to prevent column crushing */
-                 min-width: 750px; 
-            }
-            .reveal p, .reveal ul, .reveal ol { font-size: 0.8em; }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script>
-        // Function to replace bracketed text with styled span
-        function highlightFinnish() {
-            const body = document.querySelector('.slides');
-            if (body) {
-                // Use a regular expression to find and replace text inside brackets
-                body.innerHTML = body.innerHTML.replace(
-                    /\[([^\]]+)\]/g, 
-                    (match, word) => {
-                        return `<span class="finnish-word">${word}</span>`;
-                    }
-                );
-            }
-        }
-        window.addEventListener('load', highlightFinnish);
-    </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CEFR A1.1 Finnish — Reveal.js + Tailwind</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/theme/white.css" id="theme">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #2563eb; /* Blue */
+      --accent2: #16a34a; /* Green */
+      --accent3: #9333ea; /* Purple */
+      --highlight-color: #e65100; /* Deep Orange/Amber for Finnish words */
+      --soft: #e0f2fe; /* Soft Blue */
+    }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+    }
+    .reveal .slide {
+      padding: 1.5rem 1rem; /* Smaller padding for better fit */
+      overflow-y: auto; /* Enable vertical scroll for content overflow */
+      max-height: 100vh;
+      text-align: left;
+    }
+    .card {
+      background: linear-gradient(135deg, #ffffff, #f0f9ff);
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .highlight { color: var(--accent2); font-weight: 600; }
+    .finnish-word { color: var(--highlight-color); font-weight: 700; }
+
+    /* Table Styling and Responsiveness */
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 0.75rem auto; font-size: 0.8em; }
+    th, td { border: 1px solid #cbd5e1; padding: 0.4rem; text-align: center; }
+    th { background-color: var(--soft); font-weight: 600; }
+    .wide-scroll { overflow-x: auto; padding-bottom: 0.5rem; }
+    .wide-scroll table { min-width: 650px; /* Ensure space for content */ table-layout: auto; }
+    .r-stack { display: flex; flex-direction: column; gap: 1rem; }
+
+    /* Ensure main headings are slightly smaller */
+    .reveal h2 { font-size: 1.5rem; }
+    .reveal h3 { font-size: 1.3rem; }
+    .reveal ul, .reveal ol { font-size: 0.85rem; padding-left: 1.5rem; margin-top: 0.5rem; }
+  </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
+<div class="reveal">
+  <div class="slides">
+    
+    <!-- 0. Title Slide -->
+    <section>
+      <div class="card text-center">
+        <h1 class="text-3xl font-bold text-blue-700">CEFR A1.1 — Finnish Foundations</h1>
+        <p class="text-gray-600 mt-2">Däniel Ebrahimzadeh: Automn 2025</p>
+        <p class="text-xs text-gray-500 mt-4">Use arrow keys or swipe to navigate.</p>
+      </div>
+    </section>
 
-            <!-- Title Slide -->
-            <section data-background-color="#f0fdf4">
-                <h1 class="text-6xl font-extrabold">SUOMI 1: Tentin Kertaus</h1>
-                <h3 class="text-3xl text-gray-700 mt-4">Foundational Finnish Review (CEFR A1.1)</h3>
-                <p class="mt-8 text-xl text-teal-800">University of Vaasa - AI/Data Engineering Student</p>
-                <p class="text-sm mt-4 text-gray-500">Use arrow keys, click, or swipe to navigate.</p>
-            </section>
-            
-            <!-- 1. Aakkoset ja Numerot (Vertical Section) -->
-            <section>
-                <section>
-                    <h2>1. [Aakkoset] ja [Numerot]</h2>
-                    <h3 class="text-gray-500">(Alphabet & Numbers)</h3>
-                </section>
+    <!-- 1. Aakkoset ja Numerot (Vertical Section) -->
+    <section>
+      <section>
+        <h2 class="text-2xl font-semibold text-blue-700">1. Aakkoset ja Numerot</h2>
+        <h3 class="text-gray-500">(Alphabet & Numbers)</h3>
+      </section>
+      
+      <!-- 1.1 Aakkoset (Main Table) -->
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700">Suomen Aakkoset (Finnish Alphabet)</h3>
+        <div class="card wide-scroll">
+          <table>
+            <tr><th>A-E</th><th>F-J</th><th>K-O</th><th>P-T</th><th>U-Z</th><th>Unique</th></tr>
+            <tr><td><span class="finnish-word">A, B, C, D, E</span></td><td><span class="finnish-word">F, G, H, I, J</span></td><td><span class="finnish-word">K, L, M, N, O</span></td><td><span class="finnish-word">P, Q, R, S, T</span></td><td><span class="finnish-word">U, V, W, X, Y, Z</span></td><td><span class="finnish-word">Å, Ä, Ö</span></td></tr>
+          </table>
+        </div>
+      </section>
 
-                <section>
-                    <h3>[Suomen Aakkoset] (Finnish Alphabet)</h3>
-                    <div class="teal-box">
-                        <p class="text-xl">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Å Ä Ö</p>
-                        <ul class="list-disc list-inside text-left mx-auto max-w-lg mt-4">
-                            <li>**[Ä]** and **[Ö]** are distinct vowels, not modified letters.</li>
-                            <li>**[Y]** is pronounced like the 'u' in French *tu* or German *ü*.</li>
-                            <li>**[Å]** (Swedish 'O') and **[Z, X, W]** are mainly used in foreign words.</li>
-                        </ul>
-                    </div>
-                </section>
+      <!-- 1.2 Aakkoset Names -->
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700">Aakkosten Nimet (Alphabet Names)</h3>
+        <div class="card wide-scroll">
+          <table>
+            <tr><th>Letter</th><th>Finnish Name</th><th>Notes</th></tr>
+            <tr><td><span class="finnish-word">A, I, O, U, E</span></td><td>[aa], [ii], [oo], [uu], [ee]</td><td>Vowels are named by their sound.</td></tr>
+            <tr><td><span class="finnish-word">K, P, T</span></td><td>[koo], [pee], [tee]</td><td>Consonant + 'oo' or 'ee'.</td></tr>
+            <tr><td><span class="finnish-word">Ä, Ö, Y</span></td><td>[ää], [öö], [yy]</td><td>Front vowels.</td></tr>
+            <tr><td><span class="finnish-word">W</span></td><td>[kaksois-vee]</td><td>Literally: double V.</td></tr>
+          </table>
+        </div>
+      </section>
+      
+      <!-- 1.3 Numerot (Main Table) -->
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700">Numerot 0 &ndash; 1000</h3>
+        <div class="card wide-scroll">
+          <table>
+            <thead>
+              <tr><th>0-10</th><th>11-20</th><th>Tens</th><th>Large</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="finnish-word">nolla</span> (0)</td><td><span class="finnish-word">yksitoista</span> (11)</td><td><span class="finnish-word">kaksikymmentä</span> (20)</td><td><span class="finnish-word">sata</span> (100)</td></tr>
+              <tr><td><span class="finnish-word">viisi</span> (5)</td><td><span class="finnish-word">kolmetoista</span> (13)</td><td><span class="finnish-word">kolmekymmentä</span> (30)</td><td><span class="finnish-word">tuhat</span> (1000)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      <!-- 1.4 Numerot Tricks -->
+      <section>
+        <h3 class="text-xl font-semibold text-green-700">Numeroiden Vinkit (Number Notes)</h3>
+        <div class="card text-green-800">
+          <ul class="list-disc pl-5">
+            <li>**Hundreds:** [kaksisataa] (200), [kolmesataa] (300).</li>
+            <li>**Compounds:** 99 is [yhdeksänkymmentäyhdeksän]. Write them together!</li>
+            <li>**Partitive:** Use [kaksi laukkua] (Partitive) when counting things.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
 
-                <section>
-                    <h3>[Numerot] 0 &ndash; 1000 (Numbers)</h3>
-                    <div class="scrollable-table-container">
-                        <table class="text-center">
-                            <thead>
-                                <tr><th>0-10</th><th>11-20 (Teens)</th><th>Tens (kymmentä)</th><th>Large</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>[yksi] (1)</td><td>[yksitoista] (11)</td><td>[kaksikymmentä] (20)</td><td>[sata] (100)</td></tr>
-                                <tr><td>[viisi] (5)</td><td>[kaksitoista] (12)</td><td>[kolmekymmentä] (30)</td><td>[viisisataa] (500)</td></tr>
-                                <tr><td>[kymmenen] (10)</td><td>[seitsemäntoista] (17)</td><td>[yhdeksänkymmentä] (90)</td><td>[tuhat] (1000)</td></tr>
-                                <tr><td colspan="4" class="text-left text-sm pt-2">**Example:** 32 is [kolmekymmentäkaksi] (30 + 2).</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </section>
+    <!-- 2. Aika ja Kalenteri (Vertical Section) -->
+    <section>
+      <section>
+        <h2 class="text-2xl font-semibold text-blue-700">2. Aika ja Kalenteri</h2>
+      </section>
 
-            <!-- 2. Aika ja Kalenteri (Vertical Section) -->
-            <section>
-                <section>
-                    <h2>2. [Aika] ja [Kalenteri]</h2>
-                </section>
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700"><span class="finnish-word">Kellonaika</span> (Telling Time)</h3>
+        <p class="text-base font-medium">Question: [Mitä kello on?]</p>
+        <div class="card wide-scroll">
+          <table>
+            <thead>
+              <tr><th>Time</th><th>Finnish Expression</th><th>Meaning</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>**1:00**</td><td><span class="finnish-word">Kello on tasan yksi.</span></td><td>It's exactly one.</td></tr>
+              <tr><td>**6:15**</td><td><span class="finnish-word">Kello on vartti yli kuusi.</span></td><td>Quarter past six.</td></tr>
+              <tr><td>**8:30**</td><td><span class="finnish-word">Kello on puoli yhdeksän.</span></td><td>Half past eight (Literally: Half nine).</td></tr>
+              <tr><td>**10:50**</td><td><span class="finnish-word">Kello on kymmenen vaille yksitoista.</span></td><td>Ten to eleven.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="list-disc pl-5 mt-3 text-xs text-gray-700">
+          <li>**Tip:** Always use <span class="finnish-word">puoli</span> with the number of the **next** hour.</li>
+        </ul>
+      </section>
 
-                <section>
-                    <h3>[Kellonaika] (Telling Time)</h3>
-                    <p class="text-xl">Method: Count minutes past (yli) or minutes to (vaille) the hour.</p>
-                    <div class="scrollable-table-container">
-                        <table class="text-left">
-                            <thead>
-                                <tr><th>Time</th><th>Finnish Expression</th><th>Meaning</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>**1:00**</td><td>[Kello on tasan yksi.]</td><td>It's exactly one.</td></tr>
-                                <tr><td>**6:15**</td><td>[Kello on vartti yli kuusi.]</td><td>Quarter past six.</td></tr>
-                                <tr><td>**8:30**</td><td>[Kello on puoli yhdeksän.]</td><td>Half past eight (Literally: Half nine).</td></tr>
-                                <tr><td>**10:50**</td><td>[Kello on kymmenen vaille yksitoista.]</td><td>Ten to eleven.</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700">Kalenteri: Päivät, Kuukaudet, Vuodenajat</h3>
+        <div class="r-stack mt-4">
+          <div class="card flex-1">
+            <h4>Days & Seasons</h4>
+            <ul class="list-disc pl-5">
+              <li>[maanantai] (Monday) &rarr; <span class="finnish-word">maanantaina</span> (On Monday)</li>
+              <li>[kesä] (Summer), [talvi] (Winter)</li>
+              <li>[Mikä päivä tänään on?] (What day is today?)</li>
+            </ul>
+          </div>
+          <div class="card flex-1">
+            <h4>Months (Example)</h4>
+            <ul class="list-disc pl-5">
+              <li>[tammikuu] (Jan), [huhtikuu] (Apr)</li>
+              <li>[syyskuu] (Sep), [joulukuu] (Dec)</li>
+              <li><span class="finnish-word">In July:</span> [heinäkuussa] (-ssa ending)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
 
-                <section>
-                    <h3>[Viikonpäivät] ja [Vuodenajat]</h3>
-                    <div class="r-hstack gap-4">
-                        <div class="teal-box fragment">
-                            <h4>Days ([Viikonpäivät])</h4>
-                            <ul class="list-disc list-inside text-left">
-                                <li>[maanantai] &rarr; [maanantaina] (On Monday)</li>
-                                <li>[keskiviikko] (Wednesday)</li>
-                                <li>[lauantai] (Saturday)</li>
-                            </ul>
-                        </div>
-                        <div class="teal-box fragment">
-                            <h4>Seasons ([Vuodenajat])</h4>
-                            <ul class="list-disc list-inside text-left">
-                                <li>[kevät] (Spring)</li>
-                                <li>[kesä] (Summer)</li>
-                                <li>[syksy] (Autumn)</li>
-                                <li>[talvi] (Winter)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </section>
+    <!-- 3. Pronominit ja Sanasto (Vertical Section) -->
+    <section>
+      <section>
+        <h2 class="text-2xl font-semibold text-blue-700">3. Perusteet ja Pronominit</h2>
+      </section>
+      
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700">Tervehdykset ja [Pronominit]</h3>
+        <div class="card wide-scroll">
+          <table>
+            <thead>
+              <tr><th>Subject</th><th>Possessive (Genitive)</th><th>Greeting/Phrase</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="finnish-word">minä</span> (I)</td><td><span class="finnish-word">minun</span> (my)</td><td>[Hauska tavata!] (Nice to meet you!)</td></tr>
+              <tr><td><span class="finnish-word">sinä</span> (you)</td><td><span class="finnish-word">sinun</span> (your)</td><td>[Kiitos samoin!] (Likewise!)</td></tr>
+              <tr><td><span class="finnish-word">hän</span> (he/she)</td><td><span class="finnish-word">hänen</span> (his/her)</td><td>[Hyvää huomenta!] (Good morning!)</td></tr>
+              <tr><td><span class="finnish-word">me</span> (we)</td><td><span class="finnish-word">meidän</span> (our)</td><td>[Mitä kuuluu?] (How are you?)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      <section>
+        <h3 class="text-xl font-semibold text-blue-700">Kansallisuus, Kieli, [Ruoka]</h3>
+        <div class="r-stack mt-4">
+          <div class="card flex-1">
+            <h4>Identity Rules</h4>
+            <ul class="list-disc pl-5">
+              <li>**Nationality:** <span class="finnish-word">Italia</span> &rarr; [italialainen] (-lainen suffix).</li>
+              <li>**Language:** [Minä puhun englantia]. (Partitive used with [puhua]).</li>
+              <li>**Origin:** Olen kotoisin [Iranista] (-sta ending).</li>
+            </ul>
+          </div>
+          <div class="card flex-1">
+            <h4>Key Vocabulary</h4>
+            <ul class="list-disc pl-5">
+              <li><span class="finnish-word">Perhe:</span> [isosisko], [tytär], [naimisissa].</li>
+              <li><span class="finnish-word">Aamupala:</span> [leipä], [kahvi], [voi], [tee].</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
 
-            <!-- 3. Pronominit ja Sanasto (Vertical Section) -->
-            <section>
-                <section>
-                    <h2>3. [Pronominit] ja [Sanasto]</h2>
-                    <h3 class="text-gray-500">(Pronouns & Vocabulary)</h3>
-                </section>
-                
-                <section>
-                    <h3>[Persoonapronominit] ja [Possessiivipronominit]</h3>
-                    <div class="scrollable-table-container">
-                        <table class="text-center">
-                            <thead>
-                                <tr><th>Subject</th><th>Possessive</th><th>Example Sentence</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>[minä]</td><td>[minun] (mun)</td><td>[Minun nimi on Däniel.]</td></tr>
-                                <tr><td>[sinä]</td><td>[sinun] (sun)</td><td>[Onko sinun laukku iso?]</td></tr>
-                                <tr><td>[hän] / [se]</td><td>[hänen] / [sen]</td><td>[Hänen äiti on opettaja.]</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="mt-4 text-lg fragment">**Possession:** The common structure is **[Minulla on]** (I have).</p>
-                    <p class="text-lg fragment">Esim: [Minulla on kaksi laukkua.] (I have two bags.)</p>
-                </section>
+    <!-- 4. Verb Conjugation (Vertical Section) -->
+    <section>
+      <section>
+        <h2 class="text-2xl font-semibold text-blue-700">4. <span class="finnish-word">Verbit</span> Tyypit 1&ndash;3</h2>
+      </section>
+      
+      <section>
+        <h3>[Olla] ja <span class="finnish-word">Kieltoverbi</span> (Negative Verb)</h3>
+        <div class="card wide-scroll">
+          <table>
+            <thead>
+              <tr><th>Subject</th><th>[Olla] (To Be)</th><th>[Kieltoverbi] + [Olla]</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="finnish-word">minä</span></td><td>[olen]</td><td><span class="finnish-word">en ole</span></td><td>Minä en ole <span class="finnish-word">suomalainen</span>.</td></tr>
+              <tr><td><span class="finnish-word">hän</span></td><td>[on]</td><td><span class="finnish-word">ei ole</span></td><td>Hän ei ole <span class="finnish-word">kotona</span>.</td></tr>
+              <tr><td><span class="finnish-word">me</span></td><td>[olemme]</td><td><span class="finnish-word">emme ole</span></td><td>Me emme ole <span class="finnish-word">opiskelijoita</span>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-                <section>
-                    <h3>[Maa], [Kansallisuus], [Kieli]</h3>
-                    <ul class="list-disc list-inside text-left mx-auto max-w-lg">
-                        <li>**Kansallisuus (Nationality):** Suffix **[-lainen] / [-läinen]**. (Esim: [Suomi] &rarr; [suomalainen])</li>
-                        <li>**Kieli (Language):** Object is always in the **Partitive case**. (Esim: [Minä puhun englantia].)</li>
-                        <li>**Origin:** Uses the Elative case. (Esim: Olen kotoisin [Iranista].)</li>
-                    </ul>
-                </section>
-                
-                <section>
-                    <h3>[Ruoka] ja [Perhe] (Food & Family)</h3>
-                    <div class="r-hstack gap-4">
-                        <div class="teal-box fragment">
-                            <h4>Food ([Ruoka])</h4>
-                            <ul class="list-disc list-inside text-left">
-                                <li>[kahvi], [tee], [vesi] (Partitive: [kahvia])</li>
-                                <li>[leipä], [juusto], [liha] (Partitive: [leipää])</li>
-                                <li>[aamupala] (Breakfast)</li>
-                            </ul>
-                        </div>
-                        <div class="teal-box fragment">
-                            <h4>Family ([Perhe])</h4>
-                            <ul class="list-disc list-inside text-left">
-                                <li>[äiti] (Mother), [isä] (Father)</li>
-                                <li>[sisko] (Sister), [veli] (Brother)</li>
-                                <li>[naimisissa] (Married)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </section>
-            
-            <!-- 4. Verb Conjugation (Vertical Section) -->
-            <section>
-                <section>
-                    <h2>4. [Verbit] ja [Kieltoverbi]</h2>
-                    <h3 class="text-gray-500">(Types 1-3 & Negative Verb)</h3>
-                </section>
-                
-                <section>
-                    <h3>[Olla] ja [Kieltoverbi] (To Be & Negative)</h3>
-                    <div class="scrollable-table-container">
-                        <table class="text-center">
-                            <thead>
-                                <tr><th>Subject</th><th>[Olla] (To Be)</th><th>[Kieltoverbi] + [Olla]</th><th>Example</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>[minä]</td><td>[olen]</td><td>[en ole]</td><td>Minä en ole [suomalainen].</td></tr>
-                                <tr><td>[hän]</td><td>[on]</td><td>[ei ole]</td><td>Hän ei ole [kotona].</td></tr>
-                                <tr><td>[me]</td><td>[olemme]</td><td>[emme ole]</td><td>Me emme ole [opiskelijoita].</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+      <section>
+        <h3>Tyyppi 1: <span class="finnish-word">Puhua</span> & <span class="finnish-word">Asua</span> (Vowel + a/ä)</h3>
+        <p>Rule: **<span class="finnish-word">Hän</span>** gets a **Double Vowel**.</p>
+        <div class="card wide-scroll">
+          <table>
+            <thead><tr><th>Subject</th><th>[Puhua] (puh-)</th><th>[Asua] (asu-)</th></tr></thead>
+            <tbody>
+              <tr><td>minä</td><td>puhun</td><td>asun</td></tr>
+              <tr><td>**hän**</td><td><span class="finnish-word">puhuu</span></td><td><span class="finnish-word">asuu</span></td></tr>
+              <tr><td>he</td><td>puhuvat</td><td>asuvat</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs mt-2">Example Negative: [Minä en puhu] (I don't speak).</p>
+      </section>
 
-                <section>
-                    <h3>Tyyppi 1: [Puhua] & [Asua]</h3>
-                    <p>Ends in Vowel + a/ä. **[Hän]** gets a **Double Vowel**.</p>
-                    <div class="scrollable-table-container">
-                        <table class="mt-4">
-                            <thead>
-                                <tr><th>Subject</th><th>[Puhua] (puh-)</th><th>[Asua] (asu-)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>minä</td><td>puhun</td><td>asun</td></tr>
-                                <tr class="fragment highlight-yellow"><td>**hän**</td><td>**puhuu**</td><td>**asuu**</td></tr>
-                                <tr><td>he</td><td>puhuvat</td><td>asuvat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+      <section>
+        <h3>Tyyppi 2: <span class="finnish-word">Syödä</span> & <span class="finnish-word">Juoda</span> (-da/-dä)</h3>
+        <p>Rule: **<span class="finnish-word">Hän</span>** takes **NO Ending** (just the stem).</p>
+        <div class="card wide-scroll">
+          <table>
+            <thead><tr><th>Subject</th><th>[Syödä] (syö-)</th><th>[Juoda] (juo-)</th></tr></thead>
+            <tbody>
+              <tr><td>minä</td><td>syön</td><td>juon</td></tr>
+              <tr><td>**hän**</td><td><span class="finnish-word">syö</span></td><td><span class="finnish-word">juo</span></td></tr>
+              <tr><td>he</td><td>syövät</td><td>juovat</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="text-xs mt-2">Example Negative: [Hän ei juo kahvia.] (He/She doesn't drink coffee.)</p>
+      </section>
 
-                <section>
-                    <h3>Tyyppi 2: [Syödä] & [Juoda]</h3>
-                    <p>Ends in -da/-dä. **[Hän]** takes **NO Ending** (just the stem).</p>
-                    <div class="scrollable-table-container">
-                        <table class="mt-4">
-                            <thead>
-                                <tr><th>Subject</th><th>[Syödä] (syö-)</th><th>[Juoda] (juo-)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>minä</td><td>syön</td><td>juon</td></tr>
-                                <tr class="fragment highlight-yellow"><td>**hän**</td><td>**syö**</td><td>**juo**</td></tr>
-                                <tr><td>he</td><td>syövät</td><td>juovat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+      <section>
+        <h3>Tyyppi 3: <span class="finnish-word">Mennä</span> & <span class="finnish-word">Tulla</span> (-la/-nä/-sta...)</h3>
+        <p>Rule: Takes the **-e-** sign. **<span class="finnish-word">Hän</span>** gets a **Long E**.</p>
+        <div class="card wide-scroll">
+          <table>
+            <thead><tr><th>Subject</th><th>[Mennä] (men-e-)</th><th>[Tulla] (tul-e-)</th></tr></thead>
+            <tbody>
+              <tr><td>minä</td><td>menen</td><td>tulen</td></tr>
+              <tr><td>**hän**</td><td><span class="finnish-word">menee</span></td><td><span class="finnish-word">tulee</span></td></tr>
+              <tr><td>he</td><td>menevät</td><td>tulevat</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p class="text-xs mt-2">Example Negative: [He eivät tule ajoissa.] (They don't come on time.)</p>
+      </section>
+    </section>
+    
+    <!-- 5. Cases and Gradation (Vertical Section) -->
+    <section>
+      <section>
+        <h2 class="text-2xl font-semibold text-blue-700">5. <span class="finnish-word">Sijamuodot</span> ja <span class="finnish-word">KPT</span></h2>
+      </section>
 
-                <section>
-                    <h3>Tyyppi 3: [Mennä] & [Tulla]</h3>
-                    <p>Ends in -la/-nä/-sta... Takes the **-e-** sign. **[Hän]** gets a **Long E**.</p>
-                    <div class="scrollable-table-container">
-                        <table class="mt-4">
-                            <thead>
-                                <tr><th>Subject</th><th>[Mennä] (men-e-)</th><th>[Tulla] (tul-e-)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>minä</td><td>menen</td><td>tulen</td></tr>
-                                <tr class="fragment highlight-yellow"><td>**hän**</td><td>**menee**</td><td>**tulee**</td></tr>
-                                <tr><td>he</td><td>menevät</td><td>tulevat</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </section>
-            
-            <!-- 5. Cases and Gradation (Vertical Section) -->
-            <section>
-                <section>
-                    <h2>5. [Sijamuodot] ja [KPT]</h2>
-                    <h3 class="text-gray-500">(Cases & Gradation)</h3>
-                </section>
+      <section>
+        <h3><span class="finnish-word">Partitiivi</span> (Partitive Case)</h3>
+        <p>The Partitive is used for **uncountable amounts**, **negative sentences**, and with specific verbs (<span class="finnish-word">puhua</span>).</p>
+        <ul class="list-disc pl-5 mt-3">
+          <li>**Uncountable:** [Minä juon kahvia.] (I drink coffee.)</li>
+          <li>**Negative:** [Minä en syö lihaa.] (I don't eat meat.)</li>
+          <li>**Language:** [Me puhumme englantia.] (We speak English.)</li>
+        </ul>
+      </section>
 
-                <section>
-                    <h3>[Partitiivi] (Partitive Case)</h3>
-                    <ul class="list-disc list-inside text-left mx-auto max-w-lg">
-                        <li>**Rule 1: Uncountable/Partial:** [Minä juon kahvia.] (I drink coffee.)</li>
-                        <li>**Rule 2: Negative Sentences:** [En syö lihaa.] (I don't eat meat.)</li>
-                        <li>**Rule 3: After Numbers:** [Minulla on kaksi laukkua.] (I have two bags.)</li>
-                    </ul>
-                </section>
+      <section>
+        <h3><span class="finnish-word">Nominatiivi</span> ja <span class="finnish-word">Genetiivi</span></h3>
+        <p>The **[Genitive]** (-n ending) expresses **possession** or **relationship**.</p>
+        <ul class="list-disc pl-5 mt-3">
+          <li>**Possession:** <span class="finnish-word">Hänen kirja</span> (His/Her book).</li>
+    196
+          <li>**Names:** <span class="finnish-word">Minun nimi on Däniel</span>. (My name is Däniel.)</li>
+          <li>**Titles:** <span class="finnish-word">Vaasan yliopisto</span> (University of Vaasa).</li>
+        </ul>
+      </section>
 
-                <section>
-                    <h3>[Paikallissijat] (Local Cases)</h3>
-                    <table class="mt-4">
-                        <thead>
-                            <tr><th>[Missä?]</th><th>IN-Paikka (-ssa)</th><th>ON-Paikka (-lla)</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>**Where?**</td><td>[Vaasassa]</td><td>[Asemalla] (At the station)</td></tr>
-                            <tr><td>**Where from?**</td><td>[Helsingistä]</td><td>[Tampereelta]</td></tr>
-                            <tr><td>**Where to?**</td><td>[Vaasaan]</td><td>[Yliopistolle]</td></tr>
-                        </tbody>
-                    </table>
-                    <p class="mt-4 text-lg">Esim: [Minä opiskelen Vaasan yliopistossa.] (I study at the University of Vaasa.)</p>
-                </section>
-                
-                <section>
-                    <h3>[KPT-Asteenmuutos] (Consonant Gradation)</h3>
-                    <div class="scrollable-table-container">
-                        <table class="mt-4">
-                            <thead>
-                                <tr><th>Strong &rarr; Weak</th><th>Example (Strong)</th><th>Minä Form (Weak)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>**kk** &rarr; **k**</td><td>[nukku]-a (to sleep)</td><td>[nukun]</td></tr>
-                                <tr><td>**nt** &rarr; **nn**</td><td>[anta]-a (to give)</td><td>[annan]</td></tr>
-                                <tr><td>**k** &rarr; (drop)</td><td>[luke]-a (to read)</td><td>[luen]</td></tr>
-                                <tr><td>**tt** &rarr; **t**</td><td>[kirjoitta]-a (to write)</td><td>[kirjoitan]</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </section>
+      <section>
+        <h3><span class="finnish-word">Paikallissijat</span> (Local Cases)</h3>
+        <div class="card wide-scroll">
+          <table>
+            <thead><tr><th>Question</th><th>IN-Paikka</th><th>ON-Paikka</th></tr></thead>
+            <tbody>
+              <tr><td><span class="finnish-word">Missä?</span> (Where?)</td><td><span class="finnish-word">Vaasassa</span> (-ssa)</td><td><span class="finnish-word">Asemalla</span> (-lla)</td></tr>
+              <tr><td><span class="finnish-word">Mistä?</span> (Where from?)</td><td><span class="finnish-word">Helsingistä</span> (-stä)</td><td><span class="finnish-word">Tampereelta</span> (-lta)</td></tr>
+              <tr><td><span class="finnish-word">Mihin?</span> (Where to?)</td><td><span class="finnish-word">Vaasaan</span> (-Vn)</td><td><span class="finnish-word">Yliopistolle</span> (-lle)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      <section>
+        <h3><span class="finnish-word">KPT-Asteenmuutos</span> (Consonant Gradation)</h3>
+        <p>Rule: Weak form appears in the stem (minä/sinä/me/te) and strong form in the infinitive/hän.</p>
+        <div class="card wide-scroll">
+          <table>
+            <thead><tr><th>Strong &rarr; Weak</th><th>Example (Strong)</th><th><span class="finnish-word">Minä</span> Form (Weak)</th></tr></thead>
+            <tbody>
+              <tr><td>**kk** &rarr; **k**</td><td><span class="finnish-word">nukku</span>-a (to sleep)</td><td><span class="finnish-word">nukun</span></td></tr>
+              <tr><td>**nt** &rarr; **nn**</td><td><span class="finnish-word">anta</span>-a (to give)</td><td><span class="finnish-word">annan</span></td></tr>
+              <tr><td>**k** &rarr; (drop)</td><td><span class="finnish-word">luke</span>-a (to read)</td><td><span class="finnish-word">luen</span></td></tr>
+              <tr><td>**tt** &rarr; **t**</td><td><span class="finnish-word">kirjoitta</span>-a (to write)</td><td><span class="finnish-word">kirjoitan</span></td></tr>
+            </tbody>
+        </table>
+        </div>
+      </section>
+    </section>
 
-            <!-- Final Slide - Resources -->
-            <section>
-                <h2>[Onnea tenttiin!]</h2>
-                <h3 class="text-gray-500">(Good Luck with the Exam!)</h3>
-                <div class="teal-box">
-                    <h4 class="text-2xl">Jatko-opiskelu (Further Learning Resources)</h4>
-                    <ul class="list-disc list-inside mt-4 text-left mx-auto max-w-lg">
-                        <li>[Uusi kielemme] - Comprehensive Finnish Grammar and Vocabulary.</li>
-                        <li>[Yle Kielikoulu] - Finnish news and learning platform.</li>
-                        <li>[Suomen mestari] - Recommended course book series.</li>
-                    </ul>
-                </div>
-            </section>
+    <!-- Final Slide - Resources -->
+    <section>
+      <h2><span class="finnish-word">Onnea tenttiin!</span></h2>
+      <h3 class="text-gray-500">(Good Luck with the Exam!)</h3>
+      <div class="card">
+        <h4 class="text-2xl font-semibold text-blue-700">Jatko-opiskelu (Further Learning)</h4>
+        <ul class="list-disc pl-5 mt-4">
+          <li><span class="finnish-word">Uusi kielemme</span> - Comprehensive Finnish Grammar and Vocabulary.</li>
+          <li><span class="finnish-word">Yle Kielikoulu</span> - Finnish news and learning platform.</li>
+          <li><span class="finnish-word">Suomen mestari</span> - Recommended course book series.</li>
+        </ul>
+      </div>
+    </section>
 
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-    <script>
-        // Initialize Reveal.js
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide',
-            dependencies: [
-                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js', async: true }
-            ]
-        });
-    </script>
+  </div>
+</div>
+<script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: false,
+    touch: true,
+    slideNumber: true,
+    history: false,
+    // Add touch and keyboard control dependencies
+    dependencies: [
+        { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js', async: true }
+    ]
+  });
+</script>
 </body>
 </html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python For Loops</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python For Loops</h1>
+					<p>Working with for loops in Python.</p>
+				</section>
+
+				<section>
+					<h2>For Loops</h2>
+					<p>A <span class="green">for loop</span> is used for <span class="orange">iterating over a sequence</span> (that is either a <span class="orange">list</span>, a <span class="orange">tuple</span>, a <span class="orange">dictionary</span>, a <span class="orange">set</span>, or a <span class="orange">string</span>).</p>
+					<pre><code class="python" data-line-numbers>
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+					</code></pre>
+					<aside class="notes">
+						Speaker notes: This is less like the for keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>The range() Function</h2>
+						<p>The <span class="orange">range()</span> function returns a <span class="green">sequence of numbers</span>, starting from <span class="orange">0 by default</span>, and increments by <span class="orange">1 (by default)</span>, and ends at a specified number.</p>
+						<pre><code class="python" data-line-numbers>
+for x in range(6):
+  print(x)
+						</code></pre>
+					</section>
+					<section>
+						<h2>Nested Loops</h2>
+						<p>A <span class="green">nested loop</span> is a <span class="orange">loop inside a loop</span>. The <span class="orange">"inner loop"</span> will be executed <span class="green">one time for each iteration</span> of the <span class="orange">"outer loop"</span>:</p>
+						<pre><code class="python" data-line-numbers>
+adj = ["red", "big", "tasty"]
+fruits = ["apple", "banana", "cherry"]
+
+for x in adj:
+  for y in fruits:
+    print(x, y)
+						</code></pre>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

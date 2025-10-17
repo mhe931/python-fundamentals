@@ -1,62 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Python Fundamentals</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Workshop Index</title>
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #1a202c;
-            color: #e2e8f0;
-            font-family: 'Inter', sans-serif;
-            transition: background-color 0.5s ease;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 2em;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 3em;
+        }
+
+        h1 {
+            color: #4CAF50; /* A nice green for Python */
+            font-weight: 700;
+            font-size: 3em;
+        }
+
+        p {
+            color: #b0b0b0;
+            font-weight: 300;
+            font-size: 1.2em;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2em;
+            padding: 0;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 300px;
+            text-decoration: none;
+            color: #e0e0e0;
+            padding: 1.5em;
+            box-sizing: border-box;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            color: #4CAF50;
+            margin-top: 0;
+            font-size: 1.5em;
+            font-weight: 400;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #b0b0b0;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen">
-    <div id="root" class="w-full"></div>
+<body>
+    <header>
+        <h1>Python Fundamentals</h1>
+        <p>A series of interactive presentations to master the basics of Python.</p>
+    </header>
 
-    <script type="text/babel">
-        const { useState } = React;
-        const App = () => {
-            const sessions = [
-                { id: 1, title: "Session 1: Programming Journey", file: "session1.html" },
-                { id: 2, title: "Session 2: Data Types & Variables", file: "session2.html" },
-                { id: 3, title: "Session 3: Introduction to Data", file: "session3.html" },
-                { id: 4, title: "Code Examples", file: "code.html" },
-                { id: 5, title: "git for project management", file: "git.html" },
-                { id: 6, title: "Däniel Ebrahimzadeh theme 3", file: "DänielEbrahimzadehTheme3.html" },
-                { id: 7, title: "Däniel Ebrahimzadeh theme 5", file: "DänielEbrahimzadehTheme5.html" },
-                { id: 8, title: "Finnish 1", file: "Finnish1.html" }
-                
-            ];
-
-            return (
-                <div className="flex flex-col items-center justify-center min-h-screen text-center p-8">
-                    <h1 className="text-5xl font-bold mb-6 text-white">Python Workshop</h1>
-                    <p className="text-xl text-gray-400 mb-12 max-w-2xl">
-                        Welcome to the Python Fundamentals workshop. Please select a session below to begin.
-                    </p>
-                    <div className="space-y-4">
-                        {sessions.map(session => (
-                            <a 
-                                key={session.id} 
-                                href={session.file} 
-                                className="block w-full px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white rounded-lg transition-all duration-300 transform hover:scale-105 border border-gray-700 hover:border-gray-600 shadow-lg"
-                            >
-                                {session.title}
-                            </a>
-                        ))}
-                    </div>
-                </div>
-            );
-        };
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
+    <div class="container">
+        <a href="python_syntax.html" class="card">
+            <h2>Python Syntax</h2>
+            <p>Learn the basic syntax and indentation rules.</p>
+        </a>
+        <a href="python_variables.html" class="card">
+            <h2>Python Variables</h2>
+            <p>Understand how to create and use variables.</p>
+        </a>
+        <a href="python_datatypes.html" class="card">
+            <h2>Python Data Types</h2>
+            <p>Explore the different built-in data types.</p>
+        </a>
+        <a href="python_numbers.html" class="card">
+            <h2>Python Numbers</h2>
+            <p>Work with integers, floats, and complex numbers.</p>
+        </a>
+        <a href="python_strings.html" class="card">
+            <h2>Python Strings</h2>
+            <p>Master string manipulation and methods.</p>
+        </a>
+        <a href="python_booleans.html" class="card">
+            <h2>Python Booleans</h2>
+            <p>Understand True/False and boolean logic.</p>
+        </a>
+        <a href="python_operators.html" class="card">
+            <h2>Python Operators</h2>
+            <p>Learn about arithmetic, comparison, and logical operators.</p>
+        </a>
+        <a href="python_lists.html" class="card">
+            <h2>Python Lists</h2>
+            <p>Work with ordered and changeable collections.</p>
+        </a>
+        <a href="python_tuples.html" class="card">
+            <h2>Python Tuples</h2>
+            <p>Use ordered and unchangeable collections.</p>
+        </a>
+        <a href="python_sets.html" class="card">
+            <h2>Python Sets</h2>
+            <p>Work with unordered and unindexed collections.</p>
+        </a>
+        <a href="python_dictionaries.html" class="card">
+            <h2>Python Dictionaries</h2>
+            <p>Understand key-value pairs.</p>
+        </a>
+        <a href="python_ifelse.html" class="card">
+            <h2>Python If...Else</h2>
+            <p>Control the flow of your code with conditions.</p>
+        </a>
+        <a href="python_while_loops.html" class="card">
+            <h2>Python While Loops</h2>
+            <p>Execute code repeatedly while a condition is true.</p>
+        </a>
+        <a href="python_for_loops.html" class="card">
+            <h2>Python For Loops</h2>
+            <p>Iterate over sequences like lists, tuples, and strings.</p>
+        </a>
+        <a href="python_functions.html" class="card">
+            <h2>Python Functions</h2>
+            <p>Create and use reusable blocks of code.</p>
+        </a>
+    </div>
 </body>
 </html>
-

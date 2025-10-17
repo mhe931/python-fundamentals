@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Functions</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Functions</h1>
+					<p>Working with functions in Python.</p>
+				</section>
+
+				<section>
+					<h2>Functions</h2>
+					<p>A <span class="green">function</span> is a <span class="orange">block of code</span> which <span class="green">only runs when it is called</span>. You can <span class="green">pass data</span>, known as <span class="orange">parameters</span>, into a function. A function can <span class="green">return data</span> as a result.</p>
+					<pre><code class="python" data-line-numbers>
+def my_function():
+  print("Hello from a function")
+
+my_function()
+					</code></pre>
+					<aside class="notes">
+						Speaker notes: Functions are defined using the def keyword.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Arguments</h2>
+						<p>Information can be passed into functions as <span class="orange">arguments</span>. Arguments are specified <span class="green">after the function name</span>, inside the <span class="orange">parentheses</span>. You can add as many arguments as you want, just <span class="green">separate them with a comma</span>.</p>
+						<pre><code class="python" data-line-numbers>
+def my_function(fname):
+  print(fname + " Refsnes")
+
+my_function("Emil")
+my_function("Tobias")
+my_function("Linus")
+						</code></pre>
+					</section>
+					<section>
+						<h2>Return Values</h2>
+						<p>To let a function <span class="green">return a value</span>, use the <span class="orange">return</span> statement:</p>
+						<pre><code class="python" data-line-numbers>
+def my_function(x):
+  return 5 * x
+
+print(my_function(3))
+print(my_function(5))
+print(my_function(9))
+						</code></pre>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

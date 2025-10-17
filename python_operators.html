@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Operators</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Operators</h1>
+					<p>Using operators in Python.</p>
+				</section>
+
+				<section>
+					<h2>Operators</h2>
+					<p><span class="green">Operators</span> are used to perform <span class="orange">operations</span> on <span class="orange">variables</span> and <span class="orange">values</span>. Python divides the operators in the following groups:</p>
+					<ul>
+						<li>Arithmetic operators</li>
+						<li>Assignment operators</li>
+						<li>Comparison operators</li>
+						<li>Logical operators</li>
+						<li>Identity operators</li>
+						<li>Membership operators</li>
+						<li>Bitwise operators</li>
+					</ul>
+					<aside class="notes">
+						Speaker notes: We will go through the most common ones.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Arithmetic Operators</h2>
+						<p><span class="green">Arithmetic operators</span> are used with <span class="orange">numeric values</span> to perform common <span class="orange">mathematical operations</span>:</p>
+						<pre><code class="python" data-line-numbers>
+print(10 + 5)
+print(10 - 5)
+print(10 * 5)
+print(10 / 5)
+print(10 % 5)
+print(10 ** 5)
+print(10 // 5)
+						</code></pre>
+					</section>
+					<section>
+						<h2>Logical Operators</h2>
+						<p><span class="green">Logical operators</span> are used to <span class="orange">combine conditional statements</span>:</p>
+						<pre><code class="python" data-line-numbers>
+print(10 > 9 and 10 > 8)
+print(10 > 9 or 10 < 8)
+print(not(10 > 9 and 10 > 8))
+						</code></pre>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

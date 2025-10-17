@@ -1,0 +1,486 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Fundamentals</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Python Fundamentals</h1>
+                    <p>A Comprehensive Guide</p>
+                </section>
+
+                <section>
+                    <h2>Python Intro</h2>
+                    <section>
+                        <h3>What is Python?</h3>
+                        <p>Python is a popular programming language. It was created by <span class="orange">Guido van Rossum</span>, and released in <span class="orange">1991</span>.</p>
+                        <p>It is used for:</p>
+                        <ul>
+                            <li>web development (server-side)</li>
+                            <li>software development</li>
+                            <li>mathematics</li>
+                            <li>system scripting</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>What can Python do?</h3>
+                        <ul>
+                            <li>Python can be used on a server to create <span class="green">web applications</span>.</li>
+                            <li>Python can be used alongside software to create <span class="green">workflows</span>.</li>
+                            <li>Python can connect to <span class="green">database systems</span>. It can also read and modify files.</li>
+                            <li>Python can be used to handle <span class="green">big data</span> and perform complex mathematics.</li>
+                            <li>Python can be used for <span class="green">rapid prototyping</span>, or for production-ready software development.</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Get Started</h2>
+                    <section>
+                        <h3>Python Installation</h3>
+                        <p>Many PCs and Macs will have python already installed. To check if you have python installed on a Windows PC, search in the start bar for <span class="orange">Python</span> or run the following on the command line (cmd.exe):</p>
+                        <pre><code class="bash" data-line-numbers>python --version</code></pre>
+                    </section>
+                    <section>
+                        <h3>Python Quickstart</h3>
+                        <p>Python is an interpreted programming language, this means that you can run the code as soon as you write it. This also means that you can write and run Python in the command line:</p>
+                        <pre><code class="bash" data-line-numbers>python
+>>> print("Hello, World!")</code></pre>
+                    </section>
+                </section>
+
+				<section>
+                    <h2>Python Syntax</h2>
+					<section>
+						<h3>Execute Python Syntax</h3>
+						<p>Python syntax can be executed by writing <span class="green">directly in the Command Line</span> or by creating a <span class="orange">python file (.py)</span> and running it in the Command Line.</p>
+					</section>
+					<section>
+						<h3>Python Indentation</h3>
+						<p><span class="green">Indentation</span> refers to the <span class="orange">spaces at the beginning of a code line</span>. In other programming languages the indentation in code is for <span class="green">readability only</span>, but in Python, it is <span class="red">very important</span>.</p>
+					</section>
+					<section>
+						<h3>Indentation Matters</h3>
+						<p>Python uses <span class="green">indentation</span> to indicate a <span class="orange">block of code</span>.</p>
+						<pre><code class="python" data-line-numbers>
+if 5 > 2:
+  print("Five is greater than two!")
+						</code></pre>
+					</section>
+				</section>
+
+                <section>
+                    <h2>Python Output</h2>
+                    <section>
+                        <h3>Python Output</h3>
+                        <p>The Python <span class="orange">print()</span> function is used to output variables.</p>
+                        <pre><code class="python" data-line-numbers>
+x = "Python is awesome"
+print(x)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Output Variables</h3>
+                        <p>In the <span class="orange">print()</span> function, you output multiple variables, separated by a comma:</p>
+                        <pre><code class="python" data-line-numbers>
+x = "Python"
+y = "is"
+z = "awesome"
+print(x, y, z)
+                        </code></pre>
+                        <p>You can also use the <span class="orange">+</span> operator to output multiple variables:</p>
+                        <pre><code class="python" data-line-numbers>
+x = "Python "
+y = "is "
+z = "awesome"
+print(x + y + z)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Comments</h2>
+                    <section>
+                        <h3>Comments</h3>
+                        <p>Comments can be used to explain Python code, to make the code more readable, and to prevent execution when testing code.</p>
+                        <p>Comments start with a <span class="orange">#</span>, and Python will ignore them:</p>
+                        <pre><code class="python" data-line-numbers>
+#This is a comment
+print("Hello, World!")
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Multi Line Comments</h3>
+                        <p>Python does not really have a syntax for multi line comments. To add a multiline comment you could insert a <span class="orange">#</span> for each line:</p>
+                        <pre><code class="python" data-line-numbers>
+#This is a comment
+#written in
+#more than just one line
+print("Hello, World!")
+                        </code></pre>
+                        <p>Or, not quite as intended, you can use a <span class="orange">multiline string</span>:</p>
+                        <pre><code class="python" data-line-numbers>
+'''
+This is a comment
+written in
+more than just one line
+'''
+print("Hello, World!")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Variables</h2>
+                    <section>
+                        <h3>Creating Variables</h3>
+                        <p>Variables are <span class="green">containers</span> for storing data values. Python has <span class="red">no command</span> for declaring a variable. A variable is created the moment you <span class="green">first assign a value</span> to it.</p>
+                        <pre><code class="python" data-line-numbers>
+# x is of type int
+x = 5
+# y is of type str
+y = "John"
+print(x)
+print(y)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Variable Names</h3>
+                        <p>A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume). Rules for Python variables:</p>
+                        <ul>
+                            <li>A <span class="green">variable name</span> must start with a <span class="orange">letter</span> or the <span class="orange">underscore character</span></li>
+                            <li>A <span class="green">variable name</span> <span class="red">cannot</span> start with a <span class="orange">number</span></li>
+                            <li>A <span class="green">variable name</span> can <span class="green">only</span> contain <span class="orange">alpha-numeric characters</span> and <span class="orange">underscores</span> (A-z, 0-9, and _ )</li>
+                            <li><span class="green">Variable names</span> are <span class="orange">case-sensitive</span> (age, Age and AGE are three different variables)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Assign Multiple Values</h3>
+                        <p>Python allows you to assign values to multiple variables in one line:</p>
+                        <pre><code class="python" data-line-numbers>
+x, y, z = "Orange", "Banana", "Cherry"
+                        </code></pre>
+                        <p>And you can assign the same value to multiple variables in one line:</p>
+                        <pre><code class="python" data-line-numbers>
+x = y = z = "Orange"
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Data Types</h2>
+                    <section>
+                        <h3>Built-in Data Types</h3>
+                        <p>In programming, <span class="green">data type</span> is an important concept. <span class="green">Variables</span> can store data of <span class="orange">different types</span>, and different types can do different things. Python has the following data types <span class="green">built-in by default</span>, in these categories:</p>
+                        <ul>
+                            <li>Text Type: <code>str</code></li>
+                            <li>Numeric Types: <code>int</code>, <code>float</code>, <code>complex</code></li>
+                            <li>Sequence Types: <code>list</code>, <code>tuple</code>, <code>range</code></li>
+                            <li>Mapping Type: <code>dict</code></li>
+                            <li>Set Types: <code>set</code>, <code>frozenset</code></li>
+                            <li>Boolean Type: <code>bool</code></li>
+                            <li>Binary Types: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Getting the Data Type</h3>
+                        <p>You can get the data type of any object by using the <span class="orange">type()</span> function:</p>
+                        <pre><code class="python" data-line-numbers>
+x = 5
+print(type(x))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Numbers</h2>
+                    <section>
+                        <h3>Numeric Types</h3>
+                        <p>There are <span class="green">three</span> numeric types in Python:</p>
+                        <ul>
+                            <li><code>int</code></li>
+                            <li><code>float</code></li>
+                            <li><code>complex</code></li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+x = 1    # int
+y = 2.8  # float
+z = 1j   # complex
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Type Conversion</h3>
+                        <p>You can <span class="green">convert</span> from one type to another with the <span class="orange">int()</span>, <span class="orange">float()</span>, and <span class="orange">complex()</span> methods:</p>
+                        <pre><code class="python" data-line-numbers>
+x = 1    # int
+y = 2.8  # float
+
+#convert from int to float:
+a = float(x)
+
+#convert from float to int:
+b = int(y)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Casting</h2>
+                    <section>
+                        <h3>Specify a Variable Type</h3>
+                        <p>There may be times when you want to specify a type on to a variable. This can be done with casting. Python is an object-orientated language, and as such it uses classes to define data types, including its primitive types.</p>
+                        <p>Casting in python is therefore done using constructor functions:</p>
+                        <ul>
+                            <li><span class="orange">int()</span> - constructs an integer number from an integer literal, a float literal (by removing all decimals), or a string literal (providing the string represents a whole number)</li>
+                            <li><span class="orange">float()</span> - constructs a float number from an integer literal, a float literal or a string literal (providing the string represents a float or an integer)</li>
+                            <li><span class="orange">str()</span> - constructs a string from a wide variety of data types, including strings, integer literals and float literals</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Casting Examples</h3>
+                        <pre><code class="python" data-line-numbers>
+x = int(1)   # x will be 1
+y = int(2.8) # y will be 2
+z = int("3") # z will be 3
+
+x = float(1)     # x will be 1.0
+y = float(2.8)   # y will be 2.8
+z = float("3")   # z will be 3.0
+w = float("4.2") # w will be 4.2
+
+x = str("s1") # x will be 's1'
+y = str(2)    # y will be '2'
+z = str(3.0)  # z will be '3.0'
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Strings</h2>
+                    <section>
+                        <h3>Strings</h3>
+                        <p>Strings in python are surrounded by either <span class="orange">single quotation marks</span>, or <span class="orange">double quotation marks</span>.</p>
+                        <pre><code class="python" data-line-numbers>
+print("Hello")
+print('Hello')
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>String as Arrays</h3>
+                        <p>Like many other popular programming languages, strings in Python are <span class="green">arrays of bytes</span> representing unicode characters. However, Python does <span class="red">not</span> have a character data type, a single character is simply a string with a length of 1.</p>
+                        <pre><code class="python" data-line-numbers>
+a = "Hello, World!"
+print(a[1])
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>String Methods</h3>
+                        <p>Python has a set of <span class="green">built-in methods</span> that you can use on strings.</p>
+                        <pre><code class="python" data-line-numbers>
+a = " Hello, World! "
+print(a.strip()) # returns "Hello, World!"
+
+print(len(a))
+
+print(a.lower())
+
+print(a.upper())
+
+print(a.replace("H", "J"))
+
+print(a.split(",")) # returns [' Hello', ' World! ']
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Booleans</h2>
+                    <section>
+                        <h3>Booleans</h3>
+                        <p>In programming you often need to know if an expression is <span class="green">True</span> or <span class="red">False</span>. When you compare two values, the expression is evaluated and Python returns the <span class="orange">Boolean answer</span>.</p>
+                        <pre><code class="python" data-line-numbers>
+print(10 > 9)
+print(10 == 9)
+print(10 < 9)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Most Values are True</h3>
+                        <p>Almost any value is evaluated to <span class="green">True</span> if it has some sort of content. Any string is <span class="green">True</span>, except <span class="red">empty strings</span>. Any number is <span class="green">True</span>, except <span class="red">0</span>. Any list, tuple, set, and dictionary are <span class="green">True</span>, except <span class="red">empty ones</span>.</p>
+                    </section>
+                    <section>
+                        <h3>Some Values are False</h3>
+                        <p>The following will return <span class="red">False</span>:</p>
+                        <pre><code class="python" data-line-numbers>
+bool(False)
+bool(None)
+bool(0)
+bool("")
+bool(())
+bool([])
+bool({})
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Operators</h2>
+                    <section>
+                        <h3>Operators</h3>
+                        <p><span class="green">Operators</span> are used to perform <span class="orange">operations</span> on <span class="orange">variables</span> and <span class="orange">values</span>. Python divides the operators in the following groups:</p>
+                        <ul>
+                            <li>Arithmetic operators</li>
+                            <li>Assignment operators</li>
+                            <li>Comparison operators</li>
+                            <li>Logical operators</li>
+                            <li>Identity operators</li>
+                            <li>Membership operators</li>
+                            <li>Bitwise operators</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Arithmetic Operators</h3>
+                        <p><span class="green">Arithmetic operators</span> are used with <span class="orange">numeric values</span> to perform common <span class="orange">mathematical operations</span>:</p>
+                        <pre><code class="python" data-line-numbers>
+print(10 + 5)
+print(10 - 5)
+print(10 * 5)
+print(10 / 5)
+print(10 % 5)
+print(10 ** 5)
+print(10 // 5)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Logical Operators</h3>
+                        <p><span class="green">Logical operators</span> are used to <span class="orange">combine conditional statements</span>:</p>
+                        <pre><code class="python" data-line-numbers>
+print(10 > 9 and 10 > 8)
+print(10 > 9 or 10 < 8)
+print(not(10 > 9 and 10 > 8))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Lists</h2>
+                    <section>
+                        <h3>Lists</h3>
+                        <p><span class="green">Lists</span> are used to store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. Lists are one of <span class="green">4 built-in data types</span> in Python used to store collections of data, the other 3 are <span class="orange">Tuple</span>, <span class="orange">Set</span>, and <span class="orange">Dictionary</span>, all with different qualities and usage.</p>
+                        <pre><code class="python" data-line-numbers>
+thislist = ["apple", "banana", "cherry"]
+print(thislist)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>List Items</h3>
+                        <p>List items are <span class="green">ordered</span>, <span class="green">changeable</span>, and <span class="green">allow duplicate values</span>. List items are <span class="orange">indexed</span>, the first item has index <span class="orange">[0]</span>, the second item has index <span class="orange">[1]</span> etc.</p>
+                    </section>
+                    <section>
+                        <h3>List Methods</h3>
+                        <p>Python has a set of <span class="green">built-in methods</span> that you can use on lists.</p>
+                        <pre><code class="python" data-line-numbers>
+thislist = ["apple", "banana", "cherry"]
+thislist.append("orange")
+print(thislist)
+
+thislist.remove("banana")
+print(thislist)
+
+print(len(thislist))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Tuples</h2>
+                    <section>
+                        <h3>Tuples</h3>
+                        <p><span class="green">Tuples</span> are used to store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. A tuple is a collection which is <span class="green">ordered</span> and <span class="red">unchangeable</span>. Tuples are written with <span class="orange">round brackets</span>.</p>
+                        <pre><code class="python" data-line-numbers>
+thistuple = ("apple", "banana", "cherry")
+print(thistuple)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Tuple Items</h3>
+                        <p>Tuple items are <span class="green">ordered</span>, <span class="red">unchangeable</span>, and <span class="green">allow duplicate values</span>. Tuple items are <span class="orange">indexed</span>, the first item has index <span class="orange">[0]</span>, the second item has index <span class="orange">[1]</span> etc.</p>
+                    </section>
+                    <section>
+                        <h3>Tuple Methods</h3>
+                        <p>Python has <span class="green">two built-in methods</span> that you can use on tuples.</p>
+                        <pre><code class="python" data-line-numbers>
+thistuple = ("apple", "banana", "cherry")
+print(thistuple.count("apple"))
+print(thistuple.index("cherry"))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Python Sets</h2>
+                    <section>
+                        <h3>Sets</h3>
+                        <p><span class="green">Sets</span> are used to store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. A set is a collection which is both <span class="red">unordered</span> and <span class="red">unindexed</span>. Sets are written with <span class="orange">curly brackets</span>.</p>
+                        <pre><code class="python" data-line-numbers>
+thisset = {"apple", "banana", "cherry"}
+print(thisset)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Set Items</h3>
+                        <p>Set items are <span class="red">unordered</span>, <span class="red">unchangeable</span>, and do <span class="red">not</span> allow <span class="orange">duplicate values</span>.</p>
+                    </section>
+                    <section>
+                        <h3>Set Methods</h3>
+                        <p>Python has a set of <span class="green">built-in methods</span> that you can use on sets.</p>
+                        <pre><code class="python" data-line-numbers>
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+print(thisset)
+
+thisset.remove("banana")
+print(thisset)
+
+print(len(thisset))
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Booleans</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Booleans</h1>
+					<p>Working with booleans in Python.</p>
+				</section>
+
+				<section>
+					<h2>Booleans</h2>
+					<p>In programming you often need to know if an expression is <span class="green">True</span> or <span class="red">False</span>. When you compare two values, the expression is evaluated and Python returns the <span class="orange">Boolean answer</span>.</p>
+					<pre><code class="python" data-line-numbers>
+print(10 > 9)
+print(10 == 9)
+print(10 < 9)
+					</code></pre>
+					<aside class="notes">
+						Speaker notes: Explain that these are comparison operators, and they will be covered in more detail in the operators presentation.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Most Values are True</h2>
+						<p>Almost any value is evaluated to <span class="green">True</span> if it has some sort of content. Any string is <span class="green">True</span>, except <span class="red">empty strings</span>. Any number is <span class="green">True</span>, except <span class="red">0</span>. Any list, tuple, set, and dictionary are <span class="green">True</span>, except <span class="red">empty ones</span>.</p>
+					</section>
+					<section>
+						<h2>Some Values are False</h2>
+						<p>The following will return <span class="red">False</span>:</p>
+						<pre><code class="python" data-line-numbers>
+bool(False)
+bool(None)
+bool(0)
+bool("")
+bool(())
+bool([])
+bool({})
+						</code></pre>
+						<aside class="notes">
+							Speaker notes: This is an important concept to grasp for control flow.
+						</aside>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

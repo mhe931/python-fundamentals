@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Syntax</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Syntax</h1>
+					<p>Executing Python Syntax and Indentation</p>
+				</section>
+
+				<section>
+					<h2>Execute Python Syntax</h2>
+					<p>Python syntax can be executed by writing <span class="green">directly in the Command Line</span> or by creating a <span class="orange">python file (.py)</span> and running it in the Command Line.</p>
+					<aside class="notes">
+						Speaker notes: Explain the difference between the interactive interpreter and running a script. Show a quick demo if possible.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Python Indentation</h2>
+						<p><span class="green">Indentation</span> refers to the <span class="orange">spaces at the beginning of a code line</span>. In other programming languages the indentation in code is for <span class="green">readability only</span>, but in Python, it is <span class="red">very important</span>.</p>
+					</section>
+					<section>
+						<h2>Indentation Matters</h2>
+						<p>Python uses <span class="green">indentation</span> to indicate a <span class="orange">block of code</span>.</p>
+						<pre><code class="python" data-line-numbers>
+if 5 > 2:
+  print("Five is greater than two!")
+						</code></pre>
+						<aside class="notes">
+							Speaker notes: Emphasize that the number of spaces is variable, but it has to be consistent. The convention is four spaces.
+						</aside>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

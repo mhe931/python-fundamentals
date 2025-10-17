@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Sets</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Sets</h1>
+					<p>Working with sets in Python.</p>
+				</section>
+
+				<section>
+					<h2>Sets</h2>
+					<p><span class="green">Sets</span> are used to store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. A set is a collection which is both <span class="red">unordered</span> and <span class="red">unindexed</span>. Sets are written with <span class="orange">curly brackets</span>.</p>
+					<pre><code class="python" data-line-numbers>
+thisset = {"apple", "banana", "cherry"}
+print(thisset)
+					</code></pre>
+					<aside class="notes">
+						Speaker notes: Sets are unordered, so you cannot be sure in which order the items will appear.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Set Items</h2>
+						<p>Set items are <span class="red">unordered</span>, <span class="red">unchangeable</span>, and do <span class="red">not</span> allow <span class="orange">duplicate values</span>.</p>
+					</section>
+					<section>
+						<h2>Set Methods</h2>
+						<p>Python has a set of <span class="green">built-in methods</span> that you can use on sets.</p>
+						<pre><code class="python" data-line-numbers>
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+print(thisset)
+
+thisset.remove("banana")
+print(thisset)
+
+print(len(thisset))
+						</code></pre>
+						<aside class="notes">
+							Speaker notes: Go through each of these methods and explain what they do.
+						</aside>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

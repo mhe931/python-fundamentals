@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Numbers</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Numbers</h1>
+					<p>Working with numeric types in Python.</p>
+				</section>
+
+				<section>
+					<h2>Numeric Types</h2>
+					<p>There are <span class="green">three</span> numeric types in Python:</p>
+					<ul>
+						<li><code>int</code></li>
+						<li><code>float</code></li>
+						<li><code>complex</code></li>
+					</ul>
+					<pre><code class="python" data-line-numbers>
+x = 1    # int
+y = 2.8  # float
+z = 1j   # complex
+					</code></pre>
+					<aside class="notes">
+						Speaker notes: Explain the difference between these types. Integers are whole numbers, floats have decimals, and complex numbers have a real and imaginary part.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Type Conversion</h2>
+						<p>You can <span class="green">convert</span> from one type to another with the <span class="orange">int()</span>, <span class="orange">float()</span>, and <span class="orange">complex()</span> methods:</p>
+						<pre><code class="python" data-line-numbers>
+x = 1    # int
+y = 2.8  # float
+z = 1j   # complex
+
+#convert from int to float:
+a = float(x)
+
+#convert from float to int:
+b = int(y)
+
+#convert from int to complex:
+c = complex(x)
+						</code></pre>
+					</section>
+					<section>
+						<h2>Random Number</h2>
+						<p>Python does <span class="red">not</span> have a <span class="orange">random()</span> function to make a random number, but Python has a built-in module called <span class="green">random</span> that can be used to make random numbers:</p>
+						<pre><code class="python" data-line-numbers>
+import random
+
+print(random.randrange(1, 10))
+						</code></pre>
+						<aside class="notes">
+							Speaker notes: Explain that the `randrange` function returns a number between the given range.
+						</aside>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

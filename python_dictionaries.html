@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python Dictionaries</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Python Dictionaries</h1>
+					<p>Working with dictionaries in Python.</p>
+				</section>
+
+				<section>
+					<h2>Dictionaries</h2>
+					<p><span class="green">Dictionaries</span> are used to store data values in <span class="orange">key:value pairs</span>. A dictionary is a collection which is <span class="green">ordered*</span>, <span class="green">changeable</span> and does <span class="red">not</span> allow <span class="orange">duplicates</span>.</p>
+					<pre><code class="python" data-line-numbers>
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+print(thisdict)
+					</code></pre>
+					<aside class="notes">
+						Speaker notes: As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Dictionary Items</h2>
+						<p>Dictionary items are presented in <span class="orange">key:value pairs</span>, and can be referred to by using the <span class="orange">key name</span>.</p>
+						<pre><code class="python" data-line-numbers>
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+print(thisdict["brand"])
+						</code></pre>
+					</section>
+					<section>
+						<h2>Dictionary Methods</h2>
+						<p>Python has a set of <span class="green">built-in methods</span> that you can use on dictionaries.</p>
+						<pre><code class="python" data-line-numbers>
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict["color"] = "red"
+print(thisdict)
+
+thisdict.pop("model")
+print(thisdict)
+
+print(len(thisdict))
+						</code></pre>
+					</section>
+				</section>
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ]
+			});
+		</script>
+	</body>
+</html>

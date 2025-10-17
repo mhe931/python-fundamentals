@@ -1,175 +1,262 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>File Handling</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Handling</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+        }
+        .slide-content {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        /* Custom scrollbar for webkit browsers */
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-content::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        .slide-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-dark);
+            border-radius: 10px;
+            border: 2px solid var(--surface);
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
-        <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>File Handling</h1>
-                    <ul>
-                        <li><a href="#/file-handling">File Handling</a></li>
-                        <li><a href="#/read-files">Read Files</a></li>
-                        <li><a href="#/write-create-files">Write/Create Files</a></li>
-                        <li><a href="#/delete-files">Delete Files</a></li>
-                    </ul>
-                </section>
+    <header id="presentation-header" class="p-4 bg-gray-800 shadow-lg transition-all duration-500">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-green-400">File Handling</h1>
+    </header>
 
-                <section id="file-handling">
-                    <h2>File Handling</h2>
-                    <section>
-                        <h3>The open() Function</h3>
-                        <p>The <span class="orange">open()</span> function takes two parameters; <span class="orange">filename</span> and <span class="orange">mode</span>.</p>
-                        <p>There are four different methods (modes) for opening a file:</p>
-                        <ul>
-                            <li><span class="orange">"r"</span> - Read - Default value. Opens a file for reading, error if the file does not exist</li>
-                            <li><span class="orange">"a"</span> - Append - Opens a file for appending, creates the file if it does not exist</li>
-                            <li><span class="orange">"w"</span> - Write - Opens a file for writing, creates the file if it does not exist</li>
-                            <li><span class="orange">"x"</span> - Create - Creates the specified file, returns an error if the file exists</li>
-                        </ul>
-                        <p>In addition you can specify if the file should be handled as binary or text mode</p>
-                        <ul>
-                            <li><span class="orange">"t"</span> - Text - Default value. Text mode</li>
-                            <li><span class="orange">"b"</span> - Binary - Binary mode (e.g. images)</li>
-                        </ul>
-                    </section>
-                </section>
+    <main id="root" class="flex-grow"></main>
 
-                <section id="read-files">
-                    <h2>Read Files</h2>
-                    <section>
-                        <h3>Read Files</h3>
-                        <p>The <span class="orange">open()</span> function returns a file object, which has a <span class="orange">read()</span> method for reading the content of the file:</p>
-                        <pre><code class="python" data-line-numbers>
-f = open("demofile.txt", "r")
-print(f.read())
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Read Parts of a File</h3>
-                        <p>By default the <span class="orange">read()</span> method returns the whole text, but you can also specify how many characters you want to return:</p>
-                        <pre><code class="python" data-line-numbers>
-f = open("demofile.txt", "r")
-print(f.read(5))
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Read Lines</h3>
-                        <p>You can return one line by using the <span class="orange">readline()</span> method:</p>
-                        <pre><code class="python" data-line-numbers>
-f = open("demofile.txt", "r")
-print(f.readline())
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Loop Through the File</h3>
-                        <p>By looping through the lines of the file, you can read the whole file, line by line:</p>
-                        <pre><code class="python" data-line-numbers>
-f = open("demofile.txt", "r")
-for x in f:
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-                <section id="write-create-files">
-                    <h2>Write/Create Files</h2>
-                    <section>
-                        <h3>Write to an Existing File</h3>
-                        <p>To write to an existing file, you must add a parameter to the <span class="orange">open()</span> function:</p>
-                        <ul>
-                            <li><span class="orange">"a"</span> - Append - will append to the end of the file</li>
-                            <li><span class="orange">"w"</span> - Write - will overwrite any existing content</li>
-                        </ul>
-                        <pre><code class="python" data-line-numbers>
-f = open("demofile2.txt", "a")
-f.write("Now the file has more content!")
-f.close()
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
 
-#open and read the file after the appending:
-f = open("demofile2.txt", "r")
-print(f.read())
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Create a New File</h3>
-                        <p>To create a new file in Python, use the <span class="orange">open()</span> method, with one of the following parameters:</p>
-                        <ul>
-                            <li><span class="orange">"x"</span> - Create - will create a file, returns an error if the file exist</li>
-                            <li><span class="orange">"a"</span> - Append - will create a file if the specified file does not exist</li>
-                            <li><span class="orange">"w"</span> - Write - will create a file if the specified file does not exist</li>
-                        </ul>
-                        <pre><code class="python" data-line-numbers>
-f = open("myfile.txt", "x")
-                        </code></pre>
-                    </section>
-                </section>
+        const sectionsData = {
+            'file-handling': {
+                title: 'File Handling',
+                slides: [
+                    { type: 'content', title: 'The open() Function', content: 'The open() function takes two parameters: filename and mode. There are four main modes: "r" (Read), "a" (Append), "w" (Write), and "x" (Create). You can also specify text ("t") or binary ("b") mode.' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Always use the `with open(...) as f:` syntax. It automatically closes the file for you, even if errors occur.', 'Be careful with "w" mode as it will overwrite the existing file content without warning.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['File handling in Python is designed to be safe and straightforward, abstracting away many of the low-level details you\'d find in languages like C.'] }
+                ]
+            },
+            'read-files': {
+                title: 'Read Files',
+                slides: [
+                    { type: 'code', title: 'Read Entire File', code: 'with open("demofile.txt", "r") as f:\n    print(f.read())' },
+                    { type: 'code', title: 'Read Parts of a File', code: '# Read the first 5 characters\nwith open("demofile.txt", "r") as f:\n    print(f.read(5))' },
+                    { type: 'code', title: 'Read Line by Line', code: 'with open("demofile.txt", "r") as f:\n    print(f.readline()) # Reads one line\n    print(f.readline()) # Reads the next line' },
+                    { type: 'code', title: 'Loop Through Lines', code: 'with open("demofile.txt", "r") as f:\n    for line in f:\n        print(line, end="")' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['`f.readlines()` reads all lines into a list of strings. This can consume a lot of memory for large files.', 'Iterating directly over the file object (`for line in f:`) is memory-efficient for large files.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The file object in Python is an iterator, which is why you can loop over it directly to get lines one by one.'] }
+                ]
+            },
+            'write-create-files': {
+                title: 'Write/Create Files',
+                slides: [
+                    { type: 'code', title: 'Write to a File (Overwrite)', code: 'with open("demofile.txt", "w") as f:\n    f.write("This will overwrite the file.")' },
+                    { type: 'code', title: 'Append to a File', code: 'with open("demofile.txt", "a") as f:\n    f.write("\\nThis will be added to the end.")' },
+                    { type: 'code', title: 'Create a New File', code: '# This will create "newfile.txt" or raise an error if it exists.\nwith open("newfile.txt", "x") as f:\n    f.write("Content for the new file.")' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['The `write()` method does not add a newline character. You must add `\\n` manually if you want to write on a new line.', 'You can use "w+" or "a+" modes to both write and read from a file.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The "x" mode for file creation was added in Python 3.3 to provide a safer way to create files without accidentally overwriting existing ones.'] }
+                ]
+            },
+            'delete-files': {
+                title: 'Delete Files',
+                slides: [
+                    { type: 'code', title: 'Delete a File', code: 'import os\n\nif os.path.exists("demofile.txt"):\n    os.remove("demofile.txt")\nelse:\n    print("The file does not exist")' },
+                    { type: 'code', title: 'Delete a Folder', code: 'import os\n\n# Note: This only works on empty folders.\nos.rmdir("my_empty_folder")' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['To delete a folder and all its contents, use the `shutil.rmtree()` function from the `shutil` module.', 'For more advanced file system operations, the `pathlib` module is the modern and recommended approach.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The `os` module provides a portable way of using operating system dependent functionality, so your file deletion code works on Windows, macOS, and Linux.'] }
+                ]
+            }
+        };
 
-                <section id="delete-files">
-                    <h2>Delete Files</h2>
-                    <section>
-                        <h3>Delete a File</h3>
-                        <p>To delete a file, you must import the <span class="orange">os</span> module, and run its <span class="orange">os.remove()</span> function:</p>
-                        <pre><code class="python" data-line-numbers>
-import os
-os.remove("demofile.txt")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Check if File exist</h3>
-                        <p>To avoid getting an error, you might want to check if the file exists before you try to delete it:</p>
-                        <pre><code class="python" data-line-numbers>
-import os
-if os.path.exists("demofile.txt"):
-  os.remove("demofile.txt")
-else:
-  print("The file does not exist")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Delete Folder</h3>
-                        <p>To delete an entire folder, use the <span class="orange">os.rmdir()</span> method:</p>
-                        <pre><code class="python" data-line-numbers>
-import os
-os.rmdir("myfolder")
-                        </code></pre>
-                        <p><span class="red">Note:</span> You can only remove <span class="orange">empty</span> folders.</p>
-                    </section>
-                </section>
+        const Slide = ({ slide }) => {
+            switch (slide.type) {
+                case 'code':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <pre className="bg-gray-900 text-white p-4 rounded-lg text-sm md:text-base"><code>{slide.code}</code></pre>
+                        </div>
+                    );
+                case 'tips':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-yellow-300"><i className="fas fa-lightbulb mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+                            </ul>
+                        </div>
+                    );
+                case 'fun-facts':
+                     return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300"><i className="fas fa-star mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.facts.map((fact, i) => <li key={i}>{fact}</li>)}
+                            </ul>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <p className="text-base md:text-lg text-gray-300" dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                        </div>
+                    );
+            }
+        };
 
-                <section>
-                    <h2>Thank You!</h2>
-                    <p>
-                        <a href="../index.html">Back to Index</a>
-                    </p>
-                    <p style="font-size: 0.6em; margin-top: 2em;">
-                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
-                        Powered by Gemini Code Assistant.
-                    </p>
-                </section>
-			</div>
-		</div>
+        const App = () => {
+            const [currentTopicId, setCurrentTopicId] = useState('');
+            const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                plugins: [ RevealHighlight ]
-			});
-		</script>
-	</body>
+            const sectionOrder = useMemo(() => Object.keys(sectionsData), []);
+
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1); // Remove '#'
+                    const topic = sectionsData[hash] ? hash : sectionOrder[0];
+                    setCurrentTopicId(topic);
+                    setCurrentSlideIndex(0); // Reset to first slide on topic change
+                };
+
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial load
+
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, [sectionOrder]);
+
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight') handleNext();
+                    else if (event.key === 'ArrowLeft') handlePrev();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [currentTopicId, currentSlideIndex]);
+
+            // Hide header on down-level slides
+            useEffect(() => {
+                const header = document.getElementById('presentation-header');
+                if (header) {
+                    if (currentSlideIndex > 0) {
+                        header.style.maxHeight = '0';
+                        header.style.padding = '0';
+                        header.style.opacity = '0';
+                        header.style.overflow = 'hidden';
+                    } else {
+                        header.style.maxHeight = '100px'; // or original height
+                        header.style.padding = '1rem'; // or original padding
+                        header.style.opacity = '1';
+                    }
+                }
+            }, [currentSlideIndex]);
+
+            const currentSection = sectionsData[currentTopicId];
+            if (!currentSection) {
+                return <div className="p-8 text-center text-xl">Topic not found.</div>;
+            }
+
+            const currentSlides = currentSection.slides;
+            const currentTopicIndex = sectionOrder.indexOf(currentTopicId);
+
+            const handleNext = () => {
+                if (currentSlideIndex < currentSlides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                } else if (currentTopicIndex < sectionOrder.length - 1) {
+                    // Go to next topic
+                    window.location.hash = sectionOrder[currentTopicIndex + 1];
+                }
+            };
+
+            const handlePrev = () => {
+                if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                } else if (currentTopicIndex > 0) {
+                    // Go to last slide of previous topic
+                    const prevTopicId = sectionOrder[currentTopicIndex - 1];
+                    // For simplicity, just go to the start of the previous topic.
+                    window.location.hash = prevTopicId;
+                }
+            };
+
+            const isFirstSlideOverall = currentTopicIndex === 0 && currentSlideIndex === 0;
+            const isLastSlideOverall = currentTopicIndex === sectionOrder.length - 1 && currentSlideIndex === currentSlides.length - 1;
+
+            return (
+                <div className="flex flex-col h-full p-4 md:p-8 bg-gray-900">
+                    <div className="flex-grow flex flex-col justify-center items-center">
+                        <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 transition-all duration-300">
+                            {currentSlideIndex === 0 && (
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentSection.title}</h2>
+                            )}
+                            <div className="text-sm text-gray-400 mb-6">
+                                Slide {currentSlideIndex + 1} of {currentSlides.length}
+                            </div>
+                            <div className="slide-content pr-2">
+                                {currentSlides[currentSlideIndex] && <Slide slide={currentSlides[currentSlideIndex]} />}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <i className="fas fa-arrow-left mr-2"></i> Prev
+                        </button>
+                        <div className="text-gray-400">
+                            Topic {currentTopicIndex + 1} / {sectionOrder.length}
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            Next <i className="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

@@ -1,482 +1,249 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Python MySQL</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python MySQL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+        }
+        .slide-content {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        /* Custom scrollbar for webkit browsers */
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-content::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        .slide-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-dark);
+            border-radius: 10px;
+            border: 2px solid var(--surface);
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
-        <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
-            .reveal ul {
-                display: block;
-                text-align: left;
-                margin: 0 auto;
-                padding-left: 1em;
+    <header id="presentation-header" class="p-4 bg-gray-800 shadow-lg transition-all duration-500">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-green-400">Python MySQL</h1>
+    </header>
+
+    <main id="root" class="flex-grow"></main>
+
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+
+        const sectionsData = {
+            'mysql-get-started': {
+                title: 'MySQL Get Started',
+                slides: [
+                    { type: 'content', title: 'Connecting to MySQL', content: 'To connect Python to a MySQL database, you need a database driver. A popular choice is `mysql-connector-python`. You can install it using pip: `pip install mysql-connector-python`.' },
+                    { type: 'code', title: 'Connection Example', code: 'import mysql.connector\n\nmydb = mysql.connector.connect(\n  host="localhost",\n  user="yourusername",\n  password="yourpassword"\n)\n\nprint(mydb)' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Always store your database credentials securely, for example, in environment variables, not directly in your code.', 'Always close your database connections when you are done with them.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['MySQL is named after co-founder Michael Widenius\'s daughter, My.'] }
+                ]
+            },
+            'mysql-create-database': {
+                title: 'MySQL Create Database',
+                slides: [
+                    { type: 'content', title: 'Creating a Database', content: 'You can create a new database by executing a `CREATE DATABASE` SQL statement using a cursor object.' },
+                    { type: 'code', title: 'Creation Example', code: 'import mysql.connector\n\nmydb = mysql.connector.connect(...)\n\nmycursor = mydb.cursor()\n\nmycursor.execute("CREATE DATABASE mydatabase")' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['It\'s good practice to check if a database exists before trying to create it to avoid errors.', 'Make sure the database user has the necessary `CREATE` privileges.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['SQL (Structured Query Language) has been an ANSI and ISO standard since the 1980s, but different databases often have their own variations and extensions.'] }
+                ]
+            },
+            'mysql-insert': {
+                title: 'MySQL Insert',
+                slides: [
+                    { type: 'content', title: 'Inserting Data', content: 'To insert records into a table, use the `INSERT INTO` SQL statement.' },
+                    { type: 'code', title: 'Insert Example', code: 'mycursor = mydb.cursor()\n\nsql = "INSERT INTO customers (name, address) VALUES (%s, %s)"\nval = ("John", "Highway 21")\nmycursor.execute(sql, val)\n\nmydb.commit()\n\nprint(mycursor.rowcount, "record inserted.")' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Always use parameter substitution (`%s`) to prevent SQL injection attacks.', 'Remember to call `mydb.commit()` to save the changes to the database.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['SQL injection has been one of the most common web application vulnerabilities for over a decade.'] }
+                ]
             }
-            .reveal ul li {
-                margin-bottom: 0.5em;
+        };
+
+        const Slide = ({ slide }) => {
+            switch (slide.type) {
+                case 'code':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <pre className="bg-gray-900 text-white p-4 rounded-lg text-sm md:text-base"><code>{slide.code}</code></pre>
+                        </div>
+                    );
+                case 'tips':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-yellow-300"><i className="fas fa-lightbulb mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+                            </ul>
+                        </div>
+                    );
+                case 'fun-facts':
+                     return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300"><i className="fas fa-star mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.facts.map((fact, i) => <li key={i}>{fact}</li>)}
+                            </ul>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <p className="text-base md:text-lg text-gray-300" dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                        </div>
+                    );
             }
-            .reveal pre code {
-                max-height: 60vh; /* Limit code block height */
-                overflow-y: auto; /* Enable scrolling for code blocks */
-                padding: 10px;
-                font-size: 0.8em;
+        };
+
+        const App = () => {
+            const [currentTopicId, setCurrentTopicId] = useState('');
+            const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+            const sectionOrder = useMemo(() => Object.keys(sectionsData), []);
+
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1); // Remove '#'
+                    const topic = sectionsData[hash] ? hash : sectionOrder[0];
+                    setCurrentTopicId(topic);
+                    setCurrentSlideIndex(0); // Reset to first slide on topic change
+                };
+
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial load
+
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, [sectionOrder]);
+
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight') handleNext();
+                    else if (event.key === 'ArrowLeft') handlePrev();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [currentTopicId, currentSlideIndex]);
+
+            // Hide header on down-level slides
+            useEffect(() => {
+                const header = document.getElementById('presentation-header');
+                if (header) {
+                    if (currentSlideIndex > 0) {
+                        header.style.maxHeight = '0';
+                        header.style.padding = '0';
+                        header.style.opacity = '0';
+                        header.style.overflow = 'hidden';
+                    } else {
+                        header.style.maxHeight = '100px'; // or original height
+                        header.style.padding = '1rem'; // or original padding
+                        header.style.opacity = '1';
+                    }
+                }
+            }, [currentSlideIndex]);
+
+            const currentSection = sectionsData[currentTopicId];
+            if (!currentSection) {
+                return <div className="p-8 text-center text-xl">Topic not found. Please check the URL hash.</div>;
             }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>Python MySQL</h1>
-                    <ul>
-                        <li><a href="#/mysql-get-started">MySQL Get Started</a></li>
-                        <li><a href="#/mysql-create-database">MySQL Create Database</a></li>
-                        <li><a href="#/mysql-create-table">MySQL Create Table</a></li>
-                        <li><a href="#/mysql-insert">MySQL Insert</a></li>
-                        <li><a href="#/mysql-select">MySQL Select</a></li>
-                        <li><a href="#/mysql-where">MySQL Where</a></li>
-                        <li><a href="#/mysql-order-by">MySQL Order By</a></li>
-                        <li><a href="#/mysql-delete">MySQL Delete</a></li>
-                        <li><a href="#/mysql-drop-table">MySQL Drop Table</a></li>
-                        <li><a href="#/mysql-update">MySQL Update</a></li>
-                        <li><a href="#/mysql-limit">MySQL Limit</a></li>
-                        <li><a href="#/mysql-join">MySQL Join</a></li>
-                    </ul>
-                </section>
 
-                <section id="mysql-get-started">
-                    <h2>MySQL Get Started</h2>
-                    <section>
-                        <h3>MySQL Database</h3>
-                        <p>Python can be used in database applications. One of the most popular databases is MySQL.</p>
-                    </section>
-                    <section>
-                        <h3>Install MySQL Driver</h3>
-                        <p>MySQL needs a driver to access the MySQL database. You can use the <span class="orange">"mysql-connector-python"</span> driver.</p>
-                        <p>Install it using PIP:</p>
-                        <pre><code class="bash" data-line-numbers>pip install mysql-connector-python</code></pre>
-                    </section>
-                    <section>
-                        <h3>Test MySQL Connector</h3>
-                        <p>Test if the MySQL connector is installed properly by running this Python file:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword"
-)
-
-print(mydb)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-create-database">
-                    <h2>MySQL Create Database</h2>
-                    <section>
-                        <h3>Create a Database</h3>
-                        <p>To create a database in MySQL, use the <span class="orange">CREATE DATABASE</span> statement.</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("CREATE DATABASE mydatabase")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Check if Database Exists</h3>
-                        <p>You can check if a database exists by listing all databases in your system:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("SHOW DATABASES")
-
-for x in mycursor:
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-create-table">
-                    <h2>MySQL Create Table</h2>
-                    <section>
-                        <h3>Create a Table</h3>
-                        <p>To create a table in MySQL, use the <span class="orange">CREATE TABLE</span> statement.</p>
-                        <p>Make sure you create the table in the correct database.</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Check if Table Exists</h3>
-                        <p>You can check if a table exists by listing all tables in your database:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("SHOW TABLES")
-
-for x in mycursor:
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-insert">
-                    <h2>MySQL Insert</h2>
-                    <section>
-                        <h3>Insert Into Table</h3>
-                        <p>To insert a record in a table, use the <span class="orange">INSERT INTO</span> statement:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
-val = ("John", "Highway 21")
-mycursor.execute(sql, val)
-
-mydb.commit()
-
-print(mycursor.rowcount, "record inserted.")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Insert Multiple Rows</h3>
-                        <p>To insert multiple rows into a table, use the <span class="orange">executemany()</span> method:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
-val = [
-  ('Peter', 'Lowstreet 4'),
-  ('Amy', 'Apple street 652'),
-  ('Hannah', 'Mountain 21'),
-  ('Michael', 'Valley 345'),
-  ('Sandy', 'Ocean blvd 2'),
-  ('Betty', 'Green Grass 1'),
-  ('Richard', 'Sky st 331'),
-  ('Susan', 'One way 98'),
-  ('Vicky', 'Yellow Garden 2'),
-  ('Ben', 'Park Lane 38'),
-  ('William', 'Central st 954'),
-  ('Chuck', 'Main Road 989'),
-  ('Viola', 'Sideway 1633')
-]
-
-mycursor.executemany(sql, val)
-
-mydb.commit()
-
-print(mycursor.rowcount, "records inserted.")
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-select">
-                    <h2>MySQL Select</h2>
-                    <section>
-                        <h3>Select From a Table</h3>
-                        <p>To select records from a table, use the <span class="orange">SELECT</span> statement:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("SELECT * FROM customers")
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Select Specific Columns</h3>
-                        <p>To select only some of the columns from a table, use the <span class="orange">SELECT</span> statement followed by the column names:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("SELECT name, address FROM customers")
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-where">
-                    <h2>MySQL Where</h2>
-                    <section>
-                        <h3>Select With a Filter</h3>
-                        <p>When selecting records from a table, you can use the <span class="orange">WHERE</span> clause to filter the selection.</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "SELECT * FROM customers WHERE address = 'Park Lane 38'"
-mycursor.execute(sql)
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Wildcard Characters</h3>
-                        <p>You can use wildcard characters to search for a pattern in a column.</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "SELECT * FROM customers WHERE address LIKE '%way%'"
-mycursor.execute(sql)
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-order-by">
-                    <h2>MySQL Order By</h2>
-                    <section>
-                        <h3>Sorting Results</h3>
-                        <p>Use the <span class="orange">ORDER BY</span> keyword to sort the result-set in ascending or descending order.</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("SELECT * FROM customers ORDER BY name")
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>ORDER BY DESC</h3>
-                        <p>Use the <span class="orange">DESC</span> keyword to sort the result-set in descending order.</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("SELECT * FROM customers ORDER BY name DESC")
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-delete">
-                    <h2>MySQL Delete</h2>
-                    <section>
-                        <h3>Delete Records</h3>
-                        <p>You can delete records from an existing table by using the <span class="orange">DELETE FROM</span> statement:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "DELETE FROM customers WHERE address = 'Mountain 21'"
-
-mycursor.execute(sql)
-
-mydb.commit()
-
-print(mycursor.rowcount, "record(s) deleted")
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="mysql-drop-table">
-                    <h2>MySQL Drop Table</h2>
-                    <section>
-                        <h3>Drop Table</h3>
-                        <p>You can delete an existing table by using the <span class="orange">DROP TABLE</span> statement:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "DROP TABLE customers"
-
-mycursor.execute(sql)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Drop Table If Exists</h3>
-                        <p>To avoid getting an error if the table does not exist, you can use <span class="orange">IF EXISTS</span>:</p>
-                        <pre><code class="python" data-line-numbers>
-import mysql.connector
-
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "DROP TABLE IF EXISTS customers"
-
-mycursor.execute(sql)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section>
-                    <h2>Thank You!</h2>
-                    <p>
-                        <a href="../index.html">Back to Index</a>
-                    </p>
-                    <p style="font-size: 0.6em; margin-top: 2em;">
-                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
-                        Powered by Gemini Code Assistant.
-                    </p>
-                </section>
-			</div>
-		</div>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                plugins: [ RevealHighlight ],
-                scroll: true
-			});
-		</script>
-	</body>
+            const currentSlides = currentSection.slides;
+            const currentTopicIndex = sectionOrder.indexOf(currentTopicId);
+
+            const handleNext = () => {
+                if (currentSlideIndex < currentSlides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                } else if (currentTopicIndex < sectionOrder.length - 1) {
+                    // Go to next topic
+                    window.location.hash = sectionOrder[currentTopicIndex + 1];
+                }
+            };
+
+            const handlePrev = () => {
+                if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                } else if (currentTopicIndex > 0) {
+                    // Go to the start of the previous topic.
+                    window.location.hash = sectionOrder[currentTopicIndex - 1];
+                }
+            };
+
+            const isFirstSlideOverall = currentTopicIndex === 0 && currentSlideIndex === 0;
+            const isLastSlideOverall = currentTopicIndex === sectionOrder.length - 1 && currentSlideIndex === currentSlides.length - 1;
+
+            return (
+                <div className="flex flex-col h-full p-4 md:p-8 bg-gray-900">
+                    <div className="flex-grow flex flex-col justify-center items-center">
+                        <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 transition-all duration-300">
+                            {currentSlideIndex === 0 && (
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentSection.title}</h2>
+                            )}
+                            <div className="text-sm text-gray-400 mb-6">
+                                Slide {currentSlideIndex + 1} of {currentSlides.length}
+                            </div>
+                            <div className="slide-content pr-2">
+                                {currentSlides[currentSlideIndex] && <Slide slide={currentSlides[currentSlideIndex]} />}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <i className="fas fa-arrow-left mr-2"></i> Prev
+                        </button>
+                        <div className="text-gray-400">
+                            Topic {currentTopicIndex + 1} / {sectionOrder.length}
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            Next <i className="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

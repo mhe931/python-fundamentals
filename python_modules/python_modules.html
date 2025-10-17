@@ -1,100 +1,249 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Python Modules</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Modules</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+        }
+        .slide-content {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        /* Custom scrollbar for webkit browsers */
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-content::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        .slide-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-dark);
+            border-radius: 10px;
+            border: 2px solid var(--surface);
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
-        <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>Python Modules</h1>
-                    <ul>
-                        <li><a href="#/numpy-tutorial">NumPy Tutorial</a></li>
-                        <li><a href="#/pandas-tutorial">Pandas Tutorial</a></li>
-                        <li><a href="#/scipy-tutorial">SciPy Tutorial</a></li>
-                    </ul>
-                </section>
+    <header id="presentation-header" class="p-4 bg-gray-800 shadow-lg transition-all duration-500">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-green-400">Python Modules</h1>
+    </header>
 
-                <section id="numpy-tutorial">
-                    <h2>NumPy Tutorial</h2>
-                    <section>
-                        <h3>What is NumPy?</h3>
-                        <p>NumPy is a Python library used for working with arrays.</p>
-                        <p>It also has functions for working in domain of linear algebra, fourier transform, and matrices.</p>
-                        <p>NumPy was created in 2005 by <span class="orange">Travis Oliphant</span>. It is an open source project and you can use it freely.</p>
-                        <p>NumPy stands for <span class="green">Numerical Python</span>.</p>
-                    </section>
-                    <section>
-                        <h3>Why Use NumPy?</h3>
-                        <p>In Python we have lists that serve the purpose of arrays, but they are slow to process.</p>
-                        <p>NumPy aims to provide an array object that is up to <span class="green">50x faster</span> than traditional Python lists.</p>
-                        <p>The array object in NumPy is called <span class="orange">ndarray</span>, it provides a lot of supporting functions that make working with ndarray very easy.</p>
-                        <p>Arrays are very frequently used in data science, where speed and resources are very important.</p>
-                    </section>
-                </section>
+    <main id="root" class="flex-grow"></main>
 
-                <section id="pandas-tutorial">
-                    <h2>Pandas Tutorial</h2>
-                    <section>
-                        <h3>What is Pandas?</h3>
-                        <p>Pandas is a Python library used for working with data sets.</p>
-                        <p>It has functions for analyzing, cleaning, exploring, and manipulating data.</p>
-                        <p>The name "Pandas" has a reference to both "Panel Data", and "Python Data Analysis" and was created by <span class="orange">Wes McKinney</span> in 2008.</p>
-                    </section>
-                    <section>
-                        <h3>Why Use Pandas?</h3>
-                        <p>Pandas allows us to analyze big data and make conclusions based on statistical theories.</p>
-                        <p>Pandas can clean messy data sets, and make them readable and relevant.</p>
-                        <p>Relevant data is very important in data science.</p>
-                    </section>
-                </section>
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-                <section id="scipy-tutorial">
-                    <h2>SciPy Tutorial</h2>
-                    <section>
-                        <h3>What is SciPy?</h3>
-                        <p>SciPy is a scientific computation library that uses NumPy underneath.</p>
-                        <p>SciPy stands for <span class="green">Scientific Python</span>.</p>
-                        <p>It provides more utility functions for optimization, stats and signal processing.</p>
-                    </section>
-                    <section>
-                        <h3>Why Use SciPy?</h3>
-                        <p>SciPy has optimized and added functions that are frequently used in NumPy and Data Science.</p>
-                    </section>
-                </section>
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
 
-                <section>
-                    <h2>Thank You!</h2>
-                    <p>
-                        <a href="../index.html">Back to Index</a>
-                    </p>
-                    <p style="font-size: 0.6em; margin-top: 2em;">
-                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
-                        Powered by Gemini Code Assistant.
-                    </p>
-                </section>
-			</div>
-		</div>
+        const sectionsData = {
+            'numpy-tutorial': {
+                title: 'NumPy Tutorial',
+                slides: [
+                    { type: 'content', title: 'What is NumPy?', content: 'NumPy (Numerical Python) is a fundamental Python library for numerical computing. It provides support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.' },
+                    { type: 'content', title: 'Why Use NumPy?', content: 'NumPy arrays (ndarray) are significantly faster and more memory-efficient than Python lists. They are essential for data science and machine learning, where performance is critical.' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Use `import numpy as np` as the standard convention.', 'Take advantage of vectorization (performing operations on entire arrays) instead of using loops for massive speed gains.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['NumPy is the foundation upon which many other popular data science libraries, including Pandas, Matplotlib, and Scikit-learn, are built.'] }
+                ]
+            },
+            'pandas-tutorial': {
+                title: 'Pandas Tutorial',
+                slides: [
+                    { type: 'content', title: 'What is Pandas?', content: 'Pandas is a powerful, open-source Python library for data manipulation and analysis. It provides data structures like Series (1D) and DataFrame (2D) that are perfect for handling tabular data.' },
+                    { type: 'content', title: 'Why Use Pandas?', content: 'Pandas simplifies the process of cleaning, transforming, analyzing, and visualizing data. It can easily read and write data from various formats like CSV, Excel, SQL databases, and more.' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Use `import pandas as pd` as the standard convention.', 'Method chaining can make your data manipulation code more readable and concise.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The name "Pandas" is derived from "Panel Data," an econometrics term for multidimensional structured data sets.'] }
+                ]
+            },
+            'scipy-tutorial': {
+                title: 'SciPy Tutorial',
+                slides: [
+                    { type: 'content', title: 'What is SciPy?', content: 'SciPy (Scientific Python) is a library built on top of NumPy that provides a large number of user-friendly and efficient numerical routines for scientific and technical computing, such as optimization, integration, and statistics.' },
+                    { type: 'content', title: 'Why Use SciPy?', content: 'While NumPy provides the basic array structure, SciPy provides the higher-level algorithms and functions. If you are doing scientific analysis, you will likely use both NumPy and SciPy.' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['SciPy is organized into sub-packages covering different scientific computing domains, like `scipy.stats`, `scipy.optimize`, and `scipy.linalg`.', 'Always check the documentation; SciPy functions are often highly optimized versions of algorithms you might otherwise implement manually.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['SciPy is part of the "SciPy ecosystem," which includes other core packages like NumPy, Matplotlib, Pandas, and SymPy.'] }
+                ]
+            }
+        };
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                plugins: [ RevealHighlight ]
-			});
-		</script>
-	</body>
+        const Slide = ({ slide }) => {
+            switch (slide.type) {
+                case 'code':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <pre className="bg-gray-900 text-white p-4 rounded-lg text-sm md:text-base"><code>{slide.code}</code></pre>
+                        </div>
+                    );
+                case 'tips':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-yellow-300"><i className="fas fa-lightbulb mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+                            </ul>
+                        </div>
+                    );
+                case 'fun-facts':
+                     return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300"><i className="fas fa-star mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.facts.map((fact, i) => <li key={i}>{fact}</li>)}
+                            </ul>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <p className="text-base md:text-lg text-gray-300" dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                        </div>
+                    );
+            }
+        };
+
+        const App = () => {
+            const [currentTopicId, setCurrentTopicId] = useState('');
+            const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+            const sectionOrder = useMemo(() => Object.keys(sectionsData), []);
+
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1); // Remove '#'
+                    const topic = sectionsData[hash] ? hash : sectionOrder[0];
+                    setCurrentTopicId(topic);
+                    setCurrentSlideIndex(0); // Reset to first slide on topic change
+                };
+
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial load
+
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, [sectionOrder]);
+
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight') handleNext();
+                    else if (event.key === 'ArrowLeft') handlePrev();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [currentTopicId, currentSlideIndex]);
+
+            // Hide header on down-level slides
+            useEffect(() => {
+                const header = document.getElementById('presentation-header');
+                if (header) {
+                    if (currentSlideIndex > 0) {
+                        header.style.maxHeight = '0';
+                        header.style.padding = '0';
+                        header.style.opacity = '0';
+                        header.style.overflow = 'hidden';
+                    } else {
+                        header.style.maxHeight = '100px'; // or original height
+                        header.style.padding = '1rem'; // or original padding
+                        header.style.opacity = '1';
+                    }
+                }
+            }, [currentSlideIndex]);
+
+            const currentSection = sectionsData[currentTopicId];
+            if (!currentSection) {
+                return <div className="p-8 text-center text-xl">Topic not found. Please check the URL hash.</div>;
+            }
+
+            const currentSlides = currentSection.slides;
+            const currentTopicIndex = sectionOrder.indexOf(currentTopicId);
+
+            const handleNext = () => {
+                if (currentSlideIndex < currentSlides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                } else if (currentTopicIndex < sectionOrder.length - 1) {
+                    // Go to next topic
+                    window.location.hash = sectionOrder[currentTopicIndex + 1];
+                }
+            };
+
+            const handlePrev = () => {
+                if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                } else if (currentTopicIndex > 0) {
+                    // Go to the start of the previous topic.
+                    window.location.hash = sectionOrder[currentTopicIndex - 1];
+                }
+            };
+
+            const isFirstSlideOverall = currentTopicIndex === 0 && currentSlideIndex === 0;
+            const isLastSlideOverall = currentTopicIndex === sectionOrder.length - 1 && currentSlideIndex === currentSlides.length - 1;
+
+            return (
+                <div className="flex flex-col h-full p-4 md:p-8 bg-gray-900">
+                    <div className="flex-grow flex flex-col justify-center items-center">
+                        <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 transition-all duration-300">
+                            {currentSlideIndex === 0 && (
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentSection.title}</h2>
+                            )}
+                            <div className="text-sm text-gray-400 mb-6">
+                                Slide {currentSlideIndex + 1} of {currentSlides.length}
+                            </div>
+                            <div className="slide-content pr-2">
+                                {currentSlides[currentSlideIndex] && <Slide slide={currentSlides[currentSlideIndex]} />}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <i className="fas fa-arrow-left mr-2"></i> Prev
+                        </button>
+                        <div className="text-gray-400">
+                            Topic {currentTopicIndex + 1} / {sectionOrder.length}
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            Next <i className="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

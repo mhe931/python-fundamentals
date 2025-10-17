@@ -1,159 +1,249 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Module Reference</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Reference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+        }
+        .slide-content {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        /* Custom scrollbar for webkit browsers */
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-content::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        .slide-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-dark);
+            border-radius: 10px;
+            border: 2px solid var(--surface);
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
-        <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>Module Reference</h1>
-                    <ul>
-                        <li><a href="#/built-in-modules">Built-in Modules</a></li>
-                        <li><a href="#/random-module">Random Module</a></li>
-                        <li><a href="#/requests-module">Requests Module</a></li>
-                        <li><a href="#/statistics-module">Statistics Module</a></li>
-                        <li><a href="#/math-module">Math Module</a></li>
-                        <li><a href="#/cmath-module">cMath Module</a></li>
-                    </ul>
-                </section>
+    <header id="presentation-header" class="p-4 bg-gray-800 shadow-lg transition-all duration-500">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-green-400">Module Reference</h1>
+    </header>
 
-                <section id="built-in-modules">
-                    <h2>Built-in Modules</h2>
-                    <section>
-                        <h3>Built-in Modules</h3>
-                        <p>Python has a set of <span class="green">built-in modules</span> that you can use whenever you like.</p>
-                        <p>You can get a list of all built-in modules by running the following in a Python interpreter:</p>
-                        <pre><code class="python" data-line-numbers>
-help('modules')
-                        </code></pre>
-                    </section>
-                </section>
+    <main id="root" class="flex-grow"></main>
 
-                <section id="random-module">
-                    <h2>Random Module</h2>
-                    <section>
-                        <h3>Generate Random Numbers</h3>
-                        <p>Python does not have a <span class="orange">random()</span> function to make a random number, but Python has a built-in module called <span class="orange">random</span> that can be used to make random numbers:</p>
-                        <pre><code class="python" data-line-numbers>
-import random
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-print(random.randrange(1, 10))
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Random Methods</h3>
-                        <p>The <span class="orange">random</span> module has a set of methods:</p>
-                        <ul>
-                            <li><span class="orange">seed()</span> - Initializes the random number generator</li>
-                            <li><span class="orange">getstate()</span> - Returns the current internal state of the random number generator</li>
-                            <li><span class="orange">setstate()</span> - Restores the internal state of the random number generator</li>
-                            <li><span class="orange">randrange()</span> - Returns a random number between the given range</li>
-                            <li><span class="orange">randint()</span> - Returns a random number between the given range (inclusive)</li>
-                            <li><span class="orange">choice()</span> - Returns a random element from the specified sequence</li>
-                            <li><span class="orange">choices()</span> - Returns a list with a random selection from the specified sequence</li>
-                            <li><span class="orange">shuffle()</span> - Takes a sequence and returns the sequence in a random order</li>
-                            <li><span class="orange">sample()</span> - Returns a given sample of a sequence</li>
-                        </ul>
-                    </section>
-                </section>
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
 
-                <section id="requests-module">
-                    <h2>Requests Module</h2>
-                    <section>
-                        <h3>Make an HTTP Request</h3>
-                        <p>The <span class="orange">requests</span> module allows you to send HTTP requests using Python.</p>
-                        <p>The requests module is not built-in to Python. You have to install it first:</p>
-                        <pre><code class="bash" data-line-numbers>pip install requests</code></pre>
-                        <p>Once you have installed the requests module, you can import it and start making requests:</p>
-                        <pre><code class="python" data-line-numbers>
-import requests
+        const sectionsData = {
+            'random-module': {
+                title: 'Random Module',
+                slides: [
+                    { type: 'content', title: 'What is the Random Module?', content: 'The `random` module implements pseudo-random number generators for various distributions. It is used for generating random data, shuffling sequences, and making random choices.' },
+                    { type: 'code', title: 'Common Functions', code: 'import random\n\n# Random integer between 1 and 10 (inclusive)\nprint(random.randint(1, 10))\n\n# Random float between 0.0 and 1.0\nprint(random.random())\n\n# Pick a random element from a list\nmy_list = [\'apple\', \'banana\', \'cherry\']\nprint(random.choice(my_list))' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['For cryptography or security purposes, use the `secrets` module instead of `random`.', 'Use `random.seed()` to create reproducible sequences of random numbers, which is useful for testing.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The numbers generated by the `random` module are not truly random; they are "pseudo-random," generated by a deterministic algorithm.'] }
+                ]
+            },
+            'requests-module': {
+                title: 'Requests Module',
+                slides: [
+                    { type: 'content', title: 'What is the Requests Module?', content: 'Requests is a simple, yet elegant, HTTP library for Python. It allows you to send HTTP/1.1 requests extremely easily. It is not part of the standard library and must be installed (`pip install requests`).' },
+                    { type: 'code', title: 'Making a GET Request', code: 'import requests\n\nresponse = requests.get(\'https://api.github.com\')\n\nprint(response.status_code) # 200 means OK\nprint(response.json()) # Parse JSON response' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Always check `response.status_code` to ensure your request was successful.', 'Use a `try...except` block to handle potential network errors or timeouts.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The Requests library is subtitled "HTTP for Humans" because it abstracts away the complexities of making HTTP requests, making it much more user-friendly than Python\'s built-in `urllib`.'] }
+                ]
+            },
+            'math-module': {
+                title: 'Math Module',
+                slides: [
+                    { type: 'content', title: 'What is the Math Module?', content: 'The `math` module is a built-in module that provides access to mathematical functions defined by the C standard. These functions cannot be used with complex numbers.' },
+                    { type: 'code', title: 'Common Functions', code: 'import math\n\nprint(math.sqrt(16)) # Square root\nprint(math.pi) # The constant Pi\nprint(math.ceil(4.2)) # Ceiling (rounds up)\nprint(math.floor(4.8)) # Floor (rounds down)' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['For mathematical functions that support complex numbers, use the `cmath` module.', 'For advanced numerical operations on arrays, use the NumPy library.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['The `math.isclose()` function was added in Python 3.5 to provide a reliable way to compare floating-point numbers for equality.'] }
+                ]
+            }
+        };
 
-x = requests.get('https://w3schools.com/python/demopage.htm')
+        const Slide = ({ slide }) => {
+            switch (slide.type) {
+                case 'code':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <pre className="bg-gray-900 text-white p-4 rounded-lg text-sm md:text-base"><code>{slide.code}</code></pre>
+                        </div>
+                    );
+                case 'tips':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-yellow-300"><i className="fas fa-lightbulb mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+                            </ul>
+                        </div>
+                    );
+                case 'fun-facts':
+                     return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300"><i className="fas fa-star mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.facts.map((fact, i) => <li key={i}>{fact}</li>)}
+                            </ul>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <p className="text-base md:text-lg text-gray-300" dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                        </div>
+                    );
+            }
+        };
 
-print(x.status_code)
-                        </code></pre>
-                    </section>
-                </section>
+        const App = () => {
+            const [currentTopicId, setCurrentTopicId] = useState('');
+            const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-                <section id="statistics-module">
-                    <h2>Statistics Module</h2>
-                    <section>
-                        <h3>Statistical Functions</h3>
-                        <p>The <span class="orange">statistics</span> module provides functions for calculating mathematical statistics of numeric (Real-valued) data.</p>
-                        <pre><code class="python" data-line-numbers>
-import statistics
+            const sectionOrder = useMemo(() => Object.keys(sectionsData), []);
 
-x = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(statistics.mean(x))
-print(statistics.median(x))
-print(statistics.mode(x))
-                        </code></pre>
-                    </section>
-                </section>
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1); // Remove '#'
+                    const topic = sectionsData[hash] ? hash : sectionOrder[0];
+                    setCurrentTopicId(topic);
+                    setCurrentSlideIndex(0); // Reset to first slide on topic change
+                };
 
-                <section id="math-module">
-                    <h2>Math Module</h2>
-                    <section>
-                        <h3>Mathematical Functions</h3>
-                        <p>The <span class="orange">math</span> module provides access to the mathematical functions defined by the C standard.</p>
-                        <pre><code class="python" data-line-numbers>
-import math
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial load
 
-print(math.sqrt(64))
-print(math.ceil(1.4))
-print(math.floor(1.4))
-print(math.pi)
-                        </code></pre>
-                    </section>
-                </section>
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, [sectionOrder]);
 
-                <section id="cmath-module">
-                    <h2>cMath Module</h2>
-                    <section>
-                        <h3>Complex Mathematical Functions</h3>
-                        <p>The <span class="orange">cmath</span> module provides access to mathematical functions for complex numbers.</p>
-                        <pre><code class="python" data-line-numbers>
-import cmath
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight') handleNext();
+                    else if (event.key === 'ArrowLeft') handlePrev();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [currentTopicId, currentSlideIndex]);
 
-print(cmath.sqrt(-1))
-print(cmath.log(10, 2))
-                        </code></pre>
-                    </section>
-                </section>
+            // Hide header on down-level slides
+            useEffect(() => {
+                const header = document.getElementById('presentation-header');
+                if (header) {
+                    if (currentSlideIndex > 0) {
+                        header.style.maxHeight = '0';
+                        header.style.padding = '0';
+                        header.style.opacity = '0';
+                        header.style.overflow = 'hidden';
+                    } else {
+                        header.style.maxHeight = '100px'; // or original height
+                        header.style.padding = '1rem'; // or original padding
+                        header.style.opacity = '1';
+                    }
+                }
+            }, [currentSlideIndex]);
 
-                <section>
-                    <h2>Thank You!</h2>
-                    <p>
-                        <a href="../index.html">Back to Index</a>
-                    </p>
-                    <p style="font-size: 0.6em; margin-top: 2em;">
-                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
-                        Powered by Gemini Code Assistant.
-                    </p>
-                </section>
-			</div>
-		</div>
+            const currentSection = sectionsData[currentTopicId];
+            if (!currentSection) {
+                return <div className="p-8 text-center text-xl">Topic not found. Please check the URL hash.</div>;
+            }
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                plugins: [ RevealHighlight ]
-			});
-		</script>
-	</body>
+            const currentSlides = currentSection.slides;
+            const currentTopicIndex = sectionOrder.indexOf(currentTopicId);
+
+            const handleNext = () => {
+                if (currentSlideIndex < currentSlides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                } else if (currentTopicIndex < sectionOrder.length - 1) {
+                    // Go to next topic
+                    window.location.hash = sectionOrder[currentTopicIndex + 1];
+                }
+            };
+
+            const handlePrev = () => {
+                if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                } else if (currentTopicIndex > 0) {
+                    // Go to the start of the previous topic.
+                    window.location.hash = sectionOrder[currentTopicIndex - 1];
+                }
+            };
+
+            const isFirstSlideOverall = currentTopicIndex === 0 && currentSlideIndex === 0;
+            const isLastSlideOverall = currentTopicIndex === sectionOrder.length - 1 && currentSlideIndex === currentSlides.length - 1;
+
+            return (
+                <div className="flex flex-col h-full p-4 md:p-8 bg-gray-900">
+                    <div className="flex-grow flex flex-col justify-center items-center">
+                        <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 transition-all duration-300">
+                            {currentSlideIndex === 0 && (
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentSection.title}</h2>
+                            )}
+                            <div className="text-sm text-gray-400 mb-6">
+                                Slide {currentSlideIndex + 1} of {currentSlides.length}
+                            </div>
+                            <div className="slide-content pr-2">
+                                {currentSlides[currentSlideIndex] && <Slide slide={currentSlides[currentSlideIndex]} />}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <i className="fas fa-arrow-left mr-2"></i> Prev
+                        </button>
+                        <div className="text-gray-400">
+                            Topic {currentTopicIndex + 1} / {sectionOrder.length}
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            Next <i className="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

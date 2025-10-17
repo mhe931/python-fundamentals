@@ -1,301 +1,248 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Matplotlib Tutorial</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Matplotlib</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+        }
+        .slide-content {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        /* Custom scrollbar for webkit browsers */
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-content::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        .slide-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-dark);
+            border-radius: 10px;
+            border: 2px solid var(--surface);
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
-        <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>Matplotlib Tutorial</h1>
-                    <ul>
-                        <li><a href="#/matplotlib-intro">Matplotlib Intro</a></li>
-                        <li><a href="#/matplotlib-get-started">Matplotlib Get Started</a></li>
-                        <li><a href="#/matplotlib-pyplot">Matplotlib Pyplot</a></li>
-                        <li><a href="#/matplotlib-plotting">Matplotlib Plotting</a></li>
-                        <li><a href="#/matplotlib-markers">Matplotlib Markers</a></li>
-                        <li><a href="#/matplotlib-line">Matplotlib Line</a></li>
-                        <li><a href="#/matplotlib-labels">Matplotlib Labels</a></li>
-                        <li><a href="#/matplotlib-grid">Matplotlib Grid</a></li>
-                        <li><a href="#/matplotlib-subplot">Matplotlib Subplot</a></li>
-                        <li><a href="#/matplotlib-scatter">Matplotlib Scatter</a></li>
-                        <li><a href="#/matplotlib-bars">Matplotlib Bars</a></li>
-                        <li><a href="#/matplotlib-histograms">Matplotlib Histograms</a></li>
-                        <li><a href="#/matplotlib-pie-charts">Matplotlib Pie Charts</a></li>
-                    </ul>
-                </section>
+    <header id="presentation-header" class="p-4 bg-gray-800 shadow-lg transition-all duration-500">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-green-400">Python Matplotlib</h1>
+    </header>
 
-                <section id="matplotlib-intro">
-                    <h2>Matplotlib Intro</h2>
-                    <section>
-                        <h3>What is Matplotlib?</h3>
-                        <p>Matplotlib is a low level graph plotting library in python that serves as a visualization utility.</p>
-                        <p>Matplotlib was created by <span class="orange">John D. Hunter</span>.</p>
-                        <p>Matplotlib is open source and we can use it freely.</p>
-                        <p>Matplotlib is mostly written in python, a few segments are written in C, Objective-C and Javascript for Platform compatibility.</p>
-                    </section>
-                </section>
+    <main id="root" class="flex-grow"></main>
 
-                <section id="matplotlib-get-started">
-                    <h2>Matplotlib Get Started</h2>
-                    <section>
-                        <h3>Installation</h3>
-                        <p>If you have Python and PIP already installed on a system, then installation of Matplotlib is very easy.</p>
-                        <p>Install it using this command:</p>
-                        <pre><code class="bash" data-line-numbers>pip install matplotlib</code></pre>
-                    </section>
-                    <section>
-                        <h3>Import Matplotlib</h3>
-                        <p>Once Matplotlib is installed, import it in your applications by adding the <span class="orange">import</span> module:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib
-                        </code></pre>
-                    </section>
-                </section>
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-                <section id="matplotlib-pyplot">
-                    <h2>Matplotlib Pyplot</h2>
-                    <section>
-                        <h3>Pyplot</h3>
-                        <p>Most of the Matplotlib utilities lies under the <span class="orange">pyplot</span> submodule, and are usually imported under the <span class="orange">plt</span> alias:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-                        </code></pre>
-                        <p>Now the Pyplot package can be referred to as <span class="orange">plt</span>.</p>
-                    </section>
-                </section>
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
 
-                <section id="matplotlib-plotting">
-                    <h2>Matplotlib Plotting</h2>
-                    <section>
-                        <h3>Plotting x and y points</h3>
-                        <p>The <span class="orange">plot()</span> function is used to draw points (markers) in a diagram.</p>
-                        <p>By default, the <span class="orange">plot()</span> function draws a line from point to point.</p>
-                        <p>The function takes parameters for specifying points in the diagram.</p>
-                        <p>Parameter 1 is an array containing the points on the x-axis.</p>
-                        <p>Parameter 2 is an array containing the points on the y-axis.</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
+        const sectionsData = {
+            'matplotlib-intro': {
+                title: 'Matplotlib Intro',
+                slides: [
+                    { type: 'content', title: 'What is Matplotlib?', content: 'Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python. It is one of the most popular plotting libraries.' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Use `import matplotlib.pyplot as plt` as the standard convention.', 'Explore the official Matplotlib gallery for inspiration and code examples.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['Matplotlib was originally written by John D. Hunter as a way to visualize electrocorticography (ECoG) data for epilepsy research.'] }
+                ]
+            },
+            'matplotlib-pyplot': {
+                title: 'Matplotlib Pyplot',
+                slides: [
+                    { type: 'content', title: 'What is Pyplot?', content: 'Pyplot is a module in Matplotlib that provides a simple, MATLAB-like interface for creating plots and charts. Most of the functions you use in Matplotlib will come from `pyplot`.' },
+                    { type: 'code', title: 'Basic Plot', code: 'import matplotlib.pyplot as plt\nimport numpy as np\n\nx = np.array([0, 6])\ny = np.array([0, 250])\n\nplt.plot(x, y)\nplt.show()' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Use `plt.title()`, `plt.xlabel()`, and `plt.ylabel()` to add labels to your plot.', 'Call `plt.show()` at the end of your script to display the plot.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['Pyplot is "state-based," meaning it keeps track of the current figure and axes, and plotting functions are directed to the current axes.'] }
+                ]
+            },
+            'matplotlib-plotting': {
+                title: 'Matplotlib Plotting',
+                slides: [
+                    { type: 'content', title: 'Creating Different Plots', content: 'Matplotlib can create a wide variety of plots, including line plots, scatter plots, bar charts, histograms, and pie charts.' },
+                    { type: 'code', title: 'Scatter Plot', code: 'import matplotlib.pyplot as plt\n\nx = [5,7,8,7,2,17]\ny = [99,86,87,88,111,86]\n\nplt.scatter(x, y)\nplt.show()' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['You can customize almost every aspect of your plot, including colors, markers, line styles, and more.', 'Use subplots (`plt.subplots()`) to create multiple plots in a single figure.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['Matplotlib can be used to create publication-quality figures in a variety of hardcopy formats and interactive environments across platforms.'] }
+                ]
+            }
+        };
 
-xpoints = np.array([0, 6])
-ypoints = np.array([0, 250])
+        const Slide = ({ slide }) => {
+            switch (slide.type) {
+                case 'code':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <pre className="bg-gray-900 text-white p-4 rounded-lg text-sm md:text-base"><code>{slide.code}</code></pre>
+                        </div>
+                    );
+                case 'tips':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-yellow-300"><i className="fas fa-lightbulb mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+                            </ul>
+                        </div>
+                    );
+                case 'fun-facts':
+                     return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300"><i className="fas fa-star mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.facts.map((fact, i) => <li key={i}>{fact}</li>)}
+                            </ul>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <p className="text-base md:text-lg text-gray-300" dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                        </div>
+                    );
+            }
+        };
 
-plt.plot(xpoints, ypoints)
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
+        const App = () => {
+            const [currentTopicId, setCurrentTopicId] = useState('');
+            const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-                <section id="matplotlib-markers">
-                    <h2>Matplotlib Markers</h2>
-                    <section>
-                        <h3>Markers</h3>
-                        <p>You can use the keyword argument <span class="orange">marker</span> to emphasize each point with a specified marker:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
+            const sectionOrder = useMemo(() => Object.keys(sectionsData), []);
 
-ypoints = np.array([3, 8, 1, 10])
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1); // Remove '#'
+                    const topic = sectionsData[hash] ? hash : sectionOrder[0];
+                    setCurrentTopicId(topic);
+                    setCurrentSlideIndex(0); // Reset to first slide on topic change
+                };
 
-plt.plot(ypoints, marker = 'o')
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial load
 
-                <section id="matplotlib-line">
-                    <h2>Matplotlib Line</h2>
-                    <section>
-                        <h3>Linestyle</h3>
-                        <p>You can use the keyword argument <span class="orange">linestyle</span>, or shorter <span class="orange">ls</span>, to change the style of the plotted line:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, [sectionOrder]);
 
-ypoints = np.array([3, 8, 1, 10])
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight') handleNext();
+                    else if (event.key === 'ArrowLeft') handlePrev();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [currentTopicId, currentSlideIndex]);
 
-plt.plot(ypoints, linestyle = 'dotted')
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
+            // Hide header on down-level slides
+            useEffect(() => {
+                const header = document.getElementById('presentation-header');
+                if (header) {
+                    if (currentSlideIndex > 0) {
+                        header.style.maxHeight = '0';
+                        header.style.padding = '0';
+                        header.style.opacity = '0';
+                        header.style.overflow = 'hidden';
+                    } else {
+                        header.style.maxHeight = '100px'; // or original height
+                        header.style.padding = '1rem'; // or original padding
+                        header.style.opacity = '1';
+                    }
+                }
+            }, [currentSlideIndex]);
 
-                <section id="matplotlib-labels">
-                    <h2>Matplotlib Labels</h2>
-                    <section>
-                        <h3>Create Labels for a Plot</h3>
-                        <p>With Pyplot, you can use the <span class="orange">xlabel()</span> and <span class="orange">ylabel()</span> functions to set a label for the x- and y-axis.</p>
-                        <pre><code class="python" data-line-numbers>
-import numpy as np
-import matplotlib.pyplot as plt
+            const currentSection = sectionsData[currentTopicId];
+            if (!currentSection) {
+                return <div className="p-8 text-center text-xl">Topic not found. Please check the URL hash.</div>;
+            }
 
-x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
-y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+            const currentSlides = currentSection.slides;
+            const currentTopicIndex = sectionOrder.indexOf(currentTopicId);
 
-plt.plot(x, y)
+            const handleNext = () => {
+                if (currentSlideIndex < currentSlides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                } else if (currentTopicIndex < sectionOrder.length - 1) {
+                    // Go to next topic
+                    window.location.hash = sectionOrder[currentTopicIndex + 1];
+                }
+            };
 
-plt.xlabel("Average Pulse")
-plt.ylabel("Calorie Burnage")
+            const handlePrev = () => {
+                if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                } else if (currentTopicIndex > 0) {
+                    // Go to the start of the previous topic.
+                    window.location.hash = sectionOrder[currentTopicIndex - 1];
+                }
+            };
 
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
+            const isFirstSlideOverall = currentTopicIndex === 0 && currentSlideIndex === 0;
+            const isLastSlideOverall = currentTopicIndex === sectionOrder.length - 1 && currentSlideIndex === currentSlides.length - 1;
 
-                <section id="matplotlib-grid">
-                    <h2>Matplotlib Grid</h2>
-                    <section>
-                        <h3>Add Grid Lines to a Plot</h3>
-                        <p>With Pyplot, you can use the <span class="orange">grid()</span> function to add grid lines to a plot.</p>
-                        <pre><code class="python" data-line-numbers>
-import numpy as np
-import matplotlib.pyplot as plt
+            return (
+                <div className="flex flex-col h-full p-4 md:p-8 bg-gray-900">
+                    <div className="flex-grow flex flex-col justify-center items-center">
+                        <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 transition-all duration-300">
+                            {currentSlideIndex === 0 && (
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentSection.title}</h2>
+                            )}
+                            <div className="text-sm text-gray-400 mb-6">
+                                Slide {currentSlideIndex + 1} of {currentSlides.length}
+                            </div>
+                            <div className="slide-content pr-2">
+                                {currentSlides[currentSlideIndex] && <Slide slide={currentSlides[currentSlideIndex]} />}
+                            </div>
+                        </div>
+                    </div>
 
-x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
-y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <i className="fas fa-arrow-left mr-2"></i> Prev
+                        </button>
+                        <div className="text-gray-400">
+                            Topic {currentTopicIndex + 1} / {sectionOrder.length}
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            Next <i className="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
 
-plt.plot(x, y)
-
-plt.grid()
-
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="matplotlib-subplot">
-                    <h2>Matplotlib Subplot</h2>
-                    <section>
-                        <h3>Display Multiple Plots</h3>
-                        <p>With the <span class="orange">subplot()</span> function you can draw multiple plots in one figure:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
-
-#plot 1:
-x = np.array([0, 1, 2, 3])
-y = np.array([3, 8, 1, 10])
-
-plt.subplot(1, 2, 1)
-plt.plot(x,y)
-
-#plot 2:
-x = np.array([0, 1, 2, 3])
-y = np.array([10, 20, 30, 40])
-
-plt.subplot(1, 2, 2)
-plt.plot(x,y)
-
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="matplotlib-scatter">
-                    <h2>Matplotlib Scatter</h2>
-                    <section>
-                        <h3>Creating Scatter Plots</h3>
-                        <p>With Pyplot, you can use the <span class="orange">scatter()</span> function to draw a scatter plot.</p>
-                        <p>The <span class="orange">scatter()</span> function plots one dot for each observation. It needs two arrays of the same length, one for the values of the x-axis, and one for values on the y-axis:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
-y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
-
-plt.scatter(x, y)
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="matplotlib-bars">
-                    <h2>Matplotlib Bars</h2>
-                    <section>
-                        <h3>Creating Bars</h3>
-                        <p>With Pyplot, you can use the <span class="orange">bar()</span> function to draw bar graphs:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.array(["A", "B", "C", "D"])
-y = np.array([3, 8, 1, 10])
-
-plt.bar(x,y)
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="matplotlib-histograms">
-                    <h2>Matplotlib Histograms</h2>
-                    <section>
-                        <h3>Create Histogram</h3>
-                        <p>In Matplotlib, we use the <span class="orange">hist()</span> function to create histograms.</p>
-                        <p>The <span class="orange">hist()</span> function will use an array of numbers to create a histogram, e.g.:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.random.normal(170, 10, 250)
-
-plt.hist(x)
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="matplotlib-pie-charts">
-                    <h2>Matplotlib Pie Charts</h2>
-                    <section>
-                        <h3>Creating Pie Charts</h3>
-                        <p>With Pyplot, you can use the <span class="orange">pie()</span> function to draw pie charts:</p>
-                        <pre><code class="python" data-line-numbers>
-import matplotlib.pyplot as plt
-import numpy as np
-
-y = np.array([35, 25, 25, 15])
-
-plt.pie(y)
-plt.show()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section>
-                    <h2>Thank You!</h2>
-                    <p>
-                        <a href="../index.html">Back to Index</a>
-                    </p>
-                    <p style="font-size: 0.6em; margin-top: 2em;">
-                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
-                        Powered by Gemini Code Assistant.
-                    </p>
-                </section>
-			</div>
-		</div>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                plugins: [ RevealHighlight ]
-			});
-		</script>
-	</body>
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

@@ -1,1355 +1,246 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Python Tutorial</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4caf50;
+            --primary-dark: #3e8e41;
+            --background: #121212;
+            --surface: #1e1e1e;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+        }
+        .slide-content {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        /* Custom scrollbar for webkit browsers */
+        .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .slide-content::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        .slide-content::-webkit-scrollbar-thumb {
+            background-color: var(--primary-dark);
+            border-radius: 10px;
+            border: 2px solid var(--surface);
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
-        <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
-            .container-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 15px;
-                padding: 20px;
-                max-height: 80vh; /* Limit height to enable scrolling if needed */
-                overflow-y: auto; /* Enable vertical scrolling */
+    <header id="presentation-header" class="p-4 bg-gray-800 shadow-lg transition-all duration-500">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-green-400">Python Tutorial</h1>
+    </header>
+
+    <main id="root" class="flex-grow"></main>
+
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Babel CDN for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+
+        // This data would be specific to each presentation file (e.g., file_handling.html)
+        const sectionsData = {
+            'python-intro': {
+                title: 'Python Intro',
+                slides: [
+                    { type: 'content', title: 'What is Python?', content: 'Python is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.' },
+                    { type: 'code', title: 'Hello, World!', code: 'print("Hello, World!")' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Python is great for beginners!', 'Use a virtual environment for every project.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['Python was named after the British comedy group Monty Python.', 'The Zen of Python is a collection of 19 guiding principles for writing computer programs.'] }
+                ]
+            },
+            'python-get-started': {
+                title: 'Python Get Started',
+                slides: [
+                    { type: 'content', title: 'Installation', content: 'To get started with Python, you need to install it on your computer. You can download it from the official Python website.' },
+                    { type: 'content', title: 'Running Python', content: 'You can run Python code from the command line or by creating a Python file (e.g., my_program.py) and running it with `python my_program.py`.' },
+                    { type: 'tips', title: 'Tips & Tricks', tips: ['Use an IDE like VS Code or PyCharm for a better development experience.', 'The `python --version` command checks your installed version.'] },
+                    { type: 'fun-facts', title: 'Fun Facts', facts: ['Python is older than Java.', 'Major websites like Instagram, Spotify, and Netflix use Python.'] }
+                ]
+            },
+            // ... Add all other sections from index.html here
+        };
+
+        const Slide = ({ slide }) => {
+            switch (slide.type) {
+                case 'code':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <pre className="bg-gray-900 text-white p-4 rounded-lg text-sm md:text-base"><code>{slide.code}</code></pre>
+                        </div>
+                    );
+                case 'tips':
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-yellow-300"><i className="fas fa-lightbulb mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+                            </ul>
+                        </div>
+                    );
+                case 'fun-facts':
+                     return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-cyan-300"><i className="fas fa-star mr-2"></i>{slide.title}</h3>
+                            <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
+                                {slide.facts.map((fact, i) => <li key={i}>{fact}</li>)}
+                            </ul>
+                        </div>
+                    );
+                default:
+                    return (
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-green-300">{slide.title}</h3>
+                            <p className="text-base md:text-lg text-gray-300">{slide.content}</p>
+                        </div>
+                    );
             }
-            .card-link {
-                background-color: #1e1e1e;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-                text-decoration: none;
-                color: #e0e0e0;
-                padding: 1em;
-                box-sizing: border-box;
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 80px;
+        };
+
+        const App = () => {
+            const [currentTopicId, setCurrentTopicId] = useState('');
+            const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+            const sectionOrder = useMemo(() => Object.keys(sectionsData), []);
+
+            useEffect(() => {
+                const handleHashChange = () => {
+                    const hash = window.location.hash.substring(1); // Remove '#'
+                    const topic = sectionsData[hash] ? hash : sectionOrder[0];
+                    setCurrentTopicId(topic);
+                    setCurrentSlideIndex(0); // Reset to first slide on topic change
+                };
+
+                window.addEventListener('hashchange', handleHashChange);
+                handleHashChange(); // Initial load
+
+                return () => window.removeEventListener('hashchange', handleHashChange);
+            }, [sectionOrder]);
+
+            useEffect(() => {
+                const handleKeyDown = (event) => {
+                    if (event.key === 'ArrowRight') handleNext();
+                    else if (event.key === 'ArrowLeft') handlePrev();
+                };
+                window.addEventListener('keydown', handleKeyDown);
+                return () => window.removeEventListener('keydown', handleKeyDown);
+            }, [currentTopicId, currentSlideIndex]);
+
+            // Hide header on down-level slides
+            useEffect(() => {
+                const header = document.getElementById('presentation-header');
+                if (header) {
+                    if (currentSlideIndex > 0) {
+                        header.style.maxHeight = '0';
+                        header.style.padding = '0';
+                        header.style.opacity = '0';
+                        header.style.overflow = 'hidden';
+                    } else {
+                        header.style.maxHeight = '100px'; // or original height
+                        header.style.padding = '1rem'; // or original padding
+                        header.style.opacity = '1';
+                    }
+                }
+            }, [currentSlideIndex]);
+
+            const currentSection = sectionsData[currentTopicId];
+            if (!currentSection) {
+                return <div className="p-8 text-center text-xl">Topic not found.</div>;
             }
-            .card-link:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            }
-            .card-link h3 {
-                color: #4CAF50;
-                margin: 0;
-                font-size: 1.2em;
-                font-weight: 400;
-            }
-            .reveal section img {
-                max-width: 90%;
-                max-height: 70vh;
-                margin: 15px 0;
-            }
-            .reveal ul {
-                display: block;
-                text-align: left;
-                margin: 0 auto;
-                padding-left: 1em;
-            }
-            .reveal ul li {
-                margin-bottom: 0.5em;
-            }
-            .reveal pre code {
-                max-height: 60vh; /* Limit code block height */
-                overflow-y: auto; /* Enable scrolling for code blocks */
-                padding: 10px;
-                font-size: 0.8em;
-            }
-        </style>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>Python Tutorial</h1>
-                    <div class="container-grid">
-                        <a href="#/python-intro" class="card-link"><h3>Python Intro</h3></a>
-                        <a href="#/python-get-started" class="card-link"><h3>Python Get Started</h3></a>
-                        <a href="#/python-syntax" class="card-link"><h3>Python Syntax</h3></a>
-                        <a href="#/python-output" class="card-link"><h3>Python Output</h3></a>
-                        <a href="#/python-comments" class="card-link"><h3>Python Comments</h3></a>
-                        <a href="#/python-variables" class="card-link"><h3>Python Variables</h3></a>
-                        <a href="#/python-data-types" class="card-link"><h3>Python Data Types</h3></a>
-                        <a href="#/python-numbers" class="card-link"><h3>Python Numbers</h3></a>
-                        <a href="#/python-casting" class="card-link"><h3>Python Casting</h3></a>
-                        <a href="#/python-strings" class="card-link"><h3>Python Strings</h3></a>
-                        <a href="#/python-booleans" class="card-link"><h3>Python Booleans</h3></a>
-                        <a href="#/python-operators" class="card-link"><h3>Python Operators</h3></a>
-                        <a href="#/python-lists" class="card-link"><h3>Python Lists</h3></a>
-                        <a href="#/python-tuples" class="card-link"><h3>Python Tuples</h3></a>
-                        <a href="#/python-sets" class="card-link"><h3>Python Sets</h3></a>
-                        <a href="#/python-dictionaries" class="card-link"><h3>Python Dictionaries</h3></a>
-                        <a href="#/python-if-else" class="card-link"><h3>Python If...Else</h3></a>
-                        <a href="#/python-match" class="card-link"><h3>Python Match</h3></a>
-                        <a href="#/python-while-loops" class="card-link"><h3>Python While Loops</h3></a>
-                        <a href="#/python-for-loops" class="card-link"><h3>Python For Loops</h3></a>
-                        <a href="#/python-functions" class="card-link"><h3>Python Functions</h3></a>
-                        <a href="#/python-range" class="card-link"><h3>Python Range</h3></a>
-                        <a href="#/python-arrays" class="card-link"><h3>Python Arrays</h3></a>
-                        <a href="#/python-oop" class="card-link"><h3>Python OOP</h3></a>
-                        <a href="#/python-classes-objects" class="card-link"><h3>Python Classes/Objects</h3></a>
-                        <a href="#/python-inheritance" class="card-link"><h3>Python Inheritance</h3></a>
-                        <a href="#/python-iterators" class="card-link"><h3>Python Iterators</h3></a>
-                        <a href="#/python-polymorphism" class="card-link"><h3>Python Polymorphism</h3></a>
-                        <a href="#/python-modules-core" class="card-link"><h3>Python Modules (Core)</h3></a>
-                        <a href="#/python-dates" class="card-link"><h3>Python Dates</h3></a>
-                        <a href="#/python-math" class="card-link"><h3>Python Math</h3></a>
-                        <a href="#/python-json" class="card-link"><h3>Python JSON</h3></a>
-                        <a href="#/python-regex" class="card-link"><h3>Python RegEx</h3></a>
-                        <a href="#/python-pip" class="card-link"><h3>Python PIP</h3></a>
-                        <a href="#/python-try-except" class="card-link"><h3>Python Try...Except</h3></a>
-                        <a href="#/python-string-formatting" class="card-link"><h3>Python String Formatting</h3></a>
-                        <a href="#/python-none" class="card-link"><h3>Python None</h3></a>
-                        <a href="#/python-user-input" class="card-link"><h3>Python User Input</h3></a>
-                        <a href="#/python-virtualenv" class="card-link"><h3>Python VirtualEnv</h3></a>
+
+            const currentSlides = currentSection.slides;
+            const currentTopicIndex = sectionOrder.indexOf(currentTopicId);
+
+            const handleNext = () => {
+                if (currentSlideIndex < currentSlides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                } else if (currentTopicIndex < sectionOrder.length - 1) {
+                    // Go to next topic
+                    window.location.hash = sectionOrder[currentTopicIndex + 1];
+                }
+            };
+
+            const handlePrev = () => {
+                if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                } else if (currentTopicIndex > 0) {
+                    // Go to last slide of previous topic
+                    const prevTopicId = sectionOrder[currentTopicIndex - 1];
+                    const prevTopicSlides = sectionsData[prevTopicId].slides;
+                    // We need to set the hash and then the slide index, but hash change is async.
+                    // A full router would be better, but for this, we'll just go to the start of the prev topic.
+                    window.location.hash = prevTopicId;
+                }
+            };
+
+            const isFirstSlideOverall = currentTopicIndex === 0 && currentSlideIndex === 0;
+            const isLastSlideOverall = currentTopicIndex === sectionOrder.length - 1 && currentSlideIndex === currentSlides.length - 1;
+
+            return (
+                <div className="flex flex-col h-full p-4 md:p-8 bg-gray-900">
+                    <div className="flex-grow flex flex-col justify-center items-center">
+                        <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-2xl p-6 md:p-8 transition-all duration-300">
+                            {currentSlideIndex === 0 && (
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">{currentSection.title}</h2>
+                            )}
+                            <div className="text-sm text-gray-400 mb-6">
+                                Slide {currentSlideIndex + 1} of {currentSlides.length}
+                            </div>
+                            <div className="slide-content pr-2">
+                                {currentSlides[currentSlideIndex] && <Slide slide={currentSlides[currentSlideIndex]} />}
+                            </div>
+                        </div>
                     </div>
-                </section>
 
-                <section id="python-intro">
-                    <h2>Python Intro</h2>
-                    <section>
-                        <h3>What is Python?</h3>
-                        <p>Python is a popular programming language. Created by <span class="orange">Guido van Rossum</span>, released in <span class="orange">1991</span>.</p>
-                        <p>Used for:</p>
-                        <ul>
-                            <li>Web development (server-side)</li>
-                            <li>Software development</li>
-                            <li>Mathematics</li>
-                            <li>System scripting</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>What can Python do?</h3>
-                        <ul>
-                            <li>Create <span class="green">web applications</span>.</li>
-                            <li>Create <span class="green">workflows</span>.</li>
-                            <li>Connect to <span class="green">database systems</span>, read/modify files.</li>
-                            <li>Handle <span class="green">big data</span> and complex math.</li>
-                            <li>Used for <span class="green">rapid prototyping</span>.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Why Python?</h3>
-                        <ul>
-                            <li>Works on <span class="green">different platforms</span> (Windows, Mac, Linux, etc).</li>
-                            <li><span class="green">Simple syntax</span>, similar to English.</li>
-                            <li>Fewer lines of code than other languages.</li>
-                            <li><span class="green">Interpreter system</span> for quick prototyping.</li>
-                            <li>Supports <span class="green">procedural</span>, <span class="green">object-oriented</span>, and <span class="green">functional</span> programming.</li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section id="python-get-started">
-                    <h2>Python Get Started</h2>
-                    <section>
-                        <h3>Python Install</h3>
-                        <p>Many PCs and Macs have Python installed. Check by running:</p>
-                        <pre><code class="bash" data-line-numbers>python --version</code></pre>
-                    </section>
-                    <section>
-                        <h3>Python Quickstart</h3>
-                        <p>Python is interpreted. Run code directly in the command line:</p>
-                        <pre><code class="bash" data-line-numbers>python
->>> print("Hello, World!")</code></pre>
-                        <p>Or run a Python file (<span class="orange">myfile.py</span>):</p>
-                        <pre><code class="bash" data-line-numbers>python myfile.py</code></pre>
-                    </section>
-                </section>
-
-				<section id="python-syntax">
-                    <h2>Python Syntax</h2>
-					<section>
-						<h3>Execute Python Syntax</h3>
-						<p>Execute Python by writing <span class="green">directly in the Command Line</span> or by creating a <span class="orange">python file (.py)</span> and running it.</p>
-					</section>
-					<section>
-						<h3>Python Indentation</h3>
-						<p><span class="green">Indentation</span>: <span class="orange">spaces at the beginning of a code line</span>. In Python, it is <span class="red">very important</span>, unlike other languages where it's for readability only.</p>
-					</section>
-					<section>
-						<h3>Indentation Matters</h3>
-						<p>Python uses <span class="green">indentation</span> to indicate a <span class="orange">block of code</span>.</p>
-						<pre><code class="python" data-line-numbers>
-if 5 > 2:
-  print("Five is greater than two!")
-						</code></pre>
-					</section>
-                    <section>
-                        <h3>Python Statements</h3>
-                        <p>A <span class="green">statement</span> is an instruction the Python interpreter executes. E.g., <span class="orange">print</span> and assignment statements.</p>
-                        <pre><code class="python" data-line-numbers>
-# Single statement
-print("Hello, World!")
-
-# Another single statement
-x = 5
-                        </code></pre>
-                        <p>Multi-line statements use the line continuation character (<span class="orange">\\</span>):</p>
-                        <pre><code class="python" data-line-numbers>
-x = 1 + 2 + 3 + \
-    4 + 5 + 6
-                        </code></pre>
-                    </section>
-				</section>
-
-                <section id="python-output">
-                    <h2>Python Output</h2>
-                    <section>
-                        <h3>Python Output</h3>
-                        <p>The Python <span class="orange">print()</span> function outputs variables.</p>
-                        <pre><code class="python" data-line-numbers>
-x = "Python is awesome"
-print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Output Variables</h3>
-                        <p>Output multiple variables in <span class="orange">print()</span>, separated by a comma:</p>
-                        <pre><code class="python" data-line-numbers>
-x = "Python"
-y = "is"
-z = "awesome"
-print(x, y, z)
-                        </code></pre>
-                        <p>Use the <span class="orange">+</span> operator to output multiple variables:</p>
-                        <pre><code class="python" data-line-numbers>
-x = "Python "
-y = "is "
-z = "awesome"
-print(x + y + z)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-comments">
-                    <h2>Python Comments</h2>
-                    <section>
-                        <h3>Comments</h3>
-                        <p>Comments explain code, improve readability, and prevent execution during testing.</p>
-                        <p>Start with <span class="orange">#</span>; Python ignores them:</p>
-                        <pre><code class="python" data-line-numbers>
-#This is a comment
-print("Hello, World!")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Multi Line Comments</h3>
-                        <p>Python doesn't have a specific multi-line comment syntax. Use <span class="orange">#</span> for each line:</p>
-                        <pre><code class="python" data-line-numbers>
-#This is a comment
-#written in
-#more than just one line
-print("Hello, World!")
-                        </code></pre>
-                        <p>Or use a <span class="orange">multiline string</span> (not strictly comments, but often used as such):</p>
-                        <pre><code class="python" data-line-numbers>
-'''
-This is a comment
-written in
-more than just one line
-'''
-print("Hello, World!")
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-variables">
-                    <h2>Python Variables</h2>
-                    <section>
-                        <h3>Creating Variables</h3>
-                        <p>Variables are <span class="green">containers</span> for data values. Python has <span class="red">no command</span> for declaring a variable. Created when you <span class="green">first assign a value</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-# x is of type int
-x = 5
-# y is of type str
-y = "John"
-print(x)
-print(y)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Variable Names</h3>
-                        <p>Rules for Python variables:</p>
-                        <ul>
-                            <li>Starts with <span class="orange">letter</span> or <span class="orange">underscore</span>.</li>
-                            <li><span class="red">Cannot</span> start with a <span class="orange">number</span>.</li>
-                            <li>Only <span class="orange">alpha-numeric characters</span> and <span class="orange">underscores</span>.</li>
-                            <li><span class="orange">Case-sensitive</span> (age, Age, AGE are different).</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Assign Multiple Values</h3>
-                        <p>Assign values to multiple variables in one line:</p>
-                        <pre><code class="python" data-line-numbers>
-x, y, z = "Orange", "Banana", "Cherry"
-                        </code></pre>
-                        <p>Assign the same value to multiple variables:</p>
-                        <pre><code class="python" data-line-numbers>
-x = y = z = "Orange"
-                        </code></code
-></pre>
-                    </section>
-                </section>
-
-                <section id="python-data-types">
-                    <h2>Python Data Types</h2>
-                    <section>
-                        <h3>Built-in Data Types</h3>
-                        <p><span class="green">Data type</span> is important. Variables store data of <span class="orange">different types</span>. Python has these built-in categories:</p>
-                        <ul>
-                            <li>Text: <code>str</code></li>
-                            <li>Numeric: <code>int</code>, <code>float</code>, <code>complex</code></li>
-                            <li>Sequence: <code>list</code>, <code>tuple</code>, <code>range</code></li>
-                            <li>Mapping: <code>dict</code></li>
-                            <li>Set: <code>set</code>, <code>frozenset</code></li>
-                            <li>Boolean: <code>bool</code></li>
-                            <li>Binary: <code>bytes</code>, <code>bytearray</code>, <code>memoryview</code></li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Getting the Data Type</h3>
-                        <p>Use the <span class="orange">type()</span> function to get an object's data type:</p>
-                        <pre><code class="python" data-line-numbers>
-x = 5
-print(type(x))
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-numbers">
-                    <h2>Python Numbers</h2>
-                    <section>
-                        <h3>Numeric Types</h3>
-                        <p>Python has <span class="green">three</span> numeric types:</p>
-                        <ul>
-                            <li><code>int</code> (whole numbers)</li>
-                            <li><code>float</code> (numbers with decimals)</li>
-                            <li><code>complex</code> (numbers with an imaginary part)</li>
-                        </ul>
-                        <pre><code class="python" data-line-numbers>
-x = 1    # int
-y = 2.8  # float
-z = 1j   # complex
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Type Conversion</h3>
-                        <p>Convert between types with <span class="orange">int()</span>, <span class="orange">float()</span>, and <span class="orange">complex()</span> methods:</p>
-                        <pre><code class="python" data-line-numbers>
-x = 1    # int
-y = 2.8  # float
-
-# Convert int to float:
-a = float(x)
-
-# Convert float to int:
-b = int(y)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-casting">
-                    <h2>Python Casting</h2>
-                    <section>
-                        <h3>Specify a Variable Type</h3>
-                        <p>Use <span class="green">casting</span> to specify a variable's type. Python uses classes to define data types.</p>
-                        <p>Casting uses constructor functions:</p>
-                        <ul>
-                            <li><span class="orange">int()</span>: from int, float (removes decimals), or string (whole number).</li>
-                            <li><span class="orange">float()</span>: from int, float, or string (float/int).</li>
-                            <li><span class="orange">str()</span>: from various data types.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Casting Examples</h3>
-                        <pre><code class="python" data-line-numbers>
-x = int(1)   # x will be 1
-y = int(2.8) # y will be 2
-z = int("3") # z will be 3
-
-x = float(1)     # x will be 1.0
-y = float(2.8)   # y will be 2.8
-z = float("3")   # z will be 3.0
-w = float("4.2") # w will be 4.2
-
-x = str("s1") # x will be 's1'
-y = str(2)    # y will be '2'
-z = str(3.0)  # z will be '3.0'
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-strings">
-                    <h2>Python Strings</h2>
-                    <section>
-                        <h3>Strings</h3>
-                        <p>Strings are surrounded by <span class="orange">single</span> or <span class="orange">double quotation marks</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-print("Hello")
-print('Hello')
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>String as Arrays</h3>
-                        <p>Strings are <span class="green">arrays of bytes</span> (Unicode characters). Python has <span class="red">no character type</span>; a single character is a string of length 1.</p>
-                        <pre><code class="python" data-line-numbers>
-a = "Hello, World!"
-print(a[1]) # Output: e
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>String Methods</h3>
-                        <p>Python has many <span class="green">built-in methods</span> for strings:</p>
-                        <pre><code class="python" data-line-numbers>
-a = " Hello, World! "
-print(a.strip())   # Removes whitespace: "Hello, World!"
-print(len(a))      # Length: 15
-print(a.lower())   # Lowercase: " hello, world! "
-print(a.upper())   # Uppercase: " HELLO, WORLD! "
-print(a.replace("H", "J")) # Replace: " Jello, World! "
-print(a.split(",")) # Splits: [' Hello', ' World! ']
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-booleans">
-                    <h2>Python Booleans</h2>
-                    <section>
-                        <h3>Booleans</h3>
-                        <p>Expressions evaluate to <span class="green">True</span> or <span class="red">False</span>. Python returns the <span class="orange">Boolean answer</span> when comparing values.</p>
-                        <pre><code class="python" data-line-numbers>
-print(10 > 9)  # True
-print(10 == 9) # False
-print(10 < 9)  # False
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Most Values are True</h3>
-                        <p>Almost any value with content is <span class="green">True</span>. Examples:</p>
-                        <ul>
-                            <li>Any string (except <span class="red">empty strings</span>).</li>
-                            <li>Any number (except <span class="red">0</span>).</li>
-                            <li>Any list, tuple, set, or dictionary (except <span class="red">empty ones</span>).</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Some Values are False</h3>
-                        <p>The following will return <span class="red">False</span>:</p>
-                        <pre><code class="python" data-line-numbers>
-bool(False)
-bool(None)
-bool(0)
-bool("")
-bool(())
-bool([])
-bool({})
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-operators">
-                    <h2>Python Operators</h2>
-                    <section>
-                        <h3>Operators</h3>
-                        <p><span class="green">Operators</span> perform <span class="orange">operations</span> on <span class="orange">variables</span> and <span class="orange">values</span>. Python groups operators:</p>
-                        <ul>
-                            <li>Arithmetic</li>
-                            <li>Assignment</li>
-                            <li>Comparison</li>
-                            <li>Logical</li>
-                            <li>Identity</li>
-                            <li>Membership</li>
-                            <li>Bitwise</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Arithmetic Operators</h3>
-                        <p><span class="green">Arithmetic operators</span> perform <span class="orange">mathematical operations</span> with numeric values:</p>
-                        <pre><code class="python" data-line-numbers>
-print(10 + 5)  # Addition
-print(10 - 5)  # Subtraction
-print(10 * 5)  # Multiplication
-print(10 / 5)  # Division
-print(10 % 5)  # Modulus
-print(10 ** 5) # Exponentiation
-print(10 // 5) # Floor division
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Logical Operators</h3>
-                        <p><span class="green">Logical operators</span> combine conditional statements:</p>
-                        <pre><code class="python" data-line-numbers>
-print(10 > 9 and 10 > 8) # True
-print(10 > 9 or 10 < 8)  # True
-print(not(10 > 9 and 10 > 8)) # False
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-lists">
-                    <h2>Python Lists</h2>
-                    <section>
-                        <h3>Lists</h3>
-                        <p><span class="green">Lists</span> store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. They are <span class="green">ordered</span>, <span class="green">changeable</span>, and allow <span class="green">duplicate values</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-thislist = ["apple", "banana", "cherry"]
-print(thislist)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>List Items</h3>
-                        <p>List items are <span class="green">ordered</span>, <span class="green">changeable</span>, and allow <span class="green">duplicate values</span>. They are <span class="orange">indexed</span> (first item: <span class="orange">[0]</span>, second: <span class="orange">[1]</span>, etc.).</p>
-                    </section>
-                    <section>
-                        <h3>List Methods</h3>
-                        <p>Python has many <span class="green">built-in methods</span> for lists:</p>
-                        <pre><code class="python" data-line-numbers>
-thislist = ["apple", "banana", "cherry"]
-thislist.append("orange") # Add item
-print(thislist)
-
-thislist.remove("banana") # Remove item
-print(thislist)
-
-print(len(thislist)) # Length
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-tuples">
-                    <h2>Python Tuples</h2>
-                    <section>
-                        <h3>Tuples</h3>
-                        <p><span class="green">Tuples</span> store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. They are <span class="green">ordered</span> and <span class="red">unchangeable</span>. Written with <span class="orange">round brackets</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-thistuple = ("apple", "banana", "cherry")
-print(thistuple)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Tuple Items</h3>
-                        <p>Tuple items are <span class="green">ordered</span>, <span class="red">unchangeable</span>, and allow <span class="green">duplicate values</span>. They are <span class="orange">indexed</span> (first item: <span class="orange">[0]</span>, second: <span class="orange">[1]</span>, etc.).</p>
-                    </section>
-                    <section>
-                        <h3>Tuple Methods</h3>
-                        <p>Python has <span class="green">two built-in methods</span> for tuples:</p>
-                        <pre><code class="python" data-line-numbers>
-thistuple = ("apple", "banana", "cherry")
-print(thistuple.count("apple"))  # Count occurrences
-print(thistuple.index("cherry")) # Find index
-                        </code></pre>
-                        <p><span class="red">Note:</span> Few methods due to unchangeable nature.</p>
-                    </section>
-                </section>
-
-                <section id="python-sets">
-                    <h2>Python Sets</h2>
-                    <section>
-                        <h3>Sets</h3>
-                        <p><span class="green">Sets</span> store <span class="orange">multiple items</span> in a <span class="orange">single variable</span>. They are <span class="red">unordered</span> and <span class="red">unindexed</span>. Written with <span class="orange">curly brackets</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-thisset = {"apple", "banana", "cherry"}
-print(thisset)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Set Items</h3>
-                        <p>Set items are <span class="red">unordered</span>, <span class="red">unchangeable</span>, and do <span class="red">not</span> allow <span class="orange">duplicate values</span>.</p>
-                    </section>
-                    <section>
-                        <h3>Set Methods</h3>
-                        <p>Python has <span class="green">built-in methods</span> for sets:</p>
-                        <pre><code class="python" data-line-numbers>
-thisset = {"apple", "banana", "cherry"}
-thisset.add("orange")    # Add item
-print(thisset)
-
-thisset.remove("banana") # Remove item
-print(thisset)
-
-print(len(thisset))      # Length
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-dictionaries">
-                    <h2>Python Dictionaries</h2>
-                    <section>
-                        <h3>Dictionaries</h3>
-                        <p><span class="green">Dictionaries</span> store data in <span class="orange">key:value pairs</span>. They are <span class="green">ordered*</span>, <span class="green">changeable</span>, and do <span class="red">not</span> allow <span class="orange">duplicates</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-thisdict = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-print(thisdict)
-                        </code></pre>
-                        <aside class="notes">
-						Speaker notes: As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
-					</aside>
-                    </section>
-                    <section>
-                        <h3>Dictionary Items</h3>
-                        <p>Items are <span class="orange">key:value pairs</span>, referred to by <span class="orange">key name</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-thisdict = {"brand": "Ford", "model": "Mustang"}
-print(thisdict["brand"]) # Output: Ford
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Dictionary Methods</h3>
-                        <p>Python has <span class="green">built-in methods</span> for dictionaries:</p>
-                        <pre><code class="python" data-line-numbers>
-thisdict = {"brand": "Ford", "model": "Mustang"}
-thisdict["color"] = "red" # Add item
-print(thisdict)
-
-thisdict.pop("model") # Remove item
-print(thisdict)
-
-print(len(thisdict))  # Length
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-if-else">
-                    <h2>Python If...Else</h2>
-                    <section>
-                        <h3>If...Else</h3>
-                        <p>Python supports <span class="green">logical conditions</span> from mathematics:</p>
-                        <ul>
-                            <li>Equals: a <span class="orange">==</span> b</li>
-                            <li>Not Equals: a <span class="orange">!=</span> b</li>
-                            <li>Less than: a <span class="orange"><</span> b</li>
-                            <li>Less than or equal to: a <span class="orange"><=</span> b</li>
-                            <li>Greater than: a <span class="orange">></span> b</li>
-                            <li>Greater than or equal to: a <span class="orange">>=</span> b</li>
-                        </ul>
-                        <p>Used in <span class="green">"if statements"</span> and <span class="green">loops</span>.</p>
-                    </section>
-                    <section>
-                        <h3>If Statement</h3>
-                        <p>An "if statement" uses the <span class="orange">if</span> keyword.</p>
-                        <pre><code class="python" data-line-numbers>
-a = 33
-b = 200
-if b > a:
-  print("b is greater than a")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Elif</h3>
-                        <p>The <span class="orange">elif</span> keyword: "<span class="green">if previous conditions were false, try this condition</span>".</p>
-                        <pre><code class="python" data-line-numbers>
-a = 33
-b = 33
-if b > a:
-  print("b is greater than a")
-elif a == b:
-  print("a and b are equal")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Else</h3>
-                        <p>The <span class="orange">else</span> keyword <span class="green">catches anything not caught by preceding conditions</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-a = 200
-b = 33
-if b > a:
-  print("b is greater than a")
-elif a == b:
-  print("a and b are equal")
-else:
-  print("a is greater than b")
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-match">
-                    <h2>Python Match</h2>
-                    <section>
-                        <h3>Match Statement</h3>
-                        <p>A <span class="green">match</span> statement compares an expression's value to patterns in <span class="orange">case</span> blocks.</p>
-                        <p>Similar to <span class="orange">switch</span> statements in other languages.</p>
-                        <pre><code class="python" data-line-numbers>
-def http_status(status):
-    match status:
-        case 400: return "Bad request"
-        case 404: return "Not found"
-        case 418: return "I'm a teapot"
-        case _:   return "Something's wrong"
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-while-loops">
-                    <h2>Python While Loops</h2>
-                    <section>
-                        <h3>While Loops</h3>
-                        <p>The <span class="green">while loop</span> iterates a code block as long as the <span class="orange">test expression (condition)</span> is <span class="green">true</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-i = 1
-while i < 6:
-  print(i)
-  i += 1
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>The break Statement</h3>
-                        <p>The <span class="orange">break</span> statement <span class="red">stops the loop</span> even if the while condition is true:</p>
-                        <pre><code class="python" data-line-numbers>
-i = 1
-while i < 6:
-  print(i)
-  if i == 3:
-    break
-  i += 1
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>The continue Statement</h3>
-                        <p>The <span class="orange">continue</span> statement <span class="red">stops the current iteration</span> and <span class="green">continues with the next</span>:</p>
-                        <pre><code class="python" data-line-numbers>
-i = 0
-while i < 6:
-  i += 1
-  if i == 3:
-    continue
-  print(i)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-for-loops">
-                    <h2>Python For Loops</h2>
-                    <section>
-                        <h3>For Loops</h3>
-                        <p>A <span class="green">for loop</span> <span class="orange">iterates over a sequence</span> (list, tuple, dictionary, set, or string).</p>
-                        <pre><code class="python" data-line-numbers>
-fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>The range() Function</h3>
-                        <p>The <span class="orange">range()</span> function returns a <span class="green">sequence of numbers</span>. Starts from <span class="orange">0 by default</span>, increments by <span class="orange">1 (by default)</span>, and ends at a specified number.</p>
-                        <pre><code class="python" data-line-numbers>
-for x in range(6):
-  print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Nested Loops</h3>
-                        <p>A <span class="green">nested loop</span> is a <span class="orange">loop inside a loop</span>. The inner loop executes once for each outer loop iteration.</p>
-                        <pre><code class="python" data-line-numbers>
-adj = ["red", "big", "tasty"]
-fruits = ["apple", "banana", "cherry"]
-
-for x in adj:
-  for y in fruits:
-    print(x, y)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-functions">
-                    <h2>Python Functions</h2>
-                    <section>
-                        <h3>Functions</h3>
-                        <p>A <span class="green">function</span> is a <span class="orange">block of code</span> that <span class="green">only runs when called</span>. Pass <span class="orange">parameters</span> into it. Can <span class="green">return data</span>.</p>
-                        <pre><code class="python" data-line-numbers>
-def my_function():
-  print("Hello from a function")
-
-my_function()
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Arguments</h3>
-                        <p>Pass <span class="orange">arguments</span> into functions. Specify them after the function name, inside <span class="orange">parentheses</span>. Separate multiple arguments with a comma.</p>
-                        <pre><code class="python" data-line-numbers>
-def my_function(fname):
-  print(fname + " Refsnes")
-
-my_function("Emil")
-my_function("Tobias")
-my_function("Linus")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Return Values</h3>
-                        <p>Use the <span class="orange">return</span> statement to make a function <span class="green">return a value</span>:</p>
-                        <pre><code class="python" data-line-numbers>
-def my_function(x):
-  return 5 * x
-
-print(my_function(3))
-print(my_function(5))
-print(my_function(9))
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-range">
-                    <h2>Python Range</h2>
-                    <section>
-                        <h3>The range() Function</h3>
-                        <p>The <span class="orange">range()</span> function returns a <span class="green">sequence of numbers</span>. Starts from <span class="orange">0 by default</span>, increments by <span class="orange">1 (by default)</span>, and ends at a specified number.</p>
-                        <pre><code class="python" data-line-numbers>
-for x in range(6):
-  print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-arrays">
-                    <h2>Python Arrays</h2>
-                    <section>
-                        <h3>Arrays in Python</h3>
-                        <p>Python does <span class="red">not</span> have a built-in data type for <span class="orange">arrays</span> like other languages. <span class="green">Lists</span> can be used for the same purpose.</p>
-                        <p>For true array functionality, use the <span class="orange">NumPy</span> library or Python's built-in <span class="orange">array</span> module.</p>
-                    </section>
-                    <section>
-                        <h3>Using Lists as Arrays</h3>
-                        <pre><code class="python" data-line-numbers>
-cars = ["Ford", "Volvo", "BMW"]
-
-# Access first item
-x = cars[0]
-
-# Modify first item
-cars[0] = "Toyota"
-
-# Get number of elements
-x = len(cars)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-oop">
-                    <h2>Python OOP</h2>
-                    <section>
-                        <h3>Object-Oriented Programming</h3>
-                        <p>Python is an <span class="green">object-oriented programming language</span>.</p>
-                        <p>Almost everything in Python is an object with properties and methods. A <span class="orange">Class</span> is like an object constructor, a "blueprint" for creating objects.</p>
-                    </section>
-                </section>
-
-                <section id="python-classes-objects">
-                    <h2>Python Classes/Objects</h2>
-                    <section>
-                        <h3>Create a Class</h3>
-                        <p>Use the keyword <span class="orange">class</span> to create a class:</p>
-                        <pre><code class="python" data-line-numbers>
-class MyClass:
-  x = 5
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Create Object</h3>
-                        <p>Use the class <span class="orange">MyClass</span> to create objects:</p>
-                        <pre><code class="python" data-line-numbers>
-p1 = MyClass()
-print(p1.x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>The __init__() Function</h3>
-                        <p>The built-in <span class="orange">__init__()</span> function is always executed when the class is initiated.</p>
-                        <p>Use it to assign values to object properties or perform necessary operations during object creation:</p>
-                        <pre><code class="python" data-line-numbers>
-class Person:
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-
-p1 = Person("John", 36)
-
-print(p1.name)
-print(p1.age)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-inheritance">
-                    <h2>Python Inheritance</h2>
-                    <section>
-                        <h3>Python Inheritance</h3>
-                        <p><span class="green">Inheritance</span> allows a class to inherit methods and properties from another class.</p>
-                        <ul>
-                            <li><span class="orange">Parent class</span> (base class): Inherited from.</li>
-                            <li><span class="orange">Child class</span> (derived class): Inherits from parent.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Create a Parent Class</h3>
-                        <p>Any class can be a parent class:</p>
-                        <pre><code class="python" data-line-numbers>
-class Person:
-  def __init__(self, fname, lname):
-    self.firstname = fname
-    self.lastname = lname
-
-  def printname(self):
-    print(self.firstname, self.lastname)
-
-# Example:
-x = Person("John", "Doe")
-x.printname()
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Create a Child Class</h3>
-                        <p>Pass the parent class as a parameter:</p>
-                        <pre><code class="python" data-line-numbers>
-class Student(Person):
-  pass
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Add the __init__() Function</h3>
-                        <p>Adding <span class="orange">__init__()</span> to child class stops inheriting parent's <span class="orange">__init__()</span>.</p>
-                        <p>To keep parent's <span class="orange">__init__()</span>, call it explicitly:</p>
-                        <pre><code class="python" data-line-numbers>
-class Student(Person):
-  def __init__(self, fname, lname):
-    Person.__init__(self, fname, lname)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Use the super() Function</h3>
-                        <p>The <span class="orange">super()</span> function makes the child class inherit all methods and properties from its parent:</p>
-                        <pre><code class="python" data-line-numbers>
-class Student(Person):
-  def __init__(self, fname, lname):
-    super().__init__(fname, lname)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-iterators">
-                    <h2>Python Iterators</h2>
-                    <section>
-                        <h3>Python Iterators</h3>
-                        <p>An <span class="green">iterator</span> is an object with a countable number of values, allowing traversal through all values.</p>
-                        <p>Implements <span class="orange">__iter__()</span> and <span class="orange">__next__()</span> methods.</p>
-                    </section>
-                    <section>
-                        <h3>Iterator vs Iterable</h3>
-                        <p>Lists, tuples, dictionaries, sets are <span class="green">iterable objects</span>. They have an <span class="orange">iter()</span> method to get an iterator:</p>
-                        <pre><code class="python" data-line-numbers>
-mytuple = ("apple", "banana", "cherry")
-myit = iter(mytuple)
-
-print(next(myit))
-print(next(myit))
-print(next(myit))
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Create an Iterator</h3>
-                        <p>Implement <span class="orange">__iter__()</span> and <span class="orange">__next__()</span> in your object/class.</p>
-                        <ul>
-                            <li><span class="orange">__iter__()</span>: Returns the iterator object itself.</li>
-                            <li><span class="orange">__next__()</span>: Returns the next item in the sequence.</li>
-                        </ul>
-                        <pre><code class="python" data-line-numbers>
-class MyNumbers:
-  def __iter__(self):
-    self.a = 1
-    return self
-
-  def __next__(self):
-    x = self.a
-    self.a += 1
-    return x
-
-myclass = MyNumbers()
-myiter = iter(myclass)
-
-print(next(myiter))
-print(next(myiter))
-print(next(myiter))
-print(next(myiter))
-print(next(myiter))
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-polymorphism">
-                    <h2>Python Polymorphism</h2>
-                    <section>
-                        <h3>What is Polymorphism?</h3>
-                        <p><span class="orange">Polymorphism</span> means "many forms". In programming, it refers to methods/functions/operators with the same name that can be executed on many objects or classes.</p>
-                    </section>
-                    <section>
-                        <h3>Polymorphism in Class Methods</h3>
-                        <p>Multiple classes can have the same method name:</p>
-                        <pre><code class="python" data-line-numbers>
-class Car:
-  def __init__(self, brand, model):
-    self.brand = brand
-    self.model = model
-  def move(self): print("Drive!")
-
-class Boat:
-  def __init__(self, brand, model):
-    self.brand = brand
-    self.model = model
-  def move(self): print("Sail!")
-
-class Plane:
-  def __init__(self, brand, model):
-    self.brand = brand
-    self.model = model
-  def move(self): print("Fly!")
-
-car1 = Car("Ford", "Mustang")
-boat1 = Boat("Ibiza", "Touring 20")
-plane1 = Plane("Boeing", "747")
-
-for x in (car1, boat1, plane1):
-  x.move()
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-modules-core">
-                    <h2>Python Modules (Core)</h2>
-                    <section>
-                        <h3>What is a Module?</h3>
-                        <p>A <span class="green">module</span> is like a <span class="orange">code library</span>: a file with functions to include in your application.</p>
-                    </section>
-                    <section>
-                        <h3>Create a Module</h3>
-                        <p>Save code in a file with <span class="orange">.py</span> extension (e.g., <span class="orange">mymodule.py</span>):</p>
-                        <pre><code class="python" data-line-numbers>
-# mymodule.py
-def greeting(name):
-  print("Hello, " + name)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Use a Module</h3>
-                        <p>Use the <span class="orange">import</span> statement:</p>
-                        <pre><code class="python" data-line-numbers>
-import mymodule
-
-mymodule.greeting("Jonathan")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Built-in Modules</h3>
-                        <p>Python has several built-in modules. Example:</p>
-                        <pre><code class="python" data-line-numbers>
-import platform
-
-x = platform.system()
-print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Using the dir() Function</h3>
-                        <p>The <span class="orange">dir()</span> function lists all function/variable names in a module:</p>
-                        <pre><code class="python" data-line-numbers>
-import platform
-
-x = dir(platform)
-print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-dates">
-                    <h2>Python Dates</h2>
-                    <section>
-                        <h3>Python Dates</h3>
-                        <p>Python doesn't have a built-in date type. Import the <span class="orange">datetime</span> module to work with date objects.</p>
-                        <pre><code class="python" data-line-numbers>
-import datetime
-
-x = datetime.datetime.now()
-print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Creating Date Objects</h3>
-                        <p>Use the <span class="orange">datetime()</span> constructor from <span class="orange">datetime</span> module. Requires year, month, day:</p>
-                        <pre><code class="python" data-line-numbers>
-import datetime
-
-x = datetime.datetime(2020, 5, 17)
-print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-math">
-                    <h2>Python Math</h2>
-                    <section>
-                        <h3>Built-in Math Functions</h3>
-                        <p><span class="orange">min()</span> and <span class="orange">max()</span>: find lowest/highest value.</p>
-                        <pre><code class="python" data-line-numbers>
-x = min(5, 10, 25)
-y = max(5, 10, 25)
-print(x, y)
-                        </code></pre>
-                        <p><span class="orange">abs()</span>: returns absolute (positive) value.</p>
-                        <pre><code class="python" data-line-numbers>
-x = abs(-7.25)
-print(x)
-                        </code></pre>
-                        <p><span class="orange">pow(x, y)</span>: returns x to the power of y (x^y).</p>
-                        <pre><code class="python" data-line-numbers>
-x = pow(4, 3)
-print(x)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>The Math Module</h3>
-                        <p>The built-in <span class="orange">math</span> module extends mathematical functions. Import it:</p>
-                        <pre><code class="python" data-line-numbers>
-import math
-
-print(math.sqrt(64))
-print(math.ceil(1.4))
-print(math.floor(1.4))
-print(math.pi)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-json">
-                    <h2>Python JSON</h2>
-                    <section>
-                        <h3>What is JSON?</h3>
-                        <p>JSON is a syntax for storing and exchanging data. It's text, written with JavaScript object notation.</p>
-                    </section>
-                    <section>
-                        <h3>Parse JSON (JSON to Python)</h3>
-                        <p>Use <span class="orange">json.loads()</span> to parse a JSON string into a Python dictionary:</p>
-                        <pre><code class="python" data-line-numbers>
-import json
-
-x =  '{ "name":"John", "age":30, "city":"New York"}'
-y = json.loads(x)
-print(y["age"]) # Output: 30
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Convert Python to JSON</h3>
-                        <p>Use <span class="orange">json.dumps()</span> to convert a Python object into a JSON string:</p>
-                        <pre><code class="python" data-line-numbers>
-import json
-
-x = {"name": "John", "age": 30, "city": "New York"}
-y = json.dumps(x)
-print(y)
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Format the Result</h3>
-                        <p><span class="orange">json.dumps()</span> has parameters for readability (indentations, line breaks):</p>
-                        <pre><code class="python" data-line-numbers>
-import json
-
-x = {"name": "John", "age": 30, "city": "New York"}
-print(json.dumps(x, indent=4))
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-regex">
-                    <h2>Python RegEx</h2>
-                    <section>
-                        <h3>What is a Regular Expression?</h3>
-                        <p>A <span class="green">RegEx</span> (Regular Expression) is a sequence of characters forming a <span class="orange">search pattern</span>.</p>
-                        <p>Used to check if a string contains the specified pattern.</p>
-                    </section>
-                    <section>
-                        <h3>RegEx Module</h3>
-                        <p>Python's built-in <span class="orange">re</span> package works with Regular Expressions. Import it:</p>
-                        <pre><code class="python" data-line-numbers>
-import re
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>RegEx Functions</h3>
-                        <p>The <span class="orange">re</span> module offers functions to search for matches:</p>
-                        <ul>
-                            <li><span class="orange">findall</span>: Returns a list of all matches.</li>
-                            <li><span class="orange">search</span>: Returns a Match object if a match is found.</li>
-                            <li><span class="orange">split</span>: Returns a list where the string is split at each match.</li>
-                            <li><span class="orange">sub</span>: Replaces matches with a string.</li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section id="python-pip">
-                    <h2>Python PIP</h2>
-                    <section>
-                        <h3>What is PIP?</h3>
-                        <p>PIP is a <span class="green">package manager</span> for Python packages/modules.</p>
-                        <p>A package contains all files for a module. Modules are Python code libraries for your application.</p>
-                    </section>
-                    <section>
-                        <h3>Install PIP</h3>
-                        <p>PIP is included with Python 3.4+. Check installation:</p>
-                        <pre><code class="bash" data-line-numbers>pip --version</code></pre>
-                    </section>
-                    <section>
-                        <h3>Install a Package</h3>
-                        <p>Use the <span class="orange">install</span> command:</p>
-                        <pre><code class="bash" data-line-numbers>pip install camelcase</code></pre>
-                    </section>
-                    <section>
-                        <h3>Uninstall a Package</h3>
-                        <p>Use the <span class="orange">uninstall</span> command:</p>
-                        <pre><code class="bash" data-line-numbers>pip uninstall camelcase</code></pre>
-                    </section>
-                </section>
-
-                <section id="python-try-except">
-                    <h2>Python Try...Except</h2>
-                    <section>
-                        <h3>Exception Handling</h3>
-                        <p>The <span class="orange">try</span> block tests code for errors.</p>
-                        <p>The <span class="orange">except</span> block handles the error.</p>
-                        <p>The <span class="orange">finally</span> block executes regardless of try/except outcome.</p>
-                        <pre><code class="python" data-line-numbers>
-try:
-  print(x)
-except:
-  print("An exception occurred")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Many Exceptions</h3>
-                        <p>Define multiple <span class="orange">except</span> blocks for specific error types:</p>
-                        <pre><code class="python" data-line-numbers>
-try:
-  print(x)
-except NameError:
-  print("Variable x is not defined")
-except:
-  print("Something else went wrong")
-                        </code></pre>
-                    </section>
-                    <section>
-                        <h3>Finally Block</h3>
-                        <p>The <span class="orange">finally</span> block executes whether an error occurs or not.</p>
-                        <pre><code class="python" data-line-numbers>
-try:
-  print(x)
-except:
-  print("Something went wrong")
-finally:
-  print("The 'try except' is finished")
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-string-formatting">
-                    <h2>Python String Formatting</h2>
-                    <section>
-                        <h3>String Formatting</h3>
-                        <p>Use the <span class="orange">format()</span> method to format selected parts of a string.</p>
-                        <p>Add placeholders (curly brackets <span class="orange">{}</span>) in the text, and pass values to <span class="orange">format()</span>:</p>
-                        <pre><code class="python" data-line-numbers>
-price = 49
-txt = "The price is {} dollars"
-print(txt.format(price))
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-none">
-                    <h2>Python None</h2>
-                    <section>
-                        <h3>The None Keyword</h3>
-                        <p>The <span class="orange">None</span> keyword defines a null value, or no value.</p>
-                        <p><span class="orange">None</span> is <span class="red">not</span> 0, <span class="red">False</span>, or an <span class="red">empty string</span>. It's its own data type (<span class="orange">NoneType</span>).</p>
-                        <pre><code class="python" data-line-numbers>
-x = None
-print(x)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-user-input">
-                    <h2>Python User Input</h2>
-                    <section>
-                        <h3>User Input</h3>
-                        <p>Python allows for user input.</p>
-                        <p>Python 3.6+ uses the <span class="orange">input()</span> method.</p>
-                        <p>Python 2.7 used the <span class="orange">raw_input()</span> method.</p>
-                        <pre><code class="python" data-line-numbers>
-# Python 3.6+
-username = input("Enter username:")
-print("Username is: " + username)
-
-# Python 2.7 (for reference)
-# username = raw_input("Enter username:")
-# print("Username is: " + username)
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section id="python-virtualenv">
-                    <h2>Python VirtualEnv</h2>
-                    <section>
-                        <h3>What is a Virtual Environment?</h3>
-                        <p>A <span class="green">virtual environment</span> keeps project dependencies separate and isolated.</p>
-                    </section>
-                    <section>
-                        <h3>Create a Virtual Environment</h3>
-                        <p>Use the <span class="orange">venv</span> module:</p>
-                        <pre><code class="bash" data-line-numbers>python -m venv myenv</code></pre>
-                    </section>
-                    <section>
-                        <h3>Activate a Virtual Environment</h3>
-                        <p>Windows:</p>
-                        <pre><code class="bash" data-line-numbers>myenv\Scripts\activate.bat</code></pre>
-                        <p>Unix/MacOS:</p>
-                        <pre><code class="bash" data-line-numbers>source myenv/bin/activate</code></pre>
-                    </section>
-                </section>
-
-                <section>
-                    <h2>Thank You!</h2>
-                    <p>
-                        <a href="../index.html">Back to Index</a>
-                    </p>
-                    <p style="font-size: 0.6em; margin-top: 2em;">
-                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
-                        Powered by Gemini Code Assistant.
-                    </p>
-                </section>
-			</div>
-		</div>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
-		<script>
-			Reveal.initialize({
-				hash: true,
-                plugins: [ RevealHighlight ],
-                scroll: true
-			});
-		</script>
-	</body>
+                    <div className="flex justify-center items-center gap-4 mt-6">
+                        <button
+                            onClick={handlePrev}
+                            disabled={isFirstSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            <i className="fas fa-arrow-left mr-2"></i> Prev
+                        </button>
+                        <div className="text-gray-400">
+                            Topic {currentTopicIndex + 1} / {sectionOrder.length}
+                        </div>
+                        <button
+                            onClick={handleNext}
+                            disabled={isLastSlideOverall}
+                            className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full shadow-md hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-colors"
+                        >
+                            Next <i className="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
 </html>

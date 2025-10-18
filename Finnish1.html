@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Finnish A1.1: Foundations and Essentials</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css">
     <!-- Switch to a clean, light theme for better readability -->
@@ -55,6 +55,12 @@
             overflow-y: auto !important;
             overflow-x: hidden !important;
             padding: 0.5em 1.25em;
+        }
+
+        @media (max-width: 600px) {
+            .reveal section {
+                padding: 0.5em 0.8em; /* Reduce padding on small screens */
+            }
         }
 
         /* 3. RESPONSIVE TABLE CONTAINER & STYLING */
@@ -140,6 +146,65 @@
             text-align: left;
         }
 
+        /* Enhanced Media queries for better mobile font scaling */
+        @media (max-width: 768px) {
+            .reveal h1 { font-size: 1.8em; }
+            .reveal h2 { font-size: 1.5em; }
+            .reveal h3 { font-size: 1.15em; }
+            .reveal p, .reveal li, .reveal table { font-size: 0.9em; }
+
+            /* Better table spacing on mobile */
+            .reveal table thead th,
+            .reveal table td {
+                padding: 0.5rem 0.6rem;
+            }
+
+            /* Adjust fun-fact boxes for mobile */
+            .fun-fact {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reveal h1 { font-size: 1.5em; }
+            .reveal h2 { font-size: 1.3em; }
+            .reveal h3 { font-size: 1.05em; }
+            .reveal p, .reveal li, .reveal table { font-size: 0.85em; }
+
+            /* Even more compact tables on very small screens */
+            .reveal table {
+                font-size: 0.85em;
+            }
+
+            .reveal table thead th,
+            .reveal table td {
+                padding: 0.4rem 0.5rem;
+            }
+
+            /* Better vowel boxes for mobile */
+            .vowel-box {
+                padding: 0.4rem 0.5rem;
+                margin: 0.15rem;
+                font-size: 0.85em;
+            }
+
+            /* Adjust fun-fact boxes */
+            .fun-fact {
+                padding: 0.8rem 1rem;
+            }
+
+            .fun-fact p {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .reveal h1 { font-size: 1.3em; }
+            .reveal h2 { font-size: 1.2em; }
+            .reveal h3 { font-size: 1em; }
+            .reveal p, .reveal li, .reveal table { font-size: 0.8em; }
+        }
+
         /* Style for fun facts and examples */
         .fun-fact {
             background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
@@ -147,6 +212,12 @@
             border-radius: 0.75rem;
             border-left: 6px solid #003580;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fun-fact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
         }
 
         .fun-fact p {
@@ -167,6 +238,11 @@
             color: white;
             font-size: 0.9em;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .vowel-box:hover {
+            transform: scale(1.1);
         }
 
         .back-vowel {
@@ -201,6 +277,7 @@
         /* Link polish */
         .reveal a {
             color: #0ea5e9;
+            transition: color 0.3s ease;
         }
 
         .reveal a:hover {
@@ -213,7 +290,9 @@
             to {opacity: 1; transform: translateY(0)}
         }
 
-        .reveal h1, .reveal h2, .reveal h3 { animation: fadeUp 420ms ease-out; }
+        .reveal h1, .reveal h2, .reveal h3 {
+            animation: fadeUp 420ms ease-out;
+        }
 
         /* Small, tasteful footer */
         .footer-brand {
@@ -225,6 +304,81 @@
             letter-spacing: 0.2px;
             z-index: 50;
             pointer-events: none;
+        }
+
+        /* Hide footer on very small screens */
+        @media (max-width: 480px) {
+            .footer-brand {
+                font-size: 10px;
+                right: 10px;
+                bottom: 8px;
+            }
+        }
+
+        /* Enhanced scrollbar styling for mobile */
+        .scrollable-table::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scrollable-table::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .scrollable-table::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #003580, #1ABC9C);
+            border-radius: 4px;
+        }
+
+        .scrollable-table::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #1ABC9C, #003580);
+        }
+
+        /* Touch-friendly controls */
+        .reveal .controls {
+            bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .reveal .controls {
+                bottom: 15px;
+            }
+
+            .reveal .controls button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Better list styling for mobile */
+        .reveal ul, .reveal ol {
+            padding-left: 1.5em;
+        }
+
+        @media (max-width: 480px) {
+            .reveal ul, .reveal ol {
+                padding-left: 1.2em;
+            }
+        }
+
+        /* Ensure images are responsive */
+        .reveal img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Better table row highlighting on mobile */
+        .reveal table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .reveal table tbody tr:hover {
+            background-color: #e6f3ff !important;
         }
     </style>
 </head>
@@ -2100,7 +2254,7 @@
         height: '100%',
         // Important: Lower the minScale to allow the slides to shrink more on a mobile phone.
         margin: 0.04,
-        minScale: 0.15, // Adjusted from 0.2
+        minScale: 0.2, // Good default for mobile, allows content to scale down.
         maxScale: 2.0,
 
         plugins: [ RevealZoom, RevealNotes, RevealSearch ]
@@ -2128,4 +2282,3 @@
 </body>
 
 </html>
-

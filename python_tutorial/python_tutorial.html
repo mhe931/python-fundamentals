@@ -1,9 +1,9 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Python Tutorial</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
@@ -24,6 +24,29 @@
             .reveal {
                 font-family: 'Poppins', sans-serif;
                 background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+                background-attachment: fixed;
+            }
+
+            /* Animated background particles */
+            .reveal::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image:
+                    radial-gradient(circle at 20% 50%, rgba(189, 147, 249, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(139, 233, 253, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 20%, rgba(255, 121, 198, 0.05) 0%, transparent 50%);
+                pointer-events: none;
+                z-index: -1;
+                animation: particleFloat 20s ease-in-out infinite;
+            }
+
+            @keyframes particleFloat {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
             }
 
             .reveal .slides {
@@ -37,18 +60,26 @@
                 padding: 20px;
             }
 
-            /* Beautiful Headers */
+            /* Beautiful Headers with Enhanced Styling */
             .reveal h1 {
                 font-family: 'Poppins', sans-serif;
                 font-weight: 700;
                 text-transform: uppercase;
-                background: linear-gradient(45deg, #ff79c6, #bd93f9, #8be9fd);
+                background: linear-gradient(45deg, #ff79c6, #bd93f9, #8be9fd, #50fa7b);
+                background-size: 200% auto;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
                 text-shadow: 0 0 30px rgba(189, 147, 249, 0.5);
                 margin-bottom: 0.5em;
-                letter-spacing: 2px;
+                letter-spacing: 3px;
+                animation: gradientShift 3s ease infinite;
+                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            }
+
+            @keyframes gradientShift {
+                0%, 100% { background-position: 0% center; }
+                50% { background-position: 100% center; }
             }
 
             .reveal h2 {
@@ -60,6 +91,22 @@
                 border-bottom: 3px solid #bd93f9;
                 padding-bottom: 10px;
                 display: inline-block;
+                position: relative;
+            }
+
+            .reveal h2::after {
+                content: '';
+                position: absolute;
+                bottom: -3px;
+                left: 0;
+                width: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #50fa7b, #8be9fd);
+                transition: width 0.5s ease;
+            }
+
+            .reveal h2:hover::after {
+                width: 100%;
             }
 
             .reveal h3 {
@@ -67,6 +114,7 @@
                 font-weight: 500;
                 color: #50fa7b;
                 margin-top: 1em;
+                text-shadow: 0 2px 8px rgba(80, 250, 123, 0.3);
             }
 
             /* Hide headers on nested slides */
@@ -92,14 +140,20 @@
                 font-weight: 500;
             }
 
-            /* Beautiful Code Blocks */
+            /* Beautiful Code Blocks with Enhanced Styling */
             .reveal pre {
                 margin: 20px auto;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 233, 253, 0.1);
                 border-radius: 12px;
                 border: 1px solid rgba(139, 233, 253, 0.3);
                 position: relative;
                 overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .reveal pre:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 233, 253, 0.2);
             }
 
             .reveal pre::before {
@@ -109,8 +163,21 @@
                 left: 0;
                 right: 0;
                 height: 30px;
-                background: linear-gradient(90deg, #ff79c6, #bd93f9);
+                background: linear-gradient(90deg, #ff79c6, #bd93f9, #8be9fd);
                 border-radius: 12px 12px 0 0;
+            }
+
+            /* Code block dots */
+            .reveal pre::after {
+                content: '';
+                position: absolute;
+                top: 10px;
+                left: 12px;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #ff5555;
+                box-shadow: 20px 0 0 #f1fa8c, 40px 0 0 #50fa7b;
             }
 
             .reveal pre code {
@@ -122,6 +189,29 @@
                 font-size: 0.85em;
                 line-height: 1.6;
                 background: #282a36;
+            }
+
+            /* Copy button for code blocks */
+            .copy-btn {
+                position: absolute;
+                top: 6px;
+                right: 8px;
+                background: rgba(0,0,0,0.35);
+                color: #f8f8f2;
+                border: 1px solid rgba(139, 233, 253, 0.4);
+                border-radius: 6px;
+                padding: 4px 10px;
+                font-size: 0.7em;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                backdrop-filter: blur(4px);
+                z-index: 10;
+            }
+            .copy-btn:hover {
+                background: rgba(139, 233, 253, 0.25);
+                color: #0f3460;
+                border-color: #8be9fd;
+                transform: scale(1.05);
             }
 
             /* Scrollbar Styling */
@@ -141,6 +231,11 @@
             .container-grid::-webkit-scrollbar-thumb {
                 background: linear-gradient(180deg, #bd93f9, #ff79c6);
                 border-radius: 4px;
+            }
+
+            .reveal pre code::-webkit-scrollbar-thumb:hover,
+            .container-grid::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(180deg, #8be9fd, #bd93f9);
             }
 
             /* Lists Enhancement */
@@ -163,6 +258,12 @@
                 font-weight: bold;
                 position: absolute;
                 left: -20px;
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.6; }
             }
 
             /* Beautiful Tables */
@@ -209,7 +310,7 @@
                 overflow-y: auto;
             }
 
-            /* Card Link Styles */
+            /* Card Link Styles with Enhanced Animation */
             .card-link {
                 background: rgba(68, 71, 90, 0.6);
                 border-radius: 15px;
@@ -226,6 +327,23 @@
                 align-items: center;
                 justify-content: center;
                 min-height: 100px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .card-link::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(139, 233, 253, 0.1), transparent);
+                transition: left 0.5s ease;
+            }
+
+            .card-link:hover::before {
+                left: 100%;
             }
 
             .card-link:hover {
@@ -241,6 +359,8 @@
                 font-size: 1.2em;
                 font-weight: 500;
                 text-shadow: 0 2px 10px rgba(80, 250, 123, 0.3);
+                position: relative;
+                z-index: 1;
             }
 
             .card-link:hover h3 {
@@ -342,6 +462,11 @@
                 border-radius: 10px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
                 border: 2px solid rgba(139, 233, 253, 0.2);
+                transition: transform 0.3s ease;
+            }
+
+            .reveal section img:hover {
+                transform: scale(1.02);
             }
 
             /* Progress Bar */
@@ -362,6 +487,11 @@
 
             .reveal .controls button {
                 filter: drop-shadow(0 0 10px rgba(189, 147, 249, 0.5));
+            }
+
+            .reveal .controls button:hover {
+                color: #8be9fd;
+                filter: drop-shadow(0 0 15px rgba(139, 233, 253, 0.8));
             }
 
             /* Slide Number */
@@ -392,30 +522,53 @@
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             }
 
-            /* Mobile Responsive */
+            /* Mobile Responsive - Enhanced */
             @media screen and (max-width: 768px) {
-                .reveal h1 { font-size: 2em; }
+                .reveal h1 {
+                    font-size: 2em;
+                    letter-spacing: 2px;
+                }
                 .reveal h2 { font-size: 1.5em; }
                 .reveal h3 { font-size: 1.2em; }
                 .reveal p, .reveal li { font-size: 0.9em; }
-                .reveal pre code { font-size: 0.7em; padding: 30px 15px 15px 15px; }
+                .reveal pre code {
+                    font-size: 0.7em;
+                    padding: 30px 15px 15px 15px;
+                }
                 .card { padding: 15px; }
                 .container-grid {
                     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                     gap: 10px;
                     padding: 10px;
                 }
+                .copy-btn {
+                    font-size: 0.65em;
+                    padding: 3px 8px;
+                }
             }
 
             @media screen and (max-width: 480px) {
-                .reveal h1 { font-size: 1.5em; }
+                .reveal h1 {
+                    font-size: 1.5em;
+                    letter-spacing: 1px;
+                }
                 .reveal h2 { font-size: 1.2em; }
                 .reveal h3 { font-size: 1em; }
-                .reveal p, .reveal li { font-size: 0.8em; }
-                .reveal pre code { font-size: 0.6em; }
+                .reveal p, .reveal li {
+                    font-size: 0.85em;
+                    line-height: 1.6;
+                }
+                .reveal pre code { font-size: 0.65em; }
                 .card { padding: 10px; }
                 .container-grid {
                     grid-template-columns: 1fr;
+                }
+                .card-link {
+                    padding: 20px;
+                    min-height: 80px;
+                }
+                .card-link h3 {
+                    font-size: 1em;
                 }
             }
 
@@ -431,6 +584,11 @@
                 .two-column {
                     grid-template-columns: 1fr;
                 }
+            }
+
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth;
             }
         </style>
 	</head>
@@ -664,8 +822,7 @@ x, y, z = "Orange", "Banana", "Cherry"
                         <p>Assign the same value to multiple variables:</p>
                         <pre><code class="python" data-line-numbers>
 x = y = z = "Orange"
-                        </code></code
-></pre>
+                        </code></pre>
                     </section>
                 </section>
 
@@ -999,10 +1156,10 @@ print(len(thisdict))  # Length
                         <ul>
                             <li>Equals: a <span class="orange">==</span> b</li>
                             <li>Not Equals: a <span class="orange">!=</span> b</li>
-                            <li>Less than: a <span class="orange"><</span> b</li>
-                            <li>Less than or equal to: a <span class="orange"><=</span> b</li>
-                            <li>Greater than: a <span class="orange">></span> b</li>
-                            <li>Greater than or equal to: a <span class="orange">>=</span> b</li>
+                            <li>Less than: a <span class="orange">&lt;</span> b</li>
+                            <li>Less than or equal to: a <span class="orange">&lt;=</span> b</li>
+                            <li>Greater than: a <span class="orange">&gt;</span> b</li>
+                            <li>Greater than or equal to: a <span class="orange">&gt;=</span> b</li>
                         </ul>
                         <p>Used in <span class="green">"if statements"</span> and <span class="green">loops</span>.</p>
                     </section>
@@ -1051,12 +1208,14 @@ else:
                         <p>A <span class="green">match</span> statement compares an expression's value to patterns in <span class="orange">case</span> blocks.</p>
                         <p>Similar to <span class="orange">switch</span> statements in other languages.</p>
                         <pre><code class="python" data-line-numbers>
+
 def http_status(status):
     match status:
         case 400: return "Bad request"
         case 404: return "Not found"
         case 418: return "I'm a teapot"
         case _:   return "Something's wrong"
+
                         </code></pre>
                     </section>
                 </section>
@@ -1710,10 +1869,42 @@ print("Username is: " + username)
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/search/search.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/zoom/zoom.min.js"></script>
 		<script>
+            // Add copy buttons to all code blocks
+            (function addCopyButtons() {
+                const blocks = document.querySelectorAll('pre code');
+                blocks.forEach(code => {
+                    const pre = code.parentElement;
+                    const btn = document.createElement('button');
+                    btn.className = 'copy-btn';
+                    btn.type = 'button';
+                    btn.textContent = 'Copy';
+                    btn.addEventListener('click', async () => {
+                        const text = code.innerText;
+                        try {
+                            await navigator.clipboard.writeText(text);
+                            btn.textContent = 'Copied!';
+                        } catch (e) {
+                            const ta = document.createElement('textarea');
+                            ta.value = text;
+                            document.body.appendChild(ta);
+                            ta.select();
+                            document.execCommand('copy');
+                            document.body.removeChild(ta);
+                            btn.textContent = 'Copied!';
+                        }
+                        setTimeout(() => (btn.textContent = 'Copy'), 1500);
+                    });
+                    pre.appendChild(btn);
+                });
+            })();
+
 			Reveal.initialize({
 				hash: true,
-                plugins: [ RevealHighlight ],
+                slideNumber: 'c/t',
+                plugins: [ RevealHighlight, RevealSearch, RevealZoom ],
                 scroll: true
 			});
 		</script>

@@ -7,27 +7,47 @@
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/dracula.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/dracula.min.css">
         <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
+            .green { color: #50fa7b; }
+            .red { color: #ff5555; }
+            .orange { color: #ffb86c; }
+            .purple { color: #bd93f9; }
+            .pink { color: #ff79c6; }
+            .cyan { color: #8be9fd; }
+
+            /* Hide headers on nested slides (down-level slides) */
+            .reveal .slides section section h2 {
+                display: none;
+            }
+
+            /* Make slides scrollable */
+            .reveal .slides {
+                overflow-y: auto;
+                max-height: 100vh;
+            }
+
+            .reveal .slides section {
+                overflow-y: auto;
+                max-height: 100vh;
+            }
+
             .container-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 15px;
                 padding: 20px;
-                max-height: 80vh; /* Limit height to enable scrolling if needed */
-                overflow-y: auto; /* Enable vertical scrolling */
+                max-height: 80vh;
+                overflow-y: auto;
             }
             .card-link {
-                background-color: #1e1e1e;
+                background-color: #44475a;
                 border-radius: 8px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
                 text-decoration: none;
-                color: #e0e0e0;
+                color: #f8f8f2;
                 padding: 1em;
                 box-sizing: border-box;
                 text-align: center;
@@ -38,10 +58,11 @@
             }
             .card-link:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 8px 16px rgba(189, 147, 249, 0.5);
+                background-color: #6272a4;
             }
             .card-link h3 {
-                color: #4CAF50;
+                color: #50fa7b;
                 margin: 0;
                 font-size: 1.2em;
                 font-weight: 400;
@@ -61,10 +82,35 @@
                 margin-bottom: 0.5em;
             }
             .reveal pre code {
-                max-height: 60vh; /* Limit code block height */
-                overflow-y: auto; /* Enable scrolling for code blocks */
+                max-height: 60vh;
+                overflow-y: auto;
                 padding: 10px;
                 font-size: 0.8em;
+            }
+
+            /* Mobile responsive */
+            @media screen and (max-width: 768px) {
+                .reveal h1 { font-size: 2em; }
+                .reveal h2 { font-size: 1.5em; }
+                .reveal h3 { font-size: 1.2em; }
+                .reveal p, .reveal li { font-size: 0.9em; }
+                .reveal pre code { font-size: 0.7em; }
+                .container-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 10px;
+                    padding: 10px;
+                }
+            }
+
+            @media screen and (max-width: 480px) {
+                .reveal h1 { font-size: 1.5em; }
+                .reveal h2 { font-size: 1.2em; }
+                .reveal h3 { font-size: 1em; }
+                .reveal p, .reveal li { font-size: 0.8em; }
+                .reveal pre code { font-size: 0.6em; }
+                .container-grid {
+                    grid-template-columns: 1fr;
+                }
             }
         </style>
 	</head>

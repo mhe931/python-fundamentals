@@ -7,12 +7,48 @@
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/dracula.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/dracula.min.css">
         <style>
-            .green { color: #4CAF50; }
-            .red { color: #f44336; }
-            .orange { color: #ff9800; }
+            .green { color: #50fa7b; }
+            .red { color: #ff5555; }
+            .orange { color: #ffb86c; }
+            .purple { color: #bd93f9; }
+            .pink { color: #ff79c6; }
+            .cyan { color: #8be9fd; }
+
+            /* Hide headers on nested slides (down-level slides) */
+            .reveal .slides section section h2 {
+                display: none;
+            }
+
+            /* Make slides scrollable */
+            .reveal .slides {
+                overflow-y: auto;
+                max-height: 100vh;
+            }
+
+            .reveal .slides section {
+                overflow-y: auto;
+                max-height: 100vh;
+            }
+
+            /* Mobile responsive */
+            @media screen and (max-width: 768px) {
+                .reveal h1 { font-size: 2em; }
+                .reveal h2 { font-size: 1.5em; }
+                .reveal h3 { font-size: 1.2em; }
+                .reveal p, .reveal li { font-size: 0.9em; }
+                .reveal pre code { font-size: 0.7em; }
+            }
+
+            @media screen and (max-width: 480px) {
+                .reveal h1 { font-size: 1.5em; }
+                .reveal h2 { font-size: 1.2em; }
+                .reveal h3 { font-size: 1em; }
+                .reveal p, .reveal li { font-size: 0.8em; }
+                .reveal pre code { font-size: 0.6em; }
+            }
         </style>
 	</head>
 	<body>
@@ -44,6 +80,30 @@
                         <ul>
                             <li><span class="orange">"t"</span> - Text - Default value. Text mode</li>
                             <li><span class="orange">"b"</span> - Binary - Binary mode (e.g. images)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>💡 Tips and Tricks</h3>
+                        <ul>
+                            <li>Always use <span class="cyan">with</span> statement to automatically close files</li>
+                            <li>Use <span class="orange">pathlib.Path</span> for better file path handling</li>
+                            <li>Remember to handle exceptions when working with files</li>
+                            <li>Use <span class="orange">'rb'</span> mode when working with binary files like images</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+# Best practice with context manager
+with open('file.txt', 'r') as f:
+    content = f.read()
+# File automatically closes
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>🎉 Fun Facts</h3>
+                        <ul>
+                            <li>Python's <span class="pink">with</span> statement was introduced in Python 2.5 (2006)</li>
+                            <li>File objects in Python are iterable - you can loop directly over them!</li>
+                            <li>The largest text file ever processed by Python? Some logs files exceed terabytes!</li>
+                            <li>Python can handle files larger than RAM using generators and iterators</li>
                         </ul>
                     </section>
                 </section>
@@ -83,6 +143,30 @@ for x in f:
   print(x)
                         </code></pre>
                     </section>
+                    <section>
+                        <h3>💡 Tips and Tricks</h3>
+                        <ul>
+                            <li>Use <span class="cyan">readlines()</span> to get a list of all lines at once</li>
+                            <li>For large files, iterate line by line to save memory</li>
+                            <li>Use <span class="orange">strip()</span> to remove trailing newlines</li>
+                            <li>Remember: <span class="orange">read()</span> reads entire file into memory</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+# Memory efficient reading
+with open('large_file.txt', 'r') as f:
+    for line in f:
+        process(line.strip())
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>🎉 Fun Facts</h3>
+                        <ul>
+                            <li><span class="pink">readline()</span> keeps the newline character <span class="orange">\n</span> at the end!</li>
+                            <li>Reading a file twice requires calling <span class="cyan">seek(0)</span> to reset the pointer</li>
+                            <li>Empty lines in a file are read as <span class="orange">"\n"</span>, not empty strings</li>
+                            <li>File iteration is lazy - it doesn't load the whole file into memory</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section id="write-create-files">
@@ -116,6 +200,29 @@ print(f.read())
 f = open("myfile.txt", "x")
                         </code></pre>
                     </section>
+                    <section>
+                        <h3>💡 Tips and Tricks</h3>
+                        <ul>
+                            <li>Use <span class="orange">"w"</span> carefully - it erases existing content!</li>
+                            <li><span class="cyan">writelines()</span> writes a list of strings to a file</li>
+                            <li>Use <span class="orange">"a+"</span> to append and read simultaneously</li>
+                            <li>Always call <span class="pink">flush()</span> for critical writes</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+lines = ['Line 1\n', 'Line 2\n', 'Line 3\n']
+with open('output.txt', 'w') as f:
+    f.writelines(lines)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>🎉 Fun Facts</h3>
+                        <ul>
+                            <li>Python buffers writes for performance - data may not write immediately!</li>
+                            <li>Mode <span class="orange">"x"</span> is exclusive creation - fails if file exists (since Python 3.3)</li>
+                            <li><span class="cyan">write()</span> returns the number of characters written</li>
+                            <li>You can write to <span class="pink">sys.stdout</span> like a file - it's what print() uses!</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section id="delete-files">
@@ -147,6 +254,30 @@ import os
 os.rmdir("myfolder")
                         </code></pre>
                         <p><span class="red">Note:</span> You can only remove <span class="orange">empty</span> folders.</p>
+                    </section>
+                    <section>
+                        <h3>💡 Tips and Tricks</h3>
+                        <ul>
+                            <li>Use <span class="cyan">shutil.rmtree()</span> to delete non-empty directories</li>
+                            <li><span class="orange">pathlib.Path.unlink()</span> is the modern way to delete files</li>
+                            <li>Always check file existence before deletion to avoid errors</li>
+                            <li>Use <span class="pink">try-except</span> blocks for safer file deletion</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+from pathlib import Path
+file = Path('myfile.txt')
+if file.exists():
+    file.unlink()
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>🎉 Fun Facts</h3>
+                        <ul>
+                            <li>Deleted files aren't immediately erased - the space is just marked as available!</li>
+                            <li><span class="orange">os.remove()</span> and <span class="orange">os.unlink()</span> are identical functions</li>
+                            <li>On Windows, you can't delete a file that's currently open</li>
+                            <li>The <span class="cyan">send2trash</span> module moves files to recycling bin instead of permanent deletion</li>
+                        </ul>
                     </section>
                 </section>
 

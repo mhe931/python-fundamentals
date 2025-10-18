@@ -6,19 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finnish A1.1: Foundations and Essentials</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/black.css">
+    <!-- Switch to a clean, light theme for better readability -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
+    <!-- Professional, readable fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Define consistent color scheme for educational clarity (based on user's preference) */
         :root {
-            --r-main-color: #2C3E50;
-            /* Primary Dark Blue */
-            --r-secondary-color: #3498db;
-            /* Secondary Blue */
+            --r-main-color: #003580;
+            /* Finnish Blue */
+            --r-secondary-color: #0074D9;
+            /* Lighter Blue */
             --r-link-color: #1ABC9C;
-            /* Link/Highlight Green */
-            /* Add white background to slides for readability with dark text */
-            --r-background-color: #fff;
+            /* Teal for highlights */
+            --r-background-color: #ffffff;
+            /* White */
+            --r-text-color: #333333;
+            /* Dark text */
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--r-text-color);
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+            letter-spacing: 0.2px;
         }
 
         /* 2. REVEAL.JS BASE OVERRIDES FOR SCROLLING/FITTING */
@@ -37,27 +54,55 @@
             /* Enable scrolling within individual slides for long content (like tables) */
             overflow-y: auto !important;
             overflow-x: hidden !important;
-            padding: 0.5em;
+            padding: 0.5em 1.25em;
         }
 
         /* 3. RESPONSIVE TABLE CONTAINER & STYLING */
         .scrollable-table {
             /* The overflow-x: auto is the key for tables that are too wide */
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch; /* Better scrolling on iOS */
+            -webkit-overflow-scrolling: touch;
+            /* Better scrolling on iOS */
             max-width: 100%;
             margin: 0 auto;
-            display: block; /* Ensure it behaves like a block container */
+            display: block;
+            /* Ensure it behaves like a block container */
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
         }
 
         .reveal table {
             /* Allow tables to shrink, but keep them readable */
             width: 100%;
-            max-width: none; /* Remove max-width on the table itself to allow container to manage it */
-            font-size: 0.9em; /* Slightly smaller font for compact view */
+            max-width: none;
+            /* Remove max-width on the table itself to allow container to manage it */
+            font-size: 0.95em;
+            /* Slightly smaller font for compact view */
             /* Use table-layout: fixed to prevent column width issues, but only if columns have defined widths */
             /* table-layout: fixed; */
-            min-width: 300px; /* Prevent table content from collapsing too much */
+            min-width: 300px;
+            /* Prevent table content from collapsing too much */
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .reveal thead th {
+            background-color: #F3F6FA;
+            color: var(--r-main-color);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .reveal table thead th,
+        .reveal table td {
+            border: 1px solid #e5e7eb;
+            padding: 0.6rem 0.75rem;
+        }
+
+        .reveal table tbody tr:nth-child(even) {
+            background-color: #fafafa;
         }
 
         .highlight-finnish {
@@ -70,49 +115,42 @@
         .reveal h1 {
             text-align: center;
             color: var(--r-main-color);
-            font-size: 2.2em; /* Ensure H1 is smaller on small screens */
+            font-size: 2.25em;
         }
 
         .reveal h2 {
             color: var(--r-link-color);
             /* Fresh Green for main sections */
-            font-weight: 600;
-            font-size: 1.8em; /* Ensure H2 is smaller on small screens */
+            font-weight: 700;
+            font-size: 1.9em;
         }
 
         .reveal h3 {
             color: var(--r-secondary-color);
             /* Clear Blue for sub-sections */
-            font-size: 1.3em; /* Adjusted down from 1.5em for mobile */
-            margin-bottom: 1em;
+            font-size: 1.25em;
+            margin-bottom: 0.75em;
         }
 
         .reveal p,
         .reveal li,
         .reveal table {
-            font-size: 1.0em; /* Adjusted slightly down from 1.1em for mobile */
-            color: #444;
+            font-size: 1.0em;
+            color: #374151;
             text-align: left;
-        }
-
-        /* General styling remains, just ensuring the key elements are flexible */
-
-        .reveal thead th {
-            background-color: #ECF0F1;
-            color: var(--r-main-color);
         }
 
         /* Style for fun facts and examples */
         .fun-fact {
-            background-color: #FEEBCF;
-            /* Light orange/peach */
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 5px solid #FF5722;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 6px solid #003580;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .fun-fact p {
-            font-size: 1.0em; /* Consistency with other text */
+            font-size: 1.0em;
             font-style: italic;
         }
 
@@ -122,12 +160,13 @@
 
         .vowel-box {
             display: inline-block;
-            padding: 0.5rem;
+            padding: 0.5rem 0.6rem;
             margin: 0.2rem;
-            border-radius: 0.3rem;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 700;
             color: white;
-            font-size: 0.9em; /* Ensure the boxes look good */
+            font-size: 0.9em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .back-vowel {
@@ -141,6 +180,52 @@
         .neutral-vowel {
             background-color: #3498db;
         }
+
+        /* Section cover backgrounds */
+        .reveal section.section-cover {
+            background: linear-gradient(180deg, rgba(0, 53, 128, 0.06) 0%, rgba(0, 116, 217, 0.03) 100%);
+            border-radius: 12px;
+        }
+
+        .reveal section.cover {
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(0, 53, 128, 0.18) 0%, rgba(0, 116, 217, 0.06) 45%, transparent 70%),
+                        linear-gradient(135deg, #ffffff 0%, #f6fbff 100%);
+            border-radius: 16px;
+        }
+
+        /* Progress bar polish */
+        .reveal .progress span {
+            background: linear-gradient(90deg, #003580, #1ABC9C);
+        }
+
+        /* Link polish */
+        .reveal a {
+            color: #0ea5e9;
+        }
+
+        .reveal a:hover {
+            color: #10b981;
+        }
+
+        /* Subtle entrance for headings */
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(8px)}
+            to {opacity: 1; transform: translateY(0)}
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 { animation: fadeUp 420ms ease-out; }
+
+        /* Small, tasteful footer */
+        .footer-brand {
+            position: fixed;
+            right: 18px;
+            bottom: 12px;
+            font-size: 12px;
+            color: #6b7280;
+            letter-spacing: 0.2px;
+            z-index: 50;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -148,7 +233,7 @@
 <div class="reveal">
     <div class="slides">
 
-        <section>
+        <section class="cover">
             <h1>Suomen Kieli A1.1: Perusteet</h1>
             <h3>Finnish Language: Foundations and Essentials</h3>
             <p class="mt-8">Däniel Ebrahimzadeh: Syksy 2025</p>
@@ -156,7 +241,7 @@
 
 
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Aakkoset ja Numerot</h2>
                 <h3>The Alphabet and Numbers</h3>
             </section>
@@ -634,7 +719,7 @@
         </section>
 
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Aika ja Kalenteri</h2>
                 <h3>Time and Calendar</h3>
             </section>
@@ -922,7 +1007,7 @@
         </section>
 
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Perusteet ja Pronominit</h2>
                 <h3>Basics & Pronouns</h3>
             </section>
@@ -1064,7 +1149,7 @@
             </section>
         </section>
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Vokaaliharmonia</h2>
                 <h3>Vowel Harmony: The Golden Rule</h3>
             </section>
@@ -1154,7 +1239,7 @@
             </section>
         </section>
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Verbit (Tyypit 1–3)</h2>
                 <h3>Verb Conjugation (Present Tense)</h3>
             </section>
@@ -1358,6 +1443,7 @@
                     before the personal ending!</p>
             </section>
 
+
             <section>
                 <h3>Tip: Verb Conjugation (Vinkki: Verbien Taivutus)</h3>
                 <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
@@ -1462,8 +1548,8 @@
                     <table class="mx-auto border-collapse border border-gray-300 rounded-lg locative-table w-full mb-4">
                         <thead>
                         <tr>
-                            <th class="p-2 border">Pronoun</th>
-                            <th class="p-2 border">Conjugation (Haluta)</th>
+                            <th class="border border-gray-300 p-2">Pronoun</th>
+                            <th class="border border-gray-300 p-2">Conjugation (Haluta)</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -1519,7 +1605,7 @@
         </section>
 
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Sijamuodot ja KPT</h2>
                 <h3>Cases and Consonant Gradation (A1.1 Overview)</h3>
             </section>
@@ -1742,7 +1828,7 @@
         </section>
 
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Sanasto (Vocabulary)</h2>
                 <h3>Essential Words for A1.1</h3>
             </section>
@@ -1862,7 +1948,7 @@
         </section>
 
         <section>
-            <section>
+            <section class="section-cover">
                 <h2>Kysymykset ja Vastaukset</h2>
                 <h3>Questions and Answers (Dialogue Basics)</h3>
             </section>
@@ -1981,7 +2067,14 @@
     </div>
 </div>
 
+<!-- Small, tasteful footer -->
+<div class="footer-brand">Suomen Kieli A1.1 • Däniel Ebrahimzadeh • Syksy 2025</div>
+
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+<!-- Reveal plugins for better presenting -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/zoom/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/search/search.js"></script>
 <script>
     // Initialize the presentation framework
     Reveal.initialize({
@@ -1992,8 +2085,11 @@
 
         // 5. RESPONSIVE SETTINGS FOR REVEAL.JS
         slideNumber: true,
-        transition: 'slide',
+        transition: 'convex',
+        backgroundTransition: 'fade',
         controls: true,
+        controlsTutorial: true,
+        controlsLayout: 'bottom-right',
         progress: true,
         center: true,
         touch: true,
@@ -2007,10 +2103,29 @@
         minScale: 0.15, // Adjusted from 0.2
         maxScale: 2.0,
 
-        // Ensure the code stabilizes for complex event-driven flows
-        // You're doing great so far—keep the structure simple and add error handling for rate limits.
+        plugins: [ RevealZoom, RevealNotes, RevealSearch ]
+    });
+
+    // Light-touch enhancements after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        // Make the first horizontal slide a cover
+        const stacks = document.querySelectorAll('.reveal .slides > section');
+        if (stacks.length) {
+            stacks[0].classList.add('cover');
+        }
+        // Make the first slide of each vertical stack a section cover
+        stacks.forEach(stack => {
+            const first = stack.querySelector('section') || stack;
+            if (first) first.classList.add('section-cover');
+        });
+
+        // Reveal bullet points progressively
+        document.querySelectorAll('.reveal section ul > li, .reveal section ol > li').forEach((li) => {
+            li.classList.add('fragment');
+        });
     });
 </script>
 </body>
 
 </html>
+

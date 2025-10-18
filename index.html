@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Fundamentals - Learning Hub</title>
+    <title>Python Fundamentals - Däniel Ebrahimzadeh</title>
     <style>
         * {
             margin: 0;
@@ -28,141 +28,90 @@
             color: white;
             padding: 40px 20px;
             margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeInDown 0.8s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header .author {
+            font-size: 1.3em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-top: 10px;
         }
 
         header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out;
+            font-size: 1.2em;
+            margin-top: 15px;
+            opacity: 0.85;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .card {
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.8s ease-out;
+            text-decoration: none;
+            color: #333;
+            display: block;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .card h2 {
             color: #667eea;
-            font-size: 1.5rem;
+            font-size: 1.8em;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .card .icon {
-            font-size: 2rem;
-        }
-
         .card p {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 20px;
+            font-size: 1.05em;
         }
 
-        .card a {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .card a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .themes-section {
-            margin-top: 40px;
-        }
-
-        .themes-section h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .icon {
+            font-size: 2em;
         }
 
         footer {
             text-align: center;
             color: white;
-            padding: 30px 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.2);
         }
 
         footer p {
-            opacity: 0.9;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: 1.1em;
         }
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
-            }
-
-            header p {
-                font-size: 1rem;
+                font-size: 2em;
             }
 
             .grid {
@@ -175,104 +124,65 @@
     <div class="container">
         <header>
             <h1>🐍 Python Fundamentals</h1>
-            <p>Your comprehensive learning hub for Python programming and data science</p>
+            <p class="author">by Däniel Ebrahimzadeh</p>
+            <p>Your comprehensive guide to Python programming and beyond</p>
         </header>
 
-        <section class="main-section">
-            <div class="grid">
-                <div class="card">
-                    <h2><span class="icon">📚</span> Python Tutorial</h2>
-                    <p>Master the fundamentals of Python programming with comprehensive tutorials covering syntax, data types, functions, and more.</p>
-                    <a href="python_tutorial/python_tutorial.html">Start Learning →</a>
-                </div>
+        <div class="grid">
+            <a href="python_tutorial/python_tutorial.html" class="card">
+                <h2><span class="icon">📚</span> Python Tutorial</h2>
+                <p>Master the basics of Python programming with comprehensive tutorials and examples.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">🧩</span> Python Modules</h2>
-                    <p>Explore Python's rich ecosystem of modules and libraries. Learn how to import and use powerful built-in and third-party packages.</p>
-                    <a href="python_modules/python_modules.html">Explore Modules →</a>
-                </div>
+            <a href="python_dsa/python_dsa.html" class="card">
+                <h2><span class="icon">🔗</span> Data Structures & Algorithms</h2>
+                <p>Explore essential data structures and algorithms implemented in Python.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">📊</span> Data Structures & Algorithms</h2>
-                    <p>Dive deep into data structures and algorithms essential for efficient programming and technical interviews.</p>
-                    <a href="python_dsa/python_dsa.html">Learn DSA →</a>
-                </div>
+            <a href="python_modules/python_modules.html" class="card">
+                <h2><span class="icon">📦</span> Python Modules</h2>
+                <p>Discover powerful Python modules and how to leverage them in your projects.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">📈</span> Matplotlib Tutorial</h2>
-                    <p>Create stunning visualizations with Matplotlib. Learn to plot graphs, charts, and customize your data presentations.</p>
-                    <a href="matplotlib_tutorial/matplotlib_tutorial.html">Visualize Data →</a>
-                </div>
+            <a href="file_handling/file_handling.html" class="card">
+                <h2><span class="icon">📁</span> File Handling</h2>
+                <p>Learn how to read, write, and manipulate files efficiently in Python.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">🤖</span> Machine Learning</h2>
-                    <p>Get started with machine learning concepts, algorithms, and practical implementations using Python.</p>
-                    <a href="machine_learning/machine_learning.html">Build ML Models →</a>
-                </div>
+            <a href="python_mysql/python_mysql.html" class="card">
+                <h2><span class="icon">🗄️</span> Python MySQL</h2>
+                <p>Connect Python applications to MySQL databases and perform CRUD operations.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">🗄️</span> Python MySQL</h2>
-                    <p>Learn database integration with MySQL. Master CRUD operations, queries, and data persistence.</p>
-                    <a href="python_mysql/python_mysql.html">Connect to MySQL →</a>
-                </div>
+            <a href="matplotlib_tutorial/matplotlib_tutorial.html" class="card">
+                <h2><span class="icon">📊</span> Matplotlib Tutorial</h2>
+                <p>Create stunning data visualizations with Python's matplotlib library.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">📁</span> File Handling</h2>
-                    <p>Master file operations in Python. Read, write, and manipulate files with confidence.</p>
-                    <a href="file_handling/file_handling.html">Handle Files →</a>
-                </div>
+            <a href="machine_learning/machine_learning.html" class="card">
+                <h2><span class="icon">🤖</span> Machine Learning</h2>
+                <p>Dive into machine learning concepts and implementations using Python.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">📖</span> Module Reference</h2>
-                    <p>Quick reference guide for Python modules, functions, and best practices for your projects.</p>
-                    <a href="module_reference/module_reference.html">View Reference →</a>
-                </div>
-            </div>
-        </section>
+            <a href="module_reference/module_reference.html" class="card">
+                <h2><span class="icon">📖</span> Module Reference</h2>
+                <p>Quick reference guide for commonly used Python modules and functions.</p>
+            </a>
 
-        <section class="themes-section">
-            <h2>✨ Additional Resources</h2>
-            <div class="grid">
-                <div class="card">
-                    <h2><span class="icon">🎨</span> Matplotlib Intro</h2>
-                    <p>Quick introduction to Matplotlib and its capabilities for data visualization.</p>
-                    <a href="matplotlib_intro.html">Quick Start →</a>
-                </div>
+            <a href="Finnish1.html" class="card">
+                <h2><span class="icon">🇫🇮</span> Finnish</h2>
+                <p>Finnish language learning resources and materials.</p>
+            </a>
 
-                <div class="card">
-                    <h2><span class="icon">🚀</span> Matplotlib Get Started</h2>
-                    <p>Step-by-step guide to getting started with Matplotlib in your projects.</p>
-                    <a href="matplotlib_get_started.html">Get Started →</a>
-                </div>
-
-                <div class="card">
-                    <h2><span class="icon">🎭</span> YaysayBot</h2>
-                    <p>Explore the YaysayBot project with role-based flow implementations.</p>
-                    <a href="yaysay.html">View Project →</a>
-                </div>
-
-                <div class="card">
-                    <h2><span class="icon">💻</span> Git Guide</h2>
-                    <p>Version control essentials and Git workflows for your projects.</p>
-                    <a href="git.html">Learn Git →</a>
-                </div>
-
-                <div class="card">
-                    <h2><span class="icon">🌐</span> Finnish Language</h2>
-                    <p>Additional language learning resources and materials.</p>
-                    <a href="Finnish1.html">Explore →</a>
-                </div>
-
-                <div class="card">
-                    <h2><span class="icon">🎨</span> Custom Themes</h2>
-                    <p>View custom theme designs and implementations.</p>
-                    <a href="DänielEbrahimzadehTheme3.html">View Themes →</a>
-                </div>
-            </div>
-        </section>
+            <a href="yaysay.html" class="card">
+                <h2><span class="icon">💬</span> YaySay</h2>
+                <p>Interactive chatbot and conversation projects.</p>
+            </a>
+        </div>
 
         <footer>
-            <p>© 2025 Python Fundamentals Learning Hub | Happy Coding! 🚀</p>
+            <p>© 2025 Däniel Ebrahimzadeh | Python Fundamentals</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Happy Coding! 🚀</p>
         </footer>
     </div>
 </body>

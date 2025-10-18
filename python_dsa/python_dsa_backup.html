@@ -1,0 +1,785 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Python DSA</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/monokai.min.css">
+        <style>
+            .green { color: #4CAF50; }
+            .red { color: #f44336; }
+            .orange { color: #ff9800; }
+        </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Python DSA</h1>
+                    <ul>
+                        <li><a href="#/dsa-lists-arrays">Lists and Arrays</a></li>
+                        <li><a href="#/dsa-stacks">Stacks</a></li>
+                        <li><a href="#/dsa-queues">Queues</a></li>
+                        <li><a href="#/dsa-linked-lists">Linked Lists</a></li>
+                        <li><a href="#/dsa-hash-tables">Hash Tables</a></li>
+                        <li><a href="#/dsa-trees">Trees</a></li>
+                        <li><a href="#/dsa-binary-trees">Binary Trees</a></li>
+                        <li><a href="#/dsa-binary-search-trees">Binary Search Trees</a></li>
+                        <li><a href="#/dsa-avl-trees">AVL Trees</a></li>
+                        <li><a href="#/dsa-graphs">Graphs</a></li>
+                        <li><a href="#/dsa-linear-search">Linear Search</a></li>
+                        <li><a href="#/dsa-binary-search">Binary Search</a></li>
+                        <li><a href="#/dsa-bubble-sort">Bubble Sort</a></li>
+                        <li><a href="#/dsa-selection-sort">Selection Sort</a></li>
+                        <li><a href="#/dsa-insertion-sort">Insertion Sort</a></li>
+                        <li><a href="#/dsa-quick-sort">Quick Sort</a></li>
+                        <li><a href="#/dsa-counting-sort">Counting Sort</a></li>
+                        <li><a href="#/dsa-radix-sort">Radix Sort</a></li>
+                        <li><a href="#/dsa-merge-sort">Merge Sort</a></li>
+                    </ul>
+                </section>
+
+                <section id="dsa-lists-arrays">
+                    <h2>Lists and Arrays</h2>
+                    <section>
+                        <h3>Lists in Python</h3>
+                        <p>Python's built-in <span class="orange">list</span> type can be used to implement arrays.</p>
+                        <p>Lists are <span class="green">ordered</span>, <span class="green">changeable</span>, and allow <span class="green">duplicate values</span>.</p>
+                        <pre><code class="python" data-line-numbers>
+my_list = [1, 2, 3, 4, 5]
+print(my_list[0]) # Accessing elements
+my_list.append(6) # Adding elements
+print(my_list)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Arrays with `array` module</h3>
+                        <p>For more memory-efficient storage of basic data types, Python's <span class="orange">array</span> module can be used.</p>
+                        <pre><code class="python" data-line-numbers>
+import array
+
+my_array = array.array('i', [1, 2, 3, 4, 5])
+print(my_array[0])
+my_array.append(6)
+print(my_array)
+                        </code></pre>
+                        <p><span class="orange">'i'</span> specifies the type code for signed integer.</p>
+                    </section>
+                </section>
+
+                <section id="dsa-stacks">
+                    <h2>Stacks</h2>
+                    <section>
+                        <h3>What is a Stack?</h3>
+                        <p>A <span class="green">stack</span> is a linear data structure that follows a particular order in which the operations are performed. The order may be <span class="orange">LIFO (Last In First Out)</span> or <span class="orange">FILO (First In Last Out)</span>.</p>
+                        <p>Think of a stack of plates: you can only add or remove plates from the top.</p>
+                    </section>
+                    <section>
+                        <h3>Stack Operations (using List)</h3>
+                        <p>In Python, a list can be used as a stack.</p>
+                        <ul>
+                            <li><span class="orange">append()</span> to add an item (push)</li>
+                            <li><span class="orange">pop()</span> to remove an item</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+stack = []
+
+# Push elements onto the stack
+stack.append('A')
+stack.append('B')
+stack.append('C')
+print("Stack after pushes:", stack)
+
+# Pop elements from the stack
+print("Popped item:", stack.pop())
+print("Stack after pop:", stack)
+print("Popped item:", stack.pop())
+print("Stack after pop:", stack)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-queues">
+                    <h2>Queues</h2>
+                    <section>
+                        <h3>What is a Queue?</h3>
+                        <p>A <span class="green">queue</span> is a linear data structure that stores items in a <span class="orange">First In First Out (FIFO)</span> manner.</p>
+                        <p>Think of a queue of people waiting for a bus: the first person in line is the first to get on the bus.</p>
+                    </section>
+                    <section>
+                        <h3>Queue Operations (using List)</h3>
+                        <p>In Python, a list can be used as a queue, but it's inefficient for large queues.</p>
+                        <ul>
+                            <li><span class="orange">append()</span> to add an item (enqueue)</li>
+                            <li><span class="orange">pop(0)</span> to remove an item (dequeue) - <span class="red">Inefficient!</span></li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+queue = []
+
+# Enqueue elements
+queue.append('X')
+queue.append('Y')
+queue.append('Z')
+print("Queue after enqueues:", queue)
+
+# Dequeue elements
+print("Dequeued item:", queue.pop(0))
+print("Queue after dequeue:", queue)
+print("Dequeued item:", queue.pop(0))
+print("Queue after dequeue:", queue)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Queue Operations (using `collections.deque`)</h3>
+                        <p>For efficient queue operations, especially for large queues, use <span class="orange">collections.deque</span>.</p>
+                        <ul>
+                            <li><span class="orange">append()</span> to add an item (enqueue)</li>
+                            <li><span class="orange">popleft()</span> to remove an item (dequeue)</li>
+                        </ul>
+                        <pre><code class="python" data-line-numbers>
+from collections import deque
+
+queue = deque()
+
+# Enqueue elements
+queue.append('X')
+queue.append('Y')
+queue.append('Z')
+print("Queue after enqueues:", queue)
+
+# Dequeue elements
+print("Dequeued item:", queue.popleft())
+print("Queue after dequeue:", queue)
+print("Dequeued item:", queue.popleft())
+print("Queue after dequeue:", queue)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-linked-lists">
+                    <h2>Linked Lists</h2>
+                    <section>
+                        <h3>What is a Linked List?</h3>
+                        <p>A <span class="green">linked list</span> is a linear data structure, much like an array, that consists of a sequence of nodes, where each node contains data and a reference (or link) to the next node in the sequence.</p>
+                        <p>Unlike arrays, linked lists do not store elements in contiguous memory locations.</p>
+                    </section>
+                    <section>
+                        <h3>Node Class</h3>
+                        <p>First, we define a <span class="orange">Node</span> class to represent each element in the linked list:</p>
+                        <pre><code class="python" data-line-numbers>
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Linked List Class</h3>
+                        <p>Then, we define a <span class="orange">LinkedList</span> class to manage the nodes:</p>
+                        <pre><code class="python" data-line-numbers>
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
+
+    def display(self):
+        elements = []
+        current = self.head
+        while current:
+            elements.append(current.data)
+            current = current.next
+        print(elements)
+
+# Example Usage
+llist = LinkedList()
+llist.append(1)
+llist.append(2)
+llist.append(3)
+llist.display() # Output: [1, 2, 3]
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-hash-tables">
+                    <h2>Hash Tables</h2>
+                    <section>
+                        <h3>What is a Hash Table?</h3>
+                        <p>A <span class="green">hash table</span> (also known as a hash map) is a data structure that implements an associative array abstract data type, a structure that can map keys to values.</p>
+                        <p>A hash table uses a <span class="orange">hash function</span> to compute an index into an array of buckets or slots, from which the desired value can be found.</p>
+                        <p>In Python, dictionaries are implemented as hash tables.</p>
+                    </section>
+                    <section>
+                        <h3>Hash Table Operations (using Dictionary)</h3>
+                        <p>Using Python's built-in dictionary for hash table functionality:</p>
+                        <pre><code class="python" data-line-numbers>
+hash_table = {}
+
+# Insert key-value pairs
+hash_table["apple"] = 10
+hash_table["banana"] = 20
+hash_table["cherry"] = 30
+print("Hash Table:", hash_table)
+
+# Access values
+print("Value of apple:", hash_table["apple"])
+
+# Update value
+hash_table["apple"] = 15
+print("Updated Hash Table:", hash_table)
+
+# Delete key-value pair
+del hash_table["banana"]
+print("Hash Table after deletion:", hash_table)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-trees">
+                    <h2>Trees</h2>
+                    <section>
+                        <h3>What is a Tree?</h3>
+                        <p>A <span class="green">tree</span> is a non-linear data structure that simulates a hierarchical tree structure, with a root value and subtrees of children with a parent node, represented as a set of linked nodes.</p>
+                        <p>Trees are widely used in computer science to represent hierarchical data, such as file systems, organizational charts, and parse trees.</p>
+                    </section>
+                    <section>
+                        <h3>Tree Node Class</h3>
+                        <p>A basic <span class="orange">TreeNode</span> class for a generic tree:</p>
+                        <pre><code class="python" data-line-numbers>
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.children = []
+
+    def add_child(self, child_node):
+        self.children.append(child_node)
+
+# Example Usage
+root = TreeNode("Root")
+child1 = TreeNode("Child 1")
+child2 = TreeNode("Child 2")
+
+root.add_child(child1)
+root.add_child(child2)
+
+print(root.data)
+for child in root.children:
+    print(f"- {child.data}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-binary-trees">
+                    <h2>Binary Trees</h2>
+                    <section>
+                        <h3>What is a Binary Tree?</h3>
+                        <p>A <span class="green">binary tree</span> is a tree data structure in which each node has at most two children, referred to as the left child and the right child.</p>
+                        <p>Binary trees are used in various applications, including expression parsing, data compression, and search algorithms.</p>
+                    </section>
+                    <section>
+                        <h3>Binary Tree Node Class</h3>
+                        <p>A basic <span class="orange">BinaryTreeNode</span> class:</p>
+                        <pre><code class="python" data-line-numbers>
+class BinaryTreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+# Example Usage
+root = BinaryTreeNode(1)
+root.left = BinaryTreeNode(2)
+root.right = BinaryTreeNode(3)
+root.left.left = BinaryTreeNode(4)
+
+print(f"Root: {root.data}")
+print(f"Root.left: {root.left.data}")
+print(f"Root.right: {root.right.data}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-binary-search-trees">
+                    <h2>Binary Search Trees</h2>
+                    <section>
+                        <h3>What is a Binary Search Tree (BST)?</h3>
+                        <p>A <span class="green">Binary Search Tree (BST)</span> is a special type of binary tree where the nodes are organized in a specific order:</p>
+                        <ul>
+                            <li>The value of all nodes in the <span class="orange">left subtree</span> of a node is <span class="red">less than</span> the node's value.</li>
+                            <li>The value of all nodes in the <span class="orange">right subtree</span> of a node is <span class="green">greater than</span> the node's value.</li>
+                            <li>Both the left and right subtrees must also be binary search trees.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>BST Insertion Example</h3>
+                        <pre><code class="python" data-line-numbers>
+class BSTNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def insert(root, data):
+    if root is None:
+        return BSTNode(data)
+    else:
+        if data < root.data:
+            root.left = insert(root.left, data)
+        else:
+            root.right = insert(root.right, data)
+    return root
+
+# Example Usage
+root = None
+root = insert(root, 50)
+insert(root, 30)
+insert(root, 20)
+insert(root, 40)
+insert(root, 70)
+insert(root, 60)
+insert(root, 80)
+
+# (Visualization of the tree would be here in a real presentation)
+print("BST created. Root is:", root.data)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>BST Search Example</h3>
+                        <pre><code class="python" data-line-numbers>
+class BSTNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def search(root, key):
+    if root is None or root.data == key:
+        return root
+    if key < root.data:
+        return search(root.left, key)
+    return search(root.right, key)
+
+# Assuming a BST is already built (from previous slide)
+# root = insert(root, 50) ...
+
+found_node = search(root, 40)
+if found_node:
+    print(f"Node with data 40 found!")
+else:
+    print(f"Node with data 40 not found.")
+
+not_found_node = search(root, 90)
+if not_found_node:
+    print(f"Node with data 90 found!")
+else:
+    print(f"Node with data 90 not found.")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-avl-trees">
+                    <h2>AVL Trees</h2>
+                    <section>
+                        <h3>What is an AVL Tree?</h3>
+                        <p>An <span class="green">AVL Tree</span> is a <span class="orange">self-balancing Binary Search Tree (BST)</span> where the difference between the heights of the left and right subtrees of any node is at most one.</p>
+                        <p>This property ensures that the tree remains balanced, preventing worst-case scenarios that could degrade performance in a regular BST.</p>
+                    </section>
+                    <section>
+                        <h3>AVL Tree Properties</h3>
+                        <ul>
+                            <li>It is a <span class="green">Binary Search Tree</span>.</li>
+                            <li>For every node, the <span class="orange">height difference</span> between its left and right subtrees (called the <span class="orange">balance factor</span>) is either -1, 0, or 1.</li>
+                            <li>Operations like insertion and deletion involve <span class="orange">rotations</span> to maintain balance.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Why AVL Trees?</h3>
+                        <p>AVL trees guarantee <span class="green">O(log n)</span> time complexity for search, insert, and delete operations, where n is the number of nodes in the tree.</p>
+                        <p>This is a significant improvement over unbalanced BSTs, which can degrade to <span class="red">O(n)</span> in the worst case.</p>
+                    </section>
+                </section>
+
+                <section id="dsa-graphs">
+                    <h2>Graphs</h2>
+                    <section>
+                        <h3>What is a Graph?</h3>
+                        <p>A <span class="green">graph</span> is a non-linear data structure consisting of <span class="orange">nodes</span> (or vertices) and <span class="orange">edges</span> (or links) that connect them.</p>
+                        <p>Graphs are used to represent networks, such as social networks, transportation networks, and the World Wide Web.</p>
+                    </section>
+                    <section>
+                        <h3>Representing Graphs (Adjacency List)</h3>
+                        <p>One common way to represent a graph is using an <span class="orange">adjacency list</span>, where each node has a list of its neighboring nodes.</p>
+                        <pre><code class="python" data-line-numbers>
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+print(graph)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Representing Graphs (Adjacency Matrix)</h3>
+                        <p>Another way to represent a graph is using an <span class="orange">adjacency matrix</span>, which is a square matrix where the element at row `i` and column `j` indicates whether there is an edge between node `i` and node `j`.</p>
+                        <pre><code class="python" data-line-numbers>
+# For a graph with 4 vertices
+#    A B C D
+# A [[0,1,1,0],
+# B  [1,0,0,1],
+# C  [1,0,0,0],
+# D  [0,1,0,0]]
+
+adj_matrix = [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 0],
+    [0, 1, 0, 0]
+]
+
+print(adj_matrix)
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-linear-search">
+                    <h2>Linear Search</h2>
+                    <section>
+                        <h3>What is Linear Search?</h3>
+                        <p><span class="green">Linear search</span> (also known as sequential search) is a method for finding an element within a list. It sequentially checks each element of the list until a match is found or the whole list has been searched.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>The algorithm starts at the beginning of the list and compares each element with the target value. If the target value is found, its position is returned. If the end of the list is reached and the target value is not found, the search terminates unsuccessfully.</p>
+                        <pre><code class="python" data-line-numbers>
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+
+# Example Usage
+my_list = [10, 20, 30, 40, 50]
+print(f"Element 30 found at index: {linear_search(my_list, 30)}")
+print(f"Element 90 found at index: {linear_search(my_list, 90)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-binary-search">
+                    <h2>Binary Search</h2>
+                    <section>
+                        <h3>What is Binary Search?</h3>
+                        <p><span class="green">Binary search</span> is an efficient algorithm for finding an item from a <span class="orange">sorted list</span> of items.</p>
+                        <p>It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>The algorithm compares the target value to the middle element of the array. If they are not equal, the half in which the target cannot lie is eliminated and the search continues on the remaining half, again taking the middle element to compare.</p>
+                        <pre><code class="python" data-line-numbers>
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+# Example Usage (requires a sorted list)
+sorted_list = [10, 20, 30, 40, 50]
+print(f"Element 40 found at index: {binary_search(sorted_list, 40)}")
+print(f"Element 25 found at index: {binary_search(sorted_list, 25)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-bubble-sort">
+                    <h2>Bubble Sort</h2>
+                    <section>
+                        <h3>What is Bubble Sort?</h3>
+                        <p><span class="green">Bubble Sort</span> is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.</p>
+                        <p>The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>Compare adjacent elements and swap them if they are in the wrong order. Repeat until no swaps are made.</p>
+                        <pre><code class="python" data-line-numbers>
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+    return arr
+
+# Example Usage
+my_list = [64, 34, 25, 12, 22, 11, 90]
+print(f"Sorted array: {bubble_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-selection-sort">
+                    <h2>Selection Sort</h2>
+                    <section>
+                        <h3>What is Selection Sort?</h3>
+                        <p><span class="green">Selection Sort</span> is a simple sorting algorithm that divides the input list into two parts: the sublist of items already sorted, and the sublist of items remaining to be sorted.</p>
+                        <p>It repeatedly finds the minimum element from the unsorted part and puts it at the beginning of the sorted part.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>Find the minimum element in the unsorted portion and swap it with the first unsorted element.</p>
+                        <pre><code class="python" data-line-numbers>
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
+
+# Example Usage
+my_list = [64, 25, 12, 22, 11]
+print(f"Sorted array: {selection_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-insertion-sort">
+                    <h2>Insertion Sort</h2>
+                    <section>
+                        <h3>What is Insertion Sort?</h3>
+                        <p><span class="green">Insertion Sort</span> is a simple sorting algorithm that builds the final sorted array (or list) one item at a time.</p>
+                        <p>It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>Iterate through the list, taking each element and inserting it into its correct position in the sorted part of the list.</p>
+                        <pre><code class="python" data-line-numbers>
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i-1
+        while j >=0 and key < arr[j] :
+                arr[j+1] = arr[j]
+                j -= 1
+        arr[j+1] = key
+    return arr
+
+# Example Usage
+my_list = [12, 11, 13, 5, 6]
+print(f"Sorted array: {insertion_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-quick-sort">
+                    <h2>Quick Sort</h2>
+                    <section>
+                        <h3>What is Quick Sort?</h3>
+                        <p>A <span class="green">Quick Sort</span> algorithm uses a <span class="orange">divide-and-conquer</span> approach. It picks an element as a <span class="orange">pivot</span> and partitions the array around it.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>1. Pick a <span class="orange">pivot</span> element.</p>
+                        <p>2. <span class="green">Partition</span> the array: elements smaller than pivot go to left, larger to right.</p>
+                        <p>3. Recursively apply Quick Sort to the <span class="orange">sub-arrays</span>.</p>
+                        <pre><code class="python" data-line-numbers>
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
+# Example Usage
+my_list = [3, 6, 8, 10, 1, 2, 1]
+print(f"Sorted array: {quick_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-counting-sort">
+                    <h2>Counting Sort</h2>
+                    <section>
+                        <h3>What is Counting Sort?</h3>
+                        <p>A <span class="green">Counting Sort</span> is a <span class="orange">non-comparison based</span> sorting algorithm. It counts the occurrences of each distinct element.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>1. Find the <span class="orange">maximum element</span> in the input array.</p>
+                        <p>2. Create a <span class="orange">count array</span> to store the frequency of each element.</p>
+                        <p>3. Modify the count array to store the <span class="orange">position</span> of each element.</p>
+                        <p>4. Build the <span class="orange">output array</span> using the modified count array.</p>
+                        <pre><code class="python" data-line-numbers>
+def counting_sort(arr):
+    max_val = max(arr)
+    m = max_val + 1
+    count = [0] * m
+    for a in arr:
+        count[a] += 1
+    i = 0
+    for a in range(m):
+        for c in range(count[a]):
+            arr[i] = a
+            i += 1
+    return arr
+
+# Example Usage
+my_list = [4, 2, 2, 8, 3, 3, 1]
+print(f"Sorted array: {counting_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-radix-sort">
+                    <h2>Radix Sort</h2>
+                    <section>
+                        <h3>What is Radix Sort?</h3>
+                        <p>A <span class="green">Radix Sort</span> is a <span class="orange">non-comparative integer sorting algorithm</span>. It sorts data by grouping keys by individual digits at the same significant position.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>1. Find the <span class="orange">maximum number</span> to determine the number of digits.</p>
+                        <p>2. Perform <span class="orange">counting sort</span> for each digit place, from least significant to most significant.</p>
+                        <pre><code class="python" data-line-numbers>
+def counting_sort_for_radix(arr, exp1):
+    n = len(arr)
+    output = [0] * n
+    count = [0] * 10
+
+    for i in range(n):
+        index = arr[i] // exp1
+        count[index % 10] += 1
+
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    i = n - 1
+    while i >= 0:
+        index = arr[i] // exp1
+        output[count[index % 10] - 1] = arr[i]
+        count[index % 10] -= 1
+        i -= 1
+
+    for i in range(n):
+        arr[i] = output[i]
+
+def radix_sort(arr):
+    max1 = max(arr)
+    exp = 1
+    while max1 // exp > 0:
+        counting_sort_for_radix(arr, exp)
+        exp *= 10
+    return arr
+
+# Example Usage
+my_list = [170, 45, 75, 90, 802, 24, 2, 66]
+print(f"Sorted array: {radix_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="dsa-merge-sort">
+                    <h2>Merge Sort</h2>
+                    <section>
+                        <h3>What is Merge Sort?</h3>
+                        <p>A <span class="green">Merge Sort</span> algorithm uses a <span class="orange">divide-and-conquer</span> approach. It divides the array, sorts the halves, and then merges them.</p>
+                    </section>
+                    <section>
+                        <h3>How it Works</h3>
+                        <p>1. <span class="green">Divide</span>: Split the unsorted list into n sublists, each with one element.</p>
+                        <p>2. <span class="green">Conquer</span>: Recursively sort the sublists.</p>
+                        <p>3. <span class="green">Combine</span>: Repeatedly merge sublists to produce new sorted sublists until only one sorted list remains.</p>
+                        <pre><code class="python" data-line-numbers>
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i = j = k = 0
+
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+    return arr
+
+# Example Usage
+my_list = [12, 11, 13, 5, 6, 7]
+print(f"Sorted array: {merge_sort(my_list)}")
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Thank You!</h2>
+                    <p>
+                        <a href="../index.html">Back to Index</a>
+                    </p>
+                    <p style="font-size: 0.6em; margin-top: 2em;">
+                        Created by Däniel Ebrahimzadeh with content from <a href="https://www.w3schools.com/python/">w3schools.com</a>.<br>
+                        Powered by Gemini Code Assistant.
+                    </p>
+                </section>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+                plugins: [ RevealHighlight ],
+                scroll: true
+			});
+		</script>
+	</body>
+</html>

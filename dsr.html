@@ -7,7 +7,7 @@
     <title>Mobile Health App Design: DSR Proposal</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
-    <!-- CHANGED THEME: Switched from 'sky' to 'simple' for better contrast and mobile readability -->
+    <!-- Theme: simple for high contrast and readability -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/simple.css" id="theme">
 
     <style>
@@ -247,21 +247,18 @@
             // Key settings for mobile optimization
             touch: true,
             mobileView: true, 
-            // Lower minScale allows the content to shrink more on small screens
             minScale: 0.2, 
             maxScale: 2.0, 
             
-            // REMOVED CHALKBOARD CONFIGURATION TO RELY ON DEFAULTS
-            // If the plugin loads, 'c' and 'd' should work now.
+            // NOTE: Chalkboard plugin removed to stabilize script loading.
+            // Presenter View is the last advanced feature left.
 
             dependencies: [
                 // Standard plugins
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js', async: true },
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js', async: true },
                 // Notes plugin for Presenter View (press 's')
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true },
-                // Chalkboard plugin for Pen and Laser functionality (press 'd' or 'c')
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js-plugins/chalkboard/plugin.js', async: true }
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true }
             ]
         });
     </script>

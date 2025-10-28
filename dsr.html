@@ -60,38 +60,7 @@
             }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
-    <script>
-        // Initialize Reveal.js with adjusted scaling and the Chalkboard plugin
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', 
-
-            // Key settings for mobile optimization
-            touch: true,
-            mobileView: true, 
-            minScale: 0.2, 
-            maxScale: 2.0, 
-            
-            // Configuration for the Chalkboard plugin (Pen View)
-            chalkboard: { 
-                // Enable drawing on slide transition
-                toggleNotesButton: true,
-                transition: 'slide'
-            },
-            
-            dependencies: [
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.esm.js', async: true },
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.esm.js', async: true },
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.esm.js', async: true },
-                // *** NEW: Chalkboard Plugin for Pen View ***
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js-plugins/chalkboard/plugin.js', async: true }
-            ]
-        });
-    </script>
+    
 </head>
 <body>
     <div class="reveal">
@@ -282,16 +251,11 @@
             minScale: 0.2, 
             maxScale: 2.0, 
             
-            // CONFIGURATION FOR PEN AND LASER POINTER
-            chalkboard: { 
-                // Toggle pen/laser with 'd' or 'c'
-                toggleNotesButton: true, // Optionally shows a button for chalkboard
-                toggleChalkboardButton: true,
-                // Default is red laser pointer, switchable to pen/chalk
-            },
+            // REMOVED CHALKBOARD CONFIGURATION TO RELY ON DEFAULTS
+            // If the plugin loads, 'c' and 'd' should work now.
 
             dependencies: [
-                // Switched from .esm.js to standard .js to fix generic script errors
+                // Standard plugins
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js', async: true },
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js', async: true },
                 // Notes plugin for Presenter View (press 's')

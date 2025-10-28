@@ -51,7 +51,38 @@
 <body>
     <div class="reveal">
         <div class="slides">
+            <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script>
+        // Initialize Reveal.js with adjusted scaling and the Chalkboard plugin
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide', 
 
+            // Key settings for mobile optimization
+            touch: true,
+            mobileView: true, 
+            minScale: 0.2, 
+            maxScale: 2.0, 
+            
+            // Configuration for the Chalkboard plugin (Pen View)
+            chalkboard: { 
+                // Enable drawing on slide transition
+                toggleNotesButton: true,
+                transition: 'slide'
+            },
+            
+            dependencies: [
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.esm.js', async: true },
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.esm.js', async: true },
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.esm.js', async: true },
+                // *** NEW: Chalkboard Plugin for Pen View ***
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js-plugins/chalkboard/plugin.js', async: true }
+            ]
+        });
+    </script>
             <section>
                 <h1 style="color: #007bff;">Mobile Health App Design</h1>
                 <h2>A DSR Approach to Remote Chronic Disease Management</h2>

@@ -1,237 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mobile Health App Design: DSR Proposal</title>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/sky.css" id="theme">
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobile Health App Design: DSR Proposal</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/sky.css" id="theme">
 
-    <style>
-        /* --- General Styling for Readability --- */
-        .reveal .slides section p {
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-        .reveal h2 {
-            margin-bottom: 0.5em;
-            font-weight: 700;
-        }
-        .team-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 50px;
-        }
-        .team-list li {
-            margin: 5px 0;
-            font-size: 1.2em;
-        }
-        .fragment.highlight-green {
-            color: #28a745; /* Green highlight for actionable points */
-        }
+    <style>
+        /* --- General Styling for Readability --- */
+        .reveal .slides section p {
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        .reveal h2 {
+            margin-bottom: 0.5em;
+            font-weight: 700;
+        }
+        .team-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 50px;
+        }
+        .team-list li {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        .fragment.highlight-green {
+            color: #28a745; /* Green highlight for actionable points */
+        }
 
-        /* --- MOBILE FRIENDLY FIX: Adjust font size on small screens (600px or less) --- */
-        @media only screen and (max-width: 600px) {
-            .reveal {
-                /* Reduce the overall presentation font size base for better scaling */
-                font-size: 0.7em !important; 
-            }
-            .reveal .slides section h2 {
-                /* Slightly smaller main headers on mobile */
-                font-size: 1.8em !important;
-            }
-            .reveal .slides section p, .reveal .slides section li {
-                /* Ensure body text stays readable */
-                font-size: 1.1em !important; 
-            }
-        }
-    </style>
+        /* --- MOBILE FRIENDLY FIX: Font scaling for smaller screens (600px or less) --- */
+        /* We set a new, smaller base font size and then increase text elements relative to it */
+        @media only screen and (max-width: 600px) {
+            .reveal {
+                /* Significantly reduce the overall presentation font size base for better scaling */
+                font-size: 0.7em !important; 
+            }
+            .reveal .slides section h2 {
+                /* Slightly smaller main headers on mobile relative to the new base */
+                font-size: 1.8em !important;
+            }
+            .reveal .slides section p, .reveal .slides section li {
+                /* Ensure body text stays large enough to be readable relative to the new base */
+                font-size: 1.1em !important; 
+            }
+            
+            /* NEW: Fix for the r-hstack to stack vertically on mobile */
+            .r-hstack {
+                flex-direction: column;
+                /* Ensure full width when stacked */
+                width: 100%;
+            }
+            .r-hstack > div {
+                flex: 1 1 100% !important; /* Force full width items */
+                margin-bottom: 20px; /* Add some vertical space between stacked items */
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
-    <script>
-        // Initialize Reveal.js with adjusted scaling and the Chalkboard plugin
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', 
+    <div class="reveal">
+        <div class="slides">
+            
+            <section>
+                <h1 style="color: #007bff;">Mobile Health App Design</h1>
+                <h2>A DSR Approach to Remote Chronic Disease Management</h2>
+                <hr>
+                <p>A Design Science Research Proposal</p>
+                <ul class="team-list">
+                    <li>**Team:**</li>
+                    <li>Haleh Adab</li>
+                    <li>Nnanna Francis Otuh</li>
+                    <li>Däniel Ebrahimzadeh</li>
+                </ul>
+            </section>
 
-            // Key settings for mobile optimization
-            touch: true,
-            mobileView: true, 
-            minScale: 0.2, 
-            maxScale: 2.0, 
-            
-            // Configuration for the Chalkboard plugin (Pen View)
-            chalkboard: { 
-                // Enable drawing on slide transition
-                toggleNotesButton: true,
-                transition: 'slide'
-            },
-            
-            dependencies: [
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.esm.js', async: true },
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.esm.js', async: true },
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.esm.js', async: true },
-                // *** NEW: Chalkboard Plugin for Pen View ***
+            <section data-background-color="#f0f8ff">
+                <h2>1. WHAT are we doing? (The Artifact & Problem)</h2>
+                
+                <h3 style="color: #007bff;">The Solution</h3>
+                <p class="fragment fade-in-then-semi-out highlight-green">Design a **Mobile Medical App** (A DSR Method/Artifact)</p>
+                
+                <h3 style="color: #007bff;">The Need</h3>
+                <ul>
+                    <li class="fragment fade-in">Stakeholders: **Patients** (Chronic diseases like diabetics, hypertension) & **Health Professionals**.</li>
+                    <li class="fragment fade-in">Purpose: Enable **remote monitoring** and **consultations**.</li>
+                </ul>
+                <h3 style="color: #007bff;">The Problem</h3>
+                <p class="fragment fade-in">**Lack of regular access** to integrated medical, nutrition, mental, and physical care from home.</p>
+                <p class="fragment fade-in">Context: Private individuals and medical professionals in **Iran** and **Nigeria**.</p>
+            </section>
+
+            <section>
+                <h2>2. WHY are we doing it? (Significance & Gaps)</h2>
+                
+                <h3 style="color: #28a745;">Problem Significance</h3>
+                <p class="fragment fade-in">Patients lack **integrated medical and lifestyle** support. No consistent monitoring, especially for those who live alone.</p>
+                
+                <h3 style="color: #28a745;">Central Requirements</h3>
+                                <div class="r-hstack">
+                    <div style="flex: 1;">
+                        <h4 style="color: #17a2b8;">Patients</h4>
+                        <ul>
+                            <li class="fragment fade-in">Easy Health Tracking</li>
+                            <li class="fragment fade-in">Timely Consultations</li>
+                            <li class="fragment fade-in">Personalized Advice</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="color: #17a2b8;">Professionals</h4>
+                        <ul>
+                            <li class="fragment fade-in">Efficient Patient Monitoring</li>
+                            <li class="fragment fade-in">Access to Accurate Data</li>
+                            <li class="fragment fade-in">Remote Advice Capability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color: #28a745;" class="fragment fade-in">The Gap</h3>
+                <p class="fragment fade-in">Existing solutions are often **single-disease focused**, lack **multi-disciplinary integration** (medical/nutrition/mental health), and are **too complicated** to use widely.</p>
+            </section>
+
+            <section data-background-color="#f0f8ff">
+                <h2>3. HOW are we doing it? (The Solution Mechanism)</h2>
+                
+                <h3 style="color: #ffc107;">Fundamental Mechanism</h3>
+                <p class="fragment fade-in-then-semi-out highlight-green">A **Mobile Health Application** integrating Telemedicine, Self-Monitoring, and Professional Consultation into one platform.</p>
+                
+                <h3 style="color: #ffc107;">Core Insight</h3>
+                <p class="fragment fade-in">**Regular remote monitoring** and timely **multi-specialist feedback** significantly improves patient engagement and reduces complications.</p>
+
+                <h3 style="color: #ffc107;">Concrete Components</h3>
+                <ul style="max-width: 80%; margin: auto;">
+                    <li class="fragment fade-in">Secure Profiles & Health Logs</li>
+                    <li class="fragment fade-in">Daily Vital Sign & Symptom Monitoring</li>
+                    <li class="fragment fade-in">**Communication Tools** (Text, Voice, Video)</li>
+                    <li class="fragment fade-in">Personalized Lifestyle Recommendations</li>
+                    <li class="fragment fade-in">Alerts for Abnormal Readings</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. HOW are we verifying it? (Validation & Future)</h2>
+                
+                <h3 style="color: #dc3545;">Demonstration & Utility</h3>
+                <ul>
+                    <li class="fragment fade-in">**Demonstrate:** Develop a **Prototype** and conduct a **Pilot Study** (e.g., with Diabetes/Hypertension patients).</li>
+                    <li class="fragment fade-in">**Evaluate:** Measure **User Satisfaction**, **Adherence** to advice, and **Reduction in Unnecessary Hospital Visits**.</li>
+                </ul>
+
+                <h3 style="color: #dc3545;">Enhancements (Based on Initial Feedback)</h3>
+                <ul style="max-width: 80%; margin: auto;">
+                    <li class="fragment fade-in highlight-green">Add **AI-based Predictive Analytics** to identify early warning signs.</li>
+                    <li class="fragment fade-in">Improve UI/UX for older users.</li>
+                    <li class="fragment fade-in">Localize content for **Iran** and **Nigeria**.</li>
+                    <li class="fragment fade-in">Integrate with **Wearable Devices** (IoT).</li>
+                </ul>
+            </section>
+
+            <section data-background-color="#f0f8ff">
+                <h2>5. WHAT will we LEARN? (Impact & Limitations)</h2>
+
+                <h3 style="color: #6f42c1;">Research Contribution</h3>
+                <ul>
+                    <li class="fragment fade-in">Insights on designing **multi-disciplinary telemedicine** for chronic care.</li>
+                    <li class="fragment fade-in">Framework for digital health solutions in **developing-country contexts** (Iran, Nigeria).</li>
+                </ul>
+                
+                <h3 style="color: #6f42c1;">Key Limitations</h3>
+                <ul>
+                    <li class="fragment fade-in">**Limited Pilot Scope** (Sample size, short duration).</li>
+                    <li class="fragment fade-in">Potential technical challenges (**connectivity**, data privacy).</li>
+                    <li class="fragment fade-in">**User adoption** barriers (especially among the elderly).</li>
+                </ul>
+
+                <h3 style="color: #6f42c1;" class="fragment fade-in">Future Research</h3>
+                <p class="fragment fade-in">Conduct **longitudinal studies**, explore **AI-driven personalization**, and examine **policy/ethical** aspects for national implementation.</p>
+            </section>
+
+            <section>
+                <h2 style="color: #007bff;">Thank You</h2>
+                <h3 style="margin-top: 50px;">Any Questions?</h3>
+                <ul class="team-list">
+                    <li>Haleh Adab, Nnanna Francis Otuh, Däniel Ebrahimzadeh</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script>
+        // Initialize Reveal.js with adjusted scaling for better mobile view
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide', 
+
+            // Key settings for mobile optimization
+            touch: true,
+            mobileView: true, 
+            // Lower minScale allows the content to shrink more on small screens
+            minScale: 0.2, 
+            maxScale: 2.0, 
+            
+            dependencies: [
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.esm.js', async: true },
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.esm.js', async: true },
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.esm.js', async: true },
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js-plugins/chalkboard/plugin.js', async: true }
-            ]
-        });
-    </script>
-            <section>
-                <h1 style="color: #007bff;">Mobile Health App Design</h1>
-                <h2>A DSR Approach to Remote Chronic Disease Management</h2>
-                <hr>
-                <p>A Design Science Research Proposal</p>
-                <ul class="team-list">
-                    <li>**Team:**</li>
-                    <li>Haleh Adab</li>
-                    <li>Nnanna Francis Otuh</li>
-                    <li>Däniel Ebrahimzadeh</li>
-                </ul>
-            </section>
-
-            <section data-background-color="#f0f8ff">
-                <h2>1. WHAT are we doing? (The Artifact & Problem)</h2>
-                
-                <h3 style="color: #007bff;">The Solution</h3>
-                <p class="fragment fade-in-then-semi-out highlight-green">Design a **Mobile Medical App** (A DSR Method/Artifact)</p>
-                
-                <h3 style="color: #007bff;">The Need</h3>
-                <ul>
-                    <li class="fragment fade-in">Stakeholders: **Patients** (Chronic diseases like diabetics, hypertension) & **Health Professionals**.</li>
-                    <li class="fragment fade-in">Purpose: Enable **remote monitoring** and **consultations**.</li>
-                </ul>
-                <h3 style="color: #007bff;">The Problem</h3>
-                <p class="fragment fade-in">**Lack of regular access** to integrated medical, nutrition, mental, and physical care from home.</p>
-                <p class="fragment fade-in">Context: Private individuals and medical professionals in **Iran** and **Nigeria**.</p>
-            </section>
-
-            <section>
-                <h2>2. WHY are we doing it? (Significance & Gaps)</h2>
-                
-                <h3 style="color: #28a745;">Problem Significance</h3>
-                <p class="fragment fade-in">Patients lack **integrated medical and lifestyle** support. No consistent monitoring, especially for those who live alone.</p>
-                
-                <h3 style="color: #28a745;">Central Requirements</h3>
-                <div class="r-hstack">
-                    <div style="flex: 1;">
-                        <h4 style="color: #17a2b8;">Patients</h4>
-                        <ul>
-                            <li class="fragment fade-in">Easy Health Tracking</li>
-                            <li class="fragment fade-in">Timely Consultations</li>
-                            <li class="fragment fade-in">Personalized Advice</li>
-                        </ul>
-                    </div>
-                    <div style="flex: 1;">
-                        <h4 style="color: #17a2b8;">Professionals</h4>
-                        <ul>
-                            <li class="fragment fade-in">Efficient Patient Monitoring</li>
-                            <li class="fragment fade-in">Access to Accurate Data</li>
-                            <li class="fragment fade-in">Remote Advice Capability</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3 style="color: #28a745;" class="fragment fade-in">The Gap</h3>
-                <p class="fragment fade-in">Existing solutions are often **single-disease focused**, lack **multi-disciplinary integration** (medical/nutrition/mental health), and are **too complicated** to use widely.</p>
-            </section>
-
-            <section data-background-color="#f0f8ff">
-                <h2>3. HOW are we doing it? (The Solution Mechanism)</h2>
-                
-                <h3 style="color: #ffc107;">Fundamental Mechanism</h3>
-                <p class="fragment fade-in-then-semi-out highlight-green">A **Mobile Health Application** integrating Telemedicine, Self-Monitoring, and Professional Consultation into one platform.</p>
-                
-                <h3 style="color: #ffc107;">Core Insight</h3>
-                <p class="fragment fade-in">**Regular remote monitoring** and timely **multi-specialist feedback** significantly improves patient engagement and reduces complications.</p>
-
-                <h3 style="color: #ffc107;">Concrete Components</h3>
-                <ul style="max-width: 80%; margin: auto;">
-                    <li class="fragment fade-in">Secure Profiles & Health Logs</li>
-                    <li class="fragment fade-in">Daily Vital Sign & Symptom Monitoring</li>
-                    <li class="fragment fade-in">**Communication Tools** (Text, Voice, Video)</li>
-                    <li class="fragment fade-in">Personalized Lifestyle Recommendations</li>
-                    <li class="fragment fade-in">Alerts for Abnormal Readings</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>4. HOW are we verifying it? (Validation & Future)</h2>
-                
-                <h3 style="color: #dc3545;">Demonstration & Utility</h3>
-                <ul>
-                    <li class="fragment fade-in">**Demonstrate:** Develop a **Prototype** and conduct a **Pilot Study** (e.g., with Diabetes/Hypertension patients).</li>
-                    <li class="fragment fade-in">**Evaluate:** Measure **User Satisfaction**, **Adherence** to advice, and **Reduction in Unnecessary Hospital Visits**.</li>
-                </ul>
-
-                <h3 style="color: #dc3545;">Enhancements (Based on Initial Feedback)</h3>
-                <ul style="max-width: 80%; margin: auto;">
-                    <li class="fragment fade-in highlight-green">Add **AI-based Predictive Analytics** to identify early warning signs.</li>
-                    <li class="fragment fade-in">Improve UI/UX for older users.</li>
-                    <li class="fragment fade-in">Localize content for **Iran** and **Nigeria**.</li>
-                    <li class="fragment fade-in">Integrate with **Wearable Devices** (IoT).</li>
-                </ul>
-            </section>
-
-            <section data-background-color="#f0f8ff">
-                <h2>5. WHAT will we LEARN? (Impact & Limitations)</h2>
-
-                <h3 style="color: #6f42c1;">Research Contribution</h3>
-                <ul>
-                    <li class="fragment fade-in">Insights on designing **multi-disciplinary telemedicine** for chronic care.</li>
-                    <li class="fragment fade-in">Framework for digital health solutions in **developing-country contexts** (Iran, Nigeria).</li>
-                </ul>
-                
-                <h3 style="color: #6f42c1;">Key Limitations</h3>
-                <ul>
-                    <li class="fragment fade-in">**Limited Pilot Scope** (Sample size, short duration).</li>
-                    <li class="fragment fade-in">Potential technical challenges (**connectivity**, data privacy).</li>
-                    <li class="fragment fade-in">**User adoption** barriers (especially among the elderly).</li>
-                </ul>
-
-                <h3 style="color: #6f42c1;" class="fragment fade-in">Future Research</h3>
-                <p class="fragment fade-in">Conduct **longitudinal studies**, explore **AI-driven personalization**, and examine **policy/ethical** aspects for national implementation.</p>
-            </section>
-
-            <section>
-                <h2 style="color: #007bff;">Thank You</h2>
-                <h3 style="margin-top: 50px;">Any Questions?</h3>
-                <ul class="team-list">
-                    <li>Haleh Adab, Nnanna Francis Otuh, Däniel Ebrahimzadeh</li>
-                </ul>
-            </section>
-
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
-    <script>
-        // Initialize Reveal.js with adjusted scaling for better mobile view
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            transition: 'slide', 
-
-            // Key settings for mobile optimization
-            touch: true,
-            mobileView: true, 
-            minScale: 0.2, // Allows for significant scale down on small phones
-            maxScale: 2.0, // Allows for better viewing on tablets/large monitors
-            
-            dependencies: [
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.esm.js', async: true },
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.esm.js', async: true },
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.esm.js', async: true }
-            ]
-        });
-    </script>
+            ]
+        });
+    </script>
 </body>
 </html>

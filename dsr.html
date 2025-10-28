@@ -65,131 +65,167 @@
     <div class="reveal">
         <div class="slides">
             
+            <!-- SLIDE 1: Title Slide (Horizontal Only) -->
             <section>
                 <h1 style="color: #007bff;">Mobile Health App Design</h1>
                 <h2>A DSR Approach to Remote Chronic Disease Management</h2>
                 <hr>
                 <p>A Design Science Research Proposal</p>
                 <ul class="team-list">
-                    <li>**Team:**</li>
+                    <li><b>Team:</b></li>
                     <li>Haleh Adab</li>
                     <li>Nnanna Francis Otuh</li>
                     <li>Däniel Ebrahimzadeh</li>
                 </ul>
             </section>
 
-            <section data-background-color="#f0f8ff">
-                <h2>1. WHAT are we doing? (The Artifact & Problem)</h2>
+            <!-- SLIDE 2 (Parent): 1. WHAT are we doing? (Vertical Sections) -->
+            <section>
+                <!-- H2 moved into the first nested section below to only appear on the main slide of the stack -->
                 
-                <h3 style="color: #007bff;">The Solution</h3>
-                <p class="fragment fade-in-then-semi-out highlight-green">Design a <b>Mobile Medical App</b> (A DSR Method/Artifact)</p>
-                <section data-background-color="#f0f8ff" >
-                <h3 style="color: #007bff;">The Need</h3>
-                <ul>
-                    <li class="fragment fade-in">Stakeholders: **Patients** (Chronic diseases like diabetics, hypertension) & **Health Professionals**.</li>
-                    <li class="fragment fade-in">Purpose: Enable **remote monitoring** and **consultations**.</li>
-                </ul>
+                <section data-background-color="#f0f8ff">
+                    <h2>1. WHAT are we doing? (The Artifact & Problem)</h2> 
+                    <h3 style="color: #007bff;">The Solution</h3>
+                    <p class="fragment fade-in-then-semi-out highlight-green">Design a <b>Mobile Medical App</b> (A DSR Method/Artifact)</p>
                 </section>
-                <section  data-background-color="#f0f8ff">
-                <h3 style="color: #007bff;">The Problem</h3>
-                <p class="fragment fade-in">**Lack of regular access** to integrated medical, nutrition, mental, and physical care from home.</p>
-                <p class="fragment fade-in">Context: Private individuals and medical professionals in **Iran** and **Nigeria**.</p>
+
+                <section data-background-color="#f0f8ff">
+                    <h3 style="color: #007bff;">The Need</h3>
+                    <ul>
+                        <li class="fragment fade-in">Stakeholders: <b>Patients</b> (Chronic diseases like diabetics, hypertension) & <b>Health Professionals</b>.</li>
+                        <li class="fragment fade-in">Purpose: Enable <b>remote monitoring</b> and <b>consultations</b>.</li>
+                    </ul>
+                </section>
+
+                <section data-background-color="#f0f8ff">
+                    <h3 style="color: #007bff;">The Problem</h3>
+                    <p class="fragment fade-in"><b>Lack of regular access</b> to integrated medical, nutrition, mental, and physical care from home.</p>
+                    <p class="fragment fade-in">Context: Private individuals and medical professionals in <b>Iran</b> and <b>Nigeria</b>.</p>
                 </section>
             </section>
-            
+
+            <!-- SLIDE 3 (Parent): 2. WHY are we doing it? (Vertical Sections) -->
             <section>
-                <h2>2. WHY are we doing it? (Significance & Gaps)</h2>
                 
-                <h3 style="color: #28a745;">Problem Significance</h3>
-                <p class="fragment fade-in">Patients lack **integrated medical and lifestyle** support. No consistent monitoring, especially for those who live alone.</p>
                 <section>
-                <h3 style="color: #28a745;">Central Requirements</h3>
-                <div class="r-hstack">
-                    <div style="flex: 1;">
-                        <h4 style="color: #17a2b8;">Patients</h4>
-                        <ul>
-                            <li class="fragment fade-in">Easy Health Tracking</li>
-                            <li class="fragment fade-in">Timely Consultations</li>
-                            <li class="fragment fade-in">Personalized Advice</li>
-                        </ul>
-                    </div>
-                
-                    <div style="flex: 1;">
-                        <h4 style="color: #17a2b8;">Professionals</h4>
-                        <ul>
-                            <li class="fragment fade-in">Efficient Patient Monitoring</li>
-                            <li class="fragment fade-in">Access to Accurate Data</li>
-                            <li class="fragment fade-in">Remote Advice Capability</li>
-                        </ul>
-                    </div>
-                </div>                    
+                    <h2>2. WHY are we doing it? (Significance & Gaps)</h2> <!-- Moved here -->
+                    <h3 style="color: #28a745;">Problem Significance</h3>
+                    <p class="fragment fade-in">Patients lack <b>integrated medical and lifestyle</b> support. No consistent monitoring, especially for those who live alone.</p>
                 </section>
-                <h3 style="color: #28a745;" class="fragment fade-in">The Gap</h3>
-                <p class="fragment fade-in">Existing solutions are often **single-disease focused**, lack **multi-disciplinary integration** (medical/nutrition/mental health), and are **too complicated** to use widely.</p>
+
+                <section>
+                    <h3 style="color: #28a745;">Central Requirements</h3>
+                    <div class="r-hstack">
+                        <div style="flex: 1;">
+                            <h4 style="color: #17a2b8;">Patients</h4>
+                            <ul>
+                                <li class="fragment fade-in">Easy Health Tracking</li>
+                                <li class="fragment fade-in">Timely Consultations</li>
+                                <li class="fragment fade-in">Personalized Advice</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1;">
+                            <h4 style="color: #17a2b8;">Professionals</h4>
+                            <ul>
+                                <li class="fragment fade-in">Efficient Patient Monitoring</li>
+                                <li class="fragment fade-in">Access to Accurate Data</li>
+                                <li class="fragment fade-in">Remote Advice Capability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3 style="color: #28a745;">The Gap</h3>
+                    <p class="fragment fade-in">Existing solutions are often <b>single-disease focused</b>, lack <b>multi-disciplinary integration</b> (medical/nutrition/mental health), and are <b>too complicated</b> to use widely.</p>
+                </section>
             </section>
 
-            <section data-background-color="#f0f8ff">
-                <h2>3. HOW are we doing it? (The Solution Mechanism)</h2>
-                
-                <h3 style="color: #ffc107;">Fundamental Mechanism</h3>
-                <p class="fragment fade-in-then-semi-out highlight-green">A **Mobile Health Application** integrating Telemedicine, Self-Monitoring, and Professional Consultation into one platform.</p>
-                
-                <h3 style="color: #ffc107;">Core Insight </h3>
-                <p class="fragment fade-in">**Regular remote monitoring** and timely **multi-specialist feedback** significantly improves patient engagement and reduces complications.</p>
-
-                <h3 style="color: #ffc107;">Concrete Components</h3>
-                <ul style="max-width: 80%; margin: auto;">
-                    <li class="fragment fade-in">Secure Profiles & Health Logs</li>
-                    <li class="fragment fade-in">Daily Vital Sign & Symptom Monitoring</li>
-                    <li class="fragment fade-in">**Communication Tools** (Text, Voice, Video)</li>
-                    <li class="fragment fade-in">Personalized Lifestyle Recommendations</li>
-                    <li class="fragment fade-in">Alerts for Abnormal Readings</li>
-                </ul>
-            </section>
-
+            <!-- SLIDE 4 (Parent): 3. HOW are we doing it? (Vertical Sections) -->
             <section>
-                <h2>4. HOW are we verifying it? (Validation & Future)</h2>
                 
-                <h3 style="color: #dc3545;">Demonstration & Utility</h3>
-                <ul>
-                    <li class="fragment fade-in">**Demonstrate:** Develop a **Prototype** and conduct a **Pilot Study** (e.g., with Diabetes/Hypertension patients).</li>
-                    <li class="fragment fade-in">**Evaluate:** Measure **User Satisfaction**, **Adherence** to advice, and **Reduction in Unnecessary Hospital Visits**.</li>
-                </ul>
+                <section data-background-color="#f0f8ff">
+                    <h2>3. HOW are we doing it? (The Solution Mechanism)</h2> <!-- Moved here -->
+                    <h3 style="color: #ffc107;">Fundamental Mechanism</h3>
+                    <p class="fragment fade-in-then-semi-out highlight-green">A <b>Mobile Health Application</b> integrating Telemedicine, Self-Monitoring, and Professional Consultation into one platform.</p>
+                </section>
 
-                <h3 style="color: #dc3545;">Enhancements (Based on Initial Feedback)</h3>
-                <ul style="max-width: 80%; margin: auto;">
-                    <li class="fragment fade-in highlight-green">Add **AI-based Predictive Analytics** to identify early warning signs.</li>
-                    <li class="fragment fade-in">Improve UI/UX for older users.</li>
-                    <li class="fragment fade-in">Localize content for **Iran** and **Nigeria**.</li>
-                    <li class="fragment fade-in">Integrate with **Wearable Devices** (IoT).</li>
-                </ul>
+                <section data-background-color="#f0f8ff">
+                    <h3 style="color: #ffc107;">Core Insight </h3>
+                    <p class="fragment fade-in"><b>Regular remote monitoring</b> and timely <b>multi-specialist feedback</b> significantly improves patient engagement and reduces complications.</p>
+                </section>
+
+                <section data-background-color="#f0f8ff">
+                    <h3 style="color: #ffc107;">Concrete Components</h3>
+                    <ul style="max-width: 80%; margin: auto;">
+                        <li class="fragment fade-in">Secure Profiles & Health Logs</li>
+                        <li class="fragment fade-in">Daily Vital Sign & Symptom Monitoring</li>
+                        <li class="fragment fade-in"><b>Communication Tools</b> (Text, Voice, Video)</li>
+                        <li class="fragment fade-in">Personalized Lifestyle Recommendations</li>
+                        <li class="fragment fade-in">Alerts for Abnormal Readings</li>
+                    </ul>
+                </section>
             </section>
 
-            <section data-background-color="#f0f8ff">
-                <h2>5. WHAT will we LEARN? (Impact & Limitations)</h2>
-
-                <h3 style="color: #6f42c1;">Research Contribution</h3>
-                <ul>
-                    <li class="fragment fade-in">Insights on designing **multi-disciplinary telemedicine** for chronic care.</li>
-                    <li class="fragment fade-in">Framework for digital health solutions in **developing-country contexts** (Iran, Nigeria).</li>
-                </ul>
+            <!-- SLIDE 5 (Parent): 4. HOW are we verifying it? (Vertical Sections) -->
+            <section>
                 
-                <h3 style="color: #6f42c1;">Key Limitations</h3>
-                <ul>
-                    <li class="fragment fade-in">**Limited Pilot Scope** (Sample size, short duration).</li>
-                    <li class="fragment fade-in">Potential technical challenges (**connectivity**, data privacy).</li>
-                    <li class="fragment fade-in">**User adoption** barriers (especially among the elderly).</li>
-                </ul>
+                <section>
+                    <h2>4. HOW are we verifying it? (Validation & Future)</h2> <!-- Moved here -->
+                    <h3 style="color: #dc3545;">Demonstration & Utility</h3>
+                    <ul>
+                        <li class="fragment fade-in"><b>Demonstrate:</b> Develop a <b>Prototype</b> and conduct a <b>Pilot Study</b> (e.g., with Diabetes/Hypertension patients).</li>
+                        <li class="fragment fade-in"><b>Evaluate:</b> Measure <b>User Satisfaction</b>, <b>Adherence</b> to advice, and <b>Reduction in Unnecessary Hospital Visits</b>.</li>
+                    </ul>
+                </section>
 
-                <h3 style="color: #6f42c1;" class="fragment fade-in">Future Research</h3>
-                <p class="fragment fade-in">Conduct **longitudinal studies**, explore **AI-driven personalization**, and examine **policy/ethical** aspects for national implementation.</p>
+                <section>
+                    <h3 style="color: #dc3545;">Enhancements (Based on Initial Feedback)</h3>
+                    <ul style="max-width: 80%; margin: auto;">
+                        <li class="fragment fade-in highlight-green">Add <b>AI-based Predictive Analytics</b> to identify early warning signs.</li>
+                        <li class="fragment fade-in">Improve UI/UX for older users.</li>
+                        <li class="fragment fade-in">Localize content for <b>Iran</b> and <b>Nigeria</b>.</li>
+                        <li class="fragment fade-in">Integrate with <b>Wearable Devices</b> (<b>IoT</b>).</li>
+                    </ul>
+                </section>
             </section>
 
+            <!-- SLIDE 6 (Parent): 5. WHAT will we LEARN? (Vertical Sections) -->
+            <section>
+
+                <section data-background-color="#f0f8ff">
+                    <h2>5. WHAT will we LEARN? (Impact & Limitations)</h2> <!-- Moved here -->
+                    <h3 style="color: #6f42c1;">Research Contribution</h3>
+                    <ul>
+                        <li class="fragment fade-in">Insights on designing <b>multi-disciplinary telemedicine</b> for chronic care.</li>
+                        <li class="fragment fade-in">Framework for digital health solutions in <b>developing-country contexts</b> (Iran, Nigeria).</li>
+                    </ul>
+                </section>
+                
+                <section data-background-color="#f0f8ff">
+                    <h3 style="color: #6f42c1;">Key Limitations</h3>
+                    <ul>
+                        <li class="fragment fade-in"><b>Limited Pilot Scope</b> (Sample size, short duration).</li>
+                        <li class="fragment fade-in">Potential technical challenges (<b>connectivity</b>, data privacy).</li>
+                        <li class="fragment fade-in"><b>User adoption</b> barriers (especially among the elderly).</li>
+                    </ul>
+                </section>
+
+                <section data-background-color="#f0f8ff">
+                    <h3 style="color: #6f42c1;" class="fragment fade-in">Future Research</h3>
+                    <p class="fragment fade-in">Conduct <b>longitudinal studies</b>, explore <b>AI-driven personalization</b>, and examine <b>policy/ethical</b> aspects for national implementation.</p>
+                </section>
+            </section>
+
+
+            <!-- SLIDE 7: Thank You Slide (Horizontal Only) -->
             <section>
                 <h2 style="color: #007bff;">Thank You</h2>
                 <h3 style="margin-top: 50px;">Any Questions?</h3>
                 <ul class="team-list">
-                    <li>Haleh Adab, Nnanna Francis Otuh, Däniel Ebrahimzadeh</li>
+                    <li>Haleh Adab </li>
+                        <li> Nnanna Francis Otuh</li>
+                        <li> Däniel Ebrahimzadeh</li>
                 </ul>
             </section>
 
@@ -215,7 +251,7 @@
             maxScale: 2.0, 
             
             dependencies: [
-                // CHANGED: Switched from .esm.js to standard .js to fix generic script errors
+                // Switched from .esm.js to standard .js to fix generic script errors
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js', async: true },
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js', async: true },
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true }

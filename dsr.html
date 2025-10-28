@@ -7,7 +7,7 @@
     <title>Mobile Health App Design: DSR Proposal</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
-    <!-- Theme: simple for high contrast and readability -->
+    <!-- Theme: dracula for high contrast -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/dracula.css" id="theme">
 
     <style>
@@ -67,7 +67,8 @@
         <div class="slides">
             
             <!-- SLIDE 1: Title Slide (Horizontal Only) -->
-            <section>
+            <!-- Added Note to explain controls for the user -->
+            <section data-notes="Controls: Press 's' for Presenter View. Press 'd' to toggle Drawing/Pen mode. Hold 'Alt' and move the mouse for Laser Pointer (if not using 'd').">
                 <h2 style="color: #007bff;">Mobile Health App Design</h2>
                 <h3>A DSR Approach to Remote Chronic Disease Management</h3>
                 <hr>
@@ -82,7 +83,6 @@
 
             <!-- SLIDE 2 (Parent): 1. WHAT are we doing? (Vertical Sections) -->
             <section>
-                <!-- H2 moved into the first nested section below to only appear on the main slide of the stack -->
                 
                 <section data-background-color="#f0f8ff">
                     <h2>1. WHAT are we doing? (The Artifact & Problem)</h2> 
@@ -250,15 +250,15 @@
             minScale: 0.2, 
             maxScale: 2.0, 
             
-            // NOTE: Chalkboard plugin removed to stabilize script loading.
-            // Presenter View is the last advanced feature left.
-
+            // Re-added dependencies for advanced presenter/drawing features
             dependencies: [
                 // Standard plugins
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js', async: true },
                 { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js', async: true },
                 // Notes plugin for Presenter View (press 's')
-                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true }
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js', async: true },
+                // Chalkboard plugin for Pen and Laser functionality (press 'd' or 'c')
+                { src: 'https://cdn.jsdelivr.net/npm/reveal.js-plugins/chalkboard/plugin.js', async: true }
             ]
         });
     </script>

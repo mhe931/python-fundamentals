@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YaysayBot Architecture Flow</title>
+    <title>YaysayBot Help & Architecture</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for professional flow visualization */
@@ -21,54 +21,23 @@
         .flow-card:hover {
             transform: translateY(-4px);
         }
-        .arrow {
-            /* Responsive arrows */
-            height: 30px;
-            width: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-        }
+        
         /* Color mapping for roles */
         .unregistered { background-color: #e2e8f0; border-left: 5px solid #64748b; } /* Slate */
         .user { background-color: #eff6ff; border-left: 5px solid #3b82f6; } /* Blue */
         .manager { background-color: #ecfdf5; border-left: 5px solid #10b981; } /* Emerald */
         .admin { background-color: #f5f3ff; border-left: 5px solid #8b5cf6; } /* Violet */
 
-        /* Utility to force vertical connection lines on mobile */
+        /* Responsive Flow Adjustments (Ensure vertical on mobile) */
         @media (max-width: 767px) {
             .flow-step {
                 flex-direction: column;
             }
-            .arrow-v-lg {
-                height: 20px; /* Vertical arrow height */
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .flow-container > div {
+                margin-bottom: 2rem;
             }
-            .arrow-v-lg::after {
-                content: '↓';
-                font-size: 24px;
-            }
-        }
-
-        /* Utility to force horizontal connection lines on desktop */
-        @media (min-width: 768px) {
-            .flow-step {
-                flex-direction: row;
-            }
-            .arrow-h-lg {
-                width: 40px; /* Horizontal arrow width */
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .arrow-h-lg::after {
-                content: '→';
-                font-size: 24px;
+            .role-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -76,82 +45,100 @@
 <body class="p-4 md:p-8">
 
     <div class="max-w-6xl mx-auto">
-        <h1 class="text-4xl font-extrabold text-center mb-2 text-indigo-700">YaysayBot Role-Based Flow</h1>
-        <p class="text-center text-lg text-gray-600 mb-12">Visualizing Conversation States and Access Rights</p>
+        <h1 class="text-3xl font-extrabold text-center mb-2 text-indigo-700">YaysayBot Help & Overview</h1>
+        <p class="text-center text-lg text-gray-600 mb-8">Your guide to the points economy, roles, and poll creation flow.</p>
 
-        <!-- Start Node: Unregistered -->
-        <div class="flow-step flex items-center justify-center mb-6 md:mb-10">
-            <div class="flow-card unregistered p-4 rounded-xl w-full md:w-96 text-center">
-                <h3 class="font-bold text-xl text-slate-700">UNREGISTERED USER</h3>
-                <p class="text-sm mt-1">Access: 🚀 Start Registration, ❓ Help, 📞 Contact Admin</p>
+        <!-- Section 1: Core Flow (Registration) -->
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">1. Quick Start & Registration</h2>
+        <div class="flex flex-col items-center justify-center mb-10">
+            <div class="flow-card unregistered p-4 rounded-xl w-full max-w-md text-center">
+                <h3 class="font-bold text-xl text-slate-700">REGISTRATION FLOW (5 Steps)</h3>
+                <p class="text-sm mt-2 text-slate-600 font-medium">
+                    1. Language → 2. Sex → 3. Age → 4. City → 
+                    <span class="text-red-600 font-bold">5. NSFW Opt-in</span>
+                </p>
+                <p class="text-xs mt-2 text-slate-500">You are opted **OUT** of NSFW content by default.</p>
             </div>
         </div>
 
-        <!-- Arrow to Registration -->
-        <div class="arrow-v-lg mx-auto md:hidden"></div>
-        <div class="arrow-h-lg hidden md:flex mx-auto"></div>
-
-        <!-- Registration Flow -->
-        <div class="flow-step flex items-center justify-center mb-6 md:mb-10">
-            <div class="flow-card unregistered p-4 rounded-xl w-full md:w-96 text-center">
-                <h3 class="font-bold text-xl text-slate-700">REGISTRATION FLOW</h3>
-                <p class="text-sm mt-1 text-slate-600">Steps: Lang Selection → Sex → Age → City</p>
+        <!-- Section 2: Poll Creation Flow -->
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">2. Poll Creation (1/2 Visual Polls)</h2>
+        <div class="flow-step flex flex-wrap justify-center gap-6 md:gap-10 text-center mb-12">
+             <div class="flow-card user p-4 rounded-xl w-40">
+                <div class="font-bold text-blue-800">1. Start</div>
+                <div class="text-sm">Press 📊 New Poll</div>
+            </div>
+            <div class="text-xl pt-4 text-gray-500 hidden md:block">→</div>
+             <div class="flow-card user p-4 rounded-xl w-40">
+                <div class="font-bold text-blue-800">2. Content</div>
+                <div class="text-sm">Send **exactly 2 photos** (no text needed)</div>
+            </div>
+            <div class="text-xl pt-4 text-gray-500 hidden md:block">→</div>
+             <div class="flow-card user p-4 rounded-xl w-40">
+                <div class="font-bold text-red-700">3. NSFW Tag</div>
+                <div class="text-sm">Select if poll is NSFW/Sensitive</div>
+            </div>
+            <div class="text-xl pt-4 text-gray-500 hidden md:block">→</div>
+             <div class="flow-card manager p-4 rounded-xl w-40">
+                <div class="font-bold text-emerald-700">4. Approval</div>
+                <div class="text-sm">Manager Approves / Rejects</div>
             </div>
         </div>
 
-        <!-- Main Flow Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-
-            <!-- COLUMN 1: User Role -->
-            <div class="col-span-1 flex flex-col items-center">
-                <div class="flow-card user p-6 rounded-xl w-full text-center">
-                    <h3 class="font-bold text-xl text-blue-800 mb-2">USER ROLE</h3>
-                    <p class="text-sm font-semibold mb-3">Core Features & Rights:</p>
-                    <ul class="text-left space-y-2 text-blue-700">
-                        <li class="p-1 bg-blue-100 rounded-lg"><span class="font-mono text-sm">📊 NEW_POLL</span> (Starts poll creation flow)</li>
-                        <li class="p-1 bg-blue-100 rounded-lg"><span class="font-mono text-sm">💰 BALANCE</span> (Check points)</li>
-                        <li class="p-1 bg-blue-100 rounded-lg"><span class="font-mono text-sm">🎁 REFERRAL</span> (Generate link)</li>
-                        <li class="p-1 bg-blue-100 rounded-lg text-red-600 font-semibold"><span class="font-mono text-sm">→ REQUEST POINTS</span> (Needs Admin approval)</li>
-                    </ul>
-                </div>
+        <!-- Section 3: Points Economy -->
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">3. Points Economy (Gamified)</h2>
+        <div class="space-y-4 max-w-3xl mx-auto mb-12">
+            <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <p class="font-semibold text-yellow-800">💰 Standard Cost/Reward</p>
+                <ul class="text-sm list-disc pl-5 mt-1 text-gray-700">
+                    <li>**Cost to Create Poll:** -10 Points</li>
+                    <li>**Reward to Answer Poll:** +1 Point (Base)</li>
+                    <li>**Reward for Referral:** +20 Points</li>
+                </ul>
             </div>
-
-            <!-- COLUMN 2: Manager Role -->
-            <div class="col-span-1 flex flex-col items-center">
-                <div class="flow-card manager p-6 rounded-xl w-full text-center">
-                    <h3 class="font-bold text-xl text-emerald-700 mb-2">MANAGER ROLE</h3>
-                    <p class="text-sm font-semibold mb-3">User Rights <span class="text-lg">PLUS:</span></p>
-                    <ul class="text-left space-y-2 text-emerald-700">
-                        <li class="p-1 bg-emerald-100 rounded-lg"><span class="font-mono text-sm">✅ WAITING_POLLS</span> (View Polls for Approval)</li>
-                        <li class="p-1 bg-emerald-100 rounded-lg font-semibold">Ability to **Approve / Reject** Polls</li>
-                    </ul>
-                </div>
-                <!-- Line connecting Manager to Admin -->
-                <div class="arrow-v-lg mx-auto my-4 text-emerald-600"></div>
-                <div class="text-xs font-medium text-emerald-600">Promotion Path</div>
+            <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+                <p class="font-semibold text-red-800">🚨 NSFW Premium Cost/Reward (+50%)</p>
+                <ul class="text-sm list-disc pl-5 mt-1 text-gray-700">
+                    <li>**Cost to Create NSFW Poll:** -15 Points (10 + 50%)</li>
+                    <li>**Reward to Answer NSFW Poll:** +1.5 Points (1 + 50%)</li>
+                    <li>*Note: First Answer Bonus (+5) is applied on top of this.*</li>
+                </ul>
             </div>
-
-            <!-- COLUMN 3: Admin Role -->
-            <div class="col-span-1 flex flex-col items-center">
-                <div class="flow-card admin p-6 rounded-xl w-full text-center">
-                    <h3 class="font-bold text-xl text-violet-800 mb-2">ADMIN ROLE</h3>
-                    <p class="text-sm font-semibold mb-3">Manager Rights <span class="text-lg">PLUS:</span></p>
-                    <ul class="text-left space-y-2 text-violet-700">
-                        <li class="p-1 bg-violet-100 rounded-lg"><span class="font-mono text-sm">👑 PROMOTE_USER</span> (Elevate User/Manager role)</li>
-                        <li class="p-1 bg-violet-100 rounded-lg"><span class="font-mono text-sm">💎 APPROVE_POINTS</span> (Review Point Requests)</li>
-                        <li class="p-1 bg-violet-100 rounded-lg font-semibold">Full Bot Log and Config Access</li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
+        
+        <!-- Section 4: Role Hierarchy -->
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">4. Role Hierarchy & Access</h2>
+        <div class="role-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- User Role -->
+            <div class="col-span-1 flow-card user p-4 rounded-xl">
+                <h3 class="font-bold text-xl text-blue-800 mb-2">USER</h3>
+                <ul class="text-sm text-blue-700 space-y-1">
+                    <li>✅ Create 1/2 Polls</li>
+                    <li>✅ Answer Polls & Earn Points</li>
+                    <li>✅ Request Points (Needs Admin approval)</li>
+                </ul>
+            </div>
 
-        <!-- Common Footer Features -->
-        <div class="mt-12">
-            <h2 class="text-2xl font-bold text-center mb-6 text-gray-700">Universal Access (All Roles)</h2>
-            <div class="flex flex-wrap justify-center gap-4">
-                <div class="p-3 bg-white border border-gray-300 rounded-lg shadow-md text-gray-700 font-medium">❓ Help</div>
-                <div class="p-3 bg-white border border-gray-300 rounded-lg shadow-md text-gray-700 font-medium">📞 Contact Admin</div>
+            <!-- Manager Role -->
+            <div class="col-span-1 flow-card manager p-4 rounded-xl">
+                <h3 class="font-bold text-xl text-emerald-700 mb-2">MANAGER</h3>
+                <p class="text-xs text-emerald-600 mb-1"> (Includes all User rights)</p>
+                <ul class="text-sm text-emerald-700 space-y-1">
+                    <li class="font-semibold">✅ Approve / Reject Polls</li>
+                    <li>✅ View Polls awaiting approval</li>
+                </ul>
+            </div>
+
+            <!-- Admin Role -->
+            <div class="col-span-1 flow-card admin p-4 rounded-xl">
+                <h3 class="font-bold text-xl text-violet-800 mb-2">ADMIN</h3>
+                <p class="text-xs text-violet-600 mb-1"> (Includes all Manager rights)</p>
+                <ul class="text-sm text-violet-700 space-y-1">
+                    <li class="font-semibold">👑 Promote Users to Manager</li>
+                    <li>💎 Approve / Reject Point Requests</li>
+                    <li>📈 View Global Stats Report</li>
+                </ul>
             </div>
         </div>
 

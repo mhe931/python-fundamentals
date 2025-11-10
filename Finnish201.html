@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Finnish 2 - Syväsukellus (Deep Dive)</title>
+
+    <!-- Load reveal.js CSS (minimal dependency) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+    <!-- Custom Dark/Colorful Theme and Styles -->
+    <style>
+        /* --- THEME COLORS --- */
+        :root {
+            --background-color: #111D4A; /* Deep Navy Blue */
+            --main-color: #EAEAEA;
+            --heading-color: #FFC0CB; /* Pink/Rose for headers */
+            --accent-primary: #C9A7EB; /* Light Purple for main accent */
+            --accent-secondary: #00ADB5; /* Cyan for interactive/links */
+            --font-main: "Inter", sans-serif;
+            --font-size: 1.1em;
+        }
+
+        .reveal {
+            background-color: var(--background-color);
+            color: var(--main-color);
+            font-family: var(--font-main);
+            font-size: var(--font-size);
+            line-height: 1.4;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            color: var(--heading-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+        .reveal a { color: var(--accent-secondary); text-decoration: none; }
+        .reveal a:hover { color: var(--accent-primary); }
+
+        /* Custom Content Blocks */
+        .reveal .grammar-box {
+            border: 3px solid var(--accent-primary);
+            padding: 20px;
+            margin: 20px auto;
+            background: rgba(201, 167, 235, 0.1);
+            border-radius: 10px;
+            text-align: left;
+        }
+        .reveal .fun-fact {
+            font-size: 0.85em;
+            margin-top: 15px;
+            padding: 8px;
+            border-left: 5px solid var(--accent-secondary);
+            background: rgba(0, 173, 181, 0.1);
+            border-radius: 4px;
+            font-style: italic;
+        }
+        .reveal table { font-size: 0.75em; }
+        .reveal th { background-color: var(--accent-primary); color: var(--background-color); }
+        .reveal td { border: 1px solid rgba(255, 255, 255, 0.2); }
+        .reveal .fragment.answer { color: var(--heading-color); text-decoration: underline; font-weight: bold; }
+        
+        /* Chalkboard button styling */
+        .chalkboard-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--accent-primary);
+            color: var(--background-color);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            line-height: 45px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- ============================================== -->
+            <!-- MAIN TOPIC 1: TITLE & OVERVIEW (H-0) -->
+            <!-- ============================================== -->
+
+            <section>
+                <!-- V-0: Title Slide -->
+                <section>
+                    <h1 style="font-size: 4em;">🇫🇮 SUOMI 2</h1>
+                    <h2 style="color: var(--accent-primary);">Deep Dive Learning Path</h2>
+                    <p>Horizontal for Topics, Vertical for Depth. <b>Käytä nuolia!</b></p>
+                    <hr>
+                    <p style="font-size: 0.6em; margin-top: 50px;">Computing Science, Vaasa (Ref: KSUO5051B)</p>
+                </section>
+
+                <!-- V-1: Course Overview -->
+                <section>
+                    <h2>Kurssin Tavoitteet (Course Goals)</h2>
+                    <div style="text-align: left; columns: 2; font-size: 0.9em;">
+                        <ul>
+                            <li><b>Päätevaltaisuus:</b> Mastering case endings.</li>
+                            <li><b>Asuminen:</b> Vocabulary for housing and furniture.</li>
+                            <li><b>Kuvaus:</b> Describing appearance, clothing, and colors.</li>
+                            <li><b>Lauseet:</b> Understanding Ownership & Eksistentiaalilauseet.</li>
+                        </ul>
+                    </div>
+                    <h3 style="color: var(--accent-secondary); margin-top: 20px;">Navigointi (Navigation)</h3>
+                    <p style="font-size: 0.9em;"><b>&#8594; (Right Arrow):</b> Next Major Topic (e.g., Local Cases).</p>
+                    <p style="font-size: 0.9em;"><b>&#8595; (Down Arrow):</b> Deeper Content, Rules, and Examples.</p>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- MAIN TOPIC 2: LOCAL CASES (H-1) -->
+            <!-- ============================================== -->
+
+            <section>
+                <!-- V-0: Topic Intro -->
+                <section>
+                    <h2>MODUULI 2: Paikallissijat (Local Cases) 📍</h2>
+                    <h3 style="color: var(--accent-primary);">Sisä- ja Ulkopaikallissijat (In- & On-Cases)</h3>
+                    <p>Tell us <b>where</b> something is, <b>from where</b> it comes, or <b>to where</b> it goes.</p>
+                    <div class="grammar-box">
+                        <p><b>Missä?</b> (Where?) &rarr; Inessiivi (-ssa/-ssä) / Adessiivi (-lla/-llä)</p>
+                        <p><b>Mistä?</b> (From where?) &rarr; Elatiivi (-sta/-stä) / Ablatiivi (-lta/-ltä)</p>
+                        <p><b>Mihin?</b> (To where?) &rarr; Illatiivi (-Vn, -hVn, -seen) / Allatiivi (-lle)</p>
+                    </div>
+                </section>
+
+                <!-- V-1: Description/Rules (The Six Cases Table) -->
+                <section>
+                    <h3>Paikallissijojen Yleiskatsaus (General Overview)</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Inside (Sisä)</th><th>Ending</th><th>Outside (Ulko)</th><th>Ending</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><b>In</b> (Missä?)</td><td>-ssa / -ssä</td><td><b>On</b> (Missä?)</td><td>-lla / -llä</td></tr>
+                            <tr><td><b>Out of</b> (Mistä?)</td><td>-sta / -stä</td><td><b>Off of</b> (Mistä?)</td><td>-lta / -ltä</td></tr>
+                            <tr><td><b>Into</b> (Mihin?)</td><td>-Vn / -seen / -hVn</td><td><b>Onto</b> (Mihin?)</td><td>-lle</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- V-2: Page 1 of Examples (Illatiivi in Depth) -->
+                <section>
+                    <h3>Illatiivi: Mihin? (Movement INTO)</h3>
+                    <p>Illatiivi has three main endings for direction (To/Into):</p>
+                    <table>
+                        <thead>
+                            <tr><th>Rule</th><th>Pääte (Ending)</th><th>Esimerkki (Example)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Single vowel word</td><td><b>-Vn</b> (Long vowel)</td><td>talo &rarr; talo<b>on</b></td></tr>
+                            <tr><td>Word ends in two vowels (o, a, e, u)</td><td><b>-seen</b></td><td>Lontoo &rarr; Lontoo<b>seen</b></td></tr>
+                            <tr><td>One-syllable word (puu, maa)</td><td><b>-hVn</b></td><td>maa &rarr; maa<b>han</b></td></tr>
+                        </tbody>
+                    </table>
+                    <p class="fun-fact">Esim: <b>Mies menee taloon.</b> (The man goes into the house.)</p>
+                </section>
+                
+                <!-- V-3: Fun Facts/Tips -->
+                <section>
+                    <h3>Vinkki: Sisä vs. Ulko</h3>
+                    <div class="grammar-box">
+                        <p>Use <b>Sisä-cases (-ssa/-sta/-Vn)</b> for concrete containment (house, room, city, cup, inside clothes).</p>
+                        <p>Use <b>Ulko-cases (-lla/-lta/-lle)</b> for surfaces, general location, or abstract items (table, floor, at the university, money on the person).</p>
+                    </div>
+                    <p class="fun-fact">Suomessa sanotaan: <b>Olen yliopistolla</b> (I am <i>on</i> the university campus) eikä yliopistossa (I am <i>inside</i> the university building). Remember the <b>-lla/-llä</b> for abstract locations!</p>
+                </section>
+
+                <!-- V-4: Page 2 of Examples/Practice (Fill-in) -->
+                <section>
+                    <h3>Harjoitus: Sisä- & Illatiivi</h3>
+                    <p>Täydennä oikea paikallissija (Fill in the correct local case).</p>
+                    <div class="grammar-box">
+                        <p>1. Minä tulen koto<span class="fragment answer">a</span> (koti) &rarr; Elatiivi: koto<b>a</b> (Exception!)</p>
+                        <p>2. Hän menee <span class="fragment answer">keittiö<b>ön</b></span> (keittiö).</p>
+                        <p>3. Pekka asuu <span class="fragment answer">Vaasa<b>ssa</b></span> (Vaasa).</p>
+                        <p>4. Otatko kirjan <span class="fragment answer">pöydä<b>ltä</b></span> (pöytä).</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- MAIN TOPIC 3: ADJECTIVES & COLORS (H-2) -->
+            <!-- ============================================== -->
+
+            <section>
+                <!-- V-0: Topic Intro -->
+                <section>
+                    <h2>MODUULI 3: Adjektiivit ja Värit 🌈</h2>
+                    <h3 style="color: var(--accent-primary);">Adjective Agreement & Declension</h3>
+                    <p>Learning how to describe the world, like Pekka's <b>lyhyet ruskeat hiukset</b>.</p>
+                </section>
+
+                <!-- V-1: Description/Rules -->
+                <section>
+                    <h3>Muista Taivutus (Remember Declension)</h3>
+                    <div class="grammar-box">
+                        <p>Adjektiivit taipuvat aina samaan sijamuotoon ja lukuun kuin substantiivit.</p>
+                        <p style="font-size: 0.9em;">(Adjectives always decline to the same case and number as the noun.)</p>
+                        <p class="fragment fade-in">Esim: iso talo &rarr; iso<b>ssa</b> talo<b>ssa</b> (Inessive)</p>
+                        <p class="fragment fade-in">Esim: vanha sänky &rarr; vanha<b>sta</b> sängy<b>stä</b> (Elative, with gradation!)</p>
+                    </div>
+                </section>
+
+                <!-- V-2: Page 1 of Examples (Colors) -->
+                <section>
+                    <h3>Värien Taivutus (Color Declension)</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Nominatiivi</th><th>Partitiivi</th><th>Monikko (Plural)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><b>punainen</b></td><td>punaista</td><td>punaiset</td></tr>
+                            <tr><td><b>sininen</b></td><td>sinistä</td><td>siniset</td></tr>
+                            <tr class="fragment fade-in"><td><b>ruskea</b></td><td>ruskeaa</td><td>ruskeat</td></tr>
+                            <tr class="fragment fade-in"><td><b>keltainen</b></td><td>keltaista</td><td>keltaiset</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 15px;">*Huomaa 'nen'-loppuiset sanat käyttävät <b>-sta/-stä</b> partitiivissä.*</p>
+                </section>
+
+                <!-- V-3: Fun Facts/Tips -->
+                <section>
+                    <h3>Fun Fact: Vaalean- & Tummansininen</h3>
+                    <p>Suomessa voit lisätä 'vaalea' (light) tai 'tumma' (dark) etuliitteenä.</p>
+                    <div class="grammar-box">
+                        <p>Vaalea + sininen &rarr; <b>Vaaleansininen</b> (Light blue)</p>
+                        <p>Tumma + sininen &rarr; <b>Tummansininen</b> (Dark blue)</p>
+                        <p class="fun-fact">Nämä taivutetaan kuten yksi sana! Esim: <b>Tummansinisessä</b> paidassa (In a dark blue shirt).</p>
+                    </div>
+                </section>
+
+                <!-- V-4: Page 2 of Examples/Practice -->
+                <section>
+                    <h3>Harjoitus: Adjektiivit</h3>
+                    <p>Täydennä lause oikein taivutetulla sanalla.</p>
+                    <div class="grammar-box">
+                        <p>1. Ostan <span class="fragment answer">kaksi suur<b>ta</b></span> (kaksi suuri) kirjaa.</p>
+                        <p>2. Syön <span class="fragment answer">hyvä<b>ä</b></span> (hyvä) ruokaa.</p>
+                        <p>3. Hänellä on <span class="fragment answer">punaise<b>t</b></span> (punainen) kengät.</p>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- ============================================== -->
+            <!-- MAIN TOPIC 4: CLAUSE TYPES (H-3) -->
+            <!-- ============================================== -->
+
+            <section>
+                <!-- V-0: Topic Intro -->
+                <section>
+                    <h2>MODUULI 4: Lausetyypit 💬</h2>
+                    <h3 style="color: var(--accent-primary);">Omistus- ja Eksistentiaalilause</h3>
+                    <p>Two essential clause types that don't translate literally to English.</p>
+                </section>
+
+                <!-- V-1: Description/Rules (Omistuslause) -->
+                <section>
+                    <h3>1. Omistuslause (Ownership Clause)</h3>
+                    <p style="color: var(--accent-secondary); font-weight: bold; font-size: 1.2em;">Adverbiaali (owner in Adessive) + Olla (verb) + Subjekti (item)</p>
+                    <div class="grammar-box">
+                        <p>Owner is in <b>Adessive (-lla / -llä)</b>.</p>
+                        <p class="fragment fade-in">Minu<b>lla</b> on <b>koira</b>.</p>
+                        <p class="fragment fade-in">Peka<b>lla</b> on <b>silmälasit</b>.</p>
+                        <p class="fragment fade-in">Negatiivi: Heillä <b>ei ole</b> koira<b>a</b> (Item goes to Partitive).</p>
+                    </div>
+                </section>
+
+                <!-- V-2: Description/Rules (Eksistentiaalilause) -->
+                <section>
+                    <h3>2. Eksistentiaalilause (Existential Clause)</h3>
+                    <p style="color: var(--accent-secondary); font-weight: bold; font-size: 1.2em;">Lokaali (location case) + Olla (verb) + Subjekti (item)</p>
+                    <div class="grammar-box">
+                        <p>Location comes first (Inessive, Adessive, etc.).</p>
+                        <p class="fragment fade-in">Keittiö<b>ssä</b> on <b>jääkaappi</b>.</p>
+                        <p class="fragment fade-in">Parvekkee<b>lla</b> on <b>kaksi tuolia</b>.</p>
+                        <p class="fragment fade-in">Talo<b>ssa ei ole</b> hiss<b>iä</b> (Item goes to Partitive).</p>
+                    </div>
+                </section>
+                
+                <!-- V-3: Fun Facts/Tips -->
+                <section>
+                    <h3>Fun Fact: Word Order is Fixed</h3>
+                    <p class="fun-fact"><b>Eksistentiaalilause</b> on suomeksi jäykkä (The Existential Clause is rigid in Finnish):</p>
+                    <div class="grammar-box">
+                        <p>You MUST say: <b>[Location]</b> on <b>[Item]</b>.</p>
+                        <p>EI: <b>Sänky</b> on makuuhuoneessa. (This is descriptive, NOT existential).</p>
+                        <p>Kyllä: <b>Makuuhuoneessa</b> on <b>sänky</b>.</p>
+                    </div>
+                </section>
+
+                <!-- V-4: Practice -->
+                <section>
+                    <h3>Harjoitus: Omistus- vai Eksistentiaalilause?</h3>
+                    <div class="grammar-box">
+                        <p>1. (I have a cat.) &rarr; <span class="fragment answer">Minu<b>lla</b> on kissa.</span></p>
+                        <p>2. (There is a microwave in the kitchen.) &rarr; <span class="fragment answer">Keittiö<b>ssä</b> on mikro.</span></p>
+                        <p>3. (We don't have a car.) &rarr; <span class="fragment answer">Mei<b>llä ei ole</b> auto<b>a</b>.</span></p>
+                    </div>
+                </section>
+            </section>
+
+
+            <!-- ============================================== -->
+            <!-- MAIN TOPIC 5: PARTITIVE & GRADATION (H-4) -->
+            <!-- ============================================== -->
+            
+            <section>
+                <!-- V-0: Topic Intro -->
+                <section>
+                    <h2>MODUULI 5: Partitiivi & Astevaihtelu ✨</h2>
+                    <h3 style="color: var(--accent-primary);">Irresultative, Negation, Quantity, and the K-P-T change.</h3>
+                </section>
+
+                <!-- V-1: Partitive Description/Rules -->
+                <section>
+                    <h3>Partitiivin Pääkäytöt (Main Partitive Uses)</h3>
+                    <div style="text-align: left;">
+                        <ul style="list-style: none;">
+                            <li><b>1. Negation:</b> After a negative verb (En osta auto<b>a</b>).</li>
+                            <li><b>2. Quantity:</b> After numbers 2+ (kaksi tyttö<b>ä</b>).</li>
+                            <li><b>3. Mass Nouns:</b> Uncountable stuff (juon kahvi<b>a</b>).</li>
+                            <li><b>4. Ongoing:</b> Incomplete or irresultative action (luen kirja<b>a</b>).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- V-2: Consonant Gradation Rules -->
+                <section>
+                    <h3>Astevaihtelu (Consonant Gradation)</h3>
+                    <p>Strong (Vahva) grade happens in the Nominative. Weak (Heikko) grade happens when an ending is attached.</p>
+                    <table>
+                        <thead><tr><th>Vahva (Strong)</th><th>Heikko (Weak)</th><th>Esimerkki (Example)</th></tr></thead>
+                        <tbody>
+                            <tr><td><b>kk</b></td><td>k</td><td>viikko &rarr; vii<b>ko</b>ssa</td></tr>
+                            <tr><td><b>tt</b></td><td>t</td><td>asunto &rarr; asu<b>nno</b>ssa (nt&rarr;nn)</td></tr>
+                            <tr><td><b>k</b></td><td>- (zero)</td><td>ruo<b>k</b>a &rarr; ruo<b>a</b>t</td></tr>
+                            <tr><td><b>p</b></td><td>v</td><td>lei<b>p</b>ä &rarr; lei<b>v</b>än</td></tr>
+                            <tr><td><b>t</b></td><td>d</td><td>pöy<b>t</b>ä &rarr; pöy<b>dä</b>llä</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- V-3: Fun Facts/Tips -->
+                <section>
+                    <h3>Fun Fact: Syvä/Heikko Äänne (Deep/Weak Sound)</h3>
+                    <p class="fun-fact">Astevaihtelu on peräisin kielihistoriasta. Kun sanaan lisättiin pääte, tavun paino siirtyi. Konsonantin äänne heikkeni helpottaakseen ääntämistä! (The consonant's sound weakened to ease pronunciation!)</p>
+                    <p style="margin-top: 20px;">Harjoitus: Partitiivi + Gradation</p>
+                    <p>1. kolme <span class="fragment answer">tyt<b>tö</b>ä</span> (tyttö &rarr; tt/t is strong/weak rule, but here 'tt' stays strong for -ä Partitive)</p>
+                    <p>2. En osta <span class="fragment answer">u<b>t</b>ta auto<b>a</b></span> (uusi auto &rarr; k/t/p rule, but uusi takes -tta/-ttä partitive form)</p>
+                    <p class="fun-fact">Self-Correction: <b>Uusi</b> takes <b>uutta</b> (Type 5 word), and <b>kolme</b> takes <b>tyttöä</b> (no change in the consonant 'tt' for partitive ending -ä/ä).</p>
+                </section>
+                
+                <!-- V-4: Speaking/Writing Activity -->
+                <section>
+                    <h3>Kirjoitus Harjoitus (Writing Activity)</h3>
+                    <p>Use the Chalkboard button (bottom right) to draft a few sentences in Finnish.</p>
+                    <div class="grammar-box">
+                        <p><b>Task:</b> Kirjoita kolme lausetta käyttäen: <b>Partitiivi, Illatiivi,</b> ja <b>Astevaihtelu</b>.</p>
+                        <p>(Write three sentences using: Partitive, Illative, and Gradation.)</p>
+                        <p style="font-size: 0.8em; margin-top: 10px;">Esim: Ostan kaksi <b>punaista</b> <b>omenaa</b> (Partitive + Gradation: oma<b>n</b>a).</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- MAIN TOPIC 6: REVIEW & RESOURCES (H-5) -->
+            <!-- ============================================== -->
+            
+            <section>
+                <!-- V-0: Final Review -->
+                <section>
+                    <h2>Kertaus ja Loppusanat (Review & Conclusion) 🚀</h2>
+                    <h3 style="color: var(--accent-primary);">Olet Valmis! (You are ready!)</h3>
+                    <p>This path covered the core of Finnish 2 modules:</p>
+                    <p style="font-size: 0.9em;">Paikallissijat, Omistus/Eksistentiaalilauseet, Partitiivi, Astevaihtelu.</p>
+                </section>
+
+                <!-- V-1: Resources -->
+                <section>
+                    <h3>Resurssit (Resources)</h3>
+                    <div style="text-align: left;">
+                        <h4 style="color: var(--accent-secondary);">Continue Your Study:</h4>
+                        <ul>
+                            <li><b>Kirja:</b> Suomen mestari 1 (Review/Practice).</li>
+                            <li><b>Verkossa:</b> Yle Uutiset selkosuomeksi (News in Easy Finnish).</li>
+                            <li><b>Kuuntele:</b> Kuuntele suomalaista musiikkia (Listen to Finnish music).</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- V-2: Final Prompt -->
+                <section>
+                    <h3>Viimeinen Reflektio (Final Reflection)</h3>
+                    <div class="grammar-box">
+                        <p>Mitä suomen kielen rakenteita tunnet nyt hallitsevasi?</p>
+                        <p>(What Finnish structures do you feel confident with now?)</p>
+                        <p class="fun-fact">Press 'S' for speaker notes/PDF export, or 'A' to switch to a blank chalkboard for writing!</p>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <!-- The Chalkboard button (customized) -->
+    <button class="chalkboard-button" title="Toggle Chalkboard (Press A)" onclick="Reveal.getPlugin('chalkboard').toggleChalkboard()">
+        &#9999;
+    </button>
+
+
+    <!-- Initialization Script and Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <!-- Load Chalkboard Plugin for in-page writing -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
+    
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            hash: true,
+            width: 1000,
+            height: 700,
+            
+            // Configuration for the Chalkboard plugin
+            chalkboard: {
+                toggleChalkboardButton: 'A', // Toggle chalkboard with 'A'
+                toggleNotesButton: 'S',      // Toggle speaker notes with 'S'
+            },
+
+            // Configuration for keyboard shortcuts/features
+            keyboard: {
+                // PDF export is handled automatically via print-pdf plugin/URL
+                13: 'next' // Press Enter to go next
+            },
+
+            plugins: [ 
+                RevealNotes, 
+                RevealMarkdown, 
+                RevealHighlight,
+                // The global variable for this plugin is 'RevealChalkboard'.
+                RevealChalkboard 
+            ]
+        });
+        
+        // Ensure click-to-reveal on fragments works for exercises
+        document.querySelectorAll('.grammar-box p').forEach(p => {
+            p.addEventListener('click', function() {
+                // Manually trigger the fragment step on click
+                Reveal.nextFragment(); 
+            });
+        });
+    </script>
+</body>
+</html>

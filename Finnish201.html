@@ -62,6 +62,13 @@
         .reveal td { border: 1px solid rgba(255, 255, 255, 0.2); }
         .reveal .fragment.answer { color: var(--heading-color); text-decoration: underline; font-weight: bold; }
         
+        /* Custom style for simple translations */
+        .reveal .trans { 
+            font-size: 0.85em; 
+            color: var(--accent-secondary); 
+            font-style: italic;
+        }
+
         /* Chalkboard button styling */
         .chalkboard-button {
             position: fixed;
@@ -96,23 +103,23 @@
                 <section>
                     <h1 style="font-size: 4em;">🇫🇮 SUOMI 2</h1>
                     <h2 style="color: var(--accent-primary);">Deep Dive Learning Path</h2>
-                    <p>Horizontal for Topics, Vertical for Depth. <b>Käytä nuolia!</b></p>
+                    <p>Horizontal for Topics, Vertical for Depth. <b>Käytä nuolia!</b> <span class="trans">(Use arrows!)</span></p>
                     <hr>
                     <p style="font-size: 0.6em; margin-top: 50px;">Computing Science, Vaasa (Ref: KSUO5051B)</p>
                 </section>
 
                 <!-- V-1: Course Overview -->
                 <section>
-                    <h2>Kurssin Tavoitteet (Course Goals)</h2>
+                    <h2>Kurssin Tavoitteet <span class="trans">(Course Goals)</span></h2>
                     <div style="text-align: left; columns: 2; font-size: 0.9em;">
                         <ul>
-                            <li><b>Päätevaltaisuus:</b> Mastering case endings.</li>
-                            <li><b>Asuminen:</b> Vocabulary for housing and furniture.</li>
-                            <li><b>Kuvaus:</b> Describing appearance, clothing, and colors.</li>
-                            <li><b>Lauseet:</b> Understanding Ownership & Eksistentiaalilauseet.</li>
+                            <li><b>Päätevaltaisuus:</b> <span class="trans">(Mastering case endings)</span></li>
+                            <li><b>Asuminen:</b> <span class="trans">(Vocabulary for housing and furniture)</span></li>
+                            <li><b>Kuvaus:</b> <span class="trans">(Describing appearance, clothing, and colors)</span></li>
+                            <li><b>Lauseet:</b> <span class="trans">(Sentences)</span> Understanding Ownership & <b>Eksistentiaalilauseet</b> <span class="trans">(Existential Clauses)</span>.</li>
                         </ul>
                     </div>
-                    <h3 style="color: var(--accent-secondary); margin-top: 20px;">Navigointi (Navigation)</h3>
+                    <h3 style="color: var(--accent-secondary); margin-top: 20px;">Navigointi <span class="trans">(Navigation)</span></h3>
                     <p style="font-size: 0.9em;"><b>&#8594; (Right Arrow):</b> Next Major Topic (e.g., Local Cases).</p>
                     <p style="font-size: 0.9em;"><b>&#8595; (Down Arrow):</b> Deeper Content, Rules, and Examples.</p>
                 </section>
@@ -125,22 +132,22 @@
             <section>
                 <!-- V-0: Topic Intro -->
                 <section>
-                    <h2>MODUULI 2: Paikallissijat (Local Cases) 📍</h2>
-                    <h3 style="color: var(--accent-primary);">Sisä- ja Ulkopaikallissijat (In- & On-Cases)</h3>
+                    <h2>MODUULI 2: Paikallissijat <span class="trans">(Local Cases)</span> 📍</h2>
+                    <h3 style="color: var(--accent-primary);">Sisä- ja Ulkopaikallissijat <span class="trans">(Internal & External Cases)</span></h3>
                     <p>Tell us <b>where</b> something is, <b>from where</b> it comes, or <b>to where</b> it goes.</p>
                     <div class="grammar-box">
-                        <p><b>Missä?</b> (Where?) &rarr; Inessiivi (-ssa/-ssä) / Adessiivi (-lla/-llä)</p>
-                        <p><b>Mistä?</b> (From where?) &rarr; Elatiivi (-sta/-stä) / Ablatiivi (-lta/-ltä)</p>
-                        <p><b>Mihin?</b> (To where?) &rarr; Illatiivi (-Vn, -hVn, -seen) / Allatiivi (-lle)</p>
+                        <p><b>Missä?</b> <span class="trans">(Where?)</span> &rarr; <b>Inessiivi</b> <span class="trans">(Inessive)</span> (-ssa/-ssä) / <b>Adessiivi</b> <span class="trans">(Adessive)</span> (-lla/-llä)</p>
+                        <p><b>Mistä?</b> <span class="trans">(From where?)</span> &rarr; <b>Elatiivi</b> <span class="trans">(Elative)</span> (-sta/-stä) / <b>Ablatiivi</b> <span class="trans">(Ablative)</span> (-lta/-ltä)</p>
+                        <p><b>Mihin?</b> <span class="trans">(To where?)</span> &rarr; <b>Illatiivi</b> <span class="trans">(Illative)</span> (-Vn, -hVn, -seen) / <b>Allatiivi</b> <span class="trans">(Allative)</span> (-lle)</p>
                     </div>
                 </section>
 
                 <!-- V-1: Description/Rules (The Six Cases Table) -->
                 <section>
-                    <h3>Paikallissijojen Yleiskatsaus (General Overview)</h3>
+                    <h3>Paikallissijojen Yleiskatsaus <span class="trans">(Local Cases Overview)</span></h3>
                     <table>
                         <thead>
-                            <tr><th>Inside (Sisä)</th><th>Ending</th><th>Outside (Ulko)</th><th>Ending</th></tr>
+                            <tr><th>Inside <span class="trans">(Sisä)</span></th><th>Ending</th><th>Outside <span class="trans">(Ulko)</span></th><th>Ending</th></tr>
                         </thead>
                         <tbody>
                             <tr><td><b>In</b> (Missä?)</td><td>-ssa / -ssä</td><td><b>On</b> (Missä?)</td><td>-lla / -llä</td></tr>
@@ -152,40 +159,56 @@
 
                 <!-- V-2: Page 1 of Examples (Illatiivi in Depth) -->
                 <section>
-                    <h3>Illatiivi: Mihin? (Movement INTO)</h3>
-                    <p>Illatiivi has three main endings for direction (To/Into):</p>
+                    <h3>Illatiivi: Mihin? <span class="trans">(Movement INTO)</span></h3>
+                    <p>Illatiivi <span class="trans">(Illative)</span> has three main endings for direction (To/Into):</p>
                     <table>
                         <thead>
-                            <tr><th>Rule</th><th>Pääte (Ending)</th><th>Esimerkki (Example)</th></tr>
+                            <tr><th>Rule</th><th>Pääte <span class="trans">(Ending)</span></th><th>Esimerkki <span class="trans">(Example)</span></th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Single vowel word</td><td><b>-Vn</b> (Long vowel)</td><td>talo &rarr; talo<b>on</b></td></tr>
-                            <tr><td>Word ends in two vowels (o, a, e, u)</td><td><b>-seen</b></td><td>Lontoo &rarr; Lontoo<b>seen</b></td></tr>
-                            <tr><td>One-syllable word (puu, maa)</td><td><b>-hVn</b></td><td>maa &rarr; maa<b>han</b></td></tr>
+                            <tr><td>Single vowel word</td><td><b>-Vn</b> (Long vowel)</td><td><b>talo</b> <span class="trans">(house)</span> &rarr; talo<b>on</b></td></tr>
+                            <tr><td>Word ends in two vowels (o, a, e, u)</td><td><b>-seen</b></td><td><b>Lontoo</b> <span class="trans">(London)</span> &rarr; Lontoo<b>seen</b></td></tr>
+                            <tr><td>One-syllable word (puu, maa)</td><td><b>-hVn</b></td><td><b>maa</b> <span class="trans">(country)</span> &rarr; maa<b>han</b></td></tr>
                         </tbody>
                     </table>
-                    <p class="fun-fact">Esim: <b>Mies menee taloon.</b> (The man goes into the house.)</p>
+                    <p class="fun-fact">Esim: <b>Mies menee taloon.</b> <span class="trans">(The man goes into the house.)</span></p>
                 </section>
                 
                 <!-- V-3: Fun Facts/Tips -->
                 <section>
-                    <h3>Vinkki: Sisä vs. Ulko</h3>
+                    <h3>Vinkki: Sisä vs. Ulko <span class="trans">(Tip: Internal vs. External)</span></h3>
                     <div class="grammar-box">
-                        <p>Use <b>Sisä-cases (-ssa/-sta/-Vn)</b> for concrete containment (house, room, city, cup, inside clothes).</p>
-                        <p>Use <b>Ulko-cases (-lla/-lta/-lle)</b> for surfaces, general location, or abstract items (table, floor, at the university, money on the person).</p>
+                        <p>Use <b>Sisä-cases <span class="trans">(Internal)</span> (-ssa/-sta/-Vn)</b> for concrete containment (house, room, city, cup, inside clothes).</p>
+                        <p>Use <b>Ulko-cases <span class="trans">(External)</span> (-lla/-lta/-lle)</b> for surfaces, general location, or abstract items (table, floor, at the university, money on the person).</p>
                     </div>
-                    <p class="fun-fact">Suomessa sanotaan: <b>Olen yliopistolla</b> (I am <i>on</i> the university campus) eikä yliopistossa (I am <i>inside</i> the university building). Remember the <b>-lla/-llä</b> for abstract locations!</p>
+                    <p class="fun-fact"><b>Suomessa sanotaan</b> <span class="trans">(In Finnish one says)</span>: <b>Olen yliopistolla</b> <span class="trans">(I am *at* the university)</span> <b>eikä</b> <span class="trans">(and not)</span> <b>yliopistossa</b> <span class="trans">(I am *inside* the university building)</span>. Remember the <b>-lla/-llä</b> for abstract locations!</p>
                 </section>
 
                 <!-- V-4: Page 2 of Examples/Practice (Fill-in) -->
                 <section>
-                    <h3>Harjoitus: Sisä- & Illatiivi</h3>
-                    <p>Täydennä oikea paikallissija (Fill in the correct local case).</p>
+                    <h3>Harjoitus: Sisä- & Illatiivi <span class="trans">(Exercise: Internal & Illative)</span></h3>
+                    <p><b>Täydennä oikea paikallissija</b> <span class="trans">(Fill in the correct local case)</span>.</p>
                     <div class="grammar-box">
-                        <p>1. Minä tulen koto<span class="fragment answer">a</span> (koti) &rarr; Elatiivi: koto<b>a</b> (Exception!)</p>
-                        <p>2. Hän menee <span class="fragment answer">keittiö<b>ön</b></span> (keittiö).</p>
-                        <p>3. Pekka asuu <span class="fragment answer">Vaasa<b>ssa</b></span> (Vaasa).</p>
-                        <p>4. Otatko kirjan <span class="fragment answer">pöydä<b>ltä</b></span> (pöytä).</p>
+                        <p>1. <b>Minä tulen</b> <span class="trans">(I come)</span> koto<span class="fragment answer">a</span> (<b>koti</b> <span class="trans">(home)</span>) &rarr; Elatiivi: koto<b>a</b> (Exception!)</p>
+                        <p>2. <b>Hän menee</b> <span class="trans">(She/He goes)</span> <span class="fragment answer">keittiö<b>ön</b></span> (<b>keittiö</b> <span class="trans">(kitchen)</span>).</p>
+                        <p>3. <b>Pekka asuu</b> <span class="trans">(Pekka lives)</span> <span class="fragment answer">Vaasa<b>ssa</b></span> (Vaasa).</p>
+                        <p>4. <b>Otatko kirjan</b> <span class="trans">(Do you take the book)</span> <span class="fragment answer">pöydä<b>ltä</b></span> (<b>pöytä</b> <span class="trans">(table)</span>).</p>
+                    </div>
+                </section>
+
+                <!-- V-5: NEW SLIDE - More Examples -->
+                <section>
+                    <h3>Lisää Esimerkkejä <span class="trans">(More Examples)</span></h3>
+                    <div class="grammar-box">
+                        <p><b>Missä? <span class="trans">(Where?)</span></b></p>
+                        <p style="margin-left: 20px;"><b>Olen</b> <span class="trans">(I am)</span> <b>kaupa<span style="color:var(--accent-primary)">ssa</span></b>. <span class="trans">(I am *in* the store.)</span></p>
+                        <p style="margin-left: 20px;"><b>Kirja on</b> <span class="trans">(The book is)</span> <b>pöydä<span style="color:var(--accent-primary)">llä</span></b>. <span class="trans">(The book is *on* the table.)</span></p>
+                        <p class="fragment fade-in"><b>Mistä? <span class="trans">(From where?)</span></b></p>
+                        <p style="margin-left: 20px;" class="fragment fade-in"><b>Tulen</b> <span class="trans">(I come)</span> <b>Suome<span style="color:var(--accent-primary)">sta</span></b>. <span class="trans">(I come *from* Finland.)</span></p>
+                        <p style="margin-left: 20px;" class="fragment fade-in"><b>Hän lähti</b> <span class="trans">(She/He left)</span> <b>tori<span style="color:var(--accent-primary)">lta</span></b>. <span class="trans">(She/He left *from* the market square.)</span></p>
+                        <p class="fragment fade-in"><b>Mihin? <span class="trans">(To where?)</span></b></p>
+                        <p style="margin-left: 20px;" class="fragment fade-in"><b>Menemme</b> <span class="trans">(We go)</span> <b>elokuvi<span style="color:var(--accent-primary)">in</span></b>. <span class="trans">(We go *to* the movies.)</span></p>
+                        <p style="margin-left: 20px;" class="fragment fade-in"><b>Anna se</b> <span class="trans">(Give it)</span> <b>minu<span style="color:var(--accent-primary)">lle</span></b>. <span class="trans">(Give it *to* me.)</span></p>
                     </div>
                 </section>
             </section>
@@ -197,58 +220,90 @@
             <section>
                 <!-- V-0: Topic Intro -->
                 <section>
-                    <h2>MODUULI 3: Adjektiivit ja Värit 🌈</h2>
+                    <h2>MODUULI 3: Adjektiivit ja Värit <span class="trans">(Adjectives and Colors)</span> 🌈</h2>
                     <h3 style="color: var(--accent-primary);">Adjective Agreement & Declension</h3>
-                    <p>Learning how to describe the world, like Pekka's <b>lyhyet ruskeat hiukset</b>.</p>
+                    <p>Learning how to describe the world, like Pekka's <b>lyhyet ruskeat hiukset</b> <span class="trans">(short brown hair)</span>.</p>
                 </section>
 
                 <!-- V-1: Description/Rules -->
                 <section>
-                    <h3>Muista Taivutus (Remember Declension)</h3>
+                    <h3>Muista Taivutus <span class="trans">(Remember Declension)</span></h3>
                     <div class="grammar-box">
-                        <p>Adjektiivit taipuvat aina samaan sijamuotoon ja lukuun kuin substantiivit.</p>
-                        <p style="font-size: 0.9em;">(Adjectives always decline to the same case and number as the noun.)</p>
-                        <p class="fragment fade-in">Esim: iso talo &rarr; iso<b>ssa</b> talo<b>ssa</b> (Inessive)</p>
-                        <p class="fragment fade-in">Esim: vanha sänky &rarr; vanha<b>sta</b> sängy<b>stä</b> (Elative, with gradation!)</p>
+                        <p><b>Adjektiivit</b> <span class="trans">(Adjectives)</span> <b>taipuvat</b> <span class="trans">(decline)</span> <b>aina</b> <span class="trans">(always)</span> <b>samaan</b> <span class="trans">(to the same)</span> <b>sijamuotoon</b> <span class="trans">(case)</span> <b>ja</b> <span class="trans">(and)</span> <b>lukuun</b> <span class="trans">(number)</span> <b>kuin</b> <span class="trans">(as)</span> <b>substantiivit</b> <span class="trans">(nouns)</span>.</p>
+                        <p class="fragment fade-in">Esim: <b>iso talo</b> <span class="trans">(big house)</span> &rarr; iso<b>ssa</b> talo<b>ssa</b> <span class="trans">(in a big house)</span></p>
+                        <p class="fragment fade-in">Esim: <b>vanha sänky</b> <span class="trans">(old bed)</span> &rarr; vanha<b>sta</b> sängy<b>stä</b> <span class="trans">(from an old bed)</span> (with gradation!)</p>
                     </div>
                 </section>
 
-                <!-- V-2: Page 1 of Examples (Colors) -->
+                <!-- V-2: NEW SLIDE - Grammar Role -->
                 <section>
-                    <h3>Värien Taivutus (Color Declension)</h3>
+                    <h3>Grammar: Adjective's Role</h3>
+                    <p><b>Adjektiivit kuvaavat substantiiveja.</b> <span class="trans">(Adjectives describe nouns.)</span></p>
+                    <div class="grammar-box">
+                        <p>The adjective *must* match the noun's case and number. It modifies the noun.</p>
+                        <p style="text-align: center; color: var(--accent-primary);">[Adjektiivi (case)] + [Substantiivi (case)]</p>
+                        <p><b>Nominatiivi:</b> <span style="color:var(--accent-secondary)">Uusi</span> auto. <span class="trans">(A new car.)</span></p>
+                        <p><b>Genetiivi:</b> <span style="color:var(--accent-secondary)">Uuden</span> auton avaimet. <span class="trans">(The new car's keys.)</span></p>
+                        <p><b>Inessiivi:</b> Nukun <span style="color:var(--accent-secondary)">uudessa</span> autossa. <span class="trans">(I sleep in a new car.)</span></p>
+                        <p><b>Allatiivi:</b> Annan lahjan <span style="color:var(--accent-secondary)">kiltille</span> lapselle. <span class="trans">(I give a gift to the kind child.)</span></p>
+                    </div>
+                </section>
+
+                <!-- V-3: Page 1 of Examples (Colors) -->
+                <section>
+                    <h3>Värien Taivutus <span class="trans">(Color Declension)</span></h3>
                     <table>
                         <thead>
-                            <tr><th>Nominatiivi</th><th>Partitiivi</th><th>Monikko (Plural)</th></tr>
+                            <tr><th>Nominatiivi <span class="trans">(Nom.)</span></th><th>Partitiivi <span class="trans">(Part.)</span></th><th>Monikko <span class="trans">(Plural)</span></th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><b>punainen</b></td><td>punaista</td><td>punaiset</td></tr>
-                            <tr><td><b>sininen</b></td><td>sinistä</td><td>siniset</td></tr>
-                            <tr class="fragment fade-in"><td><b>ruskea</b></td><td>ruskeaa</td><td>ruskeat</td></tr>
-                            <tr class="fragment fade-in"><td><b>keltainen</b></td><td>keltaista</td><td>keltaiset</td></tr>
+                            <tr><td><b>punainen</b> <span class="trans">(red)</span></td><td>punaista</td><td>punaiset</td></tr>
+                            <tr><td><b>sininen</b> <span class="trans">(blue)</span></td><td>sinistä</td><td>siniset</td></tr>
+                            <tr class="fragment fade-in"><td><b>ruskea</b> <span class="trans">(brown)</span></td><td>ruskeaa</td><td>ruskeat</td></tr>
+                            <tr class="fragment fade-in"><td><b>keltainen</b> <span class="trans">(yellow)</span></td><td>keltaista</td><td>keltaiset</td></tr>
                         </tbody>
                     </table>
-                    <p style="margin-top: 15px;">*Huomaa 'nen'-loppuiset sanat käyttävät <b>-sta/-stä</b> partitiivissä.*</p>
+                    <p style="margin-top: 15px;">*<b>Huomaa</b> <span class="trans">(Note)</span>: <b>'nen'-loppuiset</b> <span class="trans">('-nen' ending)</span> <b>sanat</b> <span class="trans">(words)</span> <b>käyttävät</b> <span class="trans">(use)</span> <b>-sta/-stä</b> partitiivissa.*</p>
                 </section>
 
-                <!-- V-3: Fun Facts/Tips -->
+                <!-- V-4: Fun Facts/Tips -->
                 <section>
                     <h3>Fun Fact: Vaalean- & Tummansininen</h3>
-                    <p>Suomessa voit lisätä 'vaalea' (light) tai 'tumma' (dark) etuliitteenä.</p>
+                    <p><b>Suomessa</b> <span class="trans">(In Finnish)</span> <b>voit lisätä</b> <span class="trans">(you can add)</span> <b>'vaalea'</b> <span class="trans">(light)</span> <b>tai</b> <span class="trans">(or)</span> <b>'tumma'</b> <span class="trans">(dark)</span> <b>etuliitteenä</b> <span class="trans">(as a prefix)</span>.</p>
                     <div class="grammar-box">
-                        <p>Vaalea + sininen &rarr; <b>Vaaleansininen</b> (Light blue)</p>
-                        <p>Tumma + sininen &rarr; <b>Tummansininen</b> (Dark blue)</p>
-                        <p class="fun-fact">Nämä taivutetaan kuten yksi sana! Esim: <b>Tummansinisessä</b> paidassa (In a dark blue shirt).</p>
+                        <p>Vaalea + sininen &rarr; <b>Vaaleansininen</b> <span class="trans">(Light blue)</span></p>
+                        <p>Tumma + sininen &rarr; <b>Tummansininen</b> <span class="trans">(Dark blue)</span></p>
+                        <p class="fun-fact"><b>Nämä taivutetaan</b> <span class="trans">(These are declined)</span> <b>kuin yksi sana</b> <span class="trans">(like one word)</span>! Esim: <b>Tummansinisessä</b> <b>paidassa</b> <span class="trans">(In a dark blue shirt)</span>.</p>
                     </div>
                 </section>
 
-                <!-- V-4: Page 2 of Examples/Practice -->
+                <!-- V-5: Page 2 of Examples/Practice -->
                 <section>
-                    <h3>Harjoitus: Adjektiivit</h3>
-                    <p>Täydennä lause oikein taivutetulla sanalla.</p>
+                    <h3>Harjoitus: Adjektiivit <span class="trans">(Exercise: Adjectives)</span></h3>
+                    <p><b>Täydennä lause</b> <span class="trans">(Complete the sentence)</span> <b>oikein taivutetulla sanalla</b> <span class="trans">(with the correctly declined word)</span>.</p>
                     <div class="grammar-box">
-                        <p>1. Ostan <span class="fragment answer">kaksi suur<b>ta</b></span> (kaksi suuri) kirjaa.</p>
-                        <p>2. Syön <span class="fragment answer">hyvä<b>ä</b></span> (hyvä) ruokaa.</p>
-                        <p>3. Hänellä on <span class="fragment answer">punaise<b>t</b></span> (punainen) kengät.</p>
+                        <p>1. <b>Ostan</b> <span class="trans">(I buy)</span> <span class="fragment answer">kaksi suur<b>ta</b></span> (<b>kaksi</b> <span class="trans">(two)</span> <b>suuri</b> <span class="trans">(big)</span>) <b>kirjaa</b> <span class="trans">(books-part.)</span>.</p>
+                        <p>2. <b>Syön</b> <span class="trans">(I eat)</span> <span class="fragment answer">hyvä<b>ä</b></span> (<b>hyvä</b> <span class="trans">(good)</span>) <b>ruokaa</b> <span class="trans">(food-part.)</span>.</p>
+                        <p>3. <b>Hänellä on</b> <span class="trans">(She/He has)</span> <span class="fragment answer">punaise<b>t</b></span> (<b>punainen</b> <span class="trans">(red)</span>) <b>kengät</b> <span class="trans">(shoes-pl.)</span>.</p>
+                    </div>
+                </section>
+
+                <!-- V-6: NEW SLIDE - More Adjective Practice -->
+                <section>
+                    <h3>Harjoitus: Kuvaus <span class="trans">(Exercise: Description)</span></h3>
+                    <p><b>Käännä <span class="trans">(Translate)</span>:</b> "I live in a small, blue house."</p>
+                    <div class="grammar-box">
+                        <p>"Minä asun..." <span class="trans">(I live...)</span></p>
+                        <p>pieni <span class="trans">(small)</span> &rarr; <span class="fragment fade-in">pienessä</span></p>
+                        <p>sininen <span class="trans">(blue)</span> &rarr; <span class="fragment fade-in">sinisessä</span></p>
+                        <p>talo <span class="trans">(house)</span> &rarr; <span class="fragment fade-in">talossa</span></p>
+                        <p><b>Vastaus <span class="trans">(Answer)</span>:</b> Minä asun <span class="fragment answer">pienessä sinisessä talossa</span>.</p>
+                    </div>
+                    <p class="fragment fade-in"><b>Käännä <span class="trans">(Translate)</span>:</b> "He has long, black hair." (pl.)</p>
+                    <div class="grammar-box fragment fade-in">
+                        <p>"Hänellä on..." <span class="trans">(He has...)</span></p>
+                        <p>pitkä <span class="trans">(long)</span> + musta <span class="trans">(black)</span> + hiukset <span class="trans">(hair)</span></p>
+                        <p><b>Vastaus <span class="trans">(Answer)</span>:</b> Hänellä on <span class="fragment answer">pitkät mustat hiukset</span>.</p>
                     </div>
                 </section>
             </section>
@@ -260,53 +315,93 @@
             <section>
                 <!-- V-0: Topic Intro -->
                 <section>
-                    <h2>MODUULI 4: Lausetyypit 💬</h2>
-                    <h3 style="color: var(--accent-primary);">Omistus- ja Eksistentiaalilause</h3>
+                    <h2>MODUULI 4: Lausetyypit <span class="trans">(Sentence Types)</span> 💬</h2>
+                    <h3 style="color: var(--accent-primary);">Omistus- ja Eksistentiaalilause <span class="trans">(Ownership & Existential Clause)</span></h3>
                     <p>Two essential clause types that don't translate literally to English.</p>
                 </section>
 
                 <!-- V-1: Description/Rules (Omistuslause) -->
                 <section>
-                    <h3>1. Omistuslause (Ownership Clause)</h3>
-                    <p style="color: var(--accent-secondary); font-weight: bold; font-size: 1.2em;">Adverbiaali (owner in Adessive) + Olla (verb) + Subjekti (item)</p>
+                    <h3>1. Omistuslause <span class="trans">(Ownership Clause)</span></h3>
+                    <p style="color: var(--accent-secondary); font-weight: bold; font-size: 1.2em;">Adverbiaali <span class="trans">(Adverbial)</span> + Olla <span class="trans">(Verb)</span> + Subjekti <span class="trans">(Subject)</span></p>
                     <div class="grammar-box">
                         <p>Owner is in <b>Adessive (-lla / -llä)</b>.</p>
-                        <p class="fragment fade-in">Minu<b>lla</b> on <b>koira</b>.</p>
-                        <p class="fragment fade-in">Peka<b>lla</b> on <b>silmälasit</b>.</p>
-                        <p class="fragment fade-in">Negatiivi: Heillä <b>ei ole</b> koira<b>a</b> (Item goes to Partitive).</p>
+                        <p class="fragment fade-in">Minu<b>lla</b> on <b>koira</b>. <span class="trans">(I have a dog. Lit: On me is a dog.)</span></p>
+                        <p class="fragment fade-in">Peka<b>lla</b> on <b>silmälasit</b>. <span class="trans">(Pekka has glasses.)</span></p>
+                        <p class="fragment fade-in"><b>Negatiivi <span class="trans">(Negative)</span>:</b> Heillä <b>ei ole</b> koira<b>a</b>. <span class="trans">(They don't have a dog - Item goes to Partitive)</span>.</p>
                     </div>
                 </section>
 
-                <!-- V-2: Description/Rules (Eksistentiaalilause) -->
+                <!-- V-2: NEW SLIDE - Ownership Grammar -->
                 <section>
-                    <h3>2. Eksistentiaalilause (Existential Clause)</h3>
-                    <p style="color: var(--accent-secondary); font-weight: bold; font-size: 1.2em;">Lokaali (location case) + Olla (verb) + Subjekti (item)</p>
+                    <h3>Omistuslause: Grammar</h3>
+                    <p>This structure is how Finnish expresses "to have". There is no single verb for "to have".</p>
+                    <div class="grammar-box">
+                        <p>The "owner" is put in the <b>Adessive case (-lla/-llä)</b> to show location (possession is "on" someone).</p>
+                        <p>The "item" is the subject (in <b>Nominative</b>).</p>
+                        <p style="color:var(--accent-primary)">[Owner]<b>-lla/llä</b> + <b>on</b> + [Item]<b>(Nom.)</b></p>
+                        <p class="fragment fade-in">In negation, the item *always* goes to the <b>Partitive case</b>.</p>
+                        <p class="fragment fade-in" style="color:var(--accent-primary)">[Owner]<b>-lla/llä</b> + <b>ei ole</b> + [Item]<b>(Part.)</b></p>
+                    </div>
+                </section>
+
+                <!-- V-3: Description/Rules (Eksistentiaalilause) -->
+                <section>
+                    <h3>2. Eksistentiaalilause <span class="trans">(Existential Clause)</span></h3>
+                    <p style="color: var(--accent-secondary); font-weight: bold; font-size: 1.2em;">Lokaali <span class="trans">(Location case)</span> + Olla <span class="trans">(Verb)</span> + Subjekti <span class="trans">(Item)</span></p>
                     <div class="grammar-box">
                         <p>Location comes first (Inessive, Adessive, etc.).</p>
-                        <p class="fragment fade-in">Keittiö<b>ssä</b> on <b>jääkaappi</b>.</p>
-                        <p class="fragment fade-in">Parvekkee<b>lla</b> on <b>kaksi tuolia</b>.</p>
-                        <p class="fragment fade-in">Talo<b>ssa ei ole</b> hiss<b>iä</b> (Item goes to Partitive).</p>
-                    </div>
-                </section>
-                
-                <!-- V-3: Fun Facts/Tips -->
-                <section>
-                    <h3>Fun Fact: Word Order is Fixed</h3>
-                    <p class="fun-fact"><b>Eksistentiaalilause</b> on suomeksi jäykkä (The Existential Clause is rigid in Finnish):</p>
-                    <div class="grammar-box">
-                        <p>You MUST say: <b>[Location]</b> on <b>[Item]</b>.</p>
-                        <p>EI: <b>Sänky</b> on makuuhuoneessa. (This is descriptive, NOT existential).</p>
-                        <p>Kyllä: <b>Makuuhuoneessa</b> on <b>sänky</b>.</p>
+                        <p class="fragment fade-in">Keittiö<b>ssä</b> on <b>jääkaappi</b>. <span class="trans">(In the kitchen is a refrigerator.)</span></p>
+                        <p class="fragment fade-in">Parvekkee<b>lla</b> on <b>kaksi tuolia</b>. <span class="trans">(On the balcony are two chairs.)</span></p>
+                        <p class="fragment fade-in">Talo<b>ssa ei ole</b> hiss<b>iä</b>. <span class="trans">(In the house is not an elevator - Item goes to Partitive)</span>.</p>
                     </div>
                 </section>
 
-                <!-- V-4: Practice -->
+                <!-- V-4: NEW SLIDE - Existential Grammar -->
                 <section>
-                    <h3>Harjoitus: Omistus- vai Eksistentiaalilause?</h3>
+                    <h3>Eksistentiaali: Grammar</h3>
+                    <p>Used to state the *existence* or *presence* of something in a location. It introduces a *new subject*.</p>
                     <div class="grammar-box">
-                        <p>1. (I have a cat.) &rarr; <span class="fragment answer">Minu<b>lla</b> on kissa.</span></p>
-                        <p>2. (There is a microwave in the kitchen.) &rarr; <span class="fragment answer">Keittiö<b>ssä</b> on mikro.</span></p>
-                        <p>3. (We don't have a car.) &rarr; <span class="fragment answer">Mei<b>llä ei ole</b> auto<b>a</b>.</span></p>
+                        <p>Word order is strict: <b>[Location] + [Verb] + [Subject]</b></p>
+                        <p><b>Pöydällä on kirja.</b> <span class="trans">(On the table is a book.)</span> &rarr; Correct, introduces the book.</p>
+                        <p class="fragment fade-in">If you reverse it: "<b>Kirja on pöydällä.</b>" <span class="trans">(The book is on the table.)</span> &rarr; This is a *descriptive* sentence. It assumes we already know *which* book we are talking about.</p>
+                    </div>
+                </section>
+
+                <!-- V-5: Fun Facts/Tips -->
+                <section>
+                    <h3>Fun Fact: Word Order is Fixed</h3>
+                    <p class="fun-fact"><b>Eksistentiaalilause</b> on suomeksi <b>jäykkä</b> <span class="trans">(The Existential Clause is rigid in Finnish)</span>:</p>
+                    <div class="grammar-box">
+                        <p>You MUST say: <b>[Location]</b> on <b>[Item]</b>.</p>
+                        <p><b>EI <span class="trans">(NO)</span>:</b> <b>Sänky</b> on makuuhuoneessa. <span class="trans">(This is descriptive, NOT existential)</span>.</p>
+                        <p><b>KYLLÄ <span class="trans">(YES)</span>:</b> <b>Makuuhuoneessa</b> on <b>sänky</b>. <span class="trans">(In the bedroom is a bed)</span>.</p>
+                    </div>
+                </section>
+
+                <!-- V-6: Practice -->
+                <section>
+                    <h3>Harjoitus: Omistus- vai Eksistentiaali? <span class="trans">(Exercise: Ownership or Existential?)</span></h3>
+                    <div class="grammar-box">
+                        <p>1. (I have a cat.) &rarr; <span class="fragment answer">Minu<b>lla</b> on kissa.</span> <span class="trans">(Ownership)</span></p>
+                        <p>2. (There is a microwave in the kitchen.) &rarr; <span class="fragment answer">Keittiö<b>ssä</b> on mikro.</span> <span class="trans">(Existential)</span></p>
+                        <p>3. (We don't have a car.) &rarr; <span class="fragment answer">Mei<b>llä ei ole</b> auto<b>a</b>.</span> <span class="trans">(Ownership, negative)</span></p>
+                    </div>
+                </section>
+
+                <!-- V-7: NEW SLIDE - More Clause Practice -->
+                <section>
+                    <h3>Harjoitus: Käännä <span class="trans">(Exercise: Translate)</span></h3>
+                    <div class="grammar-box" style="font-size: 0.9em;">
+                        <p>1. Does Pekka have a sister?</p>
+                        <p><b>Vastaus <span class="trans">(Answer)</span>:</b> <span class="fragment answer">Onko Pekalla siskoa?</span></p>
+                        <p class="fun-fact fragment fade-in">Why <b>siskoa</b> (Partitive)? Indefinite questions about possession often use the partitive case.</p>
+                        <p class="fragment fade-in">2. There are many trees in the forest.</p>
+                        <p><b>Vastaus <span class="trans">(Answer)</span>:</b> <span class="fragment answer">Metsässä on monta puuta.</span></p>
+                        <p class="fun-fact fragment fade-in">Why <b>puuta</b> (Partitive)? Quantities (like 'monta' - many) are followed by the partitive singular.</p>
+                        <p class="fragment fade-in">3. I don't have time.</p>
+                        <p><b>Vastaus <span class="trans">(Answer)</span>:</b> <span class="fragment answer">Minulla ei ole aikaa.</span></p>
+                        <p class="fun-fact fragment fade-in">Why <b>aikaa</b> (Partitive)? 'Aika' (time) is an uncountable mass noun, and all negative possession sentences use the partitive.</p>
                     </div>
                 </section>
             </section>
@@ -319,57 +414,84 @@
             <section>
                 <!-- V-0: Topic Intro -->
                 <section>
-                    <h2>MODUULI 5: Partitiivi & Astevaihtelu ✨</h2>
+                    <h2>MODUULI 5: Partitiivi & Astevaihtelu <span class="trans">(Partitive & Consonant Gradation)</span> ✨</h2>
                     <h3 style="color: var(--accent-primary);">Irresultative, Negation, Quantity, and the K-P-T change.</h3>
                 </section>
 
                 <!-- V-1: Partitive Description/Rules -->
                 <section>
-                    <h3>Partitiivin Pääkäytöt (Main Partitive Uses)</h3>
+                    <h3>Partitiivin Pääkäytöt <span class="trans">(Main Partitive Uses)</span></h3>
                     <div style="text-align: left;">
                         <ul style="list-style: none;">
-                            <li><b>1. Negation:</b> After a negative verb (En osta auto<b>a</b>).</li>
-                            <li><b>2. Quantity:</b> After numbers 2+ (kaksi tyttö<b>ä</b>).</li>
-                            <li><b>3. Mass Nouns:</b> Uncountable stuff (juon kahvi<b>a</b>).</li>
-                            <li><b>4. Ongoing:</b> Incomplete or irresultative action (luen kirja<b>a</b>).</li>
+                            <li><b>1. Negation:</b> After a negative verb (<b>En osta</b> <span class="trans">(I don't buy)</span> auto<b>a</b>).</li>
+                            <li><b>2. Quantity:</b> After numbers 2+ (<b>kaksi</b> <span class="trans">(two)</span> tyttö<b>ä</b>).</li>
+                            <li><b>3. Mass Nouns:</b> Uncountable stuff (<b>juon</b> <span class="trans">(I drink)</span> kahvi<b>a</b>).</li>
+                            <li><b>4. Ongoing:</b> Incomplete or irresultative action (<b>luen</b> <span class="trans">(I am reading)</span> kirja<b>a</b>).</li>
                         </ul>
                     </div>
                 </section>
 
-                <!-- V-2: Consonant Gradation Rules -->
+                <!-- V-2: NEW SLIDE - Partitive Grammar -->
                 <section>
-                    <h3>Astevaihtelu (Consonant Gradation)</h3>
-                    <p>Strong (Vahva) grade happens in the Nominative. Weak (Heikko) grade happens when an ending is attached.</p>
+                    <h3>Partitiivi: Grammar</h3>
+                    <p>The "some" case. It indicates an *incomplete*, *uncountable*, or *partial* amount. The action is not finished.</p>
+                    <div class="grammar-box">
+                        <p><b>Compare (Ongoing vs. Completed):</b></p>
+                        <p><b>Luen</b> <span style="color:var(--accent-primary)">kirja<b>a</b></span>. (Partitive) = I <b>am reading</b> a book. <span class="trans">(Ongoing)</span></p>
+                        <p><b>Luin</b> <span style="color:var(--accent-primary)">kirja<b>n</b></span>. (Accusative) = I <b>read</b> the book. <span class="trans">(Completed)</span></p>
+                        
+                        <p class="fragment fade-in"><b>Compare (Uncountable vs. Countable):</b></p>
+                        <p><b>Syön</b> <span style="color:var(--accent-primary)">kakku<b>a</b></span>. (Partitive) = I am eating (some) cake. <span class="trans">(Uncountable)</span></p>
+                        <p><b>Söin</b> <span style="color:var(--accent-primary)">kaku<b>n</b></span>. (Accusative) = I ate the (whole) cake. <span class="trans">(Countable, finished)</span></p>
+                    </div>
+                </section>
+
+                <!-- V-3: Consonant Gradation Rules -->
+                <section>
+                    <h3>Astevaihtelu <span class="trans">(Consonant Gradation)</span></h3>
+                    <p><b>Vahva</b> <span class="trans">(Strong)</span> grade happens in the Nominative. <b>Heikko</b> <span class="trans">(Weak)</span> grade happens when an ending is attached.</p>
                     <table>
-                        <thead><tr><th>Vahva (Strong)</th><th>Heikko (Weak)</th><th>Esimerkki (Example)</th></tr></thead>
+                        <thead><tr><th>Vahva <span class="trans">(Strong)</span></th><th>Heikko <span class="trans">(Weak)</span></th><th>Esimerkki <span class="trans">(Example)</span></th></tr></thead>
                         <tbody>
-                            <tr><td><b>kk</b></td><td>k</td><td>viikko &rarr; vii<b>ko</b>ssa</td></tr>
-                            <tr><td><b>tt</b></td><td>t</td><td>asunto &rarr; asu<b>nno</b>ssa (nt&rarr;nn)</td></tr>
-                            <tr><td><b>k</b></td><td>- (zero)</td><td>ruo<b>k</b>a &rarr; ruo<b>a</b>t</td></tr>
-                            <tr><td><b>p</b></td><td>v</td><td>lei<b>p</b>ä &rarr; lei<b>v</b>än</td></tr>
-                            <tr><td><b>t</b></td><td>d</td><td>pöy<b>t</b>ä &rarr; pöy<b>dä</b>llä</td></tr>
+                            <tr><td><b>kk</b></td><td>k</td><td><b>viikko</b> <span class="trans">(week)</span> &rarr; vii<b>ko</b>ssa</td></tr>
+                            <tr><td><b>tt</b></td><td>t</td><td><b>asunto</b> <span class="trans">(apartment)</span> &rarr; asu<b>nno</b>ssa (nt&rarr;nn)</td></tr>
+                            <tr><td><b>k</b></td><td>- (zero)</td><td>ruo<b>k</b>a <span class="trans">(food)</span> &rarr; ruo<b>a</b>t</td></tr>
+                            <tr><td><b>p</b></td><td>v</td><td><b>leipä</b> <span class="trans">(bread)</span> &rarr; lei<b>v</b>än</td></tr>
+                            <tr><td><b>t</b></td><td>d</td><td><b>pöytä</b> <span class="trans">(table)</span> &rarr; pöy<b>dä</b>llä</td></tr>
                         </tbody>
                     </table>
                 </section>
 
-                <!-- V-3: Fun Facts/Tips -->
+                <!-- V-4: NEW SLIDE - Gradation Grammar -->
                 <section>
-                    <h3>Fun Fact: Syvä/Heikko Äänne (Deep/Weak Sound)</h3>
-                    <p class="fun-fact">Astevaihtelu on peräisin kielihistoriasta. Kun sanaan lisättiin pääte, tavun paino siirtyi. Konsonantin äänne heikkeni helpottaakseen ääntämistä! (The consonant's sound weakened to ease pronunciation!)</p>
+                    <h3>Astevaihtelu: Grammar</h3>
+                    <p>This is a sound change in the *stem* of a word, affecting the consonants K, P, and T.</p>
+                    <div class="grammar-box">
+                        <p><b>Strong (Vahva) Grade:</b> Usually in the basic form (Nominative). e.g., <b style="color:var(--accent-primary)">pankki</b> <span class="trans">(bank)</span></p>
+                        <p><b>Weak (Heikko) Grade:</b> Usually appears when a case ending is added. e.g., <b style="color:var(--accent-primary)">pankissa</b> <span class="trans">(in the bank)</span></p>
+                        <p class="fragment fade-in">This happens to make pronunciation easier!</p>
+                        <p class="fragment fade-in">The change only happens in *closed syllables* (syllables ending in a consonant) when a new ending is added.</p>
+                        <p class="fragment fade-in">e.g., <b>ka<span style="color:var(--accent-primary)">t</span>u</b> <span class="trans">(street)</span> &rarr; <b>ka<span style="color:var(--accent-primary)">d</span>ulla</b> <span class="trans">(on the street)</span>. The syllable 'ka' was open, but 'dul' becomes closed.</p>
+                    </div>
+                </section>
+
+                <!-- V-5: Fun Facts/Tips -->
+                <section>
+                    <h3>Fun Fact: Syvä/Heikko Äänne <span class="trans">(Deep/Weak Sound)</span></h3>
+                    <p class="fun-fact"><b>Astevaihtelu</b> <span class="trans">(Gradation)</span> <b>on peräisin kielihistoriasta</b> <span class="trans">(originates from language history)</span>. <b>Kun</b> <span class="trans">(When)</span> <b>sanaan</b> <span class="trans">(to a word)</span> <b>lisättiin</b> <span class="trans">(was added)</span> <b>pääte</b> <span class="trans">(an ending)</span>, <b>tavun paino siirtyi</b> <span class="trans">(the syllable's stress moved)</span>. <b>Konsonantin äänne heikkeni</b> <span class="trans">(The consonant's sound weakened)</span> <b>helpottaakseen ääntämistä!</b> <span class="trans">(to ease pronunciation!)</span></p>
                     <p style="margin-top: 20px;">Harjoitus: Partitiivi + Gradation</p>
-                    <p>1. kolme <span class="fragment answer">tyt<b>tö</b>ä</span> (tyttö &rarr; tt/t is strong/weak rule, but here 'tt' stays strong for -ä Partitive)</p>
-                    <p>2. En osta <span class="fragment answer">u<b>t</b>ta auto<b>a</b></span> (uusi auto &rarr; k/t/p rule, but uusi takes -tta/-ttä partitive form)</p>
-                    <p class="fun-fact">Self-Correction: <b>Uusi</b> takes <b>uutta</b> (Type 5 word), and <b>kolme</b> takes <b>tyttöä</b> (no change in the consonant 'tt' for partitive ending -ä/ä).</p>
+                    <p>1. <b>kolme</b> <span class="trans">(three)</span> <span class="fragment answer">tyt<b>tö</b>ä</span> (<b>tyttö</b> <span class="trans">(girl)</span>) <span class="trans">(No change for partitive -ä)</span></p>
+                    <p>2. <b>En osta</b> <span class="trans">(I don't buy)</span> <span class="fragment answer">u<b>utt</b>a auto<b>a</b></span> (<b>uusi auto</b> <span class="trans">(new car)</span>) <span class="trans">(uusi &rarr; uutta)</span></p>
                 </section>
                 
-                <!-- V-4: Speaking/Writing Activity -->
+                <!-- V-6: Speaking/Writing Activity -->
                 <section>
-                    <h3>Kirjoitus Harjoitus (Writing Activity)</h3>
+                    <h3>Kirjoitus Harjoitus <span class="trans">(Writing Activity)</span></h3>
                     <p>Use the Chalkboard button (bottom right) to draft a few sentences in Finnish.</p>
                     <div class="grammar-box">
-                        <p><b>Task:</b> Kirjoita kolme lausetta käyttäen: <b>Partitiivi, Illatiivi,</b> ja <b>Astevaihtelu</b>.</p>
-                        <p>(Write three sentences using: Partitive, Illative, and Gradation.)</p>
-                        <p style="font-size: 0.8em; margin-top: 10px;">Esim: Ostan kaksi <b>punaista</b> <b>omenaa</b> (Partitive + Gradation: oma<b>n</b>a).</p>
+                        <p><b>Task:</b> <b>Kirjoita kolme lausetta</b> <span class="trans">(Write three sentences)</span> <b>käyttäen</b> <span class="trans">(using)</span>: <b>Partitiivi, Illatiivi,</b> ja <b>Astevaihtelu</b>.</p>
+                        <p style="font-size: 0.8em; margin-top: 10px;">Esim: <b>Ostan</b> <span class="trans">(I buy)</span> <b>kaksi</b> <span class="trans">(two)</span> <b style="color:var(--accent-secondary)">punaista</b> <b style="color:var(--accent-secondary)">omenaa</b>. <span class="trans">(I buy two red apples.)</span></p>
+                        <p style="font-size: 0.8em; margin-top: 10px;" class="fragment fade-in">Esim 2: <b>Mies menee</b> <span class="trans">(The man goes)</span> <b style="color:var(--accent-secondary)">pankkiin</b>. <span class="trans">(...into the bank.)</span> <span class="trans">(kk &rarr; k + iin = pankkiin)</span></p>
                     </div>
                 </section>
             </section>
@@ -381,31 +503,31 @@
             <section>
                 <!-- V-0: Final Review -->
                 <section>
-                    <h2>Kertaus ja Loppusanat (Review & Conclusion) 🚀</h2>
-                    <h3 style="color: var(--accent-primary);">Olet Valmis! (You are ready!)</h3>
+                    <h2>Kertaus ja Loppusanat <span class="trans">(Review & Conclusion)</span> 🚀</h2>
+                    <h3 style="color: var(--accent-primary);">Olet Valmis! <span class="trans">(You are ready!)</span></h3>
                     <p>This path covered the core of Finnish 2 modules:</p>
                     <p style="font-size: 0.9em;">Paikallissijat, Omistus/Eksistentiaalilauseet, Partitiivi, Astevaihtelu.</p>
                 </section>
 
                 <!-- V-1: Resources -->
                 <section>
-                    <h3>Resurssit (Resources)</h3>
+                    <h3>Resurssit <span class="trans">(Resources)</span></h3>
                     <div style="text-align: left;">
                         <h4 style="color: var(--accent-secondary);">Continue Your Study:</h4>
                         <ul>
-                            <li><b>Kirja:</b> Suomen mestari 1 (Review/Practice).</li>
-                            <li><b>Verkossa:</b> Yle Uutiset selkosuomeksi (News in Easy Finnish).</li>
-                            <li><b>Kuuntele:</b> Kuuntele suomalaista musiikkia (Listen to Finnish music).</li>
+                            <li><b>Kirja <span class="trans">(Book)</span>:</b> Suomen mestari 1 (Review/Practice).</li>
+                            <li><b>Verkossa <span class="trans">(Online)</span>:</b> Yle Uutiset selkosuomeksi <span class="trans">(Yle News in Easy Finnish)</span>.</li>
+                            <li><b>Kuuntele <span class="trans">(Listen)</span>:</b> <b>Kuuntele suomalaista musiikkia</b> <span class="trans">(Listen to Finnish music)</span>.</li>
                         </ul>
                     </div>
                 </section>
                 
                 <!-- V-2: Final Prompt -->
                 <section>
-                    <h3>Viimeinen Reflektio (Final Reflection)</h3>
+                    <h3>Viimeinen Reflektio <span class="trans">(Final Reflection)</span></h3>
                     <div class="grammar-box">
-                        <p>Mitä suomen kielen rakenteita tunnet nyt hallitsevasi?</p>
-                        <p>(What Finnish structures do you feel confident with now?)</p>
+                        <p><b>Mitä suomen kielen rakenteita tunnet nyt hallitsevasi?</b></p>
+                        <p class="trans">(What structures of the Finnish language do you feel you master now?)</p>
                         <p class="fun-fact">Press 'S' for speaker notes/PDF export, or 'A' to switch to a blank chalkboard for writing!</p>
                     </div>
                 </section>
@@ -440,7 +562,7 @@
             // Configuration for the Chalkboard plugin
             chalkboard: {
                 toggleChalkboardButton: 'A', // Toggle chalkboard with 'A'
-                toggleNotesButton: 'S',      // Toggle speaker notes with 'S'
+                toggleNotesButton: 'S',     // Toggle speaker notes with 'S'
             },
 
             // Configuration for keyboard shortcuts/features

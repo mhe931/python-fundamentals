@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Advanced Data Architecture - Exam 1 Study Guide</title>
+
+    <!-- Reveal.js CDN Links (Latest Stable) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <!-- Theme Selection (Simple for High Contrast) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/simple.css">
+    <!-- Highlight.js for Code Snippets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+
+    <!-- Custom Style for Aesthetic and Deep Dive Box -->
+    <style>
+        :root {
+            /* Custom Colors for High Contrast */
+            --main-heading-color: #1A237E; /* Deep Indigo/Blue */
+            --highlight-color: #FFD740; /* Gold/Yellow */
+            --background-color: #f7f7f7; /* Light background */
+            --main-background-color: #ffffff; /* White slide background */
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: var(--main-heading-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .reveal {
+            font-size: 1.1em; /* Mobile friendly adjustment */
+        }
+        .reveal .slides section {
+            background-color: var(--main-background-color);
+        }
+        .deep-dive {
+            background-color: #e8eaf6; /* Lighter shade of blue */
+            border-left: 8px solid var(--highlight-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: #333;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .key-insight {
+            background-color: var(--highlight-color);
+            color: var(--main-heading-color);
+            padding: 10px;
+            margin-top: 25px;
+            border: 2px dashed var(--main-heading-color);
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .reveal table th {
+            background-color: var(--main-heading-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ========================================================= -->
+            <!-- 1. INTRO / COVER SLIDE (Horizontal L0) -->
+            <!-- ========================================================= -->
+            <section data-menu-title="Course Start">
+                <h1>📚 Advanced Data Architecture</h1>
+                <h2>Exam 1 Study Guide (Lectures 1-4)</h2>
+                <br>
+                <p>Use ➡️ to navigate between Lectures.</p>
+                <p>Use ⬇️ for Deep Dives within a Lecture.</p>
+                <hr>
+                <p class="fragment">Activate **Drawing Mode** by pressing **B** or **C**.</p>
+                <p class="fragment">View **Speaker Notes** by pressing **S**.</p>
+                <aside class="notes">Welcome to the study guide. This comprehensive, self-contained file covers all mandated content for the first exam.</aside>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 2. LECTURE 1: Data Architecture Concepts (Horizontal L1) -->
+            <!-- ========================================================= -->
+            <section data-menu-title="L1: DA Concepts">
+                <section>
+                    <h2>L1: Data Architecture Concepts (DA)</h2>
+                    <hr>
+                    <p>DA is the **Blueprint and Governance** of an organization's data assets.</p>
+                    <ul>
+                        <li class="fragment">It defines *what* data is collected and *how* it flows.</li>
+                        <li class="fragment">It ensures **Consistency, Quality, and Availability**.</li>
+                    </ul>
+                    <div class="key-insight fragment">
+                        Fun Fact: A good DA strategy can reduce data integration costs by up to 30%.
+                    </div>
+                </section>
+
+                <!-- L1 Deep Dive 1: Roles -->
+                <section>
+                    <h3>DA Roles: Comparing Responsibilities</h3>
+                    <div class="deep-dive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Role</th>
+                                    <th>Primary Focus</th>
+                                    <th>Key Output</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>**DA (Architect)**</td>
+                                    <td>Blueprint, Governance, Strategy</td>
+                                    <td>Models (Conceptual/Logical)</td>
+                                </tr>
+                                <tr>
+                                    <td>**DE (Engineer)**</td>
+                                    <td>Infrastructure, Pipelines, Data Flow</td>
+                                    <td>ETL/ELT Scripts, Databases</td>
+                                </tr>
+                                <tr>
+                                    <td>**DS (Scientist)**</td>
+                                    <td>Consumption, Insights, Algorithms</td>
+                                    <td>Machine Learning Models, Reports</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- L1 Deep Dive 2: Models & Philosophy -->
+                <section>
+                    <h3>Models and Guiding Philosophy</h3>
+                    <h4>Data Models (The Progression)</h4>
+                    <p>Conceptual $\rightarrow$ Logical $\rightarrow$ Physical</p>
+                    <p>Entity $\rightarrow$ Attribute/Key $\rightarrow$ Data Type/Path</p>
+                    <hr>
+                    <h4>Guiding Philosophy: Form Follows Function</h4>
+                    <div class="deep-dive">
+                        <p>**Principle:** The design (Form) must be driven by the business need (Function).</p>
+                        <ul>
+                            <li>**Example:** If the function is **real-time fraud detection**, the form must be a **streaming architecture** (e.g., Kafka).</li>
+                            <li>A batch architecture would not be suitable for this function.</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 3. LECTURE 2: Foundational Principles (Horizontal L2) -->
+            <!-- ========================================================= -->
+            <section data-menu-title="L2: Principles">
+                <section>
+                    <h2>L2: Foundational Principles</h2>
+                    <hr>
+                    <p>Core principles ensuring robust data architecture:</p>
+                    <ul>
+                        <li>**Trust:** Accuracy and reliability of data.</li>
+                        <li>**Scale:** Ability to handle growth in volume and velocity.</li>
+                        <li>**Modularity:** Decoupled systems for flexibility and resilience.</li>
+                    </ul>
+                    <div class="key-insight fragment">
+                        Key Insight: Data Architecture is less about the tools and more about the principles used to organize data.
+                    </div>
+                </section>
+
+                <!-- L2 Deep Dive 1: Trust & Ownership -->
+                <section>
+                    <h3>Trust and Data Ownership</h3>
+                    <h4>Single Source of Truth (SSOT)</h4>
+                    <ul>
+                        <li>**Definition:** For every data element (e.g., Customer Name), there is **one master system** designated as the definitive, trustworthy origin.</li>
+                        <li>**Goal:** Eliminates discrepancies and conflicting reports across departments.</li>
+                    </ul>
+                    <h4>Data as a Product</h4>
+                    <div class="deep-dive">
+                        <p>Data should be managed, owned, and measured for utility just like a software product.</p>
+                        <ul>
+                            <li>Requires clear **ownership**, established **SLAs (Service Level Agreements)**, and continuous **quality checks**.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- L2 Deep Dive 2: Scale & Structure -->
+                <section>
+                    <h3>Scale, Loose Coupling, and Frameworks</h3>
+                    <h4>Scalability via Loose Coupling</h4>
+                    <ul>
+                        <li>**Definition:** Systems are designed to be independent of each other.</li>
+                        <li>**Mechanism:** Often achieved using a **Broker Pattern** (Pub-Sub), where systems communicate indirectly through a message broker (e.g., a queue).</li>
+                        <li>**Benefit:** Prevents core systems from being overloaded by downstream consumers.</li>
+                    </ul>
+                    <hr>
+                    <h4>Architecture Frameworks</h4>
+                    <p>TOGAF (**The Process/Roadmap**) vs. Zachman (**The Taxonomy/Checklist**)</p>
+                </section>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 4. LECTURE 3: Data Warehousing (Horizontal L3) -->
+            <!-- ========================================================= -->
+            <section data-menu-title="L3: DWH">
+                <section>
+                    <h2>L3: Data Warehousing (DWH)</h2>
+                    <hr>
+                    <p>DWH is the centralized repository for **structured data** built for **OLAP** (Online Analytical Processing).</p>
+                    <ul>
+                        <li class="fragment">Optimized for **read performance** and complex, historical querying.</li>
+                        <li class="fragment">Focuses on **BI (Business Intelligence)** and reporting.</li>
+                    </ul>
+                    <div class="key-insight fragment">
+                        Fun Fact: The concept of the Data Warehouse was formally defined in the late 1980s by Bill Inmon and Ralph Kimball.
+                    </div>
+                </section>
+
+                <!-- L3 Deep Dive 1: DWH vs. Lake Table -->
+                <section>
+                    <h3>DWH vs. Data Lake (Classic View)</h3>
+                    <div class="deep-dive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>DWH</th>
+                                    <th>Data Lake</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>**Data Type**</td>
+                                    <td>Structured Only</td>
+                                    <td>All Types (Raw, Unstructured, Structured)</td>
+                                </tr>
+                                <tr>
+                                    <td>**Process**</td>
+                                    <td>ETL (Extract, Transform, Load)</td>
+                                    <td>ELT (Extract, Load, Transform)</td>
+                                </tr>
+                                <tr>
+                                    <td>**Schema**</td>
+                                    <td>Schema-on-Write (**Rigid**)</td>
+                                    <td>Schema-on-Read (**Flexible**)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Note on ETL</h4>
+                    <p>The **Staging Area** is where the "**T**" (Transformation) primarily happens, cleaning and conforming data before the final load into the DWH.</p>
+                </section>
+
+                <!-- L3 Deep Dive 2: Model & Operations -->
+                <section>
+                    <h3>Model and OLAP Operations</h3>
+                    <h4>The Star Schema Model</h4>
+                    <p>The standard model for DWH:</p>
+                    <p>**Fact Table** (Metrics/Measures) ↔ **Dimension Tables** (Context/Who, What, When, Where)</p>
+                    <hr>
+                    <h4>OLAP Operations (Multidimensional Analysis)</h4>
+                    <ul>
+                        <li>**Roll-Up ($\uparrow$):** Aggregating data to **less detail** (e.g., daily sales $\rightarrow$ monthly sales).</li>
+                        <li>**Drill-Down ($\downarrow$):** Navigating to **more detail** (e.g., total sales $\rightarrow$ sales by individual item).</li>
+                        <li>**Slice/Dice:** Filtering data across one (Slice) or multiple (Dice) dimensions.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 5. LECTURE 4: Data Lakes and Modern DW (Horizontal L4) -->
+            <!-- ========================================================= -->
+            <section data-menu-title="L4: Data Lakes">
+                <section>
+                    <h2>L4: Data Lakes and Modern DW</h2>
+                    <hr>
+                    <p>A Data Lake is a centralized repository that stores all data at scale, regardless of its structure.</p>
+                    <ul>
+                        <li class="fragment">It is the home for **variety** and **raw, unexplored** data.</li>
+                        <li class="fragment">It enables **Data Science** and advanced analytics use cases.</li>
+                    </ul>
+                    <div class="key-insight fragment">
+                        Fun Fact: Data Lakes were initially built on low-cost object storage like Hadoop HDFS or AWS S3.
+                    </div>
+                </section>
+
+                <!-- L4 Deep Dive 1: Design & Risk -->
+                <section>
+                    <h3>Design Approach and Key Risk</h3>
+                    <h4>Design: The Bottom-Up Approach</h4>
+                    <p>The Lake processes data in stages:</p>
+                    <p>Ingest $\rightarrow$ Analyze $\rightarrow$ Structure (only *after* analysis determines the need)</p>
+                    <hr>
+                    <h4>The Data Swamp Risk ⚠️</h4>
+                    <div class="deep-dive">
+                        <p>**Definition:** A Data Lake that becomes unusable due to a total lack of organization.</p>
+                        <p>**Cause:** Insufficient **Metadata** (data about the data) and **Governance** (rules on usage/quality).</p>
+                        <p>Without metadata, data cannot be found or trusted.</p>
+                    </div>
+                </section>
+
+                <!-- L4 Deep Dive 2: Solutions -->
+                <section>
+                    <h3>Modern Solutions</h3>
+                    <h4>Solution 1: Layered Architecture</h4>
+                    <p>Applying structure through stages of refinement:</p>
+                    <ul>
+                        <li>**Raw (Bronze):** Unmodified, time-stamped source data.</li>
+                        <li>**Cleaned (Silver):** Standardized, quality-checked, and integrated data.</li>
+                        <li>**Curated (Gold):** Aggregated, modeled, and ready for BI/reporting (DWH-like).</li>
+                    </ul>
+                    <h4>Solution 2: The Data Lakehouse</h4>
+                    <div class="deep-dive">
+                        <p>**Convergence:** Blends the best of DWH and Data Lake.</p>
+                        <p>**Key Feature:** Adds DWH features (**ACID transactions** and **Schema Enforcement**) directly to the Data Lake's low-cost storage.</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- 6. END SLIDE (Horizontal L5) -->
+            <!-- ========================================================= -->
+            <section data-menu-title="End of Study">
+                <h2>🎉 Exam 1 Content Complete!</h2>
+                <hr>
+                <p>You have covered all topics from Lectures 1 through 4.</p>
+                <br>
+                <p>Good luck with your exam preparation!</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Core Script (Latest Stable) -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+
+    <!-- Plugin Scripts (Latest CDN Links) -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
+
+    <!-- Initialization Script -->
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            // Strict 2D navigation (horizontal lectures, vertical deep dives)
+            navigationMode: 'linear',
+
+            // Plugins
+            plugins: [ 
+                RevealMarkdown, 
+                RevealNotes, 
+                RevealHighlight, 
+                RevealMenu,
+                // Chalkboard initialized with default settings
+                RevealChalkboard 
+            ],
+
+            // Custom Configuration for Menu
+            menu: {
+                themes: false, // Disable theme selector in menu
+                // Menu only shows horizontal slides by default, but the data-menu-title
+                // attribute on all <section> elements makes all slides appear.
+            },
+            
+            // Custom Configuration for Chalkboard
+            chalkboard: {
+                // Key to activate chalkboard (default is 'c')
+                toggleChalkboardButton: 'B', 
+                // Key to activate slide notes (default is 'b')
+                toggleNotesButton: 'B', 
+            },
+        });
+    </script>
+
+</body>
+</html>

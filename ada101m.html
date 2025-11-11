@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Advanced Data Architecture - Exam 1 (S24 Ultra)</title>
+
+    <!-- Reveal.js 5 (Latest - Nov 2025) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/monokai-sublime.min.css">
+
+    <!-- Samsung S24 Ultra Optimized CSS -->
+    <style>
+        :root {
+            --r-main-font: "SamsungOne", system-ui, -apple-system, sans-serif;
+            --main-heading: #E3F2FD;
+            --highlight: #FFD740;
+            --bg: #0D1117;
+            --text: #C9D1D9;
+            --deep-dive: #1E2A44;
+            --border: #FFD740;
+        }
+
+        body { 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .reveal {
+            font-family: var(--r-main-font);
+            font-size: 1.35em; /* ~22px on S24 Ultra */
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            color: var(--main-heading);
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .reveal .slides section {
+            padding: 6vh 8vw;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .reveal ul, .reveal ol {
+            margin: 1.5em 0;
+            padding-left: 1.2em;
+        }
+
+        .reveal li {
+            margin: 0.9em 0;
+            padding-left: 0.3em;
+        }
+
+        .deep-dive {
+            background: var(--deep-dive);
+            border-left: 10px solid var(--highlight);
+            border-radius: 12px;
+            padding: 1.8em;
+            margin: 2em 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            font-size: 0.95em;
+        }
+
+        .key-insight {
+            background: linear-gradient(135deg, #FFD740, #FFAB00);
+            color: #0D1117;
+            padding: 1.5em;
+            margin: 2.5em 0;
+            border-radius: 16px;
+            font-weight: 800;
+            text-align: center;
+            font-size: 1.1em;
+            box-shadow: 0 10px 30px rgba(255,215,64,0.4);
+        }
+
+        .reveal table {
+            width: 100%;
+            margin: 2em 0;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        .reveal table th {
+            background: var(--highlight);
+            color: #0D1117;
+            padding: 1em;
+            font-weight: 700;
+        }
+
+        .reveal table td {
+            background: #161B22;
+            padding: 1em;
+            border-radius: 8px;
+        }
+
+        /* Touch-friendly progress bar */
+        .reveal .progress {
+            height: 8px;
+            background: rgba(255,215,64,0.3);
+        }
+
+        /* Hide controls on mobile - use swipe */
+        .reveal .controls {
+            display: none !important;
+        }
+
+        /* Fullscreen notch safety */
+        .reveal .slides {
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+
+        /* Auto dark mode */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #FAFAFA;
+                --text: #1A1A1A;
+                --deep-dive: #E3F2FD;
+            }
+            .reveal { background: var(--bg); color: var(--text); }
+            .reveal .slides section { background: var(--bg); }
+            .reveal table td { background: #EEEEEE; }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- COVER -->
+            <section data-menu-title="Start">
+                <h1>📚 Advanced Data Architecture</h1>
+                <h2>Exam 1 Study Guide</h2>
+                <h3>Lectures 1–4 | S24 Ultra Edition</h3>
+                <br><br>
+                <p style="font-size:1.1em;">Swipe ➡️ for next lecture<br>Swipe ⬇️ for deep dive</p>
+                <hr style="border:2px solid var(--highlight); width:60%;">
+                <p>Press <kbd>B</kbd> → Draw/Highlight<br>Press <kbd>S</kbd> → Speaker Notes</p>
+                <aside class="notes">Optimized for Samsung S24 Ultra. Works offline. Use two fingers to zoom if needed.</aside>
+            </section>
+
+            <!-- LECTURE 1 -->
+            <section data-menu-title="L1: Concepts">
+                <section>
+                    <h2>L1: Data Architecture Concepts</h2>
+                    <hr>
+                    <ul>
+                        <li>DA = <strong>Blueprint + Governance</strong> of data assets</li>
+                        <li>Defines <em>what</em> data + <em>how</em> it flows</li>
+                        <li>Ensures <strong>Consistency • Quality • Availability</strong></li>
+                    </ul>
+                    <div class="key-insight">
+                        Good DA cuts integration costs by up to 30%
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Roles Comparison</h3>
+                    <div class="deep-dive">
+                        <table>
+                            <tr><th>Role</th><th>Focus</th><th>Output</th></tr>
+                            <tr><td><strong>DA Architect</strong></td><td>Strategy & Models</td><td>Conceptual/Logical Models</td></tr>
+                            <tr><td><strong>DE Engineer</strong></td><td>Pipelines & Infra</td><td>ETL, DBs, Kafka</td></tr>
+                            <tr><td><strong>DS Scientist</strong></td><td>Insights & ML</td><td>Models, Reports</td></tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Models & Philosophy</h3>
+                    <p><strong>Conceptual → Logical → Physical</strong></p>
+                    <hr>
+                    <div class="deep-dive">
+                        <p><strong>Form Follows Function</strong></p>
+                        <ul>
+                            <li>Real-time fraud? → <strong>Streaming (Kafka)</strong></li>
+                            <li>Batching monthly reports? → <strong>Batch OK</strong></li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+            <!-- LECTURE 2 -->
+            <section data-menu-title="L2: Principles">
+                <section>
+                    <h2>L2: Foundational Principles</h2>
+                    <hr>
+                    <ul>
+                        <li><strong>Trust</strong>: Accuracy + Reliability</li>
+                        <li><strong>Scale</strong>: Volume + Velocity</li>
+                        <li><strong>Modularity</strong>: Loose coupling</li>
+                    </ul>
+                    <div class="key-insight">DA is about principles, not tools</div>
+                </section>
+
+                <section>
+                    <h3>Trust & Ownership</h3>
+                    <p><strong>SSOT</strong>: One master system per data element</p>
+                    <div class="deep-dive">
+                        <p><strong>Data as a Product</strong></p>
+                        <ul>
+                            <li>Owner + SLA + Quality Gates</li>
+                            <li>Treat data like software</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Scale & Frameworks</h3>
+                    <p><strong>Loose Coupling</strong> → Broker Pattern (Pub/Sub)</p>
+                    <hr>
+                    <p>TOGAF = <em>Process</em><br>Zachman = <em>Checklist</em></p>
+                </section>
+            </section>
+
+            <!-- LECTURE 3 -->
+            <section data-menu-title="L3: DWH">
+                <section>
+                    <h2>L3: Data Warehousing</h2>
+                    <hr>
+                    <p>Centralized repo for <strong>structured</strong> data → <strong>OLAP</strong></p>
+                    <div class="key-insight">Inmon vs Kimball (1980s)</div>
+                </section>
+
+                <section>
+                    <h3>DWH vs Data Lake</h3>
+                    <div class="deep-dive">
+                        <table>
+                            <tr><th></th><th>DWH</th><th>Lake</th></tr>
+                            <tr><td>Data</td><td>Structured</td><td>All types</td></tr>
+                            <tr><td>Process</td><td>ETL</td><td>ELT</td></tr>
+                            <tr><td>Schema</td><td>on-Write</td><td>on-Read</td></tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Star Schema & OLAP</h3>
+                    <p><strong>Fact</strong> ↔ <strong>Dimensions</strong></p>
+                    <hr>
+                    <ul>
+                        <li>Roll-Up ↑ (aggregate)</li>
+                        <li>Drill-Down ↓ (detail)</li>
+                        <li>Slice/Dice (filter)</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- LECTURE 4 -->
+            <section data-menu-title="L4: Lakes">
+                <section>
+                    <h2>L4: Data Lakes & Lakehouse</h2>
+                    <hr>
+                    <p>Raw data at scale → enables DS/ML</p>
+                    <div class="key-insight">Born on HDFS / S3</div>
+                </section>
+
+                <section>
+                    <h3>Design & Swamp Risk</h3>
+                    <p>Bottom-up: Ingest → Analyze → Structure</p>
+                    <div class="deep-dive">
+                        <p><strong>Data Swamp</strong> = No metadata + No governance</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Solutions</h3>
+                    <p><strong>Medallion Layers</strong>:</p>
+                    <ul>
+                        <li>Bronze → Raw</li>
+                        <li>Silver → Cleaned</li>
+                        <li>Gold → Curated (BI-ready)</li>
+                    </ul>
+                    <hr>
+                    <div class="deep-dive">
+                        <p><strong>Lakehouse</strong> = Lake + ACID + Schema</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- END -->
+            <section>
+                <h2>Exam 1 Complete!</h2>
+                <p style="font-size:2em;">You’re ready!</p>
+                <p>Good luck from Finland!<br>— @wysiwyg93</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js 5 + Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/menu/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: false,
+            progress: true,
+            center: true,
+            touch: true,
+            shuffle: false,
+            margin: 0.05,
+            minScale: 1.0,
+            maxScale: 1.0,
+            navigationMode: 'linear',
+            overview: false,
+
+            plugins: [ RevealMenu, RevealHighlight, RevealNotes, RevealChalkboard ],
+
+            chalkboard: {
+                toggleChalkboardButton: { key: 'B' },
+                toggleNotesButton: { key: 'S' },
+                color: [ '#FFD740', '#FF4081' ]
+            },
+
+            menu: {
+                side: 'left',
+                numbers: true,
+                openButton: false
+            },
+
+            // Force vertical scroll for deep dives
+            embedded: false,
+            autoSlide: 0
+        });
+
+        // Auto-enter fullscreen on mobile
+        if (screen.width <= 428) {
+            document.documentElement.requestFullscreen?.();
+        }
+    </script>
+</body>
+</html>

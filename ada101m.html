@@ -1,341 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Advanced Data Architecture - Exam 1 (S24 Ultra)</title>
-
-    <!-- Reveal.js 5 (Latest - Nov 2025) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
-
-    <!-- Highlight.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/monokai-sublime.min.css">
-
-    <!-- Samsung S24 Ultra Optimized CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ADA Exam 1 • S24 Ultra • OFFLINE</title>
     <style>
-        :root {
-            --r-main-font: "SamsungOne", system-ui, -apple-system, sans-serif;
-            --main-heading: #E3F2FD;
-            --highlight: #FFD740;
-            --bg: #0D1117;
-            --text: #C9D1D9;
-            --deep-dive: #1E2A44;
-            --border: #FFD740;
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;
+            background:#0f0c29;background:linear-gradient(to bottom,#0f0c29,#302b63,#24243e);
+            color:#fff;overflow-x:hidden;
+            overscroll-behavior:none;
         }
-
-        body { 
-            -webkit-tap-highlight-color: transparent;
+        .slides{
+            width:100vw;height:100vh;
+            scroll-snap-type:y mandatory;
+            overflow-y:scroll;
+            scroll-behavior:smooth;
         }
-
-        .reveal {
-            font-family: var(--r-main-font);
-            font-size: 1.35em; /* ~22px on S24 Ultra */
+        .slide{
+            width:100vw;height:100vh;
+            scroll-snap-align:start;
+            padding:10vh 6vw 10vh;
+            display:flex;flex-direction:column;
+            background:rgba(15,12,41,0.95);
+            position:relative;
         }
-
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
-            color: var(--main-heading);
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        .slide h1{font-size:3.2em;font-weight:900;color:#FFD700;text-shadow:0 0 20px #FFD700;margin-bottom:0.5em;}
+        .slide h2{font-size:2.5em;color:#00D4FF;margin:1em 0;}
+        .slide h3{font-size:1.9em;color:#FF6B6B;margin:1em 0;}
+        .card{
+            background:rgba(255,255,255,0.08);
+            border:2px solid #FFD700;
+            border-radius:20px;
+            padding:1.8em;
+            margin:1.5em 0;
+            backdrop-filter:blur(10px);
+            box-shadow:0 10px 30px rgba(0,0,0,0.6);
         }
-
-        .reveal .slides section {
-            padding: 6vh 8vw;
-            text-align: left;
-            line-height: 1.6;
+        .deep{background:linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d);border-left:10px solid #FFD700;}
+        .gold{background:#FFD700;color:#000;padding:1.5em;border-radius:20px;text-align:center;font-weight:900;font-size:1.3em;margin:2em 0;}
+        ul{padding-left:1.5em;margin:1.5em 0;}
+        li{margin:0.8em 0;font-size:1.2em;line-height:1.6;}
+        img{max-width:100%;border-radius:16px;margin:1.5em 0;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
+        .nav{
+            position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+            background:rgba(0,0,0,0.8);padding:12px 32px;border-radius:50px;
+            backdrop-filter:blur(20px);z-index:999;color:#FFD700;font-weight:bold;
         }
-
-        .reveal ul, .reveal ol {
-            margin: 1.5em 0;
-            padding-left: 1.2em;
-        }
-
-        .reveal li {
-            margin: 0.9em 0;
-            padding-left: 0.3em;
-        }
-
-        .deep-dive {
-            background: var(--deep-dive);
-            border-left: 10px solid var(--highlight);
-            border-radius: 12px;
-            padding: 1.8em;
-            margin: 2em 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            font-size: 0.95em;
-        }
-
-        .key-insight {
-            background: linear-gradient(135deg, #FFD740, #FFAB00);
-            color: #0D1117;
-            padding: 1.5em;
-            margin: 2.5em 0;
-            border-radius: 16px;
-            font-weight: 800;
-            text-align: center;
-            font-size: 1.1em;
-            box-shadow: 0 10px 30px rgba(255,215,64,0.4);
-        }
-
-        .reveal table {
-            width: 100%;
-            margin: 2em 0;
-            border-collapse: separate;
-            border-spacing: 0 8px;
-        }
-
-        .reveal table th {
-            background: var(--highlight);
-            color: #0D1117;
-            padding: 1em;
-            font-weight: 700;
-        }
-
-        .reveal table td {
-            background: #161B22;
-            padding: 1em;
-            border-radius: 8px;
-        }
-
-        /* Touch-friendly progress bar */
-        .reveal .progress {
-            height: 8px;
-            background: rgba(255,215,64,0.3);
-        }
-
-        /* Hide controls on mobile - use swipe */
-        .reveal .controls {
-            display: none !important;
-        }
-
-        /* Fullscreen notch safety */
-        .reveal .slides {
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-        }
-
-        /* Auto dark mode */
-        @media (prefers-color-scheme: light) {
-            :root {
-                --bg: #FAFAFA;
-                --text: #1A1A1A;
-                --deep-dive: #E3F2FD;
-            }
-            .reveal { background: var(--bg); color: var(--text); }
-            .reveal .slides section { background: var(--bg); }
-            .reveal table td { background: #EEEEEE; }
-        }
+        .progress{position:fixed;top:0;left:0;height:6px;background:#FFD700;width:0%;z-index:1000;transition:width 0.3s;}
+        .draw{position:fixed;top:20px;right:20px;background:#FFD700;color:#000;width:70px;height:70px;
+            border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5em;
+            box-shadow:0 0 30px #FFD700;z-index:999;}
+        canvas{position:fixed;top:0;left:0;z-index:998;pointer-events:none;}
     </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
+    <div class="progress" id="p"></div>
+    <canvas id="c"></canvas>
+    <div class="draw" id="draw">✍️</div>
 
-            <!-- COVER -->
-            <section data-menu-title="Start">
-                <h1>📚 Advanced Data Architecture</h1>
-                <h2>Exam 1 Study Guide</h2>
-                <h3>Lectures 1–4 | S24 Ultra Edition</h3>
-                <br><br>
-                <p style="font-size:1.1em;">Swipe ➡️ for next lecture<br>Swipe ⬇️ for deep dive</p>
-                <hr style="border:2px solid var(--highlight); width:60%;">
-                <p>Press <kbd>B</kbd> → Draw/Highlight<br>Press <kbd>S</kbd> → Speaker Notes</p>
-                <aside class="notes">Optimized for Samsung S24 Ultra. Works offline. Use two fingers to zoom if needed.</aside>
-            </section>
+    <div class="slides">
+        <!-- 1 -->
+        <div class="slide" style="background:radial-gradient(circle at center,#1a2a6c,#000);text-align:center;justify-content:center;">
+            <h1>Advanced Data Architecture</h1>
+            <h2 style="font-size:2.8em;color:#FFD700;">Exam 1 Study Guide</h2>
+            <div class="gold" style="font-size:1.8em;margin:2em;">Lectures 1–4<br>S24 Ultra • OFFLINE EDITION</div>
+            <p style="font-size:1.5em;">Swipe ↑↓ for deep dives<br>Swipe ←→ for lectures</p>
+            <p style="margin-top:3em;font-size:1.3em;">Tap ✍️ to draw with finger</p>
+        </div>
 
-            <!-- LECTURE 1 -->
-            <section data-menu-title="L1: Concepts">
-                <section>
-                    <h2>L1: Data Architecture Concepts</h2>
-                    <hr>
-                    <ul>
-                        <li>DA = <strong>Blueprint + Governance</strong> of data assets</li>
-                        <li>Defines <em>what</em> data + <em>how</em> it flows</li>
-                        <li>Ensures <strong>Consistency • Quality • Availability</strong></li>
-                    </ul>
-                    <div class="key-insight">
-                        Good DA cuts integration costs by up to 30%
-                    </div>
-                </section>
+        <!-- L1 -->
+        <div class="slide"><h2>L1: Data Architecture Concepts</h2>
+            <div class="card"><ul>
+                <li>DA = <strong>Blueprint + Governance</strong></li>
+                <li>Defines <em>what</em> data + <em>how</em> it flows</li>
+                <li>Ensures <strong>Consistency • Quality • Availability</strong></li>
+            </ul></div>
+            <div class="gold">Good DA cuts costs by 30%</div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" data-lazy="https://i.ibb.co.com/7v3XvZJ/blueprint.png" onload="this.src=this.dataset.lazy">
+        </div>
 
-                <section>
-                    <h3>Roles Comparison</h3>
-                    <div class="deep-dive">
-                        <table>
-                            <tr><th>Role</th><th>Focus</th><th>Output</th></tr>
-                            <tr><td><strong>DA Architect</strong></td><td>Strategy & Models</td><td>Conceptual/Logical Models</td></tr>
-                            <tr><td><strong>DE Engineer</strong></td><td>Pipelines & Infra</td><td>ETL, DBs, Kafka</td></tr>
-                            <tr><td><strong>DS Scientist</strong></td><td>Insights & ML</td><td>Models, Reports</td></tr>
-                        </table>
-                    </div>
-                </section>
+        <div class="slide"><h3>Roles Comparison</h3>
+            <div class="card deep">
+                <table style="width:100%;border-collapse:collapse;font-size:1.1em;">
+                    <tr style="background:#FFD700;color:#000;"><th>Role</th><th>Focus</th><th>Output</th></tr>
+                    <tr><td>DA Architect</td><td>Strategy</td><td>Models</td></tr>
+                    <tr><td>DE Engineer</td><td>Pipelines</td><td>ETL/Kafka</td></tr>
+                    <tr><td>DS Scientist</td><td>ML</td><td>Models</td></tr>
+                </table>
+            </div>
+        </div>
 
-                <section>
-                    <h3>Models & Philosophy</h3>
-                    <p><strong>Conceptual → Logical → Physical</strong></p>
-                    <hr>
-                    <div class="deep-dive">
-                        <p><strong>Form Follows Function</strong></p>
-                        <ul>
-                            <li>Real-time fraud? → <strong>Streaming (Kafka)</strong></li>
-                            <li>Batching monthly reports? → <strong>Batch OK</strong></li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
+        <div class="slide"><h3>Form Follows Function</h3>
+            <div class="card deep">
+                <p style="font-size:2em;color:#FFD700;">Real-time fraud → Kafka streaming</p>
+                <p style="font-size:1.5em;">Monthly reports → Batch OK</p>
+            </div>
+        </div>
 
-            <!-- LECTURE 2 -->
-            <section data-menu-title="L2: Principles">
-                <section>
-                    <h2>L2: Foundational Principles</h2>
-                    <hr>
-                    <ul>
-                        <li><strong>Trust</strong>: Accuracy + Reliability</li>
-                        <li><strong>Scale</strong>: Volume + Velocity</li>
-                        <li><strong>Modularity</strong>: Loose coupling</li>
-                    </ul>
-                    <div class="key-insight">DA is about principles, not tools</div>
-                </section>
+        <!-- L2 -->
+        <div class="slide"><h2>L2: Foundational Principles</h2>
+            <div class="card"><ul>
+                <li><strong>Trust</strong>: Accuracy + Reliability</li>
+                <li><strong>Scale</strong>: Volume + Velocity</li>
+                <li><strong>Modularity</strong>: Loose coupling</li>
+            </ul></div>
+            <div class="gold">PRINCIPLES > Tools</div>
+        </div>
 
-                <section>
-                    <h3>Trust & Ownership</h3>
-                    <p><strong>SSOT</strong>: One master system per data element</p>
-                    <div class="deep-dive">
-                        <p><strong>Data as a Product</strong></p>
-                        <ul>
-                            <li>Owner + SLA + Quality Gates</li>
-                            <li>Treat data like software</li>
-                        </ul>
-                    </div>
-                </section>
+        <div class="slide"><h3>SSOT & Data as Product</h3>
+            <div class="card deep">
+                <p>One master system per data element</p>
+                <p>Owner + SLA + Quality gates</p>
+            </div>
+        </div>
 
-                <section>
-                    <h3>Scale & Frameworks</h3>
-                    <p><strong>Loose Coupling</strong> → Broker Pattern (Pub/Sub)</p>
-                    <hr>
-                    <p>TOGAF = <em>Process</em><br>Zachman = <em>Checklist</em></p>
-                </section>
-            </section>
+        <!-- L3 -->
+        <div class="slide"><h2>L3: Data Warehouse</h2>
+            <div class="card">
+                <p>Structured • OLAP • Star Schema</p>
+            </div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" data-lazy="https://i.ibb.co.com/5Yh5Z5K/star-schema.png" onload="this.src=this.dataset.lazy">
+        </div>
 
-            <!-- LECTURE 3 -->
-            <section data-menu-title="L3: DWH">
-                <section>
-                    <h2>L3: Data Warehousing</h2>
-                    <hr>
-                    <p>Centralized repo for <strong>structured</strong> data → <strong>OLAP</strong></p>
-                    <div class="key-insight">Inmon vs Kimball (1980s)</div>
-                </section>
+        <div class="slide"><h3>DWH vs Lake</h3>
+            <div class="card deep">
+                <table style="width:100%;"><tr style="background:#FFD700;color:#000;"><th></th><th>DWH</th><th>Lake</th></tr>
+                <tr><td>Data</td><td>Structured</td><td>All</td></tr>
+                <tr><td>Process</td><td>ETL</td><td>ELT</td></tr>
+                <tr><td>Schema</td><td>on-Write</td><td>on-Read</td></tr></table>
+            </div>
+        </div>
 
-                <section>
-                    <h3>DWH vs Data Lake</h3>
-                    <div class="deep-dive">
-                        <table>
-                            <tr><th></th><th>DWH</th><th>Lake</th></tr>
-                            <tr><td>Data</td><td>Structured</td><td>All types</td></tr>
-                            <tr><td>Process</td><td>ETL</td><td>ELT</td></tr>
-                            <tr><td>Schema</td><td>on-Write</td><td>on-Read</td></tr>
-                        </table>
-                    </div>
-                </section>
+        <!-- L4 -->
+        <div class="slide"><h2>L4: Data Lakes & Lakehouse</h2>
+            <div class="card">
+                <p>Raw data at scale → ML ready</p>
+            </div>
+            <div class="gold">Bronze → Silver → Gold</div>
+        </div>
 
-                <section>
-                    <h3>Star Schema & OLAP</h3>
-                    <p><strong>Fact</strong> ↔ <strong>Dimensions</strong></p>
-                    <hr>
-                    <ul>
-                        <li>Roll-Up ↑ (aggregate)</li>
-                        <li>Drill-Down ↓ (detail)</li>
-                        <li>Slice/Dice (filter)</li>
-                    </ul>
-                </section>
-            </section>
+        <div class="slide"><h3>Data Swamp Risk</h3>
+            <div class="card deep">
+                <p>No metadata + No governance = 💀</p>
+            </div>
+        </div>
 
-            <!-- LECTURE 4 -->
-            <section data-menu-title="L4: Lakes">
-                <section>
-                    <h2>L4: Data Lakes & Lakehouse</h2>
-                    <hr>
-                    <p>Raw data at scale → enables DS/ML</p>
-                    <div class="key-insight">Born on HDFS / S3</div>
-                </section>
+        <div class="slide"><h3>Lakehouse</h3>
+            <div class="gold">Lake + ACID + Schema = Best of both</div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" data-lazy="https://i.ibb.co.com/7v3XvZJ/lakehouse.png" onload="this.src=this.dataset.lazy">
+        </div>
 
-                <section>
-                    <h3>Design & Swamp Risk</h3>
-                    <p>Bottom-up: Ingest → Analyze → Structure</p>
-                    <div class="deep-dive">
-                        <p><strong>Data Swamp</strong> = No metadata + No governance</p>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Solutions</h3>
-                    <p><strong>Medallion Layers</strong>:</p>
-                    <ul>
-                        <li>Bronze → Raw</li>
-                        <li>Silver → Cleaned</li>
-                        <li>Gold → Curated (BI-ready)</li>
-                    </ul>
-                    <hr>
-                    <div class="deep-dive">
-                        <p><strong>Lakehouse</strong> = Lake + ACID + Schema</p>
-                    </div>
-                </section>
-            </section>
-
-            <!-- END -->
-            <section>
-                <h2>Exam 1 Complete!</h2>
-                <p style="font-size:2em;">You’re ready!</p>
-                <p>Good luck from Finland!<br>— @wysiwyg93</p>
-            </section>
-
+        <!-- END -->
+        <div class="slide" style="background:linear-gradient(135deg,#1a2a6c,#b21f1f);text-align:center;justify-content:center;">
+            <h1 style="font-size:4em;">YOU'RE READY!</h1>
+            <div class="gold" style="font-size:2em;">Exam 1 = DESTROYED</div>
+            <p style="margin-top:3em;font-size:1.5em;">@wysiwyg93 • Finland<br>Made at 01:07 AM EET</p>
         </div>
     </div>
 
-    <!-- Reveal.js 5 + Plugins -->
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/menu/menu.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
+    <div class="nav">Slide <span id="cur">1</span> / <span id="tot">12</span></div>
 
     <script>
-        Reveal.initialize({
-            hash: true,
-            controls: false,
-            progress: true,
-            center: true,
-            touch: true,
-            shuffle: false,
-            margin: 0.05,
-            minScale: 1.0,
-            maxScale: 1.0,
-            navigationMode: 'linear',
-            overview: false,
+        const slides = document.querySelectorAll('.slide');
+        document.getElementById('tot').textContent = slides.length;
+        let drawing = false, ctx, lastX, lastY;
+        const canvas = document.getElementById('c');
+        canvas.width = innerWidth; canvas.height = innerHeight;
+        ctx = canvas.getContext('2d'); ctx.lineWidth = 5; ctx.lineCap = 'round';
 
-            plugins: [ RevealMenu, RevealHighlight, RevealNotes, RevealChalkboard ],
-
-            chalkboard: {
-                toggleChalkboardButton: { key: 'B' },
-                toggleNotesButton: { key: 'S' },
-                color: [ '#FFD740', '#FF4081' ]
-            },
-
-            menu: {
-                side: 'left',
-                numbers: true,
-                openButton: false
-            },
-
-            // Force vertical scroll for deep dives
-            embedded: false,
-            autoSlide: 0
+        // Progress + counter
+        window.addEventListener('scroll', () => {
+            const h = document.body.scrollHeight - innerHeight;
+            const p = (scrollY / h) * 100;
+            document.getElementById('p').style.width = p + '%';
+            slides.forEach((s,i) => { if (s.offsetTop <= scrollY + 100) document.getElementById('cur').textContent = i+1; });
         });
 
-        // Auto-enter fullscreen on mobile
-        if (screen.width <= 428) {
-            document.documentElement.requestFullscreen?.();
-        }
+        // Drawing
+        document.getElementById('draw').onclick = () => {
+            drawing = !drawing;
+            canvas.style.pointerEvents = drawing ? 'auto' : 'none';
+            document.getElementById('draw').style.background = drawing ? '#FF4081' : '#FFD700';
+            if (!drawing) ctx.beginPath();
+        };
+        canvas.addEventListener('touchstart', e => {
+            if (!drawing) return;
+            const t = e.touches[0];
+            lastX = t.clientX; lastY = t.clientY;
+            ctx.strokeStyle = '#FFD700'; ctx.beginPath(); ctx.moveTo(lastX, lastY);
+        });
+        canvas.addEventListener('touchmove', e => {
+            if (!drawing) return;
+            e.preventDefault();
+            const t = e.touches[0];
+            ctx.lineTo(t.clientX, t.clientY); ctx.stroke();
+            lastX = t.clientX; lastY = t.clientY;
+        });
+
+        // Fullscreen
+        setTimeout(() => document.documentElement.requestFullscreen?.(), 800);
     </script>
 </body>
 </html>

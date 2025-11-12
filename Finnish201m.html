@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>SUOMI 2 • Dataydin-Opas (Data Core Guide)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;800&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* ADA THEME COLORS: BLACK, NEON, GOLD */
+        :root {
+            --bg: #000;
+            --card: #0b0b1a;
+            --gold: #FFD700;
+            --neon: #00D4FF;
+            --purple: #9D00FF;
+            --text: #E8E8E8;
+            --error: #FF6B6B; /* Used for negative examples/warnings */
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Exo 2', system-ui, -apple-system, sans-serif;
+            font-size: 18px;
+            line-height: 1.55;
+            overscroll-behavior: none;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            padding: 8vh 5vw 8vh;
+            display: flex;
+            flex-direction: column;
+            background: #000;
+            position: relative;
+        }
+        .slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top center, #111 0%, #000 70%);
+            opacity: 0.9;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.8em;
+            font-weight: 900;
+            color: var(--gold);
+            text-align: center;
+            margin: 0.4em 0;
+            text-shadow: 0 0 20px rgba(255,215,0,0.4);
+        }
+        h2 { font-size: 2.1em; color: var(--neon); margin: 0.6em 0 0.4em; font-weight: 700; }
+        h3 { font-size: 1.6em; color: var(--error); margin: 0.8em 0 0.4em; font-weight: 600; }
+        .card {
+            background: rgba(20,20,40,0.7);
+            border: 1px solid #333;
+            border-left: 5px solid var(--neon); /* Neon accent line */
+            border-radius: 12px;
+            padding: 1.2em;
+            margin: 0.8em 0;
+            backdrop-filter: blur(8px);
+            /* flex: 1; */
+            overflow-y: auto;
+        }
+        .gold {
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+            color: #000;
+            padding: 0.8em;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.05em;
+            margin: 1em 0;
+            box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+        }
+        .trans {
+            font-size: 0.85em;
+            color: #ccc;
+            font-style: italic;
+        }
+        ul { padding-left: 1.4em; margin: 0.6em 0; list-style: none; }
+        li { margin: 0.5em 0; font-size: 0.95em; position: relative; padding-left: 1.2em; }
+        li::before { content: "»"; position: absolute; left: 0; color: var(--gold); font-size: 1.1em; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 0.8em 0; font-size: 0.85em; }
+        th, td { padding: 0.6em; border: 1px solid #444; text-align: left; }
+        th { background: #222; color: var(--gold); font-weight: 700; }
+        td { color: var(--text); }
+        
+        .answer {
+            color: var(--gold);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+        .progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--neon));
+            width: 0%; z-index: 1000; box-shadow: 0 0 10px rgba(255,215,0,0.6);
+        }
+        .nav {
+            position: fixed; bottom: 16px; right: 16px; background: rgba(0,0,0,0.75);
+            color: var(--gold); font-size: 0.85em; font-weight: bold; padding: 6px 12px;
+            border-radius: 20px; border: 1px solid var(--gold); backdrop-filter: blur(10px);
+            z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .footer { font-size: 0.8em; opacity: 0.7; text-align: center; margin-top: auto; padding-top: 1em; }
+    </style>
+</head>
+<body>
+    <div class="progress" id="progress"></div>
+    <div class="nav">Slide <span id="current">1</span> / <span id="total">18</span></div>
+
+    <div class="container" id="slides">
+        <div class="slide" style="text-align:center; justify-content:center;">
+            <h1 style="font-size: 4em;">🇫🇮 SUOMI 2</h1>
+            <h2 style="font-size:2.4em; color:var(--neon);">Dataydin-Opas: Syväsukellus (Deep Dive)</h2>
+            <div class="gold" style="font-size:1.3em;">Computing Science • Vaasa, Finland • S24 Optimized</div>
+            <p style="margin:1.5em 0; font-size:1.1em;">18 Slides of Core Grammar. Scroll <i class="fa-solid fa-arrow-down"></i> to begin.</p>
+            <div class="footer">Self-Study Module • Nov 2025</div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M2"><h2>MODUULI 2: Paikallissijat 📍</h2>
+            <div class="card">
+                <h3>Sisä- ja Ulkopaikallissijat <span class="trans">(Internal & External Cases)</span></h3>
+                <ul>
+                    <li>Tells <b>where</b> (<span class="answer">Missä?</span>), <b>from where</b> (<span class="answer">Mistä?</span>), or <b>to where</b> (<span class="answer">Mihin?</span>).</li>
+                    <li>Internal cases (-ssa/-stä/-Vn) imply **containment** (house, city, cup).</li>
+                    <li>External cases (-lla/-lta/-lle) imply **surface** or **abstract location** (table, at the school).</li>
+                </ul>
+            </div>
+            <div class="card" style="flex-grow:0;">
+                <table>
+                    <thead>
+                        <tr><th>Inside</th><th>Ending</th><th>Outside</th><th>Ending</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>In</b> (Missä?)</td><td>-ssa / -ssä</td><td><b>On</b> (Missä?)</td><td>-lla / -llä</td></tr>
+                        <tr><td><b>Out of</b> (Mistä?)</td><td>-sta / -stä</td><td><b>Off of</b> (Mistä?)</td><td>-lta / -ltä</td></tr>
+                        <tr><td><b>Into</b> (Mihin?)</td><td>-Vn / -seen / -hVn</td><td><b>Onto</b> (Mihin?)</td><td>-lle</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M2"><h2>Illatiivi (Mihin?) <span class="trans">(Movement INTO)</span></h2>
+            <div class="card">
+                <h3>Illative Endings (To/Into)</h3>
+                <table>
+                    <thead>
+                        <tr><th>Rule</th><th>Pääte <span class="trans">(Ending)</span></th><th>Esimerkki <span class="trans">(Example)</span></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Single Vowel Word</td><td><b>-Vn</b> (Long Vowel)</td><td><b>talo</b> &rarr; talo<b>on</b></td></tr>
+                        <tr><td>Ends in Two Vowels</td><td><b>-seen</b></td><td><b>Lontoo</b> &rarr; Lontoo<b>seen</b></td></tr>
+                        <tr><td>One-Syllable Word</td><td><b>-hVn</b></td><td><b>maa</b> &rarr; maa<b>han</b></td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:1em; font-size: 0.9em; border-left: 3px solid var(--neon); padding-left: 10px;">
+                    <span style="color:var(--gold);">Esim:</span> Mies menee <span class="answer">talo<b>on</b></span>. <span class="trans">(The man goes into the house.)</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M2"><h2>Harjoitus: Paikallissijat ⚙️</h2>
+            <div class="card">
+                <h3>Täydennä oikea pääte <span class="trans">(Fill in the correct ending)</span></h3>
+                <p>» <span style="color:var(--neon);">Minä asun</span> Vaasa<span class="answer">ssa</span>. (Inessive: Missä?)</p>
+                <p>» <span style="color:var(--neon);">Hän menee</span> keittiö<span class="answer">ön</span>. (Illative: Mihin?)</p>
+                <p>» <span style="color:var(--neon);">Tule pois</span> tori<span class="answer">lta</span>. (Ablative: Mistä?)</p>
+                <p>» <span style="color:var(--neon);">Laita kirja</span> hylly<span class="answer">lle</span>. (Allative: Mihin?)</p>
+                <p style="margin-top:1.5em; color:var(--error); font-weight:bold;">Vinkki: <span class="trans">(Tip)</span> Muista poikkeus: Koti <span class="trans">(Home)</span> &rarr; koto<span class="answer">a</span> (Elative) &rarr; koti<span class="answer">in</span> (Illative).</p>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M3"><h2>MODUULI 3: Adjektiivit ja Värit 🌈</h2>
+            <div class="card">
+                <h3>Adjective Agreement (Taivutus)</h3>
+                <p>» Adjectives must <b>ALWAYS match the noun's case and number</b>.</p>
+                <p style="text-align: center; margin: 1em 0; color:var(--neon); font-weight:bold;">[Adjektiivi (case)] + [Substantiivi (case)]</p>
+                <ul>
+                    <li><b>Nominatiivi:</b> <span class="answer">Uusi</span> auto. <span class="trans">(A new car.)</span></li>
+                    <li><b>Inessiivi:</b> Nukun <span class="answer">uude<b>ssa</b></span> auto<span class="answer">ssa</span>. <span class="trans">(I sleep in a new car.)</span></li>
+                    <li><b>Allatiivi:</b> Annan lahjan <span class="answer">kilti<b>lle</b></span> lapse<span class="answer">lle</span>. <span class="trans">(To the kind child.)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M3"><h2>Värien Taivutus <span class="trans">(Color Declension)</span></h2>
+            <div class="card">
+                <h3>'nen'-loppuiset sanat (Words ending in -nen)</h3>
+                <p>Words like **punainen** (red), **sininen** (blue), **keltainen** (yellow) use the -sta/-stä stem for the Partitive.</p>
+                <table>
+                    <thead>
+                        <tr><th>Nominatiivi</th><th>Partitiivi</th><th>Monikko <span class="trans">(Plural)</span></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>punainen</b></td><td>punaista</td><td>punaiset</td></tr>
+                        <tr><td><b>sininen</b></td><td>sinistä</td><td>siniset</td></tr>
+                        <tr><td><b>ruskea</b></td><td>ruskeaa</td><td>ruskeat</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Esim: Tummansininen <span class="trans">(Dark blue)</span> &rarr; Tummansinise<b>ssä</b> <span class="trans">(In dark blue)</span>. (Declined as one word!)
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M3"><h2>Harjoitus: Adjektiivit 📝</h2>
+            <div class="card">
+                <h3>Käännä lauseet <span class="trans">(Translate the sentences)</span></h3>
+                <p style="margin-bottom:1.5em; border-bottom: 1px dashed #333; padding-bottom: 0.8em;">
+                    1. (I live in a small, blue house.)
+                    <br><span class="answer" style="font-size: 1.1em; color:var(--gold);">Minä asun pienessä sinisessä talossa.</span>
+                </p>
+                <p>
+                    2. (He has long, black hair.) (Hair is plural: *hiukset*)
+                    <br><span class="answer" style="font-size: 1.1em; color:var(--gold);">Hänellä on pitkät mustat hiukset.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M4"><h2>MODUULI 4: Lausetyypit 💬</h2>
+            <div class="card">
+                <h3>Omistuslause <span class="trans">(Ownership Clause - "To Have")</span></h3>
+                <p style="color: var(--neon); font-weight: bold; font-size: 1.2em;">[Owner]-lla/llä + olla (on) + [Item](Nom.)</p>
+                <ul>
+                    <li>Owner is in the **Adessive Case** (-lla/-llä). Possession is 'on' someone.</li>
+                    <li><span style="color:var(--gold);">Minu<b>lla</b> on koira.</span> <span class="trans">(I have a dog. Lit: On me is a dog.)</span></li>
+                    <li><span style="color:var(--error);">Negation:</span> Item goes to **Partitive**. <span style="color:var(--error);">Mei<b>llä ei ole</b> auto<b>a</b>.</span> <span class="trans">(We don't have a car.)</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="M4"><h2>Eksistentiaalilause <span class="trans">(Existential Clause - "There Is")</span></h2>
+            <div class="card">
+                <h3>Location, Verb, Subject Word Order</h3>
+                <p style="color: var(--neon); font-weight: bold; font-size: 1.2em;">[Location Case] + olla (on) + [Item](Nom.)</p>
+                <ul>
+                    <li>Used to state the **existence** of a *new* or *indefinite* item in a location.</li>
+                    <li><span style="color:var(--gold);">Keittiö<b>ssä</b> on jääkaappi.</span> <span class="trans">(In the kitchen is a refrigerator.)</span></li>
+                    <li>**Word Order is Fixed:** Location must come first.</li>
+                    <li><span style="color:var(--error);">Talo<b>ssa ei ole</b> hiss<b>iä</b>.</span> <span class="trans">(In the house is not an elevator - Item in Partitive)</span>.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="M4"><h2>Harjoitus: Lauseet 🧩</h2>
+            <div class="card">
+                <h3>Omistus- vai Eksistentiaali?</h3>
+                <p>» (I have a cat.) <span class="trans">(Ownership)</span>
+                    <br><span class="answer">Minu<b>lla</b> on kissa.</span>
+                </p>
+                <p>» (There is a microwave in the kitchen.) <span class="trans">(Existential)</span>
+                    <br><span class="answer">Keittiö<b>ssä</b> on mikro.</span>
+                </p>
+                <p>» (Does Pekka have a sister?) <span class="trans">(Ownership Question)</span>
+                    <br><span class="answer">Onko Pekalla sisko<b>a</b>?</span> <span style="color:var(--error);">(Partitive for indefinite possession question)</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M5"><h2>MODUULI 5: Partitiivi ✨</h2>
+            <div class="card">
+                <h3>Partitiivin Pääkäytöt <span class="trans">(Main Partitive Uses)</span></h3>
+                <ul>
+                    <li>1. **Negation:** After a negative verb (En osta auto<b>a</b>).</li>
+                    <li>2. **Quantity:** After numbers > 1 (kolme tyttö<b>ä</b>).</li>
+                    <li>3. **Mass Nouns/Uncountable:** (juon kahvi<b>a</b>, aika<b>a</b>).</li>
+                    <li>4. **Ongoing Action (Irresultative):** The action is not finished (luen kirja<b>a</b>).</li>
+                </ul>
+            </div>
+            <div class="card" style="flex-grow:0; font-size: 0.9em;">
+                <p>» **Ongoing (Partitive):** <span style="color:var(--neon);">Luen kirja<b>a</b>.</span> <span class="trans">(I am reading a book - in the middle of it.)</span></p>
+                <p>» **Completed (Accusative):** <span style="color:var(--gold);">Luin kirja<b>n</b>.</span> <span class="trans">(I read the whole book - finished.)</span></p>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M5"><h2>Astevaihtelu <span class="trans">(Consonant Gradation)</span></h2>
+            <div class="card">
+                <h3>Vahva <span class="trans">(Strong)</span> vs. Heikko <span class="trans">(Weak)</span> Grade</h3>
+                <p>» Sound change in the word stem (K, P, T) to ease pronunciation when a case ending is attached.</p>
+                <table>
+                    <thead><tr><th>Vahva</th><th>Heikko</th><th>Esimerkki</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>kk</b></td><td>k</td><td><b>viikko</b> &rarr; vii<b>ko</b>ssa</td></tr>
+                        <tr><td><b>tt</b></td><td>t</td><td><b>asunto</b> &rarr; asu<b>nno</b>ssa (nt &rarr; nn)</td></tr>
+                        <tr><td><b>k</b></td><td>- (zero)</td><td>ruo<b>k</b>a &rarr; ruo<b>a</b>n</td></tr>
+                        <tr><td><b>p</b></td><td>v</td><td><b>leipä</b> &rarr; lei<b>v</b>än</td></tr>
+                        <tr><td><b>t</b></td><td>d</td><td><b>pöytä</b> &rarr; pöy<b>dä</b>llä</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="M5"><h2>Harjoitus: Astevaihtelu 🧠</h2>
+            <div class="card">
+                <h3>Muuta sana heikkoon asteeseen <span class="trans">(Change the word to the weak grade)</span></h3>
+                <p>1. <b>(katu)</b> + Allatiivi (-lla) &rarr; ka<span class="answer">du</span>lla (t &rarr; d)</p>
+                <p>2. <b>(pankki)</b> + Inessiivi (-ssa) &rarr; pan<span class="answer">ki</span>ssa (kk &rarr; k)</p>
+                <p>3. <b>(leipä)</b> + Elatiivi (-sta) &rarr; lei<span class="answer">vä</span>stä (p &rarr; v)</p>
+                <p>4. <b>(kirje)</b> + Illatiivi (-Vn) &rarr; kirjee<span class="answer">seen</span> (j &rarr; j + seen)</p>
+                <p style="margin-top:1.5em; color:var(--neon); font-weight:bold;">Tärkeää: Astevaihtelu ei tapahdu partitiivissa (-a/-ä, -ta/-tä).</p>
+            </div>
+        </div>
+
+        <div class="slide" style="text-align:center; justify-content:center; background:linear-gradient(135deg,#000,#1a0033);">
+            <h1 style="font-size:4em;">CORE DATA</h1>
+            <h2 style="color:var(--gold); font-size:2.5em;">MANDATE COMPLETE.</h2>
+            <div class="gold" style="font-size:1.6em; padding:1.5em; color: var(--card);">
+                OLET VALMIS. <span class="trans">(YOU ARE READY.)</span>
+            </div>
+            <p style="margin-top:2em; font-size:1.2em; color:var(--text);">
+                Apply the structure (grammar) to the input data (vocabulary).
+            </p>
+            <div class="footer">Final Review • 12 Nov 2025</div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for progress bar and slide counter (from ADA example)
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        document.getElementById('total').textContent = totalSlides;
+        
+        window.addEventListener('scroll', () => {
+            const container = document.getElementById('slides');
+            const scrollTop = container.scrollTop;
+            const docHeight = container.scrollHeight - container.clientHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            document.getElementById('progress').style.width = progress + '%';
+            
+            let currentSlide = 1;
+            for (let i = 0; i < totalSlides; i++) {
+                const slide = slides[i];
+                // Check if the slide's top boundary is past the top of the viewport
+                if (slide.offsetTop <= scrollTop + container.clientHeight * 0.5) {
+                    currentSlide = i + 1;
+                } else {
+                    break; 
+                }
+            }
+            document.getElementById('current').textContent = currentSlide;
+        });
+
+        // Add scroll behavior listener to the container instead of window for better mobile compatibility with scroll-snap
+        const container = document.getElementById('slides');
+        container.addEventListener('scroll', () => {
+             // Re-run the logic above for the scroll event of the container
+             const scrollTop = container.scrollTop;
+            const docHeight = container.scrollHeight - container.clientHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            document.getElementById('progress').style.width = progress + '%';
+            
+            let currentSlide = 1;
+            for (let i = 0; i < totalSlides; i++) {
+                const slide = slides[i];
+                if (slide.offsetTop <= scrollTop + container.clientHeight * 0.5) {
+                    currentSlide = i + 1;
+                } else {
+                    break; 
+                }
+            }
+            document.getElementById('current').textContent = currentSlide;
+        });
+    </script>
+</body>
+</html>

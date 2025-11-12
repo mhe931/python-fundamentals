@@ -1,83 +1,397 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ADA Exam 1 • S24 ULTRA</title>
-<script src="https://cdn.jsdelivr.net/npm/impress.js@1.1.0/js/impress.min.js"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100vh;width:100vw;overflow:hidden;background:#000;color:#fff;font-family:system-ui,sans-serif}
-#impress{position:fixed !important;top:0 !important;left:0 !important;width:100% !important;height:100% !important}
-.step{
-  position:absolute !important;
-  width:95vw !important;height:95vh !important;
-  left:50% !important;top:50% !important;
-  transform:translate(-50%,-50%) !important;
-  padding:40px 30px !important;
-  background:rgba(10,10,50,.98);
-  border-radius:30px;
-  border:6px solid #00D4FF;
-  box-shadow:0 0 80px #00D4FF;
-  font-size:42px !important;
-  line-height:1.4;
-  text-align:center;
-  opacity:0;
-  transition:opacity .8s
-}
-.step.present{opacity:1 !important}
-h1{font-size:88px;color:#FFD700;text-shadow:0 0 40px #FFD700;margin:20px}
-h2{font-size:64px;color:#00D4FF;margin:30px}
-b{color:#FFD700;font-weight:900}
-ul{text-align:left;display:inline-block;margin:40px 0}
-li{margin:18px 0;font-size:48px}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Advanced Data Architecture - Exam 1 Self-Study Presentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/monokai.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajgoel/rjs-chalkboard@latest/chalkboard.css">
+    <style>
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            color: #1A237E !important;
+            text-align: center;
+        }
+        .reveal section {
+            text-align: left;
+            font-size: 0.9em;
+            background: #ffffff;
+            border: 2px solid #FFD740;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .reveal ul, .reveal ol {
+            display: block;
+            margin: 0 0 0 1em;
+            text-align: left;
+        }
+        .fun-fact, .key-insight {
+            background-color: #FFD740;
+            color: #1A237E;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #1A237E;
+            font-style: italic;
+        }
+        .deep-dive {
+            background-color: #f0f8ff;
+            border-left: 5px solid #FFD740;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #1A237E;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #1A237E;
+            color: #FFD740;
+        }
+        @media (max-width: 700px) {
+            .reveal section {
+                font-size: 0.8em;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Welcome Slide -->
+            <section data-menu-title="Welcome & Controls">
+                <h1>Advanced Data Architecture</h1>
+                <h2>Exam 1 Self-Study Presentation<br>Lectures 1-4</h2>
+                <p><strong>Navigation:</strong></p>
+                <ul>
+                    <li>→ / ← : Horizontal (Main Topics)</li>
+                    <li>↓ / ↑ : Vertical (Deep Dives)</li>
+                    <li>M : Menu for Overview</li>
+                    <li>B : Toggle Chalkboard (Drawing Mode)</li>
+                    <li>S : Speaker Notes View</li>
+                    <li>Esc : Overview</li>
+                </ul>
+                <p>Use the menu to jump between lectures. This is mobile-friendly—zoom as needed.</p>
+                <aside class="notes">
+                    Welcome! This presentation is designed for self-study. Use chalkboard to annotate concepts during review. Notes provide extra context for exam prep.
+                </aside>
+            </section>
 
-<div id="impress">
+            <!-- Lecture 1: Horizontal Section -->
+            <section data-menu-title="L1: Data Architecture Concepts">
+                <!-- Main Vertical Slide -->
+                <section>
+                    <h2>Lecture 1: Data Architecture Concepts (DA)</h2>
+                    <p>DA as the <strong>"Blueprint and Governance"</strong> for organizational data systems.</p>
+                    <ul>
+                        <li>Defines how data is structured, stored, and flows.</li>
+                        <li>Ensures alignment with business goals and compliance.</li>
+                    </ul>
+                    <div class="key-insight">
+                        Key Insight: DA isn't just tech—it's the strategic foundation preventing data chaos.
+                    </div>
+                    <aside class="notes">
+                        Start here: DA sets the rules of the road for all data initiatives. Review this before diving into roles.
+                    </aside>
+                </section>
 
-  <div class="step" data-x="0" data-y="0" data-scale="7">
-    <h1>Advanced Data Architecture</h1>
-    <h2>Exam 1 • S24 ULTRA</h2>
-    <p style="font-size:70px;margin-top:80px"><b>TAP RIGHT →</b></p>
-  </div>
+                <!-- Deep Dive 1: Roles -->
+                <section data-menu-title="L1 Deep Dive: Roles">
+                    <h3>Comparing Roles in Data Teams</h3>
+                    <table>
+                        <tr><th>Role</th><th>Focus</th><th>Key Responsibilities</th></tr>
+                        <tr><td>DA (Architect)</td><td>Strategic</td><td>Blueprint design, Governance policies</td></tr>
+                        <tr><td>DE (Engineer)</td><td>Operational</td><td>Infrastructure build, ETL/ELT pipelines</td></tr>
+                        <tr><td>DS (Scientist)</td><td>Analytical</td><td>Data consumption, Model insights & ML</td></tr>
+                    </table>
+                    <div class="deep-dive">
+                        <p><strong>Contrast:</strong> DA focuses on "why" and "how overall," DE on "build it," DS on "what can we learn?" Collaboration is key—silos lead to failures.</p>
+                    </div>
+                    <aside class="notes">
+                        Exam tip: Know the handoffs—e.g., DA defines schemas that DE implements for DS to query.
+                    </aside>
+                </section>
 
-  <div class="step" data-x="0" data-y="2800">
-    <h2>L1: DA Blueprint</h2>
-    <ul><li>DA = <b>Framework</b> for data assets</li><li>Organize • Connect • Secure</li><li>Long-term scalability</li></ul>
-    <p><b>DA = Blueprint<br>DE = Builder<br>DS = Consumer</b></p>
-  </div>
+                <!-- Deep Dive 2: Models/Philosophy -->
+                <section data-menu-title="L1 Deep Dive: Models & Philosophy">
+                    <h3>Data Models & Philosophy</h3>
+                    <ul>
+                        <li><strong>Models Progression:</strong>
+                            <ul>
+                                <li>Conceptual: High-level entities.</li>
+                                <li>Logical: Attributes & keys.</li>
+                                <li>Physical: Data types & storage paths.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Philosophy: Form Follows Function</strong>
+                            <ul>
+                                <li>Design matches business needs.</li>
+                                <li>Example: Fraud detection → Streaming architecture for real-time processing.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <aside class="notes">
+                        Remember: Start conceptual, refine to physical. Philosophy ensures no over-engineering—tailor to use case.
+                    </aside>
+                </section>
+            </section>
 
-  <div class="step" data-x="2000" data-y="2800">
-    <h2>L1: Form Follows Function</h2>
-    <ul><li>Fraud → Streaming</li><li>Reporting → Auditable</li></ul>
-  </div>
+            <!-- Lecture 2: Horizontal Section -->
+            <section data-menu-title="L2: Foundational Principles">
+                <!-- Main Vertical Slide -->
+                <section>
+                    <h2>Lecture 2: Foundational Principles</h2>
+                    <p>Core Principles: <strong>Trust, Scale, Modularity</strong></p>
+                    <ul>
+                        <li><strong>Trust:</strong> Reliable, governed data.</li>
+                        <li><strong>Scale:</strong> Handles growth without breaking.</li>
+                        <li><strong>Modularity:</strong> Interchangeable components.</li>
+                    </ul>
+                    <div class="fun-fact">
+                        Fun Fact: These principles trace back to 1980s enterprise architecture—timeless!
+                    </div>
+                    <aside class="notes">
+                        These are the "why" behind DA decisions. Link them to real-world scalability pains in exams.
+                    </aside>
+                </section>
 
-  <div class="step" data-x="4000" data-y="2800">
-    <h2>L1: Schema Evolution</h2>
-    <ul><li><b>Schema-on-Write</b> → DWH</li><li><b>Schema-on-Read</b> → Lake</li><li><b>Lakehouse</b> 2020s</li></ul>
-  </div>
+                <!-- Deep Dive 1: Trust & Ownership -->
+                <section data-menu-title="L2 Deep Dive: Trust & Ownership">
+                    <h3>Trust & Ownership</h3>
+                    <div class="deep-dive">
+                        <ul>
+                            <li><strong>Single Source of Truth (SSOT):</strong> One master system per data element—avoids duplication & inconsistencies.</li>
+                            <li><strong>Data as a Product:</strong> Treat data like software: Own it, manage SLAs, measure utility (e.g., freshness, accuracy).</li>
+                        </ul>
+                    </div>
+                    <p><strong>Benefits:</strong> Reduces errors by 50%+ in large orgs.</p>
+                    <aside class="notes">
+                        SSOT example: Customer data in CRM only—reference elsewhere. Data Product: Assign owners like product managers.
+                    </aside>
+                </section>
 
-  <div class="step" data-x="0" data-y="5600" data-rotate-x="90">
-    <h2>L2: Core Principles</h2>
-    <ul><li>Business Alignment</li><li>Tech Agnostic</li><li>Modularity + Loose Coupling</li></ul>
-  </div>
+                <!-- Deep Dive 2: Scale & Structure -->
+                <section data-menu-title="L2 Deep Dive: Scale & Structure">
+                    <h3>Scale & Structure</h3>
+                    <ul>
+                        <li><strong>Scalability:</strong> Use <em>Loose Coupling</em> via Broker Pattern / Pub-Sub to isolate systems (e.g., Kafka prevents DB overload).</li>
+                        <li><strong>Frameworks:</strong>
+                            <table>
+                                <tr><th>Framework</th><th>Purpose</th></tr>
+                                <tr><td>TOGAF</td><td>Process/Roadmap for EA evolution</td></tr>
+                                <tr><td>Zachman</td><td>Taxonomy/Checklist for "What, How, Where"</td></tr>
+                            </table>
+                        </li>
+                    </ul>
+                    <aside class="notes">
+                        Loose coupling: Systems communicate asynchronously. TOGAF for planning, Zachman for inventory—complementary.
+                    </aside>
+                </section>
+            </section>
 
-  <div class="step" data-x="0" data-y="0" data-z="12000" data-scale="12">
-    <h1 style="font-size:140px">EXAM 1<br>100%</h1>
-    <p style="font-size:80px;color:#00D4FF">YOU WIN</p>
-  </div>
+            <!-- Lecture 3: Horizontal Section -->
+            <section data-menu-title="L3: Data Warehousing (DWH)">
+                <!-- Main Vertical Slide -->
+                <section>
+                    <h2>Lecture 3: Data Warehousing (DWH)</h2>
+                    <p>DWH: The home for <strong>structured data</strong> and <strong>OLAP</strong> analytics.</p>
+                    <ul>
+                        <li>Centralized repository for reporting & BI.</li>
+                        <li>Optimized for queries, not transactions.</li>
+                    </ul>
+                    <aside class="notes">
+                        DWH is "batch-oriented" vs. OLTP's real-time. Key for historical analysis.
+                    </aside>
+                </section>
 
-</div>
+                <!-- Deep Dive 1: DWH vs. Lake -->
+                <section data-menu-title="L3 Deep Dive: DWH vs. Lake">
+                    <h3>DWH vs. Data Lake Comparison</h3>
+                    <table>
+                        <tr><th>Aspect</th><th>DWH</th><th>Data Lake</th></tr>
+                        <tr><td>Data Type</td><td>Structured Only</td><td>All Types (Structured, Semi, Unstructured)</td></tr>
+                        <tr><td>Process</td><td>ETL (Extract-Transform-Load)</td><td>ELT (Extract-Load-Transform)</td></tr>
+                        <tr><td>Schema</td><td>Schema-on-Write (Rigid)</td><td>Schema-on-Read (Flexible)</td></tr>
+                    </table>
+                    <div class="deep-dive">
+                        <p><strong>ETL Note:</strong> Staging Area is where "T" (Transform) occurs—temporary zone for cleaning before loading to DWH.</p>
+                    </div>
+                    <aside class="notes">
+                        Choose DWH for known queries; Lake for exploration. ETL staging prevents dirty data from hitting production.
+                    </aside>
+                </section>
 
-<script>
-  // THIS LINE MAKES IT WORK ON VIVALDI
-  setTimeout(() => {
-    impress().init();
-    impress().goto(0);
-  }, 100);
-</script>
+                <!-- Deep Dive 2: Model & Operations -->
+                <section data-menu-title="L3 Deep Dive: Model & Operations">
+                    <h3>DWH Model & OLAP Operations</h3>
+                    <ul>
+                        <li><strong>Model: Star Schema</strong>
+                            <ul>
+                                <li>Central Fact Table (metrics).</li>
+                                <li>Surrounding Dimension Tables (context, e.g., time, product).</li>
+                            </ul>
+                        </li>
+                        <li><strong>OLAP Operations:</strong>
+                            <ul>
+                                <li>Roll-Up (↑): Aggregate to less detail (e.g., daily → monthly).</li>
+                                <li>Drill-Down (↓): Expand to more detail (e.g., monthly → daily).</li>
+                                <li>Slice/Dice: Filter & pivot dimensions.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="fun-fact">
+                        Fun Fact: Star Schema looks like a star—simple but powerful for fast queries!
+                    </div>
+                    <aside class="notes">
+                        Practice: Fact = sales amount; Dims = customer, date. OLAP enables "what-if" analysis.
+                    </aside>
+                </section>
+            </section>
 
+            <!-- Lecture 4: Horizontal Section -->
+            <section data-menu-title="L4: Data Lakes & Modern DW">
+                <!-- Main Vertical Slide -->
+                <section>
+                    <h2>Lecture 4: Data Lakes and Modern DW</h2>
+                    <p>Covering <strong>Data Lakes</strong> (variety of data), and evolution to <strong>Modern DW</strong>.</p>
+                    <ul>
+                        <li>Lakes store raw data cheaply.</li>
+                        <li>Modern DW blends lake flexibility with warehouse reliability.</li>
+                    </ul>
+                    <aside class="notes">
+                        Lakes handle "big data" volume/variety; modern trends unify approaches.
+                    </aside>
+                </section>
+
+                <!-- Deep Dive 1: Design & Risk -->
+                <section data-menu-title="L4 Deep Dive: Design & Risk">
+                    <h3>Design & Risks</h3>
+                    <ul>
+                        <li><strong>Design: Bottom-Up Approach</strong>
+                            <ul>
+                                <li>Ingest raw data first.</li>
+                                <li>Analyze needs.</li>
+                                <li>Then structure (e.g., zones).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Risk: Data Swamp</strong>
+                            <ul>
+                                <li>Cause: Lack of metadata & governance.</li>
+                                <li>Result: Unusable "garbage dump."</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="key-insight">
+                        Key Insight: Govern early—metadata catalogs prevent swamps.
+                    </div>
+                    <aside class="notes">
+                        Bottom-up vs. top-down: Start flexible, add structure. Exam: Link swamp to poor DA.
+                    </aside>
+                </section>
+
+                <!-- Deep Dive 2: Solutions -->
+                <section data-menu-title="L4 Deep Dive: Solutions">
+                    <h3>Solutions to Lake Challenges</h3>
+                    <ul>
+                        <li><strong>Solution 1: Layered Architecture</strong>
+                            <ul>
+                                <li>Raw (Bronze): Ingested as-is.</li>
+                                <li>Cleaned (Silver): Validated & enriched.</li>
+                                <li>Curated (Gold): Business-ready, aggregated.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Solution 2: Data Lakehouse</strong>
+                            <ul>
+                                <li>Convergence: Adds ACID transactions & schema enforcement to Lakes.</li>
+                                <li>Tools: Delta Lake, Iceberg.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <aside class="notes">
+                        Layers promote progressive refinement. Lakehouse = best of both worlds—reliable like DWH, scalable like Lake.
+                    </aside>
+                </section>
+            </section>
+
+            <!-- End Slide -->
+            <section data-menu-title="End: Summary">
+                <h2>End of Presentation</h2>
+                <h3>Key Takeaways for Exam 1</h3>
+                <ul>
+                    <li>L1: DA as blueprint; roles & models align to function.</li>
+                    <li>L2: Build on trust (SSOT), scale (coupling), structure (frameworks).</li>
+                    <li>L3: DWH for structured OLAP; ETL vs. ELT trade-offs.</li>
+                    <li>L4: Lakes evolve to lakehouses via layers & governance.</li>
+                </ul>
+                <p><strong>Next Steps:</strong> Review notes, draw diagrams on chalkboard, quiz yourself!</p>
+                <div class="fun-fact">
+                    Fun Fact: Mastering DA can save orgs millions in data rework—your career boost awaits!
+                </div>
+                <aside class="notes">
+                    Congrats on completing! Revisit menu for targeted review. Good luck on Exam 1.
+                </aside>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/rajgoel/rjs-chalkboard@latest/chalkboard.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/reveal-menu@3.0.0/dist/menu.esm.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            width: '100%',
+            height: '100%',
+            margin: 0.1,
+            minScale: 1.0,
+            maxScale: 1.0,
+            plugins: [
+                RevealHighlight,
+                RevealNotes,
+                RevealChalkboard,
+                RevealMenu
+            ],
+            chalkboard: {
+                boardmarkerWidth: 5,
+                chalkWidth: 5,
+                chalkEffect: 0.3
+            },
+            menu: {
+                side: 'left',
+                width: 'normal',
+                themes: false,
+                transitions: false,
+                openButton: true,
+                openSlideNumber: 0,
+                markers: false,
+                loadIcons: false,
+                custom: false,
+                titleSelector: 'h1, h2, h3',
+                useTextContentForTitle: true,
+                subtitleSelector: 'h4'
+            },
+            notes: {
+                // Enable speaker notes
+                enable: true
+            }
+        });
+    </script>
 </body>
 </html>
+```

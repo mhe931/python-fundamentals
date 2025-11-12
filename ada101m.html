@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>ADA Exam 1 • S24 Ultra • FINAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;800&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
+        :root {
+            --bg: #000;
+            --card: #0b0b1a;
+            --gold: #FFD700;
+            --neon: #00D4FF;
+            --purple: #9D00FF;
+            --text: #E8E8E8;
+        }
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            background: #000;
-            color: #E8E8E8;
-            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Exo 2', system-ui, -apple-system, sans-serif;
             font-size: 18px;
             line-height: 1.55;
             overscroll-behavior: none;
@@ -26,7 +36,7 @@
             width: 100vw;
             height: 100vh;
             scroll-snap-align: start;
-            padding: 9vh 6vw 10vh;
+            padding: 8vh 5vw 8vh; /* Adjusted for S24 Ultra fit */
             display: flex;
             flex-direction: column;
             background: #000;
@@ -41,6 +51,7 @@
             z-index: -1;
         }
         h1 {
+            font-family: 'Orbitron', monospace;
             font-size: 2.8em;
             font-weight: 900;
             color: #FFD700;
@@ -55,8 +66,8 @@
             border: 1px solid #333;
             border-left: 5px solid #FFD700;
             border-radius: 12px;
-            padding: 1.3em;
-            margin: 1em 0;
+            padding: 1.2em;
+            margin: 0.8em 0;
             backdrop-filter: blur(8px);
             flex: 1;
             overflow-y: auto;
@@ -64,67 +75,38 @@
         .gold {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
-            padding: 1em;
+            padding: 0.8em;
             border-radius: 12px;
             text-align: center;
             font-weight: 800;
-            font-size: 1.15em;
-            margin: 1.2em 0;
+            font-size: 1.05em;
+            margin: 1em 0;
             box-shadow: 0 6px 20px rgba(255,215,0,0.4);
         }
-        ul { padding-left: 1.4em; margin: 0.8em 0; }
-        li { margin: 0.7em 0; }
-        li::marker { color: #FFD700; }
-        table {
-            width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.95em;
-        }
-        th, td { padding: 0.7em; border: 1px solid #444; text-align: left; }
+        ul { padding-left: 1.4em; margin: 0.6em 0; list-style: none; }
+        li { margin: 0.5em 0; font-size: 0.95em; position: relative; padding-left: 1.2em; }
+        li::before { content: "»"; position: absolute; left: 0; color: #FFD700; font-size: 1.1em; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 0.8em 0; font-size: 0.85em; }
+        th, td { padding: 0.6em; border: 1px solid #444; text-align: left; }
         th { background: #222; color: #FFD700; font-weight: 700; }
 
-        /* FIXED: Tiny, clean, accurate slide counter */
         .nav {
-            position: fixed;
-            bottom: 16px;
-            right: 16px;
-            background: rgba(0,0,0,0.75);
-            color: #FFD700;
-            font-size: 0.85em;
-            font-weight: bold;
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid #FFD700;
-            backdrop-filter: blur(10px);
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: fixed; bottom: 16px; right: 16px; background: rgba(0,0,0,0.75);
+            color: #FFD700; font-size: 0.85em; font-weight: bold; padding: 6px 12px;
+            border-radius: 20px; border: 1px solid #FFD700; backdrop-filter: blur(10px);
+            z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-
-        /* Thinner, smoother progress bar */
         .progress {
-            position: fixed;
-            top: 0; left: 0;
-            height: 3px;
+            position: fixed; top: 0; left: 0; height: 3px;
             background: linear-gradient(90deg, #FFD700, #FF6B6B);
-            width: 0%;
-            z-index: 1000;
-            box-shadow: 0 0 10px rgba(255,215,0,0.6);
+            width: 0%; z-index: 1000; box-shadow: 0 0 10px rgba(255,215,0,0.6);
         }
-
-        /* Smaller, cleaner draw button */
         .draw {
-            position: fixed;
-            top: 12px;
-            right: 12px;
-            background: #FFD700;
-            color: #000;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8em;
-            z-index: 999;
-            box-shadow: 0 0 20px rgba(255,215,0,0.5);
+            position: fixed; top: 12px; right: 12px; background: #FFD700;
+            color: #000; width: 52px; height: 52px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8em; z-index: 999; box-shadow: 0 0 20px rgba(255,215,0,0.5);
             transition: all 0.3s;
         }
         canvas { position: fixed; top: 0; left: 0; z-index: 998; pointer-events: none; }
@@ -135,83 +117,413 @@
     <div class="progress" id="progress"></div>
     <canvas id="canvas"></canvas>
     <div class="draw" id="draw">Pen</div>
-    <div class="nav">Slide <span id="current">1</span> / 22</div>
+    <div class="nav">Slide <span id="current">1</span> / <span id="total">29</span></div>
 
-    <div class="container">
+    <div class="container" id="slides">
         <!-- COVER -->
         <div class="slide" style="text-align:center; justify-content:center;">
             <h1>Advanced Data Architecture</h1>
-            <h2 style="font-size:2.4em; color:#FFD700;">Exam 1 Study Guide</h2>
-            <div class="gold" style="font-size:1.3em;">@wysiwyg93 • Vaasa, Finland</div>
-            <p style="margin:2em 0; font-size:1.2em;">22 Slides • Perfect Fit • Final Version</p>
-            <p style="font-size:1.1em;">Tap <strong style="color:#FFD700;">Pen</strong> to draw</p>
-            <div class="footer">12 Nov 2025 • 01:30 AM EET • Fixed & Flawless</div>
+            <h2 style="font-size:2.4em; color:#FFD700;">Exam 1 Master Study Guide (L1-L4)</h2>
+            <div class="gold" style="font-size:1.3em;">@wysiwyg93 • Vaasa, Finland • S24 Ultra Optimized</div>
+            <p style="margin:1.5em 0; font-size:1.1em;">29 Slides of Detailed Content. Scroll $\downarrow$ to begin.</p>
+            <p style="font-size:1em;">Tap <b>Pen</b> to activate drawing mode.</p>
+            <div class="footer">Final Version • 12 Nov 2025</div>
         </div>
 
-        <!-- ALL 21 CONTENT SLIDES — SAME AS BEFORE, PERFECT FIT -->
-        <div class="slide"><h2>L1: Data Architecture - The Blueprint</h2>
+        <!-- ========================================================================= -->
+        <!-- LECTURE 1: INTRODUCTION TO DATA ARCHITECTURE (DA) - 7 SLIDES -->
+        <!-- ========================================================================= -->
+        <div class="slide" data-horizontal-group="L1"><h2>L1: Data Architecture - The Blueprint</h2>
             <div class="card">
                 <h3>DA Definition & Core Focus</h3>
                 <ul>
-                    <li>Framework for managing data assets</li>
-                    <li>Defines structure, integration, storage, movement, governance</li>
-                    <li>Focus: long-term scalability & standards</li>
+                    <li>DA is the <b>Framework for managing data assets</b> defining structures, integration, storage, movement, and governance.</li>
+                    <li>Answers: "How should data be <b>organized, connected, and secured</b>?"</li>
+                    <li>Focuses on structure, standards, and <b>long-term scalability</b> of enterprise data.</li>
                 </ul>
             </div>
-            <div class="gold">Prerequisites: ICAT1140, ICAT2190</div>
+            <div class="gold">Prerequisites: <b>Basic knowledge of databases</b> and DE principles (ICAT1140, ICAT2190).</div>
         </div>
 
-        <!-- ... [All your original 20 slides here — unchanged, just perfectly fitted] ... -->
-
-        <div class="slide"><h2>L4: Data Lakes & Lakehouse</h2>
+        <div class="slide" data-horizontal-group="L1"><h2>L1: Roles & Overlap</h2>
             <div class="card">
-                <h3>Why Data Lakes?</h3>
+                <h3>DA, DE, DS Roles Comparison</h3>
+                <table>
+                    <tr><th>Role</th><th>Primary Focus</th><th>Output/Goal</th></tr>
+                    <tr><td><b>DA Architect</b></td><td><b>Blueprint</b>, Structure, Governance</td><td>Defines <b>Standards</b> and Models.</td></tr>
+                    <tr><td><b>DE Engineer</b></td><td><b>Implementation</b>, Pipelines, Storage</td><td>Builds reliable <b>data flow</b> (ETL/ELT).</td></tr>
+                    <tr><td><b>DS Scientist</b></td><td><b>Consumption</b>, Insights, Models</td><td>Generates <b>predictions</b>.</td></tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L1"><h2>L1: DA Philosophies</h2>
+            <div class="card">
+                <h3>Key Philosophies</h3>
                 <ul>
-                    <li>DWH too rigid for unstructured data</li>
-                    <li>Schema-on-Read + ELT</li>
-                    <li>Low-cost cloud storage</li>
+                    <li><b>"Without architecture, there is chaos."</b> (Tupper, 2011)</li>
+                    <li><b>Form Follows Function:</b> Design (form) must be driven by the actual <b>business needs (function)</b>, not technical fads.</li>
+                    <li><b>Example:</b> Regulatory reporting $\rightarrow$ Auditable, versioned models.</li>
+                    <li>Architecture provides purpose and persistence to data.</li>
                 </ul>
             </div>
-            <div class="gold">Bronze → Silver → Gold Layers</div>
         </div>
 
-        <!-- FINAL SLIDE -->
-        <div class="slide" style="text-align:center; justify-content:center; background:linear-gradient(135deg,#000,#1a0033);">
+        <div class="slide" data-horizontal-group="L1"><h2>L1: Historical Evolution</h2>
+            <div class="card">
+                <h3>From Relational Databases to Modern Ecosystems</h3>
+                <ul>
+                    <li><b>1970s:</b> Relational Model (Structured, Schema-on-Write).</li>
+                    <li><b>1980s:</b> Data Warehouses (Centralized Analytics).</li>
+                    <li><b>2000s:</b> Hadoop & Big Data (Unstructured, Schema-on-Read).</li>
+                    <li><b>2020s:</b> Distributed Paradigms (Data Mesh, Lakehouse).</li>
+                    <li>Each generation solved previous limits (scalability, flexibility).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L1"><h2>L1: Schema Types</h2>
+            <div class="card">
+                <h3>Schema-on-Write vs. Schema-on-Read</h3>
+                <table>
+                    <tr><th>Feature</th><th>Schema-on-Write (DWH)</th><th>Schema-on-Read (Data Lake)</th></tr>
+                    <tr><td><b>When Defined</b></td><td><b>Before</b> data is written (Rigid, Enforced).</td><td><b>When</b> data is queried/consumed (Flexible).</td></tr>
+                    <tr><td><b>Process</b></td><td>ETL (Transform before load).</td><td>ELT (Load before transform).</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L1"><h2>L1: Data Diversity & EA Levels</h2>
+            <div class="card">
+                <h3>Data Diversity & Conceptual Levels</h3>
+                <ul>
+                    <li><b>Corporate Data:</b> Structured (transactions) + Unstructured (logs, emails, media).</li>
+                    <li>Unstructured data often carries greater <b>strategic value</b> for AI/insights.</li>
+                    <li><b>Conceptual Levels (Modeling):</b>
+                        <ol>
+                            <li><b>Conceptual:</b> High-level entities (pen and paper).</li>
+                            <li><b>Logical:</b> Entities/attributes/keys (database agnostic).</li>
+                            <li><b>Physical:</b> Tables/columns/datatypes (database specific).</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L1"><h2>L1: What is Not Data Architecture</h2>
+            <div class="card">
+                <h3>Defining the Boundaries</h3>
+                <ul>
+                    <li>A <b>technology stack</b> or list of tools (e.g., "We use Snowflake").</li>
+                    <li>An <b>ETL pipeline</b> alone (it is implementation).</li>
+                    <li>A set of diagrams <b>without principles or governance</b>.</li>
+                    <li>Architecture documents that are <b>never implemented</b>.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- ========================================================================= -->
+        <!-- LECTURE 2: FOUNDATIONAL PRINCIPLES - 7 SLIDES -->
+        <!-- ========================================================================= -->
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Core Principles & Governance</h2>
+            <div class="card">
+                <h3>General Principles</h3>
+                <ul>
+                    <li><b>Business Alignment:</b> Must serve business strategy.</li>
+                    <li><b>Technology Agnosticism:</b> Conceptual independence from specific products.</li>
+                    <li><b>Modularity:</b> Build reusable, flexible, independent components (Adapters, Microservices).</li>
+                    <li><b>Loose Coupling:</b> Systems connect via <b>well-defined interfaces</b> (APIs, canonical models).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Trust, SSOT & Metadata</h2>
+            <div class="card">
+                <h3>Data Management & Structure</h3>
+                <ul>
+                    <li><b>Single Source of Truth (SSOT):</b> Each data element has one <b>authoritative source</b> (e.g., CRM).</li>
+                    <li><b>Data as a Product:</b> Data is designed, built, and measured for a specific audience (Netflix model).</li>
+                    <li><b>Metadata:</b> Data about data (schema, lineage, creation date). Crucial for context and auditability (e.g., police investigation example).</li>
+                    <li><b>Data Stewardship:</b> Assigning <b>ownership and accountability</b> for every dataset.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Integration & Interoperability</h2>
+            <div class="card">
+                <h3>Ensuring Seamless Data Flow</h3>
+                <ul>
+                    <li><b>Loose Coupling:</b> Avoid tight dependencies. Use canonical data models for data integration.</li>
+                    <li><b>Interoperability:</b> Use <b>open standards</b> and protocols (e.g., replace proprietary 'XYDAT' format with <b>Apache Parquet</b>).</li>
+                    <li><b>Data Accessibility:</b> Make data discoverable and available.</li>
+                    <li><b>Loose Coupling Example:</b> Using an adapter to switch between REST-service (HTTP) and FTP-service without changing core logic.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Scalability - The Broker Pattern</h2>
+            <div class="card">
+                <h3>Scaling Challenge & Solution</h3>
+                <ul>
+                    <li><b>Scalability:</b> Ability to handle increasing <b>data, users, or workloads</b> without degradation.</li>
+                    <li><b>Problem:</b> Request-reply integration fails to scale; high client load crashes source system.</li>
+                    <li><b>Solution:</b> <b>Push-Based Broker (Pub-Sub)</b> strategy.
+                        <ul>
+                            <li>Source <b>publishes</b> event once. Broker handles distribution to 'N' subscribed clients.</li>
+                            <li>The core system is <b>decoupled</b> and <b>not overloaded</b>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Governance Roles & Quality</h2>
+            <div class="card">
+                <h3>Governance & Accountability</h3>
+                <ul>
+                    <li><b>Data Owners:</b> High-level authority over specific data domains (access, usage).</li>
+                    <li><b>Data Stewards:</b> Daily management of quality, accuracy, and consistency.</li>
+                    <li><b>Data Quality by Design:</b> Embed integrity checks (e.g., <code>loan\_date < return\_date</code>) into pipelines.</li>
+                    <li><b>Security & Privacy by Design:</b> Role-Based Access (RBAC), encryption (at rest/in transit), PII masking.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Architectural Frameworks</h2>
+            <div class="card">
+                <h3>TOGAF vs. Zachman</h3>
+                <table>
+                    <tr><th>Aspect</th><th>TOGAF (The Open Group)</th><th>Zachman Framework</th></tr>
+                    <tr><td><b>Approach</b></td><td><b>Process-oriented</b> (Roadmap/ADM Cycle).</td><td><b>Taxonomy/Schema-oriented</b> (Matrix).</td></tr>
+                    <tr><td><b>Purpose</b></td><td>Guides <b>how</b> to develop architecture.</td><td>Organizes <b>what</b> artifacts to document.</td></tr>
+                    <tr><td><b>Data Arch.</b></td><td>One of four main domains (Business, Data, App, Tech).</td><td>Maps to the "What?" column across 6 perspectives.</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L2"><h2>L2: Modularity & Flexibility</h2>
+            <div class="card">
+                <h3>Key Components</h3>
+                <ul>
+                    <li><b>Modularity:</b> System components (pipelines, microservices) designed as independent, interchangeable units.</li>
+                    <li><b>Data Pipelines as Modular Units:</b> Steps (ingestion, transformation, storage) are interchangeable if input/output formats match. (Tools: Airflow, dbt).</li>
+                    <li><b>Flexibility:</b> Can integrate new sources/tech and evolve with business needs.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- LECTURE 3: DATA WAREHOUSING (DWH) - 6 SLIDES -->
+        <!-- ========================================================================= -->
+        <div class="slide" data-horizontal-group="L3"><h2>L3: DWH - Structured Data Core</h2>
+            <div class="card">
+                <h3>Definition & OLAP</h3>
+                <ul>
+                    <li>A relational database integrating data from OLTP systems for <b>analytical use (OLAP)</b>.</li>
+                    <li><b>OLAP:</b> Online Analytical Processing. Uses complex queries on aggregated historical data.</li>
+                    <li><b>Output:</b> Cleaned, enriched data acting as the <b>"single source of truth."</b></li>
+                    <li><b>Technology:</b> Often <b>Columnar Databases</b> (fast read/agg.) vs. Row-based (fast write/transact.).</li>
+                    <li><b>Questions Answered:</b> Descriptive, Diagnostic, Predictive, and Prescriptive.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L3"><h2>L3: ETL & The Staging Layer</h2>
+            <div class="card">
+                <h3>ETL Process Layers</h3>
+                <ul>
+                    <li><b>Source Layer:</b> Original operational/external data.</li>
+                    <li><b>Staging Layer (Area):</b> Temporary workspace for the 'T' step.
+                        <ul>
+                            <li><b>Purpose:</b> Consolidation, Cleaning, Validation, Removal of sensitive data.</li>
+                            <li><b>Data:</b> Volatile (deleted once processed).</li>
+                        </ul>
+                    </li>
+                    <li><b>Core Layer:</b> Main historical DWH store.</li>
+                    <li><b>Presentation Layer:</b> Front-end access (BI tools, dashboards, reports).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L3"><h2>L3: ETL Loading Types</h2>
+            <div class="card">
+                <h3>Full Load vs. Incremental Batch Load</h3>
+                <table>
+                    <tr><th>Feature</th><th>Full Load</th><th>Incremental Batch Load</th></tr>
+                    <tr><td><b>Complexity</b></td><td>Low (Easy).</td><td>High (Requires auditing/timestamps).</td></tr>
+                    <tr><td><b>Efficiency</b></td><td>Inefficient (Transfers all data).</td><td>Faster (Transfers only changed data).</td></tr>
+                    <tr><td><b>Use Case</b></td><td>Source tables lack change timestamps.</td><td>Transactional data with high volume.</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L3"><h2>L3: OLAP Modeling (Star & Galaxy)</h2>
+            <div class="card">
+                <h3>DWH Schemas (Denormalized)</h3>
+                <ul>
+                    <li><b>Goal:</b> Denormalization for fast query response times (fewer joins).</li>
+                    <li><b>Star Schema:</b> Central <b>Fact Table</b> (measures) joined directly to flat <b>Dimension Tables</b> (context).</li>
+                    <li><b>Galaxy Schema:</b> <b>Multiple Fact Tables</b> sharing Dimension Tables.</li>
+                    <li><b>Snowflake Schema:</b> Dimensions are normalized into sub-dimensions (more joins).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L3"><h2>L3: OLAP Operations (1 of 2)</h2>
+            <div class="card">
+                <h3>Roll-Up & Drill-Down</h3>
+                <table>
+                    <tr><th>Operation</th><th>Action</th><th>Dimension Level</th></tr>
+                    <tr><td><b>Roll-Up</b></td><td>Aggregates data by reducing dimensions (e.g., SUM).</td><td>$\uparrow$ <b>Less Detail</b> (City $\rightarrow$ Country)</td></tr>
+                    <tr><td><b>Drill-Down</b></td><td>Navigates to a more granular level.</td><td>$\downarrow$ <b>More Detail</b> (Year $\rightarrow$ Quarter or adding a dimension).</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L3"><h2>L3: OLAP Operations (2 of 2)</h2>
+            <div class="card">
+                <h3>Slice & Dice</h3>
+                <ul>
+                    <li><b>Slice:</b> Filters the cube by fixing <b>one dimension</b> to a single value (e.g., <code>WHERE year = 2024</code>). The fixed dimension is removed.</li>
+                    <li><b>Dice:</b> Filters the cube based on values across <b>two or more dimensions</b>. (e.g., Sales for Region A AND Q1).</li>
+                    <li><b>DWH Weaknesses:</b> High setup cost, complex maintenance, limited real-time capabilities.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- LECTURE 4: DATA LAKES & MODERN DW - 6 SLIDES -->
+        <!-- ========================================================================= -->
+        <div class="slide" data-horizontal-group="L4"><h2>L4: Data Lakes - The Flexible Store</h2>
+            <div class="card">
+                <h3>Data Lake Principles & Limitations of DWH</h3>
+                <ul>
+                    <li><b>DWH Limitation:</b> Rigid <b>Schema-on-Write</b> prevents fast ingestion of unstructured data.</li>
+                    <li><b>Data Lake:</b> Repository for <b>all types of data</b> (Structured, Semi-structured, Unstructured).</li>
+                    <li><b>Schema:</b> <b>Schema-on-Read</b> (flexibility for evolving data structures).</li>
+                    <li><b>Process:</b> <b>ELT (Extract, Load, Transform)</b> is preferred.</li>
+                    <li><b>Use Case:</b> Exploratory analytics, ML/AI, handling the 6 Vs of Big Data.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="slide" data-horizontal-group="L4"><h2>L4: Design Approach & Risk</h2>
+            <div class="card">
+                <h3>Bottom-Up Design & The Swamp</h3>
+                <ul>
+                    <li><b>Bottom-Up Design:</b> Start with <b>Ingestion $\rightarrow$ Analyze $\rightarrow$ Structure</b> later. (Flips the DWH model).</li>
+                    <li><b>Enabler:</b> Cloud separation of <b>Storage and Compute</b>.</li>
+                    <li><b>Risk:</b> <b>Data Swamp</b> (Chaotic, undocumented data due to lack of metadata, cataloging, and governance).</li>
+                    <li><b>Mitigation:</b> Enforce proper <b>metadata tagging</b> and <b>Zone Architecture</b>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L4"><h2>L4: Layered Data Lake Zones</h2>
+            <div class="card">
+                <h3>Practical Bottom-Up Design (Layers)</h3>
+                <ul>
+                    <li><b>Raw Layer:</b> Untouched source data (used for traceability).</li>
+                    <li><b>Cleaned/Conformed Layer:</b> Standardized formats (Parquet), deduplicated, validated.</li>
+                    <li><b>Presentation Layer:</b> Curated, business-ready datasets for BI/ML.</li>
+                    <li><b>Organization:</b> Typically by **Time Partitioning** (Year/Month/Day) and **Security Boundaries**.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L4"><h2>L4: Azure Data Lake Storage (ADLS Gen2)</h2>
+            <div class="card">
+                <h3>Key ADLS Gen2 Concepts</h3>
+                <ul>
+                    <li>Azure's HDFS-compatible data lake implementation.</li>
+                    <li><b>Key Feature: Hierarchical Namespace:</b> Organizes data in a true directory structure (folders/files as distinct objects).</li>
+                    <li><b>Benefit:</b> Enables fast, atomic folder-level operations (move, rename) needed for Spark/Hadoop.</li>
+                    <li><b>Security:</b> Fine-grained <b>ACLS</b> (Access Control Lists) and <b>RBAC</b> (Role-Based Access Control).</li>
+                    <li><b>Blob Storage (Flat Namespace):</b> Only simulates folders; less efficient for big data analytics.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L4"><h2>L4: The Data Lakehouse</h2>
+            <div class="card">
+                <h3>Convergence of DWH and DL</h3>
+                <ul>
+                    <li><b>Definition:</b> Built on data lake storage (ADLS, S3) but adds DWH features.</li>
+                    <li><b>Key Features:</b>
+                        <ul>
+                            <li><b>ACID Transactions:</b> (Atomicity, Consistency, Isolation, Durability).</li>
+                            <li><b>Schema Enforcement</b> and integrated governance.</li>
+                        </ul>
+                    </li>
+                    <li><b>Benefit:</b> Unified platform supporting both fast SQL BI and complex ML/AI pipelines.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="L4"><h2>L4: Right-Sizing Architecture</h2>
+            <div class="card">
+                <h3>Small Organization Dilemma (120GB)</h3>
+                <ul>
+                    <li><b>Principle:</b> <b>Right-Sizing is Critical.</b> Don't over-engineer. Focus on solving business problems, not implementing trendy tech.</li>
+                    <li><b>Dilemma:</b> Enterprise platforms (Snowflake/Databricks) are <b>overkill</b> for $\lt 1\text{TB}$ of structured data.</li>
+                    <li><b>Best Practice:</b> Evolve gradually. Start with a lightweight stack (Cloud Postgres + ADF + dbt) or keep the current system if needs are met.</li>
+                    <li><b>TCO:</b> Include licensing, development time, training, and maintenance costs.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- END SLIDE -->
+        <div class="slide" data-horizontal-group="L5" style="text-align:center; justify-content:center; background:linear-gradient(135deg,#000,#1a0033);">
             <h1 style="font-size:4em;">EXAM 1</h1>
-            <h2 style="color:#FFD700; font-size:2.8em;">DESTROYED</h2>
-            <div class="gold" style="font-size:1.8em;">YOU ARE READY</div>
-            <p style="margin-top:2em; font-size:1.3em;">@wysiwyg93<br>Vaasa, Finland</p>
-            <div class="footer">Final Version • 01:30 AM • 12 Nov 2025</div>
+            <h2 style="color:#FFD700; font-size:2.5em;">MANDATE COMPLETE.</h2>
+            <div class="gold" style="font-size:1.6em; padding:1.5em;">YOU ARE READY.</div>
+            <p style="margin-top:2em; font-size:1.2em; color:#E8E8E8;">Remember: The **why** (function) drives the **how** (form).</p>
         </div>
     </div>
 
     <script>
         const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        document.getElementById('total').textContent = totalSlides;
+        
         let drawing = false;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
-        ctx.lineWidth = 6;
-        ctx.lineCap = 'round';
+        
+        const setupCanvas = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#FFD700'; 
+        };
+        setupCanvas();
+        window.addEventListener('resize', setupCanvas);
 
-        // ACCURATE slide counter + smooth progress
+        // FIX: Reliable Slide Counter Logic
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.body.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             document.getElementById('progress').style.width = progress + '%';
-
+            
             let currentSlide = 1;
-            slides.forEach((slide, i) => {
+            // Iterate through slides to find which one is currently in view (by checking its top position against scroll position)
+            for (let i = 0; i < totalSlides; i++) {
+                const slide = slides[i];
+                // Check if the slide's top boundary is past the top of the viewport
                 if (slide.offsetTop <= scrollTop + window.innerHeight * 0.5) {
                     currentSlide = i + 1;
+                } else {
+                    // Optimization: Once we find a slide not yet in view, we can stop
+                    break; 
                 }
-            });
+            }
             document.getElementById('current').textContent = currentSlide;
         });
 
-        // Draw toggle
+        // Toggle Drawing Mode
         document.getElementById('draw').onclick = () => {
             drawing = !drawing;
             canvas.style.pointerEvents = drawing ? 'auto' : 'none';
@@ -219,39 +531,60 @@
             document.getElementById('draw').textContent = drawing ? 'Stop' : 'Pen';
         };
 
-        // Universal drawing (finger + S Pen + mouse)
+        // Universal Drawing Logic (Touch/Mouse/Pen)
+        let isDrawing = false;
         let lastX, lastY;
-        const startDraw = e => {
-            if (!drawing) return;
-            e.preventDefault();
-            const rect = canvas.getBoundingClientRect();
+        
+        const getClientPos = e => {
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            lastX = clientX - rect.left;
-            lastY = clientY - rect.top;
-            ctx.strokeStyle = '#FFD700';
+            const rect = canvas.getBoundingClientRect();
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        };
+
+        const startDraw = e => {
+            if (!drawing) return;
+            isDrawing = true;
+            const pos = getClientPos(e);
+            lastX = pos.x; lastY = pos.y;
             ctx.beginPath();
             ctx.moveTo(lastX, lastY);
         };
+        
         const moveDraw = e => {
-            if (!drawing) return;
+            if (!drawing || !isDrawing) return;
             e.preventDefault();
-            const rect = canvas.getBoundingClientRect();
-            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            const x = clientX - rect.left;
-            const y = clientY - rect.top;
-            ctx.lineTo(x, y);
+            const pos = getClientPos(e);
+            ctx.lineTo(pos.x, pos.y);
             ctx.stroke();
-            lastX = x; lastY = y;
+            lastX = pos.x; lastY = pos.y;
         };
 
+        const endDraw = () => {
+            isDrawing = false;
+            if (drawing) ctx.beginPath();
+        };
+
+        // Attach Universal Event Listeners
         canvas.addEventListener('touchstart', startDraw);
         canvas.addEventListener('touchmove', moveDraw);
+        canvas.addEventListener('touchend', endDraw);
+        canvas.addEventListener('touchcancel', endDraw);
+        
         canvas.addEventListener('mousedown', startDraw);
         canvas.addEventListener('mousemove', moveDraw);
-        canvas.addEventListener('mouseup', () => ctx.beginPath());
-        canvas.addEventListener('touchend', () => ctx.beginPath());
+        canvas.addEventListener('mouseup', endDraw);
+
+        // Auto fullscreen for presentation mode
+        setTimeout(() => {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.warn("Fullscreen request denied:", err);
+                });
+            }
+        }, 1500);
     </script>
 </body>
 </html>
+
+

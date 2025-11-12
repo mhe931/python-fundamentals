@@ -1,48 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ADA Exam 1 • S24 ULTRA</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/1.1.0/impress.min.js"></script>
     <style>
-        body { margin:0; background:#000; color:#fff; font-family:sans-serif; overflow:hidden; }
-        .step {
-            position: relative;
-            width: 900px; height: 700px;
-            padding: 40px 60px;
-            font-size: 40px; line-height: 1.5;
-            background: rgba(0,0,50,0.9);
-            border-radius: 30px;
-            box-shadow: 0 0 50px #0ff;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html, body { height:100vh; width:100vw; overflow:hidden; background:#000; color:#fff; font-family:system-ui,-apple-system,sans-serif; }
+        
+        #impress { 
+            width:100vw !important; height:100vh !important; 
+            position:fixed !important; top:0; left:0;
         }
-        h1 { font-size: 80px; color: #ff0; text-align:center; }
-        h2 { font-size: 60px; color: #0ff; }
-        b { color: #ff0; }
-        #impress { width:100%; height:100%; }
+        
+        .step {
+            position: absolute !important;
+            width: 90vw !important;
+            height: 90vh !important;
+            max-width: 1000px !important;
+            max-height: 1800px !important;
+            margin: auto !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            padding: 60px 50px !important;
+            background: rgba(10,10,40,0.95) !important;
+            border-radius: 30px !important;
+            border: 4px solid #00D4FF !important;
+            box-shadow: 0 0 80px #00D4FF !important;
+            font-size: 38px !important;
+            line-height: 1.5 !important;
+            text-align: center !important;
+            opacity: 0;
+            transition: all 1s ease !important;
+        }
+        
+        .step.present { opacity: 1 !important; }
+        
+        h1 { font-size: 80px; color:#FFD700; text-shadow: 0 0 30px #FFD700; margin:20px 0; }
+        h2 { font-size: 60px; color:#00D4FF; margin:30px 0; }
+        b { color:#FFD700; font-weight: bold; }
+        ul { text-align:left; display:inline-block; margin:40px 0; }
+        li { margin:20px 0; }
     </style>
 </head>
 <body>
 
-<div id="impress">
+<div id="impress" data-transition-duration="800">
 
-    <div class="step" data-x="0" data-y="0" data-scale="4">
+    <div class="step" data-x="0" data-y="0" data-scale="6">
         <h1>Advanced Data Architecture</h1>
-        <h2>Exam 1 Master Guide</h2>
-        <p style="font-size:50px; text-align:center;"><b>TAP RIGHT →</b></p>
+        <h2>Exam 1 • Full Review</h2>
+        <p style="font-size:50px; margin-top:50px;"><b>TAP RIGHT →</b></p>
     </div>
 
-    <div class="step" data-x="0" data-y="2000">
+    <div class="step" data-x="0" data-y="2400" data-scale="1">
         <h2>L1: DA Blueprint</h2>
         <ul>
-            <li><b>Framework</b> for data assets</li>
+            <li>DA = <b>Framework</b> for data assets</li>
             <li>Organize • Connect • Secure</li>
-            <li>Long-term scalability</li>
+            <li>Focus: <b>scalability</b></li>
         </ul>
-        <p><b>DA = Blueprint</b></p>
+        <p><b>DA = Blueprint</b><br>DE = Builder<br>DS = Consumer</p>
     </div>
 
-    <div class="step" data-x="1500" data-y="2000">
+    <div class="step" data-x="1600" data-y="2400">
         <h2>L1: Form Follows Function</h2>
         <ul>
             <li>Fraud → Streaming</li>
@@ -50,25 +73,69 @@
         </ul>
     </div>
 
-    <div class="step" data-x="3000" data-y="2000">
+    <div class="step" data-x="3200" data-y="2400">
         <h2>L1: Schema Evolution</h2>
         <ul>
-            <li>Schema-on-Write → DWH</li>
-            <li>Schema-on-Read → Lake</li>
-            <li>Lakehouse era</li>
+            <li><b>Schema-on-Write</b> → DWH</li>
+            <li><b>Schema-on-Read</b> → Lake</li>
+            <li><b>Lakehouse</b> = Best of both</li>
         </ul>
     </div>
 
-    <!-- Add all your other slides here with similar data-x/data-y -->
+    <div class="step" data-x="0" data-y="4800" data-rotate-x="90">
+        <h2>L2: Core Principles</h2>
+        <ul>
+            <li>Business Alignment</li>
+            <li>Tech Agnostic</li>
+            <li>Modularity + Loose Coupling</li>
+        </ul>
+    </div>
 
-    <div class="step" data-x="0" data-y="0" data-z="10000" data-scale="10">
-        <h1 style="font-size:100px;">EXAM CRUSHED!</h1>
+    <div class="step" data-x="1600" data-y="4800" data-rotate-x="90">
+        <h2>L2: SSOT & Ownership</h2>
+        <ul>
+            <li><b>Single Source of Truth</b></li>
+            <li>Data as Product</li>
+            <li>Metadata + Stewardship</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-3000" data-y="0" data-rotate-y="-90">
+        <h2>L3: Data Warehouse</h2>
+        <ul>
+            <li>OLAP + Structured</li>
+            <li><b>ETL</b> first</li>
+            <li>Star Schema</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="3000" data-y="0" data-rotate-y="90">
+        <h2>L4: Data Lake → Lakehouse</h2>
+        <ul>
+            <li>All data types</li>
+            <li>Schema-on-Read</li>
+            <li><b>ACID</b> + Governance</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="0" data-y="0" data-z="15000" data-scale="12">
+        <h1 style="font-size:120px;">EXAM 1<br>100%</h1>
+        <p style="font-size:60px; color:#00D4FF;">YOU GOT THIS</p>
     </div>
 
 </div>
 
 <script>
-    impress().init();
+    // WORKS 100% ON VIVALDI + S24 ULTRA
+    window.addEventListener('load', function() {
+        const api = impress();
+        api.init();
+        api.goto(0);
+        
+        // Force full screen fit
+        document.body.style.margin = '0';
+        document.documentElement.style.overflow = 'hidden';
+    });
 </script>
 
 </body>

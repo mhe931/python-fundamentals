@@ -1,187 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>ADA Exam 1 • S24 ULTRA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/1.1.0/impress.min.js"></script>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { height:100vh; width:100vw; overflow:hidden; background:#0a0a1a; color:#e0e0ff; font-family:'Exo 2',sans-serif; }
-        #impress { position:fixed; top:0; left:0; width:100%; height:100%; }
+        body { margin:0; background:#000; color:#fff; font-family:sans-serif; overflow:hidden; }
         .step {
-            position:absolute !important;
-            width:1100px !important; height:2400px !important;
-            padding:100px 120px !important;
-            background:rgba(10,10,35,0.98);
-            border-radius:50px;
-            border:5px solid #FFD700;
-            box-shadow:0 0 100px rgba(0,212,255,0.6);
-            font-size:2.2em; line-height:1.6;
-            opacity:0; transition:all 1s;
+            position: relative;
+            width: 900px; height: 700px;
+            padding: 40px 60px;
+            font-size: 40px; line-height: 1.5;
+            background: rgba(0,0,50,0.9);
+            border-radius: 30px;
+            box-shadow: 0 0 50px #0ff;
         }
-        .present { opacity:1 !important; }
-        h1 { font-family:'Orbitron'; font-size:6em; color:#FFD700; text-shadow:0 0 50px #FFD700; }
-        h2 { font-family:'Orbitron'; font-size:4.5em; color:#00D4FF; border-bottom:10px solid #00D4FF; padding-bottom:15px; }
-        h3 { font-size:3em; color:#FF6B6B; margin:40px 0; }
-        ul { font-size:2.2em; margin:30px 0; }
-        b { color:#FFD700; font-weight:900; }
-        .key { background:rgba(40,40,100,0.9); padding:50px; border-radius:30px; border-left:20px solid #FFD700; margin:60px 0; }
-        #prev, #next { position:fixed; top:0; width:40%; height:100%; z-index:9999; background:transparent; }
-        #next { right:0; }
-        .hint { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.9); color:#00D4FF; padding:30px 70px; border-radius:100px; font-size:3em; font-weight:bold; z-index:9999; box-shadow:0 0 50px #00D4FF; }
+        h1 { font-size: 80px; color: #ff0; text-align:center; }
+        h2 { font-size: 60px; color: #0ff; }
+        b { color: #ff0; }
+        #impress { width:100%; height:100%; }
     </style>
 </head>
 <body>
 
 <div id="impress">
 
-    <div class="step" data-x="0" data-y="0" data-scale="8">
+    <div class="step" data-x="0" data-y="0" data-scale="4">
         <h1>Advanced Data Architecture</h1>
         <h2>Exam 1 Master Guide</h2>
-        <p class="key">S24 ULTRA READY<br><b>TAP RIGHT →</b></p>
+        <p style="font-size:50px; text-align:center;"><b>TAP RIGHT →</b></p>
     </div>
 
-    <div class="step" data-x="0" data-y="3000">
-        <h2>L1: DA - The Blueprint</h2>
+    <div class="step" data-x="0" data-y="2000">
+        <h2>L1: DA Blueprint</h2>
         <ul>
-            <li>DA = <b>Framework</b> for data assets</li>
-            <li>Answers: How to <b>organize, connect, secure</b> data</li>
-            <li>Focus: <b>long-term scalability</b></li>
+            <li><b>Framework</b> for data assets</li>
+            <li>Organize • Connect • Secure</li>
+            <li>Long-term scalability</li>
         </ul>
-        <p class="key">DA = Blueprint<br>DE = Builder<br>DS = Consumer</p>
+        <p><b>DA = Blueprint</b></p>
     </div>
 
-    <div class="step" data-x="2000" data-y="3000">
+    <div class="step" data-x="1500" data-y="2000">
         <h2>L1: Form Follows Function</h2>
-        <p>Design driven by <b>business needs</b></p>
         <ul>
-            <li>Fraud detection → Streaming</li>
-            <li>Reporting → Auditable models</li>
+            <li>Fraud → Streaming</li>
+            <li>Reporting → Auditable</li>
         </ul>
     </div>
 
-    <div class="step" data-x="4000" data-y="3000">
+    <div class="step" data-x="3000" data-y="2000">
         <h2>L1: Schema Evolution</h2>
         <ul>
-            <li><b>Schema-on-Write</b> → DWH (rigid)</li>
-            <li><b>Schema-on-Read</b> → Lake (flexible)</li>
-            <li>70s → Relational → DWH → Big Data → <b>Lakehouse</b></li>
+            <li>Schema-on-Write → DWH</li>
+            <li>Schema-on-Read → Lake</li>
+            <li>Lakehouse era</li>
         </ul>
     </div>
 
-    <div class="step" data-x="0" data-y="6000" data-rotate-x="90">
-        <h2>L2: Core Principles</h2>
-        <ul>
-            <li>Business Alignment</li>
-            <li>Tech Agnostic</li>
-            <li>Modularity + Loose Coupling</li>
-        </ul>
-    </div>
+    <!-- Add all your other slides here with similar data-x/data-y -->
 
-    <div class="step" data-x="2000" data-y="6000" data-rotate-x="90">
-        <h2>L2: Trust & Ownership</h2>
-        <ul>
-            <li><b>SSOT</b> = Single Source of Truth</li>
-            <li>Data as Product</li>
-            <li>Metadata + Stewardship</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="4000" data-y="6000" data-rotate-x="90">
-        <h2>L2: Scale & Frameworks</h2>
-        <ul>
-            <li>Pub-Sub Broker</li>
-            <li>TOGAF = Process</li>
-            <li>Zachman = Taxonomy</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="-3000" data-y="0" data-rotate-y="-90">
-        <h2>L3: Data Warehouse</h2>
-        <ul>
-            <li>OLAP + Structured</li>
-            <li><b>ETL</b> (transform first)</li>
-            <li>Columnar DBs</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="-3000" data-y="3000" data-rotate-y="-90">
-        <h2>L3: Star Schema</h2>
-        <ul>
-            <li>Fact → Dimensions</li>
-            <li>Denormalized for speed</li>
-            <li>Incremental loads</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="-3000" data-y="6000" data-rotate-y="-90">
-        <h2>L3: OLAP Ops</h2>
-        <p><b>Roll-Up</b> → Aggregate<br>
-           <b>Drill-Down</b> → Detail<br>
-           <b>Slice</b> → Filter one dim<br>
-           <b>Dice</b> → Multi-dim cube</p>
-    </div>
-
-    <div class="step" data-x="3000" data-y="0" data-rotate-y="90">
-        <h2>L4: Data Lakes</h2>
-        <ul>
-            <li>All data types</li>
-            <li>Schema-on-Read</li>
-            <li>Risk: <b>Data Swamp</b></li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="3000" data-y="3000" data-rotate-y="90">
-        <h2>L4: Zones & ADLS Gen2</h2>
-        <ul>
-            <li>Raw → Cleaned → Curated</li>
-            <li>HDFS + ACLs/RBAC</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="3000" data-y="6000" data-rotate-y="90">
-        <h2>L4: Lakehouse</h2>
-        <ul>
-            <li>DL + DWH reliability</li>
-            <li><b>ACID</b> on lake</li>
-            <li>Unified BI + ML</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="0" data-y="0" data-z="12000" data-scale="12">
-        <h1 style="font-size:8em;">EXAM 1<br>CRUSHED</h1>
-        <p style="font-size:5em; color:#00D4FF;">Good luck!</p>
+    <div class="step" data-x="0" data-y="0" data-z="10000" data-scale="10">
+        <h1 style="font-size:100px;">EXAM CRUSHED!</h1>
     </div>
 
 </div>
 
-<div id="prev" onclick="impress().prev()"></div>
-<div id="next" onclick="impress().next()"></div>
-<div class="hint">← PREV | NEXT →</div>
-
 <script>
-    // BULLETPROOF INIT — WORKS EVERY TIME
-    window.onload = function() {
-        const api = impress();
-        api.init();
-        api.goto(0);
-        
-        // Triple force
-        setTimeout(() => api.goto(0), 100);
-        setTimeout(() => api.goto(0), 500);
-        
-        // Touch controls
-        let sx = 0;
-        document.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
-        document.addEventListener('touchend', e => {
-            const diff = e.changedTouches[0].clientX - sx;
-            if (Math.abs(diff) > 60) {
-                diff > 0 ? api.prev() : api.next();
-            }
-        }, {passive:true});
-    };
+    impress().init();
 </script>
 
 </body>

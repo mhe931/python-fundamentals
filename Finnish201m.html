@@ -120,24 +120,25 @@
 </head>
 <body>
     <div class="progress" id="progress"></div>
-    <div class="nav">Slide <span id="current">1</span> / <span id="total">18</span></div>
+    <div class="nav">Slide <span id="current">1</span> / <span id="total">22</span></div>
 
     <div class="container" id="slides">
+        
         <div class="slide" style="text-align:center; justify-content:center;">
             <h1 style="font-size: 4em;">🇫🇮 SUOMI 2</h1>
             <h2 style="font-size:2.4em; color:var(--neon);">Dataydin-Opas: Syväsukellus (Deep Dive)</h2>
             <div class="gold" style="font-size:1.3em;">Däniel Ebrahimzadeh, Computing Science • Vaasa, Finland </div>
-            <p style="margin:1.5em 0; font-size:1.1em;">18 Slides of Core Grammar. Scroll <i class="fa-solid fa-arrow-down"></i> to begin.</p>
+            <p style="margin:1.5em 0; font-size:1.1em;">22 Slides of Core Grammar. Scroll <i class="fa-solid fa-arrow-down"></i> to begin.</p>
             <div class="footer">Self-Study Module • Nov 2025</div>
         </div>
 
         <div class="slide" data-horizontal-group="M2"><h2>MODUULI 2: Paikallissijat 📍</h2>
             <div class="card">
                 <h3>Sisä- ja Ulkopaikallissijat <span class="trans">(Internal & External Cases)</span></h3>
+                <p style="color:var(--neon); font-weight:bold;">Tells WHERE, FROM WHERE, or TO WHERE.</p>
                 <ul>
-                    <li>Tells <b>where</b> (<span class="answer">Missä?</span>), <b>from where</b> (<span class="answer">Mistä?</span>), or <b>to where</b> (<span class="answer">Mihin?</span>).</li>
-                    <li>Internal cases (-ssa/-stä/-Vn) imply **containment** (house, city, cup).</li>
-                    <li>External cases (-lla/-lta/-lle) imply **surface** or **abstract location** (table, at the school).</li>
+                    <li>**Internal cases (-ssa/-stä/-Vn)** imply **containment** (house, city, cup). Use for Missä? Mistä? Mihin? when answering questions about being *inside* a place or object.</li>
+                    <li>**External cases (-lla/-lta/-lle)** imply **surface** or **abstract location** (table, at the school). Use for being *on* a surface or *at* a service/general location.</li>
                 </ul>
             </div>
             <div class="card" style="flex-grow:0;">
@@ -146,9 +147,9 @@
                         <tr><th>Inside</th><th>Ending</th><th>Outside</th><th>Ending</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><b>In</b> (Missä?)</td><td>-ssa / -ssä</td><td><b>On</b> (Missä?)</td><td>-lla / -llä</td></tr>
-                        <tr><td><b>Out of</b> (Mistä?)</td><td>-sta / -stä</td><td><b>Off of</b> (Mistä?)</td><td>-lta / -ltä</td></tr>
-                        <tr><td><b>Into</b> (Mihin?)</td><td>-Vn / -seen / -hVn</td><td><b>Onto</b> (Mihin?)</td><td>-lle</td></tr>
+                        <tr><td>**In** (Missä?)</td><td>-ssa / -ssä</td><td>**On** (Missä?)</td><td>-lla / -llä</td></tr>
+                        <tr><td>**Out of** (Mistä?)</td><td>-sta / -stä</td><td>**Off of** (Mistä?)</td><td>-lta / -ltä</td></tr>
+                        <tr><td>**Into** (Mihin?)</td><td>-Vn / -seen / -hVn</td><td>**Onto** (Mihin?)</td><td>-lle</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -157,19 +158,39 @@
         <div class="slide" data-horizontal-group="M2"><h2>Illatiivi (Mihin?) <span class="trans">(Movement INTO)</span></h2>
             <div class="card">
                 <h3>Illative Endings (To/Into)</h3>
+                <p>The Illative is tricky! The ending depends on the **vowel structure** of the word stem.</p>
                 <table>
                     <thead>
                         <tr><th>Rule</th><th>Pääte <span class="trans">(Ending)</span></th><th>Esimerkki <span class="trans">(Example)</span></th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>Single Vowel Word</td><td><b>-Vn</b> (Long Vowel)</td><td><b>talo</b> &rarr; talo<b>on</b></td></tr>
-                        <tr><td>Ends in Two Vowels</td><td><b>-seen</b></td><td><b>Lontoo</b> &rarr; Lontoo<b>seen</b></td></tr>
-                        <tr><td>One-Syllable Word</td><td><b>-hVn</b></td><td><b>maa</b> &rarr; maa<b>han</b></td></tr>
+                        <tr><td>Single Vowel Word (e.g., ends in 'a', 'o', 'u')</td><td>**-Vn** (Long Vowel)</td><td>**talo** &rarr; talo<span class="answer">on</span></td></tr>
+                        <tr><td>Ends in Two Vowels (e.g., 'aa', 'öö')</td><td>**-seen**</td><td>**Lontoo** &rarr; Lontoo<span class="answer">seen</span></td></tr>
+                        <tr><td>One-Syllable Word or ends in consonant</td><td>**-hVn**</td><td>**maa** &rarr; maa<span class="answer">han</span></td></tr>
                     </tbody>
                 </table>
                 <p style="margin-top:1em; font-size: 0.9em; border-left: 3px solid var(--neon); padding-left: 10px;">
-                    <span style="color:var(--gold);">Esim:</span> Mies menee <span class="answer">talo<b>on</b></span>. <span class="trans">(The man goes into the house.)</span>
+                    <span style="color:var(--gold);">Esim:</span> Mies menee <span class="answer">talo**on**</span>. <span class="trans">(The man goes into the house.)</span><br>
+                    <span style="color:var(--gold);">Esim:</span> Hän ajaa <span class="answer">koulu**un**</span>. <span class="trans">(She drives to school.)</span>
                 </p>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M2"><h2>Review: Paikallissijat 📍</h2>
+            <div class="card">
+                <h3>Tunnista oikea pääte <span class="trans">(Identify the correct ending)</span></h3>
+                <p style="margin-bottom:1em;">**Esimerkki:** Minä menen (koulu) <span class="trans">(I go to school)</span></p>
+                <table>
+                    <tr><th>Missä?</th><th>Mistä?</th><th>Mihin?</th></tr>
+                    <tr>
+                        <td>Koulu<span class="answer">ssa</span> (Inessive)</td>
+                        <td>Koulu<span class="answer">sta</span> (Elative)</td>
+                        <td>Koulu<span class="answer">un</span> (Illative)</td>
+                    </tr>
+                </table>
+                <h3 style="margin-top:1.5em; color:var(--neon);">Nopea Kysymys:</h3>
+                <p>Minkä paikallissijan pääte on aina **-lle**? (What case ending is always -lle?)</p>
+                <p>Vastaus: <span class="answer">Allatiivi (Onto/To an external location)</span></p>
             </div>
         </div>
 
@@ -187,33 +208,53 @@
         <div class="slide" data-horizontal-group="M3"><h2>MODUULI 3: Adjektiivit ja Värit 🌈</h2>
             <div class="card">
                 <h3>Adjective Agreement (Taivutus)</h3>
-                <p>» Adjectives must <b>ALWAYS match the noun's case and number</b>.</p>
+                <p style="color:var(--gold); font-weight: bold;">Adjectives must **ALWAYS match the noun's case and number**.</p>
                 <p style="text-align: center; margin: 1em 0; color:var(--neon); font-weight:bold;">[Adjektiivi (case)] + [Substantiivi (case)]</p>
                 <ul>
-                    <li><b>Nominatiivi:</b> <span class="answer">Uusi</span> auto. <span class="trans">(A new car.)</span></li>
-                    <li><b>Inessiivi:</b> Nukun <span class="answer">uude<b>ssa</b></span> auto<span class="answer">ssa</span>. <span class="trans">(I sleep in a new car.)</span></li>
-                    <li><b>Allatiivi:</b> Annan lahjan <span class="answer">kilti<b>lle</b></span> lapse<span class="answer">lle</span>. <span class="trans">(To the kind child.)</span></li>
+                    <li>**Nominatiivi:** <span class="answer">Uusi</span> auto. <span class="trans">(A new car.)</span></li>
+                    <li>**Inessiivi:** Nukun <span class="answer">uude**ssa**</span> auto<span class="answer">ssa</span>. <span class="trans">(I sleep in a new car.)</span></li>
+                    <li>**Allatiivi:** Annan lahjan <span class="answer">kilti**lle**</span> lapse<span class="answer">lle</span>. <span class="trans">(To the kind child.)</span></li>
                 </ul>
+            </div>
+            <div class="card" style="flex-grow:0;">
+                <p>
+                    <span style="color:var(--neon);">Esim:</span> **Iso** talo (Nom.) &rarr; **Iso**<span class="answer">on</span> talo<span class="answer">on</span> (Illative).
+                </p>
             </div>
         </div>
 
         <div class="slide" data-horizontal-group="M3"><h2>Värien Taivutus <span class="trans">(Color Declension)</span></h2>
             <div class="card">
                 <h3>'nen'-loppuiset sanat (Words ending in -nen)</h3>
-                <p>Words like **punainen** (red), **sininen** (blue), **keltainen** (yellow) use the -sta/-stä stem for the Partitive.</p>
+                <p>Words like **punainen** (red), **sininen** (blue) drop the **-nen** and use the **-se** stem for most case forms.</p>
                 <table>
                     <thead>
-                        <tr><th>Nominatiivi</th><th>Partitiivi</th><th>Monikko <span class="trans">(Plural)</span></th></tr>
+                        <tr><th>Nominatiivi</th><th>Partitiivi</th><th>Inessiivi <span class="trans">(-ssa/-ssä)</span></th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><b>punainen</b></td><td>punaista</td><td>punaiset</td></tr>
-                        <tr><td><b>sininen</b></td><td>sinistä</td><td>siniset</td></tr>
-                        <tr><td><b>ruskea</b></td><td>ruskeaa</td><td>ruskeat</td></tr>
+                        <tr><td>**punainen**</td><td>punaista</td><td>punai<span class="answer">se</span>ssa</td></tr>
+                        <tr><td>**sininen**</td><td>sinistä</td><td>sinise<span class="answer">ssä</span></td></tr>
+                        <tr><td>**ruskea**</td><td>ruskeaa</td><td>ruskea<span class="answer">ssa</span></td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="gold" style="font-size:1em;">
-                Esim: Tummansininen <span class="trans">(Dark blue)</span> &rarr; Tummansinise<b>ssä</b> <span class="trans">(In dark blue)</span>. (Declined as one word!)
+                Esim: Tummansininen <span class="trans">(Dark blue)</span> &rarr; Tummansinise**ssä** <span class="trans">(In dark blue)</span>. (**Declined as one word!**)
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M3"><h2>Review: Adjektiivit 📝</h2>
+            <div class="card">
+                <h3>Täydennä ja taivuta <span class="trans">(Complete and decline)</span></h3>
+                <p>1. (I live in an) <span style="color:var(--neon);">vanha, valkoinen</span> (talossa).</p>
+                <p>Vastaus: <span class="answer">vanha<b>ssa</b> valkoise<b>ssa</b> talossa.</span></p>
+                <p style="margin-top:1.5em; border-top: 1px dashed #333; padding-top: 0.8em;">
+                2. Minulla on (a long, black) <span style="color:var(--neon);">pitkä, musta</span> (takki). (In Nominative)
+                </p>
+                <p>Vastaus: <span class="answer">pitkä musta takki.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Vinkki: Why is it <span class="answer">valkoise**ssa**</span>? Because <span style="color:var(--neon);">valkoinen</span> drops **-nen** to **-se-** and takes the Inessive ending **-ssa/-ssä**.
             </div>
         </div>
 
@@ -235,10 +276,12 @@
             <div class="card">
                 <h3>Omistuslause <span class="trans">(Ownership Clause - "To Have")</span></h3>
                 <p style="color: var(--neon); font-weight: bold; font-size: 1.2em;">[Owner]-lla/llä + olla (on) + [Item](Nom.)</p>
+                <p>This structure literally means: **"On the owner is the item."**</p>
                 <ul>
-                    <li>Owner is in the **Adessive Case** (-lla/-llä). Possession is 'on' someone.</li>
-                    <li><span style="color:var(--gold);">Minu<b>lla</b> on koira.</span> <span class="trans">(I have a dog. Lit: On me is a dog.)</span></li>
-                    <li><span style="color:var(--error);">Negation:</span> Item goes to **Partitive**. <span style="color:var(--error);">Mei<b>llä ei ole</b> auto<b>a</b>.</span> <span class="trans">(We don't have a car.)</span></li>
+                    <li>Owner is in the **Adessive Case** (-lla/-llä). The verb is *olla* (to be).</li>
+                    <li><span style="color:var(--gold);">Minu**lla** on koira.</span> <span class="trans">(I have a dog. Lit: On me is a dog.)</span></li>
+                    <li><span style="color:var(--gold);">Peka**lla** on uusi puhelin.</span> <span class="trans">(Pekka has a new phone.)</span></li>
+                    <li><span style="color:var(--error);">Negation:</span> Item goes to **Partitive**. <span style="color:var(--error);">Mei**llä ei ole** auto**a**.</span> <span class="trans">(We don't have a car.)</span></li>
                 </ul>
             </div>
         </div>
@@ -247,12 +290,28 @@
             <div class="card">
                 <h3>Location, Verb, Subject Word Order</h3>
                 <p style="color: var(--neon); font-weight: bold; font-size: 1.2em;">[Location Case] + olla (on) + [Item](Nom.)</p>
+                <p>Used to state the **existence** of a *new* or *indefinite* item in a location.</p>
                 <ul>
-                    <li>Used to state the **existence** of a *new* or *indefinite* item in a location.</li>
-                    <li><span style="color:var(--gold);">Keittiö<b>ssä</b> on jääkaappi.</span> <span class="trans">(In the kitchen is a refrigerator.)</span></li>
+                    <li><span style="color:var(--gold);">Keittiö**ssä** on jääkaappi.</span> <span class="trans">(In the kitchen is a refrigerator.)</span></li>
+                    <li><span style="color:var(--gold);">Katue**lla** on monta ihmistä.</span> <span class="trans">(On the street are many people.)</span></li>
                     <li>**Word Order is Fixed:** Location must come first.</li>
-                    <li><span style="color:var(--error);">Talo<b>ssa ei ole</b> hiss<b>iä</b>.</span> <span class="trans">(In the house is not an elevator - Item in Partitive)</span>.</li>
+                    <li><span style="color:var(--error);">Talo**ssa ei ole** hiss**iä**.</span> <span class="trans">(In the house is not an elevator - Item in Partitive)</span>.</li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M4"><h2>Review: Lausetyypit 🧩</h2>
+            <div class="card">
+                <h3>Omistus- vai Eksistentiaali?</h3>
+                <table>
+                    <thead><tr><th>Lause <span class="trans">(Sentence)</span></th><th>Tyyppi <span class="trans">(Type)</span></th></tr></thead>
+                    <tbody>
+                        <tr><td>Pöydä<span style="color:var(--gold);">llä on</span> kirja.</td><td><span class="answer">Eksistentiaali</span></td></tr>
+                        <tr><td>Mei<span style="color:var(--gold);">llä on</span> koira.</td><td><span class="answer">Omistuslause</span></td></tr>
+                        <tr><td>Talo<span style="color:var(--gold);">ssa ei ole</span> uima-allasta.</td><td><span class="answer">Eksistentiaali (Negation)</span></td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:1.5em; color:var(--error); font-weight:bold;">Tärkeää: Omistuslauseessa omistaja on aina <span class="answer">Adessiivissa (-lla/-llä)</span>.</p>
             </div>
         </div>
         
@@ -260,13 +319,13 @@
             <div class="card">
                 <h3>Omistus- vai Eksistentiaali?</h3>
                 <p>» (I have a cat.) <span class="trans">(Ownership)</span>
-                    <br><span class="answer">Minu<b>lla</b> on kissa.</span>
+                    <br><span class="answer">Minu**lla** on kissa.</span>
                 </p>
                 <p>» (There is a microwave in the kitchen.) <span class="trans">(Existential)</span>
-                    <br><span class="answer">Keittiö<b>ssä</b> on mikro.</span>
+                    <br><span class="answer">Keittiö**ssä** on mikro.</span>
                 </p>
                 <p>» (Does Pekka have a sister?) <span class="trans">(Ownership Question)</span>
-                    <br><span class="answer">Onko Pekalla sisko<b>a</b>?</span> <span style="color:var(--error);">(Partitive for indefinite possession question)</span>
+                    <br><span class="answer">Onko Pekalla sisko**a**?</span> <span style="color:var(--error);">(Partitive for indefinite possession question)</span>
                 </p>
             </div>
         </div>
@@ -274,43 +333,62 @@
         <div class="slide" data-horizontal-group="M5"><h2>MODUULI 5: Partitiivi ✨</h2>
             <div class="card">
                 <h3>Partitiivin Pääkäytöt <span class="trans">(Main Partitive Uses)</span></h3>
+                <p style="color:var(--neon); font-weight: bold;">The Partitive case shows incomplete, uncountable, or negative data.</p>
                 <ul>
-                    <li>1. **Negation:** After a negative verb (En osta auto<b>a</b>).</li>
-                    <li>2. **Quantity:** After numbers > 1 (kolme tyttö<b>ä</b>).</li>
-                    <li>3. **Mass Nouns/Uncountable:** (juon kahvi<b>a</b>, aika<b>a</b>).</li>
-                    <li>4. **Ongoing Action (Irresultative):** The action is not finished (luen kirja<b>a</b>).</li>
+                    <li>1. **Negation:** After a negative verb (En osta auto**a**).</li>
+                    <li>2. **Quantity:** After numbers > 1 (kolme tyttö**ä**).</li>
+                    <li>3. **Mass Nouns/Uncountable:** (juon kahvi**a**, aika**a**).</li>
+                    <li>4. **Ongoing Action (Irresultative):** The action is not finished (luen kirja**a**).</li>
                 </ul>
             </div>
             <div class="card" style="flex-grow:0; font-size: 0.9em;">
-                <p>» **Ongoing (Partitive):** <span style="color:var(--neon);">Luen kirja<b>a</b>.</span> <span class="trans">(I am reading a book - in the middle of it.)</span></p>
-                <p>» **Completed (Accusative):** <span style="color:var(--gold);">Luin kirja<b>n</b>.</span> <span class="trans">(I read the whole book - finished.)</span></p>
+                <p>» **Ongoing (Partitive):** <span style="color:var(--neon);">Luen kirja**a**.</span> <span class="trans">(I am reading a book - in the middle of it.)</span></p>
+                <p>» **Completed (Accusative):** <span style="color:var(--gold);">Luin kirja**n**.</span> <span class="trans">(I read the whole book - finished.)</span></p>
             </div>
         </div>
 
         <div class="slide" data-horizontal-group="M5"><h2>Astevaihtelu <span class="trans">(Consonant Gradation)</span></h2>
             <div class="card">
                 <h3>Vahva <span class="trans">(Strong)</span> vs. Heikko <span class="trans">(Weak)</span> Grade</h3>
-                <p>» Sound change in the word stem (K, P, T) to ease pronunciation when a case ending is attached.</p>
+                <p>» Sound change in the word stem (K, P, T) to ease pronunciation when a case ending is attached (e.g., Inessive, Illative).</p>
                 <table>
                     <thead><tr><th>Vahva</th><th>Heikko</th><th>Esimerkki</th></tr></thead>
                     <tbody>
-                        <tr><td><b>kk</b></td><td>k</td><td><b>viikko</b> &rarr; vii<b>ko</b>ssa</td></tr>
-                        <tr><td><b>tt</b></td><td>t</td><td><b>asunto</b> &rarr; asu<b>nno</b>ssa (nt &rarr; nn)</td></tr>
-                        <tr><td><b>k</b></td><td>- (zero)</td><td>ruo<b>k</b>a &rarr; ruo<b>a</b>n</td></tr>
-                        <tr><td><b>p</b></td><td>v</td><td><b>leipä</b> &rarr; lei<b>v</b>än</td></tr>
-                        <tr><td><b>t</b></td><td>d</td><td><b>pöytä</b> &rarr; pöy<b>dä</b>llä</td></tr>
+                        <tr><td>**kk**</td><td>k</td><td>**viikko** &rarr; vii**ko**ssa</td></tr>
+                        <tr><td>**tt**</td><td>t</td><td>**asunto** &rarr; asu**nno**ssa (nt &rarr; nn)</td></tr>
+                        <tr><td>**k**</td><td>- (zero)</td><td>ruo**k**a &rarr; ruo**a**n</td></tr>
+                        <tr><td>**p**</td><td>v</td><td>**leipä** &rarr; lei**v**än</td></tr>
+                        <tr><td>**t**</td><td>d</td><td>**pöytä** &rarr; pöy**dä**llä</td></tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <div class="slide" data-horizontal-group="M5"><h2>Review: Astevaihtelu 🧠</h2>
+            <div class="card">
+                <h3>Muuta heikkoon asteeseen <span class="trans">(Change to the weak grade)</span></h3>
+                <table>
+                    <thead><tr><th>Vahva <span class="trans">(Strong)</span></th><th>Heikko <span class="trans">(Weak)</span></th><th>Sääntö <span class="trans">(Rule)</span></th></tr></thead>
+                    <tbody>
+                        <tr><td>pieni (katu)</td><td>pienellä ka<span class="answer">du</span>lla</td><td>t &rarr; d</td></tr>
+                        <tr><td>iso (pankki)</td><td>isossa pan<span class="answer">ki</span>ssa</td><td>kk &rarr; k</td></tr>
+                        <tr><td>hyvä (kirja)</td><td>hyvään ki<span class="answer">rjaa</span>n</td><td>j &rarr; jj / (hVn)</td></tr>
+                        <tr><td>uusi (talo)</td><td>uude<span class="answer">ssa</span> talossa</td><td>l &rarr; l (no change)</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:1.5em; color:var(--neon); font-weight:bold;">
+                    Tärkeää: Partitiivi (missä on -a/-ä) on <span class="answer">aina vahva</span>. Esim: näen pöydä**n** (Accusative) vs. näen pöytä**ä** (Partitive).
+                </p>
             </div>
         </div>
         
         <div class="slide" data-horizontal-group="M5"><h2>Harjoitus: Astevaihtelu 🧠</h2>
             <div class="card">
                 <h3>Muuta sana heikkoon asteeseen <span class="trans">(Change the word to the weak grade)</span></h3>
-                <p>1. <b>(katu)</b> + Allatiivi (-lla) &rarr; ka<span class="answer">du</span>lla (t &rarr; d)</p>
-                <p>2. <b>(pankki)</b> + Inessiivi (-ssa) &rarr; pan<span class="answer">ki</span>ssa (kk &rarr; k)</p>
-                <p>3. <b>(leipä)</b> + Elatiivi (-sta) &rarr; lei<span class="answer">vä</span>stä (p &rarr; v)</p>
-                <p>4. <b>(kirje)</b> + Illatiivi (-Vn) &rarr; kirjee<span class="answer">seen</span> (j &rarr; j + seen)</p>
+                <p>1. **(katu)** + Allatiivi (-lla) &rarr; ka<span class="answer">du</span>lla (t &rarr; d)</p>
+                <p>2. **(pankki)** + Inessiivi (-ssa) &rarr; pan<span class="answer">ki</span>ssa (kk &rarr; k)</p>
+                <p>3. **(leipä)** + Elatiivi (-sta) &rarr; lei<span class="answer">vä</span>stä (p &rarr; v)</p>
+                <p>4. **(kirje)** + Illatiivi (-Vn) &rarr; kirjee<span class="answer">seen</span> (j &rarr; j + seen)</p>
                 <p style="margin-top:1.5em; color:var(--neon); font-weight:bold;">Tärkeää: Astevaihtelu ei tapahdu partitiivissa (-a/-ä, -ta/-tä).</p>
             </div>
         </div>
@@ -329,35 +407,15 @@
     </div>
 
     <script>
-        // JavaScript for progress bar and slide counter (from ADA example)
+        // JavaScript for progress bar and slide counter
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        // Update the total slide count for the navigation bar
         document.getElementById('total').textContent = totalSlides;
         
-        window.addEventListener('scroll', () => {
-            const container = document.getElementById('slides');
-            const scrollTop = container.scrollTop;
-            const docHeight = container.scrollHeight - container.clientHeight;
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            document.getElementById('progress').style.width = progress + '%';
-            
-            let currentSlide = 1;
-            for (let i = 0; i < totalSlides; i++) {
-                const slide = slides[i];
-                // Check if the slide's top boundary is past the top of the viewport
-                if (slide.offsetTop <= scrollTop + container.clientHeight * 0.5) {
-                    currentSlide = i + 1;
-                } else {
-                    break; 
-                }
-            }
-            document.getElementById('current').textContent = currentSlide;
-        });
-
-        // Add scroll behavior listener to the container instead of window for better mobile compatibility with scroll-snap
         const container = document.getElementById('slides');
+        
         container.addEventListener('scroll', () => {
-             // Re-run the logic above for the scroll event of the container
              const scrollTop = container.scrollTop;
             const docHeight = container.scrollHeight - container.clientHeight;
             const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
@@ -366,6 +424,7 @@
             let currentSlide = 1;
             for (let i = 0; i < totalSlides; i++) {
                 const slide = slides[i];
+                // Check if the slide's top boundary is past the top of the viewport
                 if (slide.offsetTop <= scrollTop + container.clientHeight * 0.5) {
                     currentSlide = i + 1;
                 } else {

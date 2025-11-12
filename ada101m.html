@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>ADA Exam 1 • S24 Ultra • FINAL</title>
+    <title>ADA Exam 1</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;800&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
@@ -23,7 +23,7 @@
             font-size: 18px;
             line-height: 1.55;
             overscroll-behavior: none;
-            overflow-x: hidden;
+            overflow: hidden; /* Hide body scrollbar since .container handles scrolling */
         }
         .container {
             width: 100vw;
@@ -120,19 +120,15 @@
     <div class="nav">Slide <span id="current">1</span> / <span id="total">29</span></div>
 
     <div class="container" id="slides">
-        <!-- COVER -->
         <div class="slide" style="text-align:center; justify-content:center;">
             <h1>Advanced Data Architecture</h1>
             <h2 style="font-size:2.4em; color:#FFD700;">Exam 1 Master Study Guide (L1-L4)</h2>
             <div class="gold" style="font-size:1.3em;">@wysiwyg93 • Vaasa, Finland • S24 Ultra Optimized</div>
-            <p style="margin:1.5em 0; font-size:1.1em;">29 Slides of Detailed Content. Scroll $\downarrow$ to begin.</p>
+            <p style="margin:1.5em 0; font-size:1.1em;">29 Slides of Detailed Content. Scroll <i class="fa-solid fa-arrow-down"></i> to begin.</p>
             <p style="font-size:1em;">Tap <b>Pen</b> to activate drawing mode.</p>
             <div class="footer">Final Version • 12 Nov 2025</div>
         </div>
 
-        <!-- ========================================================================= -->
-        <!-- LECTURE 1: INTRODUCTION TO DATA ARCHITECTURE (DA) - 7 SLIDES -->
-        <!-- ========================================================================= -->
         <div class="slide" data-horizontal-group="L1"><h2>L1: Data Architecture - The Blueprint</h2>
             <div class="card">
                 <h3>DA Definition & Core Focus</h3>
@@ -222,9 +218,6 @@
             </div>
         </div>
         
-        <!-- ========================================================================= -->
-        <!-- LECTURE 2: FOUNDATIONAL PRINCIPLES - 7 SLIDES -->
-        <!-- ========================================================================= -->
         <div class="slide" data-horizontal-group="L2"><h2>L2: Core Principles & Governance</h2>
             <div class="card">
                 <h3>General Principles</h3>
@@ -312,9 +305,6 @@
             </div>
         </div>
 
-        <!-- ========================================================================= -->
-        <!-- LECTURE 3: DATA WAREHOUSING (DWH) - 6 SLIDES -->
-        <!-- ========================================================================= -->
         <div class="slide" data-horizontal-group="L3"><h2>L3: DWH - Structured Data Core</h2>
             <div class="card">
                 <h3>Definition & OLAP</h3>
@@ -391,9 +381,6 @@
             </div>
         </div>
 
-        <!-- ========================================================================= -->
-        <!-- LECTURE 4: DATA LAKES & MODERN DW - 6 SLIDES -->
-        <!-- ========================================================================= -->
         <div class="slide" data-horizontal-group="L4"><h2>L4: Data Lakes - The Flexible Store</h2>
             <div class="card">
                 <h3>Data Lake Principles & Limitations of DWH</h3>
@@ -473,7 +460,6 @@
         </div>
 
 
-        <!-- END SLIDE -->
         <div class="slide" data-horizontal-group="L5" style="text-align:center; justify-content:center; background:linear-gradient(135deg,#000,#1a0033);">
             <h1 style="font-size:4em;">EXAM 1</h1>
             <h2 style="color:#FFD700; font-size:2.5em;">MANDATE COMPLETE.</h2>
@@ -490,6 +476,7 @@
         let drawing = false;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+        const container = document.getElementById('slides'); // Get the scrolling container
         
         const setupCanvas = () => {
             canvas.width = window.innerWidth;
@@ -501,19 +488,22 @@
         setupCanvas();
         window.addEventListener('resize', setupCanvas);
 
-        // FIX: Reliable Slide Counter Logic
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
+        // **FIXED: Reliable Slide Counter Logic using container scroll properties**
+        container.addEventListener('scroll', () => {
+            const scrollTop = container.scrollTop; // Use container's scroll position
+            const docHeight = container.scrollHeight - container.clientHeight; // Use container's total scrollable height
+            
+            // Progress Bar Logic
             const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
             document.getElementById('progress').style.width = progress + '%';
             
             let currentSlide = 1;
-            // Iterate through slides to find which one is currently in view (by checking its top position against scroll position)
+            // Iterate through slides to find which one is currently past the halfway point of the viewport
             for (let i = 0; i < totalSlides; i++) {
                 const slide = slides[i];
-                // Check if the slide's top boundary is past the top of the viewport
-                if (slide.offsetTop <= scrollTop + window.innerHeight * 0.5) {
+                // Check if the slide's top boundary is past the top of the container + half of the viewport height
+                // This ensures the slide counter updates reliably when the slide is mostly in view.
+                if (slide.offsetTop <= scrollTop + container.clientHeight * 0.5) {
                     currentSlide = i + 1;
                 } else {
                     // Optimization: Once we find a slide not yet in view, we can stop
@@ -538,7 +528,8 @@
         const getClientPos = e => {
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            const rect = canvas.getBoundingClientRect();
+            // IMPORTANT: Calculate position relative to the canvas, NOT the document body
+            const rect = canvas.getBoundingClientRect(); 
             return { x: clientX - rect.left, y: clientY - rect.top };
         };
 
@@ -574,17 +565,8 @@
         canvas.addEventListener('mousedown', startDraw);
         canvas.addEventListener('mousemove', moveDraw);
         canvas.addEventListener('mouseup', endDraw);
-
-        // Auto fullscreen for presentation mode
-        setTimeout(() => {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.warn("Fullscreen request denied:", err);
-                });
-            }
-        }, 1500);
+        
+        // Removed aggressive auto fullscreen request.
     </script>
 </body>
 </html>
-
-

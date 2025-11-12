@@ -3,169 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ADA Exam 1 • S24 ULTRA FINAL</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Exo+2:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>ADA Exam 1 • S24 ULTRA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/1.1.0/impress.min.js"></script>
-
     <style>
-        :root { --gold:#FFD700; --cyan:#00D4FF; --bg:#0d0d1a; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        html, body { height:100vh; width:100vw; overflow:hidden; background:var(--bg); color:#E8E8FF; font-family:'Exo 2',sans-serif; }
-        canvas { position:fixed; top:0; left:0; z-index:1; pointer-events:none; opacity:0.5; }
-
-        /* FORCE IMPRESS TO OBEY ON MOBILE */
-        #impress { transform-style: preserve-3d !important; }
-        #impress .step {
-            position: absolute !important;
-            width: 1200px !important; height: 2600px !important;
-            padding: 120px 140px !important;
-            background: rgba(10,10,30,0.98);
-            border-radius: 40px;
-            border: 4px solid rgba(255,215,0,0.5);
-            box-shadow: 0 0 120px rgba(0,212,255,0.5);
-            font-size: 2.1em; line-height: 1.7;
-            opacity: 0; transition: opacity 1s, transform 1s;
+        body { height:100vh; width:100vw; overflow:hidden; background:#0a0a1a; color:#e0e0ff; font-family:'Exo 2',sans-serif; }
+        #impress { position:fixed; top:0; left:0; width:100%; height:100%; }
+        .step {
+            position:absolute !important;
+            width:1100px !important; height:2400px !important;
+            padding:100px 120px !important;
+            background:rgba(10,10,35,0.98);
+            border-radius:50px;
+            border:5px solid #FFD700;
+            box-shadow:0 0 100px rgba(0,212,255,0.6);
+            font-size:2.2em; line-height:1.6;
+            opacity:0; transition:all 1s;
         }
-        #impress .present { opacity: 1 !important; }
-
-        h1 { font-family:'Orbitron'; font-size:5.8em; color:var(--gold); text-shadow:0 0 60px var(--gold); }
-        h2 { font-family:'Orbitron'; font-size:4.2em; color:var(--cyan); border-bottom:12px solid var(--cyan); padding-bottom:20px; display:inline-block; }
-        h3 { font-size:3.2em; color:#FF6B6B; margin:50px 0 30px; }
-        ul,p { font-size:2.3em; margin:35px 0; }
-        b { color:var(--gold); font-weight:900; }
-        .key-concept { background:rgba(40,40,80,0.9); padding:55px; border-radius:30px; border-left:18px solid var(--gold); margin:70px 0; }
-
-        .tap { position:fixed; top:0; height:100vh; width:42vw; z-index:999999; background:transparent; }
-        #prev { left:0; } #next { right:0; }
-        .tap:active { background:rgba(255,255,255,0.25)!important; }
-
-        .hint {
-            position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
-            background:rgba(0,0,0,0.95); padding:35px 80px; border-radius:100px;
-            font-size:2.8em; color:var(--cyan); z-index:99999; pointer-events:none;
-            box-shadow:0 0 60px rgba(0,212,255,0.6); opacity:0; transition:opacity 1s;
-        }
-        .hint.show { opacity:1; }
+        .present { opacity:1 !important; }
+        h1 { font-family:'Orbitron'; font-size:6em; color:#FFD700; text-shadow:0 0 50px #FFD700; }
+        h2 { font-family:'Orbitron'; font-size:4.5em; color:#00D4FF; border-bottom:10px solid #00D4FF; padding-bottom:15px; }
+        h3 { font-size:3em; color:#FF6B6B; margin:40px 0; }
+        ul { font-size:2.2em; margin:30px 0; }
+        b { color:#FFD700; font-weight:900; }
+        .key { background:rgba(40,40,100,0.9); padding:50px; border-radius:30px; border-left:20px solid #FFD700; margin:60px 0; }
+        #prev, #next { position:fixed; top:0; width:40%; height:100%; z-index:9999; background:transparent; }
+        #next { right:0; }
+        .hint { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.9); color:#00D4FF; padding:30px 70px; border-radius:100px; font-size:3em; font-weight:bold; z-index:9999; box-shadow:0 0 50px #00D4FF; }
     </style>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
+<div id="impress">
 
-<div id="impress" data-transition-duration="800">
-
-    <div id="title" class="step" data-x="0" data-y="0" data-scale="7">
+    <div class="step" data-x="0" data-y="0" data-scale="8">
         <h1>Advanced Data Architecture</h1>
-        <h2>Exam 1 Master Study Guide (L1-L4)</h2>
-        <p class="key-concept">S24 Ultra Optimized<br><b>TAP RIGHT EDGE →</b></p>
+        <h2>Exam 1 Master Guide</h2>
+        <p class="key">S24 ULTRA READY<br><b>TAP RIGHT →</b></p>
     </div>
 
-    <!-- ALL YOUR ORIGINAL SLIDES (100% intact) -->
-    <div id="l1-intro" class="step" data-x="0" data-y="3500" data-scale="1">
-        <h2>Lecture 1: DA - The Blueprint</h2>
-        <h3>Definition & Core Focus</h3>
+    <div class="step" data-x="0" data-y="3000">
+        <h2>L1: DA - The Blueprint</h2>
         <ul>
-            <li>DA is the <b>Framework for managing data assets</b> (structure, integration, movement, governance).</li>
-            <li>Answers: "How should data be <b>organized, connected, and secured</b>?"</li>
-            <li>Focus: structure, standards, and <b>long-term scalability</b>.</li>
+            <li>DA = <b>Framework</b> for data assets</li>
+            <li>Answers: How to <b>organize, connect, secure</b> data</li>
+            <li>Focus: <b>long-term scalability</b></li>
         </ul>
-        <p class="key-concept">DA is the <b>Blueprint</b>; DE is the builder; DS is the consumer.</p>
+        <p class="key">DA = Blueprint<br>DE = Builder<br>DS = Consumer</p>
     </div>
 
-    <div id="l1-roles" class="step" data-x="1800" data-y="3500" data-scale="1">
-        <h2>L1: Roles & Philosophies</h2>
-        <h3>Key Principle: Form Follows Function</h3>
-        <p>Design (form) must be driven by the actual <b>business needs (function)</b>.</p>
-        <p><b>Example:</b></p>
+    <div class="step" data-x="2000" data-y="3000">
+        <h2>L1: Form Follows Function</h2>
+        <p>Design driven by <b>business needs</b></p>
         <ul>
-            <li>Function: Real-time fraud detection → Form: Streaming pipeline.</li>
-            <li>Function: Regulatory reporting → Form: Auditable, versioned models.</li>
+            <li>Fraud detection → Streaming</li>
+            <li>Reporting → Auditable models</li>
         </ul>
     </div>
 
-    <div id="l1-evolution" class="step" data-x="3600" data-y="3500" data-scale="1">
-        <h2>L1: Schema Types & Evolution</h2>
-        <h3>Models and History</h3>
+    <div class="step" data-x="4000" data-y="3000">
+        <h2>L1: Schema Evolution</h2>
         <ul>
-            <li><b>Schema-on-Write:</b> Schema fixed <b>before</b> data is written (DWH, Rigid).</li>
-            <li><b>Schema-on-Read:</b> Structure defined <b>when</b> data is queried (Data Lake, Flexible).</li>
-            <li><b>Modeling Levels:</b> <b>Conceptual</b> → <b>Logical</b> → <b>Physical</b>.</li>
-            <li><b>Evolution:</b> Relational (70s) → DWH (80s) → Big Data (00s) → Lakehouse (20s).</li>
+            <li><b>Schema-on-Write</b> → DWH (rigid)</li>
+            <li><b>Schema-on-Read</b> → Lake (flexible)</li>
+            <li>70s → Relational → DWH → Big Data → <b>Lakehouse</b></li>
         </ul>
     </div>
 
-    <!-- (Keep pasting all your slides exactly as before - I'm skipping for brevity) -->
-    <!-- ... ALL 23 SLIDES ... -->
+    <div class="step" data-x="0" data-y="6000" data-rotate-x="90">
+        <h2>L2: Core Principles</h2>
+        <ul>
+            <li>Business Alignment</li>
+            <li>Tech Agnostic</li>
+            <li>Modularity + Loose Coupling</li>
+        </ul>
+    </div>
 
-    <div id="conclusion" class="step" data-x="0" data-y="0" data-z="15000" data-scale="15" data-rotate-z="360">
-        <h1>EXAM 1 READY</h1>
-        <p style="font-size:4em; color:#00D4FF; margin-top:100px;">Final Review Complete. Good luck!</p>
+    <div class="step" data-x="2000" data-y="6000" data-rotate-x="90">
+        <h2>L2: Trust & Ownership</h2>
+        <ul>
+            <li><b>SSOT</b> = Single Source of Truth</li>
+            <li>Data as Product</li>
+            <li>Metadata + Stewardship</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="4000" data-y="6000" data-rotate-x="90">
+        <h2>L2: Scale & Frameworks</h2>
+        <ul>
+            <li>Pub-Sub Broker</li>
+            <li>TOGAF = Process</li>
+            <li>Zachman = Taxonomy</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-3000" data-y="0" data-rotate-y="-90">
+        <h2>L3: Data Warehouse</h2>
+        <ul>
+            <li>OLAP + Structured</li>
+            <li><b>ETL</b> (transform first)</li>
+            <li>Columnar DBs</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-3000" data-y="3000" data-rotate-y="-90">
+        <h2>L3: Star Schema</h2>
+        <ul>
+            <li>Fact → Dimensions</li>
+            <li>Denormalized for speed</li>
+            <li>Incremental loads</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="-3000" data-y="6000" data-rotate-y="-90">
+        <h2>L3: OLAP Ops</h2>
+        <p><b>Roll-Up</b> → Aggregate<br>
+           <b>Drill-Down</b> → Detail<br>
+           <b>Slice</b> → Filter one dim<br>
+           <b>Dice</b> → Multi-dim cube</p>
+    </div>
+
+    <div class="step" data-x="3000" data-y="0" data-rotate-y="90">
+        <h2>L4: Data Lakes</h2>
+        <ul>
+            <li>All data types</li>
+            <li>Schema-on-Read</li>
+            <li>Risk: <b>Data Swamp</b></li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="3000" data-y="3000" data-rotate-y="90">
+        <h2>L4: Zones & ADLS Gen2</h2>
+        <ul>
+            <li>Raw → Cleaned → Curated</li>
+            <li>HDFS + ACLs/RBAC</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="3000" data-y="6000" data-rotate-y="90">
+        <h2>L4: Lakehouse</h2>
+        <ul>
+            <li>DL + DWH reliability</li>
+            <li><b>ACID</b> on lake</li>
+            <li>Unified BI + ML</li>
+        </ul>
+    </div>
+
+    <div class="step" data-x="0" data-y="0" data-z="12000" data-scale="12">
+        <h1 style="font-size:8em;">EXAM 1<br>CRUSHED</h1>
+        <p style="font-size:5em; color:#00D4FF;">Good luck!</p>
     </div>
 
 </div>
 
-<div id="prev" class="tap"></div>
-<div id="next" class="tap"></div>
-<div class="hint" id="hint">← PREV     |     NEXT →</div>
+<div id="prev" onclick="impress().prev()"></div>
+<div id="next" onclick="impress().next()"></div>
+<div class="hint">← PREV | NEXT →</div>
 
 <script>
-    // ULTRA-ROBUST INIT — WORKS ON VIVALDI + S24 ULTRA
-    window.addEventListener('load', () => {
-        // Triple-init protection
+    // BULLETPROOF INIT — WORKS EVERY TIME
+    window.onload = function() {
         const api = impress();
         api.init();
+        api.goto(0);
         
-        // Force title slide IMMEDIATELY
-        setTimeout(() => api.goto(0), 50);
-        setTimeout(() => api.goto(0), 300);
-        setTimeout(() => api.goto(0), 800);
-
-        // Tap navigation
-        document.getElementById('prev').onclick = () => api.prev();
-        document.getElementById('next').onclick = () => api.next();
-
-        // Swipe (perfect sensitivity)
-        let startX = 0;
-        document.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
+        // Triple force
+        setTimeout(() => api.goto(0), 100);
+        setTimeout(() => api.goto(0), 500);
+        
+        // Touch controls
+        let sx = 0;
+        document.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
         document.addEventListener('touchend', e => {
-            const diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 70) {
+            const diff = e.changedTouches[0].clientX - sx;
+            if (Math.abs(diff) > 60) {
                 diff > 0 ? api.prev() : api.next();
             }
         }, {passive:true});
-
-        // Hint
-        const hint = document.getElementById('hint');
-        hint.classList.add('show');
-        setTimeout(() => hint.classList.remove('show'), 8000);
-
-        // Particles
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = innerWidth; canvas.height = innerHeight;
-        const particles = Array.from({length: 60}, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 1,
-            speedX: Math.random() * 0.6 - 0.3,
-            speedY: Math.random() * 0.6 - 0.3,
-            color: Math.random() > 0.5 ? '#00D4FF' : '#FFD700'
-        }));
-        function anim() {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            particles.forEach(p => {
-                ctx.fillStyle = p.color;
-                ctx.shadowBlur = 20; ctx.shadowColor = p.color;
-                ctx.fillRect(p.x, p.y, p.size, p.size);
-                p.x += p.speedX; p.y += p.speedY;
-                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-            });
-            requestAnimationFrame(anim);
-        }
-        anim();
-    });
+    };
 </script>
+
 </body>
 </html>

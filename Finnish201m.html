@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SUOMI 2 • Dataydin-Opas (Data Core Guide)</title>
+    <title>SUOMI 2 • Dataydin-Opas (Data Core Guide) - Extended</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;800&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
@@ -104,6 +104,20 @@
             text-decoration: underline;
             font-weight: 700;
         }
+        .practice-card p {
+            font-size: 0.9em;
+            margin: 0.6em 0;
+            color: var(--neon);
+            font-weight: 500;
+        }
+        .practice-card .answer {
+            color: var(--gold);
+            display: block;
+            margin-top: 0.2em;
+            font-size: 1em;
+            text-decoration: none;
+            font-style: italic;
+        }
         .progress {
             position: fixed; top: 0; left: 0; height: 3px;
             background: linear-gradient(90deg, var(--gold), var(--neon));
@@ -120,20 +134,18 @@
 </head>
 <body>
     <div class="progress" id="progress"></div>
-    <div class="nav">Slide <span id="current">1</span> / <span id="total">34</span></div>
+    <div class="nav">Slide <span id="current">1</span> / <span id="total">42</span></div> 
 
     <div class="container" id="slides">
         
-        <!-- SLIDE 1: TITLE SLIDE -->
         <div class="slide" style="text-align:center; justify-content:center;">
             <h1 style="font-size: 4em;">🇫🇮 SUOMI 2</h1>
             <h2 style="font-size:2.4em; color:var(--neon);">Dataydin-Opas: Syväsukellus (Deep Dive)</h2>
             <div class="gold" style="font-size:1.3em;">Däniel Ebrahimzadeh, Computing Science • Vaasa, Finland </div>
-            <p style="margin:1.5em 0; font-size:1.1em;">34 Slides of Core Grammar. Scroll <i class="fa-solid fa-arrow-down"></i> to begin.</p>
+            <p style="margin:1.5em 0; font-size:1.1em;">42 Slides of Core Grammar & Practice. Scroll <i class="fa-solid fa-arrow-down"></i> to begin.</p>
             <div class="footer">Self-Study Module • Nov 2025</div>
         </div>
 
-        <!-- SLIDE 2: M2: PAIKALLISSIJAT THEORY -->
         <div class="slide" data-horizontal-group="M2"><h2>MODUULI 2: Paikallissijat 📍</h2>
             <div class="card">
                 <h3>Sisä- ja Ulkopaikallissijat <span class="trans">(Internal & External Cases)</span></h3>
@@ -157,7 +169,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 3: NEW EXAMPLE - M2: PAIKALLISSIJAT -->
+        <div class="slide practice-slide" data-horizontal-group="M2">
+            <h2>HARJOITUS: Paikallissijat (-ssa/-lla) 1/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (I am in the office.) $\rightarrow$ <span class="answer">Minä olen toimisto<span style="color:var(--neon);">ssa</span>.</span></p>
+                <p>2. (She is on the balcony.) $\rightarrow$ <span class="answer">Hän on parvekkee<span style="color:var(--neon);">lla</span>.</span></p>
+                <p>3. (We are at the doctor.) $\rightarrow$ <span class="answer">Me olemme lääkäri<span style="color:var(--neon);">llä</span>.</span></p>
+                <p>4. (The clothes are in the bag.) $\rightarrow$ <span class="answer">Vaatteet ovat lauku<span style="color:var(--neon);">ssa</span>.</span></p>
+                <p>5. (Is the book on the floor?) $\rightarrow$ <span class="answer">Onko kirja lattia<span style="color:var(--neon);">lla</span>?</span></p>
+                <p>6. (They work in the factory.) $\rightarrow$ <span class="answer">He työskentelevät tehtaa<span style="color:var(--neon);">ssa</span>.</span></p>
+                <p>7. (Is the coffee in the cup?) $\rightarrow$ <span class="answer">Onko kahvi kupu<span style="color:var(--neon);">ssa</span>?</span></p>
+                <p>8. (The picture is on the wall.) $\rightarrow$ <span class="answer">Kuva on seinä<span style="color:var(--neon);">llä</span>.</span></p>
+                <p>9. (The children are in the park.) $\rightarrow$ <span class="answer">Lapset ovat puisto<span style="color:var(--neon);">ssa</span>.</span></p>
+                <p>10. (My phone is on the sofa.) $\rightarrow$ <span class="answer">Puhelimeni on sohv<span style="color:var(--neon);">alla</span>.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Test your ability to select the correct Missä? case (-ssa/-llä).
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M2"><h2>Esimerkki: Sisä- ja Ulkopaikallissijat</h2>
             <div class="card">
                 <h3>Käyttökohteet <span class="trans">(Use Cases)</span></h3>
@@ -176,7 +206,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 4: M2: ILLATIIVI THEORY -->
         <div class="slide" data-horizontal-group="M2"><h2>Illatiivi (Mihin?) <span class="trans">(Movement INTO)</span></h2>
             <div class="card">
                 <h3>Illative Endings (To/Into)</h3>
@@ -198,7 +227,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 5: NEW EXAMPLE - M2: ILLATIIVI -->
+        <div class="slide practice-slide" data-horizontal-group="M2">
+            <h2>HARJOITUS: Illatiivi (Mihin?) 2/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (They go into the boat.) $\rightarrow$ <span class="answer">He menevät venee<span style="color:var(--neon);">seen</span>.</span></p>
+                <p>2. (I go to the post office.) $\rightarrow$ <span class="answer">Minä menen posti<span style="color:var(--neon);">in</span>.</span></p>
+                <p>3. (We drive to the city.) $\rightarrow$ <span class="answer">Me ajamme kaupungi<span style="color:var(--neon);">in</span>.</span></p>
+                <p>4. (He goes to the gym.) $\rightarrow$ <span class="answer">Hän menee salii<span style="color:var(--neon);">n</span>.</span></p>
+                <p>5. (Go onto the island.) $\rightarrow$ <span class="answer">Mene saare<span style="color:var(--neon);">lle</span>.</span></p>
+                <p>6. (I put the key into the lock.) $\rightarrow$ <span class="answer">Laitan avaimen lukko<span style="color:var(--neon);">on</span>.</span></p>
+                <p>7. (Come to my place (my home).) $\rightarrow$ <span class="answer">Tule kodi<span style="color:var(--neon);">in</span>.</span></p>
+                <p>8. (She walks onto the bridge.) $\rightarrow$ <span class="answer">Hän kävelee silta<span style="color:var(--neon);">lle</span>.</span></p>
+                <p>9. (They flew to Oulu.) $\rightarrow$ <span class="answer">He lensivät Oulu<span style="color:var(--neon);">un</span>.</span></p>
+                <p>10. (I run to the church.) $\rightarrow$ <span class="answer">Minä juoksen kirkko<span style="color:var(--neon);">on</span>.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Test your ability to select the correct Illative (-Vn/-seen/-hVn) or Allative (-lle) case.
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M2"><h2>Esimerkki: Illatiivin Taivutus</h2>
             <div class="card">
                 <h3>Taivuta Mihin? <span class="trans">(Decline To Where?)</span></h3>
@@ -219,7 +266,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 6: M2: REVIEW PAIKALLISSIJAT (PREVIOUSLY SLIDE 4) -->
         <div class="slide" data-horizontal-group="M2"><h2>Review: Paikallissijat 📍</h2>
             <div class="card">
                 <h3>Tunnista oikea pääte <span class="trans">(Identify the correct ending)</span></h3>
@@ -238,7 +284,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 7: NEW ANSWER - M2: REVIEW PAIKALLISSIJAT -->
         <div class="slide" data-horizontal-group="M2"><h2>Vastaus: Paikallissijat Tarkistus</h2>
             <div class="card">
                 <h3>Oikeat Vastaukset <span class="trans">(Correct Answers)</span></h3>
@@ -259,7 +304,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 8: M2: HARJOITUS PAIKALLISSIJAT (PREVIOUSLY SLIDE 5) -->
         <div class="slide" data-horizontal-group="M2"><h2>Harjoitus: Paikallissijat ⚙️</h2>
             <div class="card">
                 <h3>Täydennä oikea pääte <span class="trans">(Fill in the correct ending)</span></h3>
@@ -271,7 +315,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 9: NEW ANSWER - M2: HARJOITUS PAIKALLISSIJAT -->
         <div class="slide" data-horizontal-group="M2"><h2>Vastaus: Paikallissijat Harjoitus</h2>
             <div class="card">
                 <h3>Taivutus-analyysi <span class="trans">(Declension Analysis)</span></h3>
@@ -287,7 +330,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 10: M3: ADJEKTIIVIT THEORY (PREVIOUSLY SLIDE 6) -->
         <div class="slide" data-horizontal-group="M3"><h2>MODUULI 3: Adjektiivit ja Värit 🌈</h2>
             <div class="card">
                 <h3>Adjective Agreement (Taivutus)</h3>
@@ -306,7 +348,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 11: NEW EXAMPLE - M3: ADJEKTIIVIT -->
+        <div class="slide practice-slide" data-horizontal-group="M3">
+            <h2>HARJOITUS: Adjektiivi Taivutus 1/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (I live in a small apartment.) $\rightarrow$ <span class="answer">Minä asun pien**essä** asunno**ssa**.</span></p>
+                <p>2. (We drive an old car.) (Nom.) $\rightarrow$ <span class="answer">Me ajamme vanha**a** auto**a**. (Partitive for incomplete/ongoing)</span></p>
+                <p>3. (Give a gift to a nice friend.) $\rightarrow$ <span class="answer">Anna lahja kiva**lle** ystävä**lle**.</span></p>
+                <p>4. (The new computer is on the table.) $\rightarrow$ <span class="answer">Uusi tietokone on pöydä**llä**.</span></p>
+                <p>5. (I come from a cold country.) $\rightarrow$ <span class="answer">Minä tulen kylmä**stä** maasta.</span></p>
+                <p>6. (He studies in a big university.) $\rightarrow$ <span class="answer">Hän opiskelee iso**ssa** yliopisto**ssa**.</span></p>
+                <p>7. (Go into the empty house.) $\rightarrow$ <span class="answer">Mene tyhjä**än** talo**on**.</span></p>
+                <p>8. (I talk about a difficult problem.) $\rightarrow$ <span class="answer">Puhun vaikea**sta** ongelmasta.</span></p>
+                <p>9. (She buys a beautiful dress.) (Part.) $\rightarrow$ <span class="answer">Hän ostaa kauni**ta** mekkoa.</span></p>
+                <p>10. (The small boat is in the water.) $\rightarrow$ <span class="answer">Pieni vene on vede**ssä**.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Ensure the adjective matches the noun's case and number.
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M3"><h2>Esimerkki: Adjektiivin Taivutus</h2>
             <div class="card">
                 <h3>Case Agreement: $\text{Pieni Auto}$ <span class="trans">(Small Car)</span></h3>
@@ -326,7 +386,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 12: M3: VÄRIEN TAIVUTUS THEORY (PREVIOUSLY SLIDE 7) -->
         <div class="slide" data-horizontal-group="M3"><h2>Värien Taivutus <span class="trans">(Color Declension)</span></h2>
             <div class="card">
                 <h3>'nen'-loppuiset sanat (Words ending in -nen)</h3>
@@ -347,7 +406,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 13: NEW EXAMPLE - M3: VÄRIEN TAIVUTUS -->
+        <div class="slide practice-slide" data-horizontal-group="M3">
+            <h2>HARJOITUS: Värien Taivutus 2/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (I live in a white house.) $\rightarrow$ <span class="answer">Minä asun valkoi**se**ssa talossa.</span></p>
+                <p>2. (She comes from a red car.) $\rightarrow$ <span class="answer">Hän tulee punai**se**sta autosta.</span></p>
+                <p>3. (The yellow flower is on the table.) $\rightarrow$ <span class="answer">Keltainen kukka on pöydällä.</span></p>
+                <p>4. (Go onto the black roof.) $\rightarrow$ <span class="answer">Mene musta**lle** kato**lle**.</span></p>
+                <p>5. (We talk about a green shirt.) $\rightarrow$ <span class="answer">Me puhumme vihreä**stä** paidasta.</span></p>
+                <p>6. (He drives a blue bicycle.) (Part.) $\rightarrow$ <span class="answer">Hän ajaa sinis**tä** pyörää.</span></p>
+                <p>7. (Is the grey cat on the chair?) $\rightarrow$ <span class="answer">Onko harmaa kissa tuoli**lla**?</span></p>
+                <p>8. (The pink light is on the wall.) $\rightarrow$ <span class="answer">Vaaleanpunainen valo on seinä**llä**.</span></p>
+                <p>9. (I give a pen to a brown dog.) $\rightarrow$ <span class="answer">Annan kynän ruskea**lle** koira**lle**.</span></p>
+                <p>10. (Look into the dark lake.) $\rightarrow$ <span class="answer">Katso tumma**an** järve**en**.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Pay attention to the '-nen' stem change and vowel harmony.
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M3"><h2>Esimerkki: Värien Taivutus</h2>
             <div class="card">
                 <h3>Case Agreement: $\text{Vihreä Mekko}$ <span class="trans">(Green Dress)</span></h3>
@@ -363,7 +440,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 14: M3: REVIEW ADJEKTIIVIT (PREVIOUSLY SLIDE 8) -->
         <div class="slide" data-horizontal-group="M3"><h2>Review: Adjektiivit 📝</h2>
             <div class="card">
                 <h3>Täydennä ja taivuta <span class="trans">(Complete and decline)</span></h3>
@@ -379,7 +455,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 15: NEW ANSWER - M3: REVIEW ADJEKTIIVIT -->
         <div class="slide" data-horizontal-group="M3"><h2>Vastaus: Adjektiivit Tarkistus</h2>
             <div class="card">
                 <h3>Tarkistusanalyysi <span class="trans">(Verification Analysis)</span></h3>
@@ -394,7 +469,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 16: M3: HARJOITUS ADJEKTIIVIT (PREVIOUSLY SLIDE 9) -->
         <div class="slide" data-horizontal-group="M3"><h2>Harjoitus: Adjektiivit 📝</h2>
             <div class="card">
                 <h3>Käännä lauseet <span class="trans">(Translate the sentences)</span></h3>
@@ -409,7 +483,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 17: NEW ANSWER - M3: HARJOITUS ADJEKTIIVIT -->
         <div class="slide" data-horizontal-group="M3"><h2>Vastaus: Adjektiivit Harjoitus</h2>
             <div class="card">
                 <h3>Oikeat Käännökset <span class="trans">(Correct Translations)</span></h3>
@@ -423,7 +496,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 18: M4: OMISTUSLAUSE THEORY (PREVIOUSLY SLIDE 10) -->
         <div class="slide" data-horizontal-group="M4"><h2>MODUULI 4: Lausetyypit 💬</h2>
             <div class="card">
                 <h3>Omistuslause <span class="trans">(Ownership Clause - "To Have")</span></h3>
@@ -438,7 +510,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 19: NEW EXAMPLE - M4: OMISTUSLAUSE -->
+        <div class="slide practice-slide" data-horizontal-group="M4">
+            <h2>HARJOITUS: Omistuslause 1/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (Do you have a pen?) $\rightarrow$ <span class="answer">Onko sinu**lla** kynä?</span></p>
+                <p>2. (They don't have time.) $\rightarrow$ <span class="answer">Hei**llä ei ole** aika**a**.</span></p>
+                <p>3. (Our teacher has a big house.) $\rightarrow$ <span class="answer">Opettajaa**lla**mme on iso talo.</span></p>
+                <p>4. (Does he have a job?) $\rightarrow$ <span class="answer">Onko häne**llä** työ**tä**? (Part. for abstract/indefinite)</span></p>
+                <p>5. (I have two children.) $\rightarrow$ <span class="answer">Minu**lla** on kaksi lasta.</span></p>
+                <p>6. (The cat has long tail.) $\rightarrow$ <span class="answer">Kissa**lla** on pitkä häntä.</span></p>
+                <p>7. (We don't have pets.) $\rightarrow$ <span class="answer">Mei**llä ei ole** lemmikki**eläimiä**. (Part. Plural)</span></p>
+                <p>8. (The CEO has a new phone.) $\rightarrow$ <span class="answer">Toimitusjohtaja**lla** on uusi puhelin.</span></p>
+                <p>9. (Does your mother have money?) $\rightarrow$ <span class="answer">Onko äidi**llä**si raha**a**? (Part. for mass noun)</span></p>
+                <p>10. (I have a strong password.) $\rightarrow$ <span class="answer">Minu**lla** on vahva salasana.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Owner is Adessive (-lla/-llä). Item is Partitive in negation.
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M4"><h2>Esimerkki: Omistuslause</h2>
             <div class="card">
                 <h3>Data-syöte: <span class="trans">(Data Input:)</span> $\text{You have a new car.}$</h3>
@@ -460,7 +550,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 20: M4: EKSISTENTIAALILAUSE THEORY (PREVIOUSLY SLIDE 11) -->
         <div class="slide" data-horizontal-group="M4"><h2>Eksistentiaalilause <span class="trans">(Existential Clause - "There Is")</span></h2>
             <div class="card">
                 <h3>Location, Verb, Subject Word Order</h3>
@@ -475,7 +564,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 21: NEW EXAMPLE - M4: EKSISTENTIAALILAUSE -->
+        <div class="slide practice-slide" data-horizontal-group="M4">
+            <h2>HARJOITUS: Eksistentiaalilause 2/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (There is a computer in the office.) $\rightarrow$ <span class="answer">Toimisto**ssa** on tietokone.</span></p>
+                <p>2. (There is no electricity in the room.) $\rightarrow$ <span class="answer">Huonee**ssa ei ole** sähkö**ä**.</span></p>
+                <p>3. (There are five cars on the street.) $\rightarrow$ <span class="answer">Kadu**lla** on viisi auto**a**.</span></p>
+                <p>4. (Is there a mouse in the house?) $\rightarrow$ <span class="answer">Onko talo**ssa** hiiri?</span></p>
+                <p>5. (There is milk in the fridge.) $\rightarrow$ <span class="answer">Jääkaapi**ssa** on maito**a**.</span></p>
+                <p>6. (There is no bread on the shelf.) $\rightarrow$ <span class="answer">Hylly**llä ei ole** leipä**ä**.</span></p>
+                <p>7. (There are many houses in the city.) $\rightarrow$ <span class="answer">Kaupungi**ssa** on monta taloa.</span></p>
+                <p>8. (There is a beautiful girl on the ship.) $\rightarrow$ <span class="answer">Laiva**lla** on kaunis tyttö.</span></p>
+                <p>9. (Is there food in the bag?) $\rightarrow$ <span class="answer">Onko lauku**ssa** ruoka**a**?</span></p>
+                <p>10. (There are five people on the bridge.) $\rightarrow$ <span class="answer">Silla**lla** on viisi ihmis**tä**.</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Location is first and in a place case. Item is Partitive in negation or after a numeral > 1.
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M4"><h2>Esimerkki: Eksistentiaalilause</h2>
             <div class="card">
                 <h3>Data-syöte: $\text{There are three books on the table.}$</h3>
@@ -497,7 +604,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 22: M4: REVIEW LAUSETYYPIT (PREVIOUSLY SLIDE 12) -->
         <div class="slide" data-horizontal-group="M4"><h2>Review: Lausetyypit 🧩</h2>
             <div class="card">
                 <h3>Omistus- vai Eksistentiaali?</h3>
@@ -513,7 +619,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 23: NEW ANSWER - M4: REVIEW LAUSETYYPIT -->
         <div class="slide" data-horizontal-group="M4"><h2>Vastaus: Lausetyypit Tarkistus</h2>
             <div class="card">
                 <h3>Logiikka-analyysi <span class="trans">(Logic Analysis)</span></h3>
@@ -528,7 +633,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 24: M4: HARJOITUS LAUSEET (PREVIOUSLY SLIDE 13) -->
         <div class="slide" data-horizontal-group="M4"><h2>Harjoitus: Lauseet 🧩</h2>
             <div class="card">
                 <h3>Omistus- vai Eksistentiaali?</h3>
@@ -544,7 +648,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 25: NEW ANSWER - M4: HARJOITUS LAUSEET -->
         <div class="slide" data-horizontal-group="M4"><h2>Vastaus: Lauseet Harjoitus</h2>
             <div class="card">
                 <h3>Tiedot ja Säännöt <span class="trans">(Data and Rules)</span></h3>
@@ -559,7 +662,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 26: M5: PARTITIIVI THEORY (PREVIOUSLY SLIDE 14) -->
         <div class="slide" data-horizontal-group="M5"><h2>MODUULI 5: Partitiivi ✨</h2>
             <div class="card">
                 <h3>Partitiivin Pääkäytöt <span class="trans">(Main Partitive Uses)</span></h3>
@@ -577,7 +679,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 27: NEW EXAMPLE - M5: PARTITIIVI -->
+        <div class="slide practice-slide" data-horizontal-group="M5">
+            <h2>HARJOITUS: Partitiivi 1/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (I don't eat meat.) $\rightarrow$ <span class="answer">Minä en syö liha**a**. (Negation)</span></p>
+                <p>2. (We are eating fish.) $\rightarrow$ <span class="answer">Me syömme kala**a**. (Ongoing)</span></p>
+                <p>3. (I bought four tickets.) $\rightarrow$ <span class="answer">Ostin neljä lipu**ä**. (Quantity > 1)</span></p>
+                <p>4. (They drink water.) $\rightarrow$ <span class="answer">He juovat vettä. (Mass Noun)</span></p>
+                <p>5. (She doesn't speak French.) $\rightarrow$ <span class="answer">Hän ei puhu ranska**a**. (Negation)</span></p>
+                <p>6. (We are waiting for the bus.) $\rightarrow$ <span class="answer">Me odotamme bussi**a**. (Part. with 'odottaa')</span></p>
+                <p>7. (I need help.) $\rightarrow$ <span class="answer">Minä tarvitsen apu**a**. (Part. with 'tarvita')</span></p>
+                <p>8. (He is watching the movie.) $\rightarrow$ <span class="answer">Hän katsoo elokuva**a**. (Ongoing)</span></p>
+                <p>9. (I have enough coffee.) $\rightarrow$ <span class="answer">Minulla on tarpeeksi kahvi**a**. (Mass Noun/Quantity)</span></p>
+                <p>10. (There are a lot of people.) $\rightarrow$ <span class="answer">Siellä on paljon ihmisi**ä**. (Part. Plural with 'paljon')</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Identify why Partitive is required (Negation, Quantity, Mass, Ongoing/Verb).
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M5"><h2>Esimerkki: Partitiivin Neljä Käyttöä</h2>
             <div class="card">
                 <h3>Käyttötapaukset <span class="trans">(Usage Scenarios)</span></h3>
@@ -593,7 +713,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 28: M5: ASTEVAIHTELU THEORY (PREVIOUSLY SLIDE 15) -->
         <div class="slide" data-horizontal-group="M5"><h2>Astevaihtelu <span class="trans">(Consonant Gradation)</span></h2>
             <div class="card">
                 <h3>Vahva <span class="trans">(Strong)</span> vs. Heikko <span class="trans">(Weak)</span> Grade</h3>
@@ -611,7 +730,25 @@
             </div>
         </div>
 
-        <!-- SLIDE 29: NEW EXAMPLE - M5: ASTEVAIHTELU -->
+        <div class="slide practice-slide" data-horizontal-group="M5">
+            <h2>HARJOITUS: Astevaihtelu 2/2 💾</h2>
+            <div class="card practice-card" style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                <p>1. (I read the book.) (Accusative) $\rightarrow$ <span class="answer">Minä luen kirja**n**. (Strong Grade)</span></p>
+                <p>2. (I walk on the street.) $\rightarrow$ <span class="answer">Kävelen ka**du**lla. (t &rarr; d / Weak)</span></p>
+                <p>3. (We go into the hospital.) $\rightarrow$ <span class="answer">Me menemme sairaa**laa**n. (l &rarr; ll / Strong Illative)</span></p>
+                <p>4. (He comes from the church.) $\rightarrow$ <span class="answer">Hän tulee kirko**sta**. (kk &rarr; k / Weak)</span></p>
+                <p>5. (They talk about the work week.) $\rightarrow$ <span class="answer">He puhuvat vii**ko**sta. (kk &rarr; k / Weak)</span></p>
+                <p>6. (The food is on the table.) $\rightarrow$ <span class="answer">Ruo**ka** on pöydällä. (Nominative / Strong)</span></p>
+                <p>7. (Look at the boat!) (Partitive) $\rightarrow$ <span class="answer">Katso vene**ttä**! (t &rarr; tt / Strong Partitive)</span></p>
+                <p>8. (I put the key into the lock.) $\rightarrow$ <span class="answer">Laitan avaimen lu**kkoo**n. (kk &rarr; k / Weak Illative)</span></p>
+                <p>9. (She buys a new apartment.) (Acc.) $\rightarrow$ <span class="answer">Hän ostaa uude**n** asunno**n**. (tt &rarr; t &rarr; nn / Weak Acc.)</span></p>
+                <p>10. (The fire is in the house.) $\rightarrow$ <span class="answer">Tuli on talo**ssa**. (No Consonant Gradation)</span></p>
+            </div>
+            <div class="gold" style="font-size:1em;">
+                Self-study: Strong (Partitive, Nom., Plural Genitive) vs. Weak (other cases).
+            </div>
+        </div>
+
         <div class="slide" data-horizontal-group="M5"><h2>Esimerkki: Astevaihtelu Tyypit</h2>
             <div class="card">
                 <h3>Case Change Application <span class="trans">(Case Change Application)</span></h3>
@@ -627,7 +764,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 30: M5: REVIEW ASTEVAIHTELU (PREVIOUSLY SLIDE 16) -->
         <div class="slide" data-horizontal-group="M5"><h2>Review: Astevaihtelu 🧠</h2>
             <div class="card">
                 <h3>Muuta heikkoon asteeseen <span class="trans">(Change to the weak grade)</span></h3>
@@ -646,7 +782,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 31: NEW ANSWER - M5: REVIEW ASTEVAIHTELU -->
         <div class="slide" data-horizontal-group="M5"><h2>Vastaus: Astevaihtelu Tarkistus</h2>
             <div class="card">
                 <h3>Vahva $\rightarrow$ Heikko <span class="trans">(Strong $\rightarrow$ Weak)</span></h3>
@@ -660,7 +795,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 32: M5: HARJOITUS ASTEVAIHTELU (PREVIOUSLY SLIDE 17) -->
         <div class="slide" data-horizontal-group="M5"><h2>Harjoitus: Astevaihtelu 🧠</h2>
             <div class="card">
                 <h3>Muuta sana heikkoon asteeseen <span class="trans">(Change the word to the weak grade)</span></h3>
@@ -672,7 +806,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 33: NEW ANSWER - M5: HARJOITUS ASTEVAIHTELU -->
         <div class="slide" data-horizontal-group="M5"><h2>Vastaus: Astevaihtelu Harjoitus</h2>
             <div class="card">
                 <h3>Sääntöjen Sovellus <span class="trans">(Rule Application)</span></h3>
@@ -693,7 +826,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 34: FINAL SLIDE (PREVIOUSLY SLIDE 18) -->
         <div class="slide" style="text-align:center; justify-content:center; background:linear-gradient(135deg,#000,#1a0033);">
             <h1 style="font-size:4em;">CORE DATA</h1>
             <h2 style="color:var(--gold); font-size:2.5em;">MANDATE COMPLETE.</h2>
@@ -748,5 +880,3 @@
     </script>
 </body>
 </html>
-
-

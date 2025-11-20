@@ -3,644 +3,760 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SUOMI MASTER GUIDE (A1.1 + A1.2)</title>
+    <title>FINNISH ULTIMATE MASTER GUIDE</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;800&family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        /* MASTER THEME: BLACK, NEON BLUE, GOLD */
+        /* THEME: DEEP SPACE & NEON */
         :root {
-            --bg: #000;
-            --card: #0b0b1a;
+            --bg: #050505;
+            --card-bg: rgba(20, 20, 35, 0.95);
             --gold: #FFD700;
             --neon: #00D4FF;
-            --purple: #9D00FF;
-            --text: #E8E8E8;
-            --error: #FF6B6B;
+            --purple: #BC13FE;
+            --text: #E0E0E0;
+            --success: #00FF9D;
+            --error: #FF4B4B;
+            --example: #FF00D4;
+            --rule-bg: rgba(0, 212, 255, 0.05);
         }
+
         * { margin:0; padding:0; box-sizing:border-box; }
+
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Exo 2', system-ui, -apple-system, sans-serif;
+            font-family: 'Exo 2', sans-serif;
             font-size: 18px;
-            line-height: 1.55;
-            overscroll-behavior: none;
-            overflow-x: hidden;
+            line-height: 1.6;
+            overflow: hidden; 
         }
-        
-        /* SCROLL CONTAINER */
+
+        /* MAIN SCROLL CONTAINER */
         .container {
             width: 100vw;
             height: 100vh;
-            scroll-snap-type: y mandatory;
             overflow-y: scroll;
+            scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
+
+        /* SLIDE LAYOUT */
         .slide {
             width: 100vw;
             height: 100vh;
             scroll-snap-align: start;
-            padding: 8vh 5vw 8vh;
+            padding: 60px 20px 100px; 
             display: flex;
             flex-direction: column;
-            background: #000;
+            align-items: center;
+            justify-content: flex-start; 
+            background: var(--bg);
             position: relative;
-            border-bottom: 1px solid #111;
+            overflow-y: auto; /* MAKES SLIDES SCROLLABLE */
+            border-bottom: 1px solid #222;
         }
-        /* Background Gradient Effect */
+
+        /* Background Gradient */
         .slide::before {
             content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top center, #111 0%, #000 70%);
-            opacity: 0.9;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: radial-gradient(circle at 50% 20%, #1a1a2e 0%, #000 70%);
             z-index: -1;
+            pointer-events: none;
         }
 
         /* TYPOGRAPHY */
         h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 2.8em;
-            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2em;
             color: var(--gold);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
             text-align: center;
-            margin: 0.4em 0;
-            text-shadow: 0 0 20px rgba(255,215,0,0.4);
+            margin-bottom: 5px;
         }
-        h2 { font-size: 2.1em; color: var(--neon); margin: 0.6em 0 0.4em; font-weight: 700; }
-        h3 { font-size: 1.6em; color: var(--text); margin: 0.8em 0 0.4em; font-weight: 600; border-bottom: 2px dashed #333; padding-bottom: 5px;}
-        
-        /* CARDS & BOXES */
-        .card {
-            background: rgba(20,20,40,0.7);
-            border: 1px solid #333;
-            border-left: 5px solid var(--neon);
-            border-radius: 12px;
-            padding: 1.2em;
-            margin: 0.8em 0;
-            backdrop-filter: blur(8px);
-            overflow-y: auto;
-        }
-        .gold-box {
-            background: linear-gradient(135deg, var(--gold), #FFA500);
-            color: #000;
-            padding: 0.8em;
-            border-radius: 12px;
+        h2 {
+            font-size: 1.8em;
+            color: var(--neon);
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
             text-align: center;
             font-weight: 800;
-            font-size: 1.05em;
-            margin: 1em 0;
-            box-shadow: 0 6px 20px rgba(255,215,0,0.4);
         }
-        .fun-fact {
-            border-left: 5px solid var(--purple);
-            background: rgba(157, 0, 255, 0.1);
+        h3 {
+            font-size: 1.2em;
+            color: #fff;
+            margin: 15px 0 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* VISUAL GRID FOR FLASHCARDS */
+        /* CARDS */
+        .card {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            border-left: 4px solid var(--neon);
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+        }
+
+        /* SPECIAL BOXES */
+        .gold-box {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        /* RULE BOXES (Why/When/How) */
+        .rule-block {
+            background: var(--rule-bg);
+            border: 1px solid rgba(0,212,255,0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .rule-title {
+            color: var(--gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        /* TYPES OF SLIDES */
+        .slide-funfact h2 { color: var(--purple); border-color: var(--purple); }
+        .slide-funfact .card { border-left-color: var(--purple); background: rgba(50, 10, 60, 0.6); }
+        
+        .slide-example h2 { color: var(--example); border-color: var(--example); }
+        .slide-example .card { border-left-color: var(--example); background: rgba(60, 10, 40, 0.6); }
+
+        /* VISUAL GRID */
         .visual-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            width: 100%;
             margin-top: 10px;
         }
         .visual-item {
             background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 15px;
             text-align: center;
-            border: 1px solid #333;
+            transition: transform 0.2s;
         }
-        .visual-icon { font-size: 2em; display: block; margin-bottom: 5px; }
+        .emoji { font-size: 2.5em; display: block; margin-bottom: 8px; }
+        .word { font-weight: 700; color: var(--neon); display: block; }
+        .trans { font-size: 0.8em; color: #aaa; font-style: italic; }
+        .ex-text { font-size: 1.1em; margin-bottom: 10px; border-bottom: 1px dashed #444; padding-bottom: 5px; }
 
-        /* TABLES & LISTS */
-        table { width: 100%; border-collapse: collapse; margin: 0.8em 0; font-size: 0.85em; }
-        th, td { padding: 0.6em; border: 1px solid #444; text-align: left; }
-        th { background: #222; color: var(--gold); font-weight: 700; }
-        td { color: var(--text); }
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.9em; }
+        th, td { padding: 10px; border: 1px solid #444; text-align: left; }
+        th { background: #222; color: var(--gold); }
         
-        ul { padding-left: 1.4em; margin: 0.6em 0; list-style: none; }
-        li { margin: 0.5em 0; font-size: 0.95em; position: relative; padding-left: 1.2em; }
-        li::before { content: "»"; position: absolute; left: 0; color: var(--gold); font-size: 1.1em; }
-        
-        .answer { color: var(--gold); text-decoration: underline; font-weight: 700; }
-        .trans { font-size: 0.85em; color: #ccc; font-style: italic; }
+        /* LISTS */
+        ul { list-style: none; padding-left: 5px; }
+        li { margin: 8px 0; padding-left: 20px; position: relative; }
+        li::before { content: '▶'; position: absolute; left: 0; color: var(--gold); font-size: 0.8em; top: 4px; }
 
-        /* NAVIGATION & TOC */
-        .nav {
-            position: fixed; bottom: 16px; right: 16px; background: rgba(0,0,0,0.75);
-            color: var(--gold); font-size: 0.85em; font-weight: bold; padding: 6px 12px;
-            border-radius: 20px; border: 1px solid var(--gold); backdrop-filter: blur(10px);
-            z-index: 999;
-        }
-        .progress {
-            position: fixed; top: 0; left: 0; height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--neon));
-            width: 0%; z-index: 1000;
+        .highlight { color: var(--gold); font-weight: bold; text-decoration: underline; }
+
+        /* NAVIGATION */
+        .nav-overlay {
+            position: fixed; bottom: 20px; right: 20px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid var(--neon);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--neon);
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
         }
         .toc-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+            width: 100%;
+            max-width: 800px;
         }
         .toc-btn {
-            display: block;
-            padding: 10px;
             background: #111;
-            border: 1px solid var(--neon);
-            color: var(--neon);
+            border: 1px solid #333;
+            color: var(--text);
+            padding: 12px;
             text-align: center;
             text-decoration: none;
             border-radius: 8px;
             font-size: 0.9em;
-            font-weight: bold;
-            transition: 0.2s;
         }
-        .toc-btn:hover { background: var(--neon); color: #000; }
-        .toc-section { grid-column: span 2; color: var(--gold); font-size: 0.8em; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 1px solid #333; padding-bottom: 5px;}
+        .toc-btn:hover { border-color: var(--neon); color: var(--neon); }
 
     </style>
 </head>
 <body>
-    <div class="progress" id="progress"></div>
-    <div class="nav">Slide <span id="current">1</span> / <span id="total">85</span></div> 
 
-    <div class="container" id="slides">
-        
-        <!-- SLIDE 1: MASTER TITLE -->
-        <div class="slide" style="text-align:center; justify-content:center;">
-            <h1 style="font-size: 3.5em;">🇫🇮 SUOMI</h1>
-            <h2 style="font-size:2em; color:var(--neon);">MASTER GUIDE (A1.1 + A1.2)</h2>
-            <div class="gold-box" style="font-size:1.2em;">Comprehensive Grammar & Vocabulary</div>
-            <p style="margin:1.5em 0; font-size:1.1em;">85 Slides. Use the Table of Contents below.</p>
-        </div>
+    <div class="nav-overlay">
+        Slide <span id="currentSlide">1</span> / <span id="totalSlides">--</span>
+    </div>
 
-        <!-- SLIDE 2: TABLE OF CONTENTS -->
+    <div class="container" id="mainContainer">
+
+        <!-- 1. COVER -->
         <div class="slide">
-            <h2>Table of Contents 📑</h2>
-            <div class="card">
-                <div class="toc-grid">
-                    <div class="toc-section">Part 1: Foundations (A1.1)</div>
-                    <a href="#m1" class="toc-btn">M1: Alphabet & Numbers</a>
-                    <a href="#m2" class="toc-btn">M2: Time & Calendar</a>
-                    <a href="#m3" class="toc-btn">M3: Basics & Pronouns</a>
-                    <a href="#m4" class="toc-btn">M4: Verbs (Type 1-3)</a>
-                    
-                    <div class="toc-section">Part 2: Deep Dive (A1.2)</div>
-                    <a href="#m5" class="toc-btn">M5: Local Cases</a>
-                    <a href="#m6" class="toc-btn">M6: Adjectives</a>
-                    <a href="#m7" class="toc-btn">M7: Sentence Types</a>
-                    <a href="#m8" class="toc-btn">M8: Partitive & KPT</a>
-                    <a href="#m9" class="toc-btn">M9: Verb Type 4</a>
-                    <a href="#m10" class="toc-btn">M10: Word Types</a>
-                    <a href="#m11" class="toc-btn">M11: Vocab (Vehicles/Weather)</a>
-                </div>
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                <h1>🇫🇮 SUOMI</h1>
+                <h2 style="border:none;">ULTIMATE SELF-STUDY GUIDE</h2>
+                <div class="gold-box">WHY • WHEN • HOW • EXAMPLES</div>
+                <p>Finnish 1 & 2 Complete</p>
+                <p style="margin-top:20px; font-size:3em;">👇</p>
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- PART 1: FOUNDATIONS (FROM FINNISH 1) -->
-        <!-- ========================================== -->
-
-        <!-- --- MODULE 1: ALPHABET & NUMBERS --- -->
-        <div class="slide" id="m1"><h2>M1: Aakkoset (Alphabet) 🔤</h2>
-            <div class="card">
-                <h3>Phonetic Rules</h3>
-                <ul>
-                    <li><b>One letter = One sound.</b> No silent letters!</li>
-                    <li><b>Double letters = Long sound.</b> <br><i>Maa</i> (Land) vs <i>Mata</i> (Crawl). Duration is key!</li>
-                    <li><b>Ä</b> = like 'a' in Cat.</li>
-                    <li><b>Ö</b> = like 'i' in Bird (round lips).</li>
-                    <li><b>Y</b> = like French 'u' or German 'ü'.</li>
-                </ul>
-            </div>
-            <div class="card fun-fact">
-                <h3>Fun Fact</h3>
-                <p>Finnish only uses <b>B, C, F, G, Q, W, X, Z, Å</b> for loanwords. The native core consonants are just: <b>D, H, J, K, L, M, N, P, R, S, T, V</b>.</p>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Numerot 0-10 🔢</h2>
-            <div class="card">
-                <table>
-                    <tr><td>0 <b>nolla</b></td><td>6 <b>kuusi</b></td></tr>
-                    <tr><td>1 <b>yksi</b></td><td>7 <b>seitsemän</b></td></tr>
-                    <tr><td>2 <b>kaksi</b></td><td>8 <b>kahdeksan</b></td></tr>
-                    <tr><td>3 <b>kolme</b></td><td>9 <b>yhdeksän</b></td></tr>
-                    <tr><td>4 <b>neljä</b></td><td>10 <b>kymmenen</b></td></tr>
-                    <tr><td>5 <b>viisi</b></td><td></td></tr>
-                </table>
-            </div>
-            <div class="gold-box">
-                ⚠️ Rule: Numbers 2+ require <b>Partitive Singular</b>.<br>
-                <i>Yksi auto</i> (Nom) vs <i>Kaksi auto<b>a</b></i> (Part).
-            </div>
-        </div>
-
-        <div class="slide"><h2>Numerot 11-100 🔢</h2>
-            <div class="card">
-                <h3>Teens (+toista) & Tens (+kymmentä)</h3>
-                <ul>
-                    <li>11: Yksi<b>toista</b> (One of the second)</li>
-                    <li>12: Kaksi<b>toista</b></li>
-                    <li>20: Kaksi<b>kymmentä</b> (Two tens)</li>
-                    <li>21: Kaksikymmentäyksi</li>
-                    <li>100: Sata</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- --- MODULE 2: TIME --- -->
-        <div class="slide" id="m2"><h2>M2: Aika (Time) 🕒</h2>
-            <div class="card">
-                <h3>Kellonajat</h3>
-                <ul>
-                    <li>3:00 -> Kello on kolme.</li>
-                    <li>3:15 -> Kello on vartin <b>yli</b> kolme. <span class="trans">(Quarter past)</span></li>
-                    <li>3:30 -> Kello on <b>puoli</b> neljä. <span class="trans">(Half [to] four)</span></li>
-                    <li>3:45 -> Kello on vartin <b>vaille</b> neljä. <span class="trans">(Quarter to)</span></li>
-                </ul>
-            </div>
-            <div class="card fun-fact">
-                <h3>Puoli-Trick</h3>
-                <p><b>Puoli</b> always refers to the <i>next</i> hour. <br><i>Puoli viisi</i> = 4:30 (Halfway to five).</p>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Kalenteri (Calendar) 📅</h2>
-            <div class="card">
-                <h3>Viikonpäivät (Days)</h3>
-                <div class="visual-grid">
-                    <div class="visual-item">Maanantai</div>
-                    <div class="visual-item">Tiistai</div>
-                    <div class="visual-item">Keskiviikko</div>
-                    <div class="visual-item">Torstai</div>
-                    <div class="visual-item">Perjantai</div>
-                    <div class="visual-item">Lauantai / Sunnuntai</div>
-                </div>
-                <h3 style="margin-top:1em;">Vuodenajat (Seasons)</h3>
-                <ul>
-                    <li>Kevät (Spring)</li>
-                    <li>Kesä (Summer)</li>
-                    <li>Syksy (Autumn)</li>
-                    <li>Talvi (Winter)</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Time Grammar 🕰️</h2>
-            <div class="card">
-                <h3>When? (Milloin?)</h3>
-                <ul>
-                    <li><b>Days:</b> use Essive (-na). <br><i>Maanantai<b>na</b></i> (On Monday).</li>
-                    <li><b>Months/Seasons:</b> use Inessive (-ssa). <br><i>Kesäkuu<b>ssa</b></i> (In June). <br><i>*Exception: Kesällä (In summer).</i></li>
-                    <li><b>Clock time (At):</b> use Ablative (-lta). <br><i>Viide<b>ltä</b></i> (At five).</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- --- MODULE 3: BASICS & PRONOUNS --- -->
-        <div class="slide" id="m3"><h2>M3: Pronominit 👤</h2>
-            <div class="card">
-                <table>
-                    <thead><tr><th>Person</th><th>Subject (Nom)</th><th>Possessive (Gen)</th></tr></thead>
-                    <tbody>
-                        <tr><td>I / My</td><td>Minä</td><td>Minun</td></tr>
-                        <tr><td>You / Your</td><td>Sinä</td><td>Sinun</td></tr>
-                        <tr><td>He,She / His,Her</td><td>Hän</td><td>Hänen</td></tr>
-                        <tr><td>We / Our</td><td>Me</td><td>Meidän</td></tr>
-                        <tr><td>You (pl) / Your</td><td>Te</td><td>Teidän</td></tr>
-                        <tr><td>They / Their</td><td>He</td><td>Heidän</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="gold-box">
-                Dropped Pronouns: You can drop <i>Minä/Sinä</i> because the verb ending shows the person. (e.g., <i>Puhun</i> = I speak).
-            </div>
-        </div>
-
-        <div class="slide"><h2>Tervehdykset (Greetings) 👋</h2>
-            <div class="visual-grid">
-                <div class="visual-item"><b>Hei / Moi</b><br>(Hi)</div>
-                <div class="visual-item"><b>Mitä kuuluu?</b><br>(How are you?)</div>
-                <div class="visual-item"><b>Kiitos</b><br>(Thank you)</div>
-                <div class="visual-item"><b>Anteeksi</b><br>(Sorry/Excuse me)</div>
-                <div class="visual-item"><b>Näkemiin</b><br>(Goodbye)</div>
-                <div class="visual-item"><b>Hyvää huomenta</b><br>(Good morning)</div>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Vokaaliharmonia 🧬</h2>
-            <div class="card">
-                <h3>The Golden Rule</h3>
-                <p>A word can only contain <b>Back</b> or <b>Front</b> vowels (Neutral 'e/i' can mix with either).</p>
-                <ul>
-                    <li><b>Back (A, O, U):</b> Ending uses <b>-a, -o, -u</b>. <br><i>Talo -> Taloss<b>a</b></i>.</li>
-                    <li><b>Front (Ä, Ö, Y):</b> Ending uses <b>-ä, -ö, -y</b>. <br><i>Metsä -> Metsäss<b>ä</b></i>.</li>
-                </ul>
-            </div>
-            <div class="card fun-fact">
-                <h3>Why?</h3>
-                <p>It makes the language flow better! You don't have to move your tongue from the back to the front of your mouth within one word.</p>
-            </div>
-        </div>
-
-        <!-- --- MODULE 4: VERBS 1-3 --- -->
-        <div class="slide" id="m4"><h2>M4: Verbi: OLLA (To Be) 🌟</h2>
-            <div class="card">
-                <h3>Irregular Conjugation</h3>
-                <table>
-                    <tr><td>Minä <b>olen</b></td><td>Me <b>olemme</b></td></tr>
-                    <tr><td>Sinä <b>olet</b></td><td>Te <b>olette</b></td></tr>
-                    <tr><td>Hän <b>on</b></td><td>He <b>ovat</b></td></tr>
-                </table>
-            </div>
-            <div class="card" style="border-color: var(--error);">
-                <h3 style="color:var(--error);">Negation (Ei)</h3>
-                <p>Negative verb + Stem (ole)</p>
-                <ul>
-                    <li>En ole (I am not)</li>
-                    <li>Et ole (You are not)</li>
-                    <li>Ei ole (He/She is not)</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Verb Types 1, 2, 3 🛠️</h2>
-            <div class="card">
-                <h3>Type 1: -Va/-Vä (2 vowels)</h3>
-                <p>Drop the last -a/-ä. (Asu<b>a</b> -> Asu-)</p>
-                <p>Minä asu<b>n</b>, Sinä asu<b>t</b>, Hän asu<b>u</b>.</p>
-
-                <h3 style="margin-top:1em;">Type 2: -da/-dä</h3>
-                <p>Drop -da/-dä. (Syö<b>dä</b> -> Syö-)</p>
-                <p>Minä syö<b>n</b>, Hän syö.</p>
-
-                <h3 style="margin-top:1em;">Type 3: -la/-na/-ra... + Vowel</h3>
-                <p>Drop -la/-na... + add <b>e</b>. (Tul<b>la</b> -> Tule-)</p>
-                <p>Minä tule<b>n</b>, Hän tule<b>e</b>.</p>
-            </div>
-        </div>
-
-        <!-- ========================================== -->
-        <!-- PART 2: DEEP DIVE (FROM FINNISH 2) -->
-        <!-- ========================================== -->
-
-        <!-- --- MODULE 5: LOCAL CASES --- -->
-        <div class="slide" id="m5"><h2>M5: Paikallissijat 📍</h2>
-            <div class="card">
-                <h3>Sisä- ja Ulkopaikallissijat</h3>
-                <ul>
-                    <li><b>Internal (-ssa/-stä/-Vn):</b> Containment (House, City). <span class="trans">"In"</span></li>
-                    <li><b>External (-lla/-lta/-lle):</b> Surface/Open (Table, Market). <span class="trans">"On/At"</span></li>
-                </ul>
-                <table>
-                    <thead><tr><th> </th><th>Missä? (Where)</th><th>Mistä? (From)</th><th>Mihin? (To)</th></tr></thead>
-                    <tbody>
-                        <tr><td><b>In</b></td><td>-ssa / -ssä</td><td>-sta / -stä</td><td>-Vn / -seen</td></tr>
-                        <tr><td><b>On</b></td><td>-lla / -llä</td><td>-lta / -ltä</td><td>-lle</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Illatiivi (Mihin?) ➡️🏢</h2>
-            <div class="card">
-                <h3>The "Into" Case Rules</h3>
-                <ul>
-                    <li><b>1 Vowel:</b> talo -> talo<span class="answer">on</span> (Double vowel + n)</li>
-                    <li><b>2 Vowels:</b> Lontoo -> Lontoo<span class="answer">seen</span> (Add -seen)</li>
-                    <li><b>1 Syllable:</b> maa -> maa<span class="answer">han</span> (Add h + vowel + n)</li>
-                </ul>
-                <p style="margin-top:1em; color:var(--neon);">Esim: Mies menee <span class="answer">talo<b>on</b></span>.</p>
-            </div>
-        </div>
-
-        <div class="slide practice-slide">
-            <h2>HARJOITUS: Paikallissijat 💾</h2>
-            <div class="card card-practice">
-                <p>1. (In the office) -> Toimisto<span class="answer">ssa</span></p>
-                <p>2. (On the table) -> Pöydä<span class="answer">llä</span></p>
-                <p>3. (From the shop) -> Kaupa<span class="answer">sta</span></p>
-                <p>4. (To the school) -> Koulu<span class="answer">un</span></p>
-                <p>5. (Onto the shelf) -> Hylly<span class="answer">lle</span></p>
-            </div>
-        </div>
-
-        <!-- --- MODULE 6: ADJECTIVES --- -->
-        <div class="slide" id="m6"><h2>M6: Adjektiivit 🌈</h2>
-            <div class="card">
-                <h3>Agreement Rule</h3>
-                <p>Adjectives must <b>match the noun</b> in Case and Number.</p>
-                <div class="visual-grid">
-                    <div class="visual-item">
-                        <b>Iso Talo</b><br>
-                        Iso<span class="answer">ssa</span> talo<span class="answer">ssa</span>
-                    </div>
-                    <div class="visual-item">
-                        <b>Pieni Auto</b><br>
-                        Piene<span class="answer">llä</span> auto<span class="answer">lla</span>
-                    </div>
-                </div>
-                <p style="margin-top:1em;"><i>Exception:</i> Words ending in <b>-nen</b> (punainen) change to <b>-se-</b> (punaise-).</p>
-            </div>
-        </div>
-
-        <div class="slide practice-slide">
-            <h2>HARJOITUS: Adjektiivit 💾</h2>
-            <div class="card card-practice">
-                <p>1. (In a small room) -> Pien<span class="answer">essä</span> huonee<span class="answer">ssa</span>.</p>
-                <p>2. (From a red car) -> Punai<span class="answer">sesta</span> auto<span class="answer">sta</span>.</p>
-                <p>3. (To a good friend) -> Hyvä<span class="answer">lle</span> ystävä<span class="answer">lle</span>.</p>
-            </div>
-        </div>
-
-        <!-- --- MODULE 7: SENTENCE TYPES --- -->
-        <div class="slide" id="m7"><h2>M7: Lausetyypit 💬</h2>
-            <div class="card">
-                <h3>1. Omistuslause (Ownership)</h3>
-                <p>[Owner]<b>-lla</b> + on + [Item]</p>
-                <p>» <span class="answer">Minulla</span> on koira. <span class="trans">(I have a dog.)</span></p>
-                <p>» Neg: Minulla <b>ei ole</b> koira<b>a</b> (Partitive).</p>
+        <!-- 2. TABLE OF CONTENTS -->
+        <div class="slide">
+            <h2>SISÄLLYS (Contents)</h2>
+            <div class="toc-grid">
+                <div style="grid-column:span 2; text-align:center; color:var(--gold); margin-top:10px;">PART 1: FOUNDATIONS</div>
+                <a href="#basics" class="toc-btn">1. Basics & Greetings</a>
+                <a href="#pronouns" class="toc-btn">2. Pronouns & To Be</a>
+                <a href="#numbers" class="toc-btn">3. Numbers & Time</a>
+                <a href="#verb1" class="toc-btn">4. Verb Type 1 (-Va)</a>
+                <a href="#verb2" class="toc-btn">5. Verb Type 2 (-da)</a>
+                <a href="#verb3" class="toc-btn">6. Verb Type 3 (-la)</a>
                 
-                <h3 style="margin-top:1em;">2. Eksistentiaalilause (There is)</h3>
-                <p>[Location] + on + [Item]</p>
-                <p>» <span class="answer">Pöydällä</span> on kirja. <span class="trans">(On the table is a book.)</span></p>
+                <div style="grid-column:span 2; text-align:center; color:var(--gold); margin-top:10px;">PART 2: STRUCTURES</div>
+                <a href="#partitive" class="toc-btn">7. Partitive Case</a>
+                <a href="#kpt" class="toc-btn">8. Consonant Gradation</a>
+                <a href="#cases" class="toc-btn">9. Local Cases</a>
+                <a href="#sentences" class="toc-btn">10. Sentence Types</a>
+                <a href="#verb4" class="toc-btn">11. Verb Type 4 (-ata)</a>
+                <a href="#nouns" class="toc-btn">12. Noun Types</a>
             </div>
         </div>
 
-        <!-- --- MODULE 8: PARTITIVE & KPT --- -->
-        <div class="slide" id="m8"><h2>M8: Partitiivi ✨</h2>
-            <div class="card">
-                <h3>When to use the Partitive?</h3>
-                <ul>
-                    <li><b>Negation:</b> En osta auto<span class="answer">a</span>.</li>
-                    <li><b>Numbers (2+):</b> Kaksi poika<span class="answer">a</span>.</li>
-                    <li><b>Uncountable:</b> Juon kahvi<span class="answer">a</span>.</li>
-                    <li><b>Ongoing:</b> Luen kirja<span class="answer">a</span>.</li>
-                </ul>
-            </div>
-        </div>
+        <!-- ================= PART 1: FINNISH 1 ================= -->
 
-        <div class="slide"><h2>Astevaihtelu (KPT) ⚙️</h2>
+        <!-- TOPIC 1: BASICS & GREETINGS -->
+        <div class="slide" id="basics">
+            <h2>1. TERVEHDYKSET (GREETINGS)</h2>
             <div class="card">
-                <h3>Strong vs. Weak Grade</h3>
-                <p>Change happens when we add an ending to a closed syllable.</p>
-                <table>
-                    <tr><th>Strong</th><th>Weak</th><th>Example</th></tr>
-                    <tr><td>kk</td><td>k</td><td>pan<b>kk</b>i -> pan<b>k</b>issa</td></tr>
-                    <tr><td>pp</td><td>p</td><td>kau<b>pp</b>a -> kau<b>p</b>assa</td></tr>
-                    <tr><td>tt</td><td>t</td><td>ty<b>tt</b>ö -> ty<b>t</b>ön</td></tr>
-                    <tr><td>k</td><td>-</td><td>ruo<b>k</b>a -> ruoan</td></tr>
-                    <tr><td>p</td><td>v</td><td>lei<b>p</b>ä -> lei<b>v</b>än</td></tr>
-                    <tr><td>t</td><td>d</td><td>pöy<b>t</b>ä -> pöy<b>d</b>ällä</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- --- MODULE 9: VERB TYPE 4 --- -->
-        <div class="slide" id="m9"><h2>M9: Verbi Tyyppi 4 ⚡</h2>
-            <div class="card">
-                <h3>Rule: Ends in -ata/-ätä, -ota/-ötä, -uta/-ytä</h3>
-                <p><b>Logic:</b> Drop the <span style="color:var(--error); font-weight:bold;">-t</span> to get the stem.</p>
-                <div class="visual-grid">
-                    <div class="visual-item">
-                        <b>OSATA</b> (to can/know)<br> Stem: <i>osaa-</i><br> Minä <span class="answer">osaan</span>
-                    </div>
-                    <div class="visual-item">
-                        <b>HALUTA</b> (to want)<br> Stem: <i>halua-</i><br> Minä <span class="answer">haluan</span>
-                    </div>
-                    <div class="visual-item">
-                        <b>SIIVOTA</b> (to clean)<br> Stem: <i>siivoa-</i><br> Minä <span class="answer">siivoan</span>
-                    </div>
-                    <div class="visual-item">
-                        <b>AVATA</b> (to open)<br> Stem: <i>avaa-</i><br> Minä <span class="answer">avaan</span>
-                    </div>
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>To start conversations politely.</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">⏰ WHEN?</span>
+                    <p>Meeting friends, teachers, or entering a shop.</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Use <b>Hei/Moi</b> for informal. <b>Hyvää päivää</b> for formal.</p>
                 </div>
             </div>
         </div>
 
-        <!-- --- MODULE 10: WORD TYPES --- -->
-        <div class="slide" id="m10"><h2>M10: Sanatyypit (Noun Types) 🧬</h2>
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: CASUAL</h2>
             <div class="card">
-                <h3>1. -e words (e.g., Huone)</h3>
-                <p>The <b>-e</b> becomes <b>-ee-</b> when adding endings.</p>
-                <ul>
-                    <li><b>Huone</b> (Room) -> <span class="answer">Huonee</span>ssa.</li>
-                    <li><b>Perhe</b> (Family) -> <span class="answer">Perhee</span>n.</li>
-                </ul>
-
-                <h3 style="margin-top:1em;">2. -nen words (e.g., Nainen)</h3>
-                <p>The <b>-nen</b> becomes <b>-se-</b>.</p>
-                <ul>
-                    <li><b>Nainen</b> (Woman) -> <span class="answer">Naise</span>lla.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="slide"><h2>Sanatyypit: -i and -in words 🧬</h2>
-            <div class="card">
-                <h3>3. -i words (Old vs. New)</h3>
-                <p><b>New Words (Loanwords):</b> Normal. <i>Pankki -> Pankissa.</i></p>
-                <p><b>Old Words (Nature):</b> <b>-i</b> changes to <b>-e-</b>.</p>
-                <ul>
-                    <li><b>Joki</b> (River) -> Jo<span class="answer">e</span>ssa.</li>
-                    <li><b>Kivi</b> (Stone) -> Kiv<span class="answer">e</span>llä.</li>
-                </ul>
-
-                <h3 style="margin-top:1em;">4. -in words (e.g., Puhelin)</h3>
-                <p>The <b>-in</b> changes to <b>-ime-</b>.</p>
-                <ul>
-                    <li><b>Puhelin</b> -> Puhel<span class="answer">ime</span>ssa.</li>
-                    <li><b>Avain</b> -> Ava<span class="answer">ime</span>lla.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- --- MODULE 11: VOCAB & DEMONSTRATIVES --- -->
-        <div class="slide" id="m11"><h2>Demonstratiivipronominit 👈</h2>
-            <div class="card">
-                <h3>Tämä, Tuo, Se (This, That, It)</h3>
-                <p>These must agree with the noun they modify!</p>
-                <table>
-                    <tr><th>Case</th><th>Tämä</th><th>Tuo</th><th>Se</th></tr>
-                    <tr><td>Nom.</td><td>Tämä</td><td>Tuo</td><td>Se</td></tr>
-                    <tr><td>Iness.</td><td>Tä<span class="answer">ssä</span></td><td>Tuo<span class="answer">ssa</span></td><td>Si<span class="answer">inä</span></td></tr>
-                    <tr><td>Elat.</td><td>Tä<span class="answer">stä</span></td><td>Tuo<span class="answer">sta</span></td><td>Si<span class="answer">itä</span></td></tr>
-                    <tr><td>Illat.</td><td>Tä<span class="answer">hän</span></td><td>Tuo<span class="answer">hon</span></td><td>Si<span class="answer">ihen</span></td></tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="slide"><h2>VISUAL: Kulkuneuvot (Transport) 🚌</h2>
-            <div class="card">
-                <h3>Millä sinä menet? (How do you go?)</h3>
-                <p>Transport usually uses <b>-lla/-llä</b> (Adessive).</p>
                 <div class="visual-grid">
-                    <div class="visual-item"><span class="visual-icon">🚌</span><b>Bussi</b><br>Bussilla</div>
-                    <div class="visual-item"><span class="visual-icon">🚂</span><b>Juna</b><br>Junalla</div>
-                    <div class="visual-item"><span class="visual-icon">🚲</span><b>Pyörä</b><br>Pyörällä</div>
-                    <div class="visual-item"><span class="visual-icon">🚗</span><b>Auto</b><br>Autolla</div>
-                    <div class="visual-item"><span class="visual-icon">✈️</span><b>Lentokone</b><br>Lentokoneella</div>
-                    <div class="visual-item"><span class="visual-icon">🚶</span><b>Kävellä</b><br>Kävellen</div>
+                    <div class="visual-item"><span class="emoji">👋</span>Moi!</div>
+                    <div class="visual-item"><span class="emoji">😊</span>Mitä kuuluu?</div>
+                    <div class="visual-item"><span class="emoji">👍</span>Hyvää, kiitos.</div>
                 </div>
             </div>
         </div>
 
-        <div class="slide"><h2>VISUAL: Sää (Weather) ☀️</h2>
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: FORMAL</h2>
+            <div class="card">
+                <p class="ex-text"><b>A:</b> Hyvää huomenta. <span class="trans">(Good morning)</span></p>
+                <p class="ex-text"><b>B:</b> Huomenta. Hauska tutustua. <span class="trans">(Nice to meet you)</span></p>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: MOI MOI 🇫🇮</h2>
+            <div class="card">
+                <h3>Goodbye is easy!</h3>
+                <p>If "Moi" means Hello, then "Moi moi" means Goodbye! Just say it twice to leave.</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 2: PRONOUNS & TO BE -->
+        <div class="slide" id="pronouns">
+            <h2>2. PRONOUNS & OLLA</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>To say who you are (I am, You are).</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Minä olen, Sinä olet, Hän on, Me olemme, Te olette, He ovat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: IDENTITY</h2>
+            <div class="card">
+                <p class="ex-text"><b>Minä olen opiskelija.</b> <span class="trans">(I am a student.)</span></p>
+                <p class="ex-text"><b>Sinä olet opettaja.</b> <span class="trans">(You are a teacher.)</span></p>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: NATIONALITY</h2>
             <div class="card">
                 <div class="visual-grid">
-                    <div class="visual-item"><span class="visual-icon">☀️</span><b>Aurinko paistaa.</b><br>(Sun shines)</div>
-                    <div class="visual-item"><span class="visual-icon">🌧️</span><b>Sataa vettä.</b><br>(Rain)</div>
-                    <div class="visual-item"><span class="visual-icon">❄️</span><b>Sataa lunta.</b><br>(Snow)</div>
-                    <div class="visual-item"><span class="visual-icon">☁️</span><b>On pilvistä.</b><br>(Cloudy)</div>
-                    <div class="visual-item"><span class="visual-icon">🥶</span><b>On kylmä.</b><br>(Cold)</div>
-                    <div class="visual-item"><span class="visual-icon">🌡️</span><b>On lämmin.</b><br>(Warm)</div>
+                    <div class="visual-item"><span class="emoji">🇫🇮</span>Olen suomalainen.</div>
+                    <div class="visual-item"><span class="emoji">🇬🇧</span>Hän on englantilainen.</div>
                 </div>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: HÄN</h2>
+            <div class="card">
+                <h3>No Gender</h3>
+                <p>Finnish has no gender. <b>Hän</b> means both He and She. It treats everyone equally!</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 3: NUMBERS & TIME -->
+        <div class="slide" id="numbers">
+            <h2>3. NUMBERS & TIME</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>0-10: Nolla, Yksi, Kaksi, Kolme, Neljä, Viisi, Kuusi, Seitsemän, Kahdeksan, Yhdeksän, Kymmenen.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: COUNTING</h2>
+            <div class="card">
+                <div class="visual-grid">
+                    <div class="visual-item">11: Yksitoista</div>
+                    <div class="visual-item">12: Kaksitoista</div>
+                    <div class="visual-item">20: Kaksikymmentä</div>
+                    <div class="visual-item">100: Sata</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: TELLING TIME</h2>
+            <div class="card">
+                <p class="ex-text"><b>Kello on kolme.</b> (3:00)</p>
+                <p class="ex-text"><b>Puoli neljä.</b> (3:30 - Half *to* four)</p>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: PUOLI</h2>
+            <div class="card">
+                <h3>Watch out!</h3>
+                <p>"Puoli viisi" is NOT 5:30. It is 4:30. It means "halfway to five".</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 4: VERB TYPE 1 -->
+        <div class="slide" id="verb1">
+            <h2>4. VERB TYPE 1 (-Va)</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">⏰ WHEN?</span>
+                    <p>Verb ends in 2 vowels (Puh<b>ua</b>, As<b>ua</b>).</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Drop the last vowel (a/ä). Add ending (n, t, etc.).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: PUHUA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Puhua</b> -> Puhu- -> Minä puhu<span class="highlight">n</span>.</p>
+                <div class="gold-box">"Puhun suomea."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: ASUA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Asua</b> -> Asu- -> Sinä asu<span class="highlight">t</span>.</p>
+                <div class="gold-box">"Asutko Vaasassa?"</div>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: VERB STEMS</h2>
+            <div class="card">
+                <h3>The Stem is Key</h3>
+                <p>Once you find the "stem" (e.g., Puhu-), you can add ANY ending to it. Past tense, conditional, passive... it all starts here.</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 5: VERB TYPE 2 -->
+        <div class="slide" id="verb2">
+            <h2>5. VERB TYPE 2 (-da)</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">⏰ WHEN?</span>
+                    <p>Verb ends in -da or -dä (Syö<b>dä</b>, Juo<b>da</b>).</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Drop the -da/-dä completely. Add ending.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: SYÖDÄ</h2>
+            <div class="card">
+                <p class="ex-text"><b>Syödä</b> -> Syö- -> Minä syö<span class="highlight">n</span>.</p>
+                <div class="gold-box">"Syön pizzaa."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: JUODA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Juoda</b> -> Juo- -> Hän juo.</p>
+                <div class="gold-box">"Hän juo kahvia."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: EATING</h2>
+            <div class="card">
+                <h3>Short Verbs</h3>
+                <p>Type 2 verbs are often very short. "Hän syö" (He eats) is just two letters plus a space!</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 6: VERB TYPE 3 -->
+        <div class="slide" id="verb3">
+            <h2>6. VERB TYPE 3 (-la/na)</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">⏰ WHEN?</span>
+                    <p>Verb ends in consonant + vowel (Tul<b>la</b>, Men<b>nä</b>).</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Drop the ending. Add 'e'. Then add person ending.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: TULLA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Tulla</b> -> Tul- -> Tule- -> Minä tule<span class="highlight">n</span>.</p>
+                <div class="gold-box">"Tulen kotiin."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: OPISKELLA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Opiskella</b> -> Opiskel- -> Opiskele- -> Me opiskele<span class="highlight">mme</span>.</p>
+                <div class="gold-box">"Me opiskelemme suomea."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: THE 'E'</h2>
+            <div class="card">
+                <h3>Why the 'E'?</h3>
+                <p>Without the 'e', "Tuln" would be impossible to say. Finnish loves vowels!</p>
+            </div>
+        </div>
+
+        <!-- ================= PART 2: FINNISH 2 ================= -->
+
+        <!-- TOPIC 7: PARTITIVE CASE -->
+        <div class="slide" id="partitive">
+            <h2>7. PARTITIIVI</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>To show indefinite amounts, incomplete actions, or negatives.</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Add -a, -ta, or -tta.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: NUMBERS</h2>
+            <div class="card">
+                <p class="ex-text">1 Auto -> 2 Auto<b>a</b>.</p>
+                <p class="ex-text">1 Talo -> 2 Talo<b>a</b>.</p>
+                <div class="gold-box">After numbers (2+), always use Partitive singular.</div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: NEGATIVES</h2>
+            <div class="card">
+                <p class="ex-text">Minulla on auto.</p>
+                <p class="ex-text">Minulla <b>ei ole</b> auto<b>a</b>.</p>
+                <div class="gold-box">Negative sentences triggers Partitive!</div>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: "SOME"</h2>
+            <div class="card">
+                <h3>Uncountable</h3>
+                <p>"Juon kahvia" literally means "I drink (some) coffee". If you say "Juon kahvin", it implies you drink the WHOLE cup and finish it.</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 8: KPT (GRADATION) -->
+        <div class="slide" id="kpt">
+            <h2>8. ASTEVAIHTELU (KPT)</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>To make words easier to pronounce when we add endings.</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>KK->K, PP->P, TT->T, K->-, P->V, T->D.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: DOUBLES</h2>
+            <div class="card">
+                <p class="ex-text"><b>Pankki</b> (Bank) -> Pankissa.</p>
+                <p class="ex-text"><b>Kauppa</b> (Shop) -> Kaupassa.</p>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: SINGLES</h2>
+            <div class="card">
+                <p class="ex-text"><b>Ruoka</b> (Food) -> Ruoan.</p>
+                <p class="ex-text"><b>Pöytä</b> (Table) -> Pöydällä (t->d).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: SOFT SOUNDS</h2>
+            <div class="card">
+                <h3>Why change?</h3>
+                <p>Try saying "Pankkissa" quickly. The double 'k' blocks the flow. "Pankissa" is smoother. Finnish hates "bumpy" words!</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 9: LOCAL CASES -->
+        <div class="slide" id="cases">
+            <h2>9. PAIKALLISSIJAT</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>To say "In", "From", or "To" a place.</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Internal: -ssa (In), -sta (From), -Vn (Into).</p>
+                    <p>External: -lla (On), -lta (From), -lle (Onto).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: INTERNAL</h2>
+            <div class="card">
+                <p class="ex-text"><b>Talo</b> -> Talossa (In), Talosta (From), Taloon (Into).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: EXTERNAL</h2>
+            <div class="card">
+                <p class="ex-text"><b>Pöytä</b> -> Pöydällä (On), Pöydältä (From), Pöydälle (Onto).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: ILLATIVE</h2>
+            <div class="card">
+                <h3>The "Into" Case</h3>
+                <p>To go INTO something, double the vowel and add n. <br>Koulu -> Kouluu -> <b>Kouluun</b>.</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 10: SENTENCE TYPES -->
+        <div class="slide" id="sentences">
+            <h2>10. LAUSETYYPIT</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>Finnish has specific structures for "I have" and "There is".</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: OWNERSHIP</h2>
+            <div class="card">
+                <p class="ex-text"><b>Minulla on koira.</b> (At me is a dog = I have a dog).</p>
+                <p class="ex-text">Neg: <b>Minulla ei ole koiraa.</b> (Partitive).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: EXISTENTIAL</h2>
+            <div class="card">
+                <p class="ex-text"><b>Pöydällä on kirja.</b> (On table is book).</p>
+                <p class="ex-text"><b>Talossa on sauna.</b> (In house is sauna).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: NO "HAVE"</h2>
+            <div class="card">
+                <h3>No verb for Have</h3>
+                <p>Finnish lacks a verb for "To Have". They view possession as a location ("At me").</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 11: VERB TYPE 4 -->
+        <div class="slide" id="verb4">
+            <h2>11. VERB TYPE 4 (-ata)</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">⏰ WHEN?</span>
+                    <p>Verb ends in -ata, -ota, -uta (Siiv<b>ota</b>, Hal<b>uta</b>).</p>
+                </div>
+                <div class="rule-block">
+                    <span class="rule-title">🛠️ HOW?</span>
+                    <p>Drop the 't'. Add ending.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: SIIVOTA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Siivota</b> -> Siivoa- -> Minä siivoa<span class="highlight">n</span>.</p>
+                <div class="gold-box">"Siivoan keittiön."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: HALUTA</h2>
+            <div class="card">
+                <p class="ex-text"><b>Haluta</b> -> Halua- -> Minä halua<span class="highlight">n</span>.</p>
+                <div class="gold-box">"Haluan jäätelöä."</div>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: SPOKEN</h2>
+            <div class="card">
+                <h3>"Mä haluun"</h3>
+                <p>In spoken language, people often shorten Type 4 verbs. "Haluan" becomes "Haluun".</p>
+            </div>
+        </div>
+
+        <!-- TOPIC 12: NOUN TYPES -->
+        <div class="slide" id="nouns">
+            <h2>12. NOUN TYPES</h2>
+            <div class="card">
+                <div class="rule-block">
+                    <span class="rule-title">❓ WHY?</span>
+                    <p>Some nouns change stems weirdly before endings.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 1: -E & -NEN</h2>
+            <div class="card">
+                <p class="ex-text"><b>Huone</b> -> Huoneessa (e -> ee).</p>
+                <p class="ex-text"><b>Nainen</b> -> Naisella (nen -> se).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-example">
+            <h2>EXAMPLE 2: -I & -IN</h2>
+            <div class="card">
+                <p class="ex-text"><b>Järvi</b> (Old word) -> Järvessä (i -> e).</p>
+                <p class="ex-text"><b>Puhelin</b> -> Puhelimessa (in -> ime).</p>
+            </div>
+        </div>
+
+        <div class="slide slide-funfact">
+            <h2>FUN FACT: NEW WORDS</h2>
+            <div class="card">
+                <h3>Loan words</h3>
+                <p>New words like "Pankki" (Bank) don't change the 'i'. It stays "Pankissa". Only old nature words change (Järvi, Kivi, Talvi).</p>
             </div>
         </div>
 
         <!-- FINAL SLIDE -->
-        <div class="slide" style="text-align:center; justify-content:center; background:linear-gradient(135deg,#000,#1a0033);">
-            <h1 style="font-size:4em;">READY</h1>
-            <h2 style="color:var(--gold); font-size:2.5em;">A1 LEVEL COMPLETE.</h2>
-            <div class="gold" style="font-size:1.6em; padding:1.5em; color: var(--card);">
-                ONNEA KOKEESEEN! <span class="trans">(GOOD LUCK!)</span>
+        <div class="slide">
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                <h1>VALMIS!</h1>
+                <h2 style="border:none;">YOU HAVE MASTERED THE COURSE</h2>
+                <div class="gold-box">GOOD LUCK ON THE EXAM!</div>
+                <p>Däniel Ebrahimzadeh • 2025</p>
             </div>
-            <div class="footer">Däniel Ebrahimzadeh • 2025</div>
         </div>
 
     </div>
 
     <script>
+        const container = document.getElementById('mainContainer');
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
-        document.getElementById('total').textContent = totalSlides;
-        
-        const container = document.getElementById('slides');
-        
-        function updateSlideState() {
-            const scrollTop = container.scrollTop;
-            const clientHeight = container.clientHeight;
-            const docHeight = container.scrollHeight - clientHeight;
-            
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            document.getElementById('progress').style.width = progress + '%';
-            
-            let currentSlide = 1;
-            for (let i = 0; i < totalSlides; i++) {
-                const slide = slides[i];
-                if (slide.offsetTop <= scrollTop + clientHeight * 0.33) { 
-                    currentSlide = i + 1;
-                } else {
-                    break; 
-                }
-            }
-            document.getElementById('current').textContent = currentSlide;
-        }
+        document.getElementById('totalSlides').textContent = totalSlides;
 
-        window.addEventListener('load', updateSlideState);
-        container.addEventListener('scroll', updateSlideState);
+        container.addEventListener('scroll', () => {
+            let current = 1;
+            const scrollPos = container.scrollTop + (window.innerHeight / 2);
+            slides.forEach((slide, index) => {
+                if (slide.offsetTop <= scrollPos && (slide.offsetTop + slide.offsetHeight) > scrollPos) {
+                    current = index + 1;
+                }
+            });
+            document.getElementById('currentSlide').textContent = current;
+        });
     </script>
+
 </body>
 </html>
